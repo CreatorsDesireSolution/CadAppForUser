@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Act_Cancelation"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:id="@+id/linearmain">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AVAILABILITY"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="30dp"/>
+
+
+
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <RadioButton
+                    android:id="@+id/Always"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".5"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Always"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/set_availability"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Set Availability"
+                    android:textSize="15dp" />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CANCELATION  POLICY"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="30dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:text="@string/text_with_paragraphs"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <RadioButton
+                    android:id="@+id/Flexible"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".33"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Flexible"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/Strict"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Strict"
+                    android:textSize="15dp" />
+
+
+                <RadioButton
+                    android:id="@+id/moderate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".33"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Moderate"
+                    android:textSize="15dp" />
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACCEPTANCE"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/colorAccent"
+                android:layout_marginLeft="30dp"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:text="@string/text_with_paragraphs1"
+                android:layout_marginLeft="30dp"
+                android:padding="5dp"
+                android:layout_marginRight="30dp"/>
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <RadioButton
+                    android:id="@+id/Instant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".5"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Instant"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/Preapproval"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:checked="false"
+                    android:buttonTint="@color/colorAccent"
+                    android:text="Pre-approval"
+                    android:textSize="15dp" />
+
+
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+

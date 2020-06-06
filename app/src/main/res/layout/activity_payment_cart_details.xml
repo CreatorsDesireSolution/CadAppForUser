@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentCartDetails">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="6dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+           >
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="90dp"
+                android:id="@+id/addcart"
+                android:layout_marginTop="15sp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/paytmimage">
+            </ImageView>
+
+            <EditText
+                android:id="@+id/etCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/addcart"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/carteditback"
+                android:ems="5"
+                android:hint="CARD NUMBER"
+                android:inputType="number"
+                android:paddingLeft="13dp"
+                android:textColor="#8B000000"
+                android:textSize="15sp"
+                android:textStyle="normal"></EditText>
+
+
+            <EditText
+                android:id="@+id/etCardHolderNumber"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/carteditback"
+                android:ems="5"
+                android:layout_below="@+id/etCardNumber"
+                android:hint="CARD NUMBER"
+                android:inputType="number"
+                android:paddingLeft="13dp"
+                android:textColor="#8B000000"
+                android:textSize="15sp"
+                android:textStyle="normal"></EditText>
+
+            <EditText
+                android:id="@+id/etMM"
+                android:layout_width="90dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/carteditback"
+                android:ems="5"
+                android:layout_below="@+id/etCardHolderNumber"
+                android:hint="MM"
+                android:inputType="number"
+                android:paddingLeft="13dp"
+                android:textColor="#8B000000"
+                android:textSize="15sp"
+                android:textStyle="normal"></EditText>
+
+            <EditText
+                android:id="@+id/etYear"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+
+                android:layout_toRightOf="@+id/etMM"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/carteditback"
+                android:ems="5"
+                android:layout_below="@+id/etCardHolderNumber"
+                android:hint="YYYY"
+                android:inputType="number"
+                android:paddingLeft="13dp"
+                android:textColor="#8B000000"
+                android:textSize="15sp"
+                android:textStyle="normal"></EditText>
+
+
+            <EditText
+                android:id="@+id/etCVV"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/etYear"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/carteditback"
+                android:ems="5"
+                android:layout_below="@+id/etCardHolderNumber"
+                android:hint="CVV"
+                android:inputType="number"
+                android:paddingLeft="13dp"
+                android:textColor="#8B000000"
+                android:textSize="15sp"
+                android:textStyle="normal"></EditText>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/etCVV"
+                android:text="Next Step"
+                android:id="@+id/btnNextStep"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:background="@drawable/btnpaymenetback"></Button>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/btnNextStep"
+                android:text="Back"
+                android:id="@+id/btnBack"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:background="@drawable/registerbtn_back"></Button>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

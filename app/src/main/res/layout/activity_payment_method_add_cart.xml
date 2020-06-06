@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentMethodAddCart">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PaymentMethodActivity">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+android:layout_marginTop="15sp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="170dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/addcart"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/paytmimage">
+                </ImageView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="**** **** **** 2356"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:id="@+id/cardnumber"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@id/addcart"
+                    android:textStyle="normal"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10/19"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="15sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@id/cardnumber"
+                    android:textStyle="normal"></TextView>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="Add Payment Method"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:id="@+id/btnAddCart"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btnpaymenetback"></Button>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

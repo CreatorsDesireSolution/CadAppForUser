@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.cadappforuser">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Act_Forgot_password"></activity>
+        <activity android:name=".ShowCompanyStaffProfile"></activity>
+        <activity android:name=".ShowStaffList" />
+        <activity android:name=".ShowStaffProfile" />
+        <activity android:name=".StaffCertificationActivity" />
+        <activity android:name=".StaffAddServicesActivity" />
+        <activity android:name=".BackgoundOfStaffActivity" />
+        <activity android:name=".StaffProfile" />
+        <activity android:name=".ChoiceStaffOrComapnyOwner" />
+        <activity android:name=".CompanyStaffList" />
+        <activity android:name=".CompanySetAvalibiltyCustomActivityStaff" />
+        <activity android:name=".CompanySelectGenderActivity" />
+        <activity android:name=".CompanyRegisterAsCompanyStaffActivity" />
+        <activity android:name=".CompanyAddServicesActivity" />
+        <activity android:name=".CompanyServicesOffered" />
+        <activity android:name=".CompanyServicesProvidedAndCancelationPolicy" />
+        <activity android:name=".CertificationActivity" />
+        <activity android:name=".TermAndCondition" />
+        <activity android:name=".BackgoundOfCompanyActivity" />
+        <activity
+            android:name=".CompanyHomePageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".RegisterAsCompanyActivity"></activity>
+        <activity android:name=".CompanyVerificationActivity"></activity>
+        <activity android:name=".CompanyMobileNumberRegisterActivity" />
+        <activity android:name=".FreelancerServicesOffered" />
+        <activity android:name=".ServicesOffered" />
+        <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
+        <activity android:name=".FreelancerServicesProvide" />
+        <activity android:name=".FreelancerAddServicesActivity" />
+        <activity android:name=".FreelancerSelectGenderActivity" />
+        <activity android:name=".FreelancerCertificationActivity" />
+        <activity android:name=".BackgoundOfFreelancerActivity" />
+        <activity android:name=".FreeelancerVerificationActivity" />
+        <activity android:name=".FreelancerTermAndCondition" />
+        <activity
+            android:name=".FreelancerHomePageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".RegisterAsFreelancerActivity" />
+        <activity android:name=".FreelancerMobileNumberRegisterActivity" />
+        <activity android:name=".ChoiceIndividualOrFreelancerOrComapnySignUp" />
+        <activity android:name=".ConformationActivity" />
+        <activity android:name=".PaymentCartDetails"></activity>
+        <activity android:name=".PaymentMethodAddCart" />
+        <activity android:name=".PaymentMethodActivity" />
+        <activity android:name=".OrderSummary" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".CalenderActivity"></activity>
+        <activity android:name=".MapActivity" />
+        <activity android:name=".ServiceDescription" />
+        <activity android:name=".ServicesListActivity" />
+        <activity android:name=".BarberInfo" />
+        <activity android:name=".SearchByNameOrServicesOrNearby" />
+        <activity android:name=".SearchServices" />
+        <activity android:name=".ServicesActivity" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity
+            android:name=".HomePageActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".SelectHomeOrShop"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".VerificationActivity" />
+        <activity
+            android:name=".MobileNumberRegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".SelectGenderActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
+        <activity android:name=".SignInActivity">
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyC0mXuSdGjxPEIO4g0bWKdAztcsxtnlzgs" />
+    </application>
+
+</manifest>

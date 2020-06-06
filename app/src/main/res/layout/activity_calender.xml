@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalenderActivity">
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginBottom="20sp"
+       android:layout_marginRight="20sp"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft="20sp"
+       app:cardCornerRadius="14dp"
+       >
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/card_background">
+          <!-- <CalendarView
+               android:layout_width="250dp"
+               android:layout_height="300dp"
+               android:layout_centerHorizontal="true"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginTop="10dp"
+               android:background="@drawable/profileimageback"
+               android:id="@+id/calenderView"></CalendarView>-->
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="DATE"
+               android:textStyle="bold"
+               android:textSize="25sp"
+               android:id="@+id/dat"
+               android:textColor="@color/colorAccent"
+               android:layout_marginTop="10dp"
+               android:layout_marginLeft="20dp"></TextView>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_marginTop="30sp"
+               android:paddingLeft="20dp"
+               android:layout_marginRight="15dp"
+               android:paddingTop="16dp"
+               android:paddingRight="15sp"
+               android:paddingBottom="13dp"
+               android:layout_below="@id/dat"
+
+               android:id="@+id/textChoseCalender"
+               android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+               android:background="@drawable/card_background"
+               android:layout_marginLeft="15dp"
+               android:layout_height="50dp"
+               android:textSize="16dp"
+               android:text="Show Calender">
+           </TextView>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_marginTop="25sp"
+               android:paddingLeft="20dp"
+               android:layout_marginRight="15dp"
+               android:paddingTop="18dp"
+               android:paddingRight="15sp"
+               android:paddingBottom="13dp"
+               android:layout_below="@+id/textChoseCalender"
+               android:id="@+id/textSelectedDate"
+               android:background="@drawable/card_background"
+               android:layout_marginLeft="15dp"
+               android:layout_height="50dp"
+               android:textSize="16dp"
+               android:text="Selected Date">
+           </TextView>
+
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="TIME"
+               android:textStyle="bold"
+               android:layout_below="@+id/textSelectedDate"
+               android:textSize="25sp"
+               android:id="@+id/tim"
+               android:textColor="@color/colorAccent"
+               android:layout_marginTop="30dp"
+               android:layout_marginLeft="20dp"></TextView>
+
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_marginTop="25sp"
+               android:paddingLeft="20dp"
+               android:layout_marginRight="15dp"
+               android:paddingTop="16dp"
+               android:paddingRight="15sp"
+               android:paddingBottom="13dp"
+               android:id="@+id/textChoseTime"
+               android:layout_below="@+id/tim"
+               android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+               android:background="@drawable/card_background"
+               android:layout_marginLeft="15dp"
+               android:layout_height="50dp"
+               android:textSize="16dp"
+               android:text="Show Time">
+           </TextView>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_marginTop="20sp"
+               android:paddingLeft="20dp"
+               android:layout_marginRight="15dp"
+               android:paddingTop="18dp"
+               android:paddingRight="15sp"
+               android:paddingBottom="13dp"
+               android:layout_below="@+id/textChoseTime"
+               android:id="@+id/textSelectedTime"
+               android:background="@drawable/card_background"
+               android:layout_marginLeft="15dp"
+               android:layout_height="50dp"
+               android:textSize="16dp"
+               android:text="Selected Time">
+
+
+           </TextView>
+
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:text="Confirm"
+               android:layout_marginRight="20dp"
+               android:layout_marginLeft="20dp"
+               android:id="@+id/btnConfirm"
+               android:textColor="#FFF"
+               android:layout_marginTop="10dp"
+               android:background="@drawable/btnback"
+               android:layout_below="@+id/textSelectedTime"></Button>
+
+
+       </RelativeLayout>
+   </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    tools:showIn="navigation_view">-->
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_set_avalibilty"
+            android:icon="@drawable/ic_event_black_24dp"
+            android:title="Set Availibilty" />
+
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/nav_setbackground"
+            android:icon="@drawable/ic_chat_black_24dp"
+            android:title="Set Background" />
+
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="History" />
+
+        <item
+            android:id="@+id/nav_add_certificate"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Add Certification" />
+
+        <item
+            android:id="@+id/nav_term_and_condition"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Term And Condition" />
+
+
+        <item
+            android:id="@+id/nav_add_services"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Add Services" />
+
+        <item
+            android:id="@+id/nav_accepted_location"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Services Provided area" />
+
+        <item
+            android:id="@+id/nav_services_offered"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Services Offered" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logouticon"
+            android:title="Logout" />
+
+    </group>
+
+</menu>

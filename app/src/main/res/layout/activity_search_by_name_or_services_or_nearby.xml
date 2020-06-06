@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchByNameOrServicesOrNearby">
+
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:background="@drawable/searchback"
+        app:queryHint="Search here"
+        app:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        ></androidx.appcompat.widget.SearchView>
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkboxName"
+        ></CheckBox>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/checkboxName"
+        android:text="Name"></TextView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:id="@+id/checkNearBy"
+        android:layout_toRightOf="@+id/checkboxName"
+        android:layout_below="@+id/searchView"></CheckBox>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/checkNearBy"
+        android:text="NearBy"></TextView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchView"
+
+        android:id="@+id/checkServices"
+        android:layout_toLeftOf="@+id/txtNAme1"
+        android:layout_marginTop="10dp"
+        ></CheckBox>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchView"
+        android:layout_marginTop="15dp"
+        android:id="@+id/txtNAme1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dp"
+        android:text="Services"></TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+        android:layout_below="@+id/checkboxName"
+        android:layout_marginTop="2dp"
+       android:layout_height="wrap_content"
+       android:id="@+id/recycleview_search"></androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

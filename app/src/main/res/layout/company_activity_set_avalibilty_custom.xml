@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relative"
+    tools:context=".FreelancerSetAvalibiltyCustomActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET AVAILABILITY"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:id="@+id/tset"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="22sp"
+        android:layout_centerHorizontal="true"></TextView>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="Start Time"
+        android:layout_marginTop="20sp"
+        android:layout_below="@+id/tset"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:id="@+id/txtStartTime"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10sp"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:background="@drawable/profileimageback"
+        android:textStyle="normal"
+        ></TextView>
+
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="End Time"
+        android:layout_marginTop="20sp"
+        android:layout_below="@+id/tset"
+        android:textColor="@color/black"
+        android:layout_marginRight="20dp"
+        android:textSize="14sp"
+        android:id="@+id/txtEndTime"
+        android:layout_alignParentEnd="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10sp"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:background="@drawable/profileimageback"
+        android:textStyle="normal"
+        ></TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Select Day"
+        android:layout_below="@+id/txtEndTime"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="20sp"
+        android:paddingLeft="15sp"
+        android:paddingTop="8dp"
+        android:id="@+id/txtSelectDay"
+        android:background="@drawable/profileimageback"
+        android:layout_marginLeft="20sp"
+        android:textStyle="normal"
+        android:textSize="16sp"></TextView>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtSelectDay"
+        android:text="Add"
+        android:id="@+id/btnAddAvalibilty"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFF"
+        android:background="@drawable/btnback"></Button>
+
+</RelativeLayout>

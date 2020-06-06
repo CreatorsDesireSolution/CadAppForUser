@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">CadAppForUser</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="text_with_paragraphs">
+        Flexibility means that customers receive full refund in case of cancellation no later than 2 hours before booked time.
+        Moderate means that customers get full refund if canceled no later than 1 day before booked time .
+        Strictly  means that  customers get  full refund if canceled no later than 2 days  before booked time.
+
+    </string>
+
+
+    <string name="text_with_paragraphs1">
+       Instant booking means that customers can book you directly within your availability period without their booking request being reviewed
+        and approved by you first.
+    </string>
+
+
+    <string name="services">
+       first male services then female then category then sub category
+    </string>
+
+
+    <string name="terms">
+       I have read and agree to V4U India Terms and Conditions and Private Policy.
+
+    </string>
+
+    <string name="condition">
+        I wish  V4U India to deduct taxes and pay social security
+        contributation  to me for the income I recieve for my assignmnets . which means I get payment as a net salary (the next salary will be about half
+        of the price you specify ). I am self- employed via V4U India. which means that i will also be insured .I accepet terms and conditions and self
+        - employment agreements
+    </string>
+
+
+    <string-array name="team">
+
+        <item>team size[1 to 10]</item>
+        <item>team size[10 to 20]</item>
+        <item>team size[20 to 30]</item>
+        <item>team size[30 to 40]</item>
+        <item>team size[40 to 50]</item>
+
+    </string-array>
+
+
+    <string-array name="male">
+
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+
+    </string-array>
+
+
+    <string-array name="female">
+
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+
+    </string-array>
+</resources>
+

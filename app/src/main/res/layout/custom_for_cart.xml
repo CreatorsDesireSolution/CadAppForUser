@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
+        app:cardCornerRadius="14dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/pro"
+                android:id="@+id/serImage">
+            </com.makeramen.roundedimageview.RoundedImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hair Styling"
+                android:layout_toRightOf="@+id/serImage"
+                android:layout_marginTop="15sp"
+                android:id="@+id/serName"
+                android:textSize="15dp"
+                android:textStyle="normal"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"></TextView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:id="@+id/serSample"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/serName"
+                android:layout_toRightOf="@+id/serImage"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs. 500"
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp"
+                android:textStyle="normal"
+                android:layout_below="@+id/serSample"
+                android:layout_toRightOf="@+id/serImage"
+                android:id="@+id/serPrice"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textStyle="normal"
+                android:id="@+id/serQuantity"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/serImage"
+                android:layout_below="@id/serPrice"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                ></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/serPrice"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/btnAdd"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/serQuantity"
+                android:background="@drawable/addback"
+                android:src="@drawable/ic_add_black_24dp"></ImageView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/addback"
+                android:src="@drawable/ic_remove_black_24dp"
+                android:layout_below="@+id/serPrice"
+                android:id="@+id/btnMinus"
+                android:layout_toRightOf="@id/serImage"
+                android:layout_height="20dp"></ImageView>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
