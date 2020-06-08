@@ -123,6 +123,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 break;
             case R.id.nav_add_certificate:
                startActivity(new Intent(FreelancerHomePageActivity.this, FreelancerCertificationActivity.class));
+
                 break;
             case R.id.nav_term_and_condition:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerTermAndCondition.class));

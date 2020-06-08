@@ -14,13 +14,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
     Button btnRegister;
-
     TextView txtGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.company_activity_as_staff_register);
+
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
 
