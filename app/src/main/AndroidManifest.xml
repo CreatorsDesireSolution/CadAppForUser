@@ -81,7 +81,7 @@
         <activity android:name=".VerificationActivity" />
         <activity
             android:name=".MobileNumberRegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        ></activity>
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SelectGenderActivity"
