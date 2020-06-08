@@ -9,8 +9,8 @@ import android.widget.Button;
 
 public class SelectHomeOrShop extends AppCompatActivity {
 
-
     Button btnShop,btnHome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
