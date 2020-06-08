@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RegisterAsCompanyActivity extends AppCompatActivity {
 
     Button btnRegister;
+    EditText etAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,21 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_as_company_register);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
+
+        etAddress=findViewById(R.id.etAddress);
+
+        etAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1=new Intent(RegisterAsCompanyActivity.this,CompanyCurrentLocation.class);
+                startActivity(intent1);
+            }
+        });
+
+        Intent intent2=getIntent();
+        etAddress.setText(intent2.getStringExtra("address"));
+
+
 
         btnRegister=findViewById(R.id.btnSignedIn);
          btnRegister.setOnClickListener(new View.OnClickListener() {
