@@ -21,13 +21,17 @@ public class SelectGenderActivity extends AppCompatActivity {
         btnFeMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SelectGenderActivity.this,RegisterActivity.class));
+              Intent intent=new Intent(SelectGenderActivity.this,RegisterActivity.class);
+              intent.putExtra("gender","female");
+              startActivity(intent);
             }
         });
         btnMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SelectGenderActivity.this,RegisterActivity.class));
+                Intent intent=new Intent(SelectGenderActivity.this,RegisterActivity.class);
+                intent.putExtra("gender","male");
+                startActivity(intent);
             }
         });
     }

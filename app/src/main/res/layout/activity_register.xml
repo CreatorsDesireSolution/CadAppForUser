@@ -127,12 +127,13 @@
                android:textStyle="normal"
                ></EditText>
 
-           <EditText
+           <TextView
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:hint="Date Of Birth"
                android:textSize="15sp"
                android:inputType="date"
+               android:paddingTop="10dp"
                android:textColorHint="#68000000"
                android:paddingLeft="13dp"
                android:id="@+id/etDateOfBirth"
@@ -144,9 +145,9 @@
                android:layout_marginBottom="5dp"
                android:background="@drawable/edit_text_back"
                android:textStyle="normal"
-               ></EditText>
+               ></TextView>
 
-           <EditText
+           <TextView
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:hint="Gender"
@@ -154,6 +155,7 @@
                android:textSize="15sp"
                android:inputType="text"
                android:paddingLeft="13dp"
+               android:paddingTop="10dp"
                android:id="@+id/etGender"
                android:layout_marginTop="8dp"
                android:layout_below="@+id/etUsePhoneNumber"
@@ -163,16 +165,19 @@
                android:layout_marginBottom="5dp"
                android:background="@drawable/edit_text_back"
                android:textStyle="normal"
-               ></EditText>
+               ></TextView>
 
            <EditText
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:hint="Address"
                android:textSize="15sp"
+               android:ems="5"
+               android:lines="5"
                android:textColorHint="#68000000"
                android:inputType="text"
                android:paddingLeft="13dp"
+                android:paddingRight="10dp"
                android:id="@+id/etAddress"
                android:layout_marginTop="8dp"
                android:layout_below="@+id/etGender"

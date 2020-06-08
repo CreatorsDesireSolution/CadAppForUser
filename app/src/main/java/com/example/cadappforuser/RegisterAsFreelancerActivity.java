@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
     Button btnRegister;
+    TextView txtGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,11 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_as_freelancer_register);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
+
+        txtGender=findViewById(R.id.etGender);
+        Intent intent=getIntent();
+        String gender=intent.getStringExtra("gender");
+        txtGender.setText(gender);
 
         btnRegister=findViewById(R.id.btnSignedIn);
          btnRegister.setOnClickListener(new View.OnClickListener() {

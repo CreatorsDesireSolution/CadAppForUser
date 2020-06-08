@@ -146,7 +146,7 @@
                android:textStyle="normal"
                ></EditText>
 
-           <EditText
+           <TextView
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:hint="Gender"
@@ -155,6 +155,7 @@
                android:inputType="text"
                android:paddingLeft="13dp"
                android:id="@+id/etGender"
+               android:paddingTop="10dp"
                android:layout_marginTop="8dp"
                android:layout_below="@+id/etUsePhoneNumber"
                android:layout_marginLeft="13dp"
@@ -163,7 +164,7 @@
                android:layout_marginBottom="5dp"
                android:background="@drawable/edit_text_back"
                android:textStyle="normal"
-               ></EditText>
+               ></TextView>
 
            <EditText
                android:layout_width="match_parent"

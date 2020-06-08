@@ -23,7 +23,7 @@ public class CompanySelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                Intent intent=new Intent(CompanySelectGenderActivity.this,CompanyRegisterAsCompanyStaffActivity.class);
-               intent.putExtra("gender","male");
+               intent.putExtra("gender","female");
                startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class CompanySelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(CompanySelectGenderActivity.this,CompanyRegisterAsCompanyStaffActivity.class);
-                intent.putExtra("gender","female");
+                intent.putExtra("gender","male");
                 startActivity(intent);
             }
         });

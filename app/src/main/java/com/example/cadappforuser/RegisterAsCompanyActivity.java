@@ -44,5 +44,4 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
-
 }

@@ -21,13 +21,17 @@ public class FreelancerSelectGenderActivity extends AppCompatActivity {
         btnFeMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FreelancerSelectGenderActivity.this, RegisterAsFreelancerActivity.class));
+              Intent intent=new Intent(FreelancerSelectGenderActivity.this,RegisterAsFreelancerActivity.class);
+              intent.putExtra("gender","female");
+              startActivity(intent);
             }
         });
         btnMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FreelancerSelectGenderActivity.this, RegisterAsFreelancerActivity.class));
+                Intent intent=new Intent(FreelancerSelectGenderActivity.this,RegisterAsFreelancerActivity.class);
+                intent.putExtra("gender","male");
+                startActivity(intent);
             }
         });
     }

@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
     Button btnRegister;
+
     TextView txtGender;
-    EditText etGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,11 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
 
-        etGender=findViewById(R.id.etGender);
+        txtGender=findViewById(R.id.etGender);
 
         Intent intent=getIntent();
         String gender=intent.getStringExtra("gender");
-        etGender.setText(gender);
+        txtGender.setText(gender);
 
         btnRegister=findViewById(R.id.btnSignedIn);
          btnRegister.setOnClickListener(new View.OnClickListener() {

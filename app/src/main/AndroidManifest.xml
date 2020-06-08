@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Act_Forgot_password"></activity>
-        <activity android:name=".ShowCompanyStaffProfile"></activity>
+        <activity android:name=".CurrentLocation"></activity>
+        <activity android:name=".Act_Forgot_password" />
+        <activity android:name=".ShowCompanyStaffProfile" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowStaffProfile" />
         <activity android:name=".StaffCertificationActivity" />
@@ -33,8 +34,8 @@
         <activity
             android:name=".CompanyHomePageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".RegisterAsCompanyActivity"></activity>
-        <activity android:name=".CompanyVerificationActivity"></activity>
+        <activity android:name=".RegisterAsCompanyActivity" />
+        <activity android:name=".CompanyVerificationActivity" />
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".FreelancerServicesOffered" />
         <activity android:name=".ServicesOffered" />
@@ -53,12 +54,12 @@
         <activity android:name=".FreelancerMobileNumberRegisterActivity" />
         <activity android:name=".ChoiceIndividualOrFreelancerOrComapnySignUp" />
         <activity android:name=".ConformationActivity" />
-        <activity android:name=".PaymentCartDetails"></activity>
+        <activity android:name=".PaymentCartDetails" />
         <activity android:name=".PaymentMethodAddCart" />
         <activity android:name=".PaymentMethodActivity" />
         <activity android:name=".OrderSummary" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".CalenderActivity"></activity>
+        <activity android:name=".CalenderActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".ServiceDescription" />
         <activity android:name=".ServicesListActivity" />
@@ -78,18 +79,15 @@
         <activity android:name=".VerificationActivity" />
         <activity
             android:name=".MobileNumberRegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
-        <activity android:name=".SignInActivity">
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".SignInActivity"></activity>
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
