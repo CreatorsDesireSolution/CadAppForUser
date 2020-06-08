@@ -5,23 +5,10 @@
     android:layout_gravity="center_vertical"
     android:gravity="center_vertical">
 
-    <CheckBox
-        android:id="@+id/cb_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:checked="false"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:buttonTint="@color/black"
-        android:focusable="false"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"/>
 
-    <TextView
+    <CheckBox
         android:id="@+id/lblListItem"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
         android:paddingTop="5dp"
@@ -29,6 +16,7 @@
         android:layout_marginLeft="20dp"
         android:layout_gravity="center_vertical"
         android:paddingBottom="5dp"
+        android:clickable="false"
         android:gravity="center_vertical"
         android:paddingLeft="10dp" />
 

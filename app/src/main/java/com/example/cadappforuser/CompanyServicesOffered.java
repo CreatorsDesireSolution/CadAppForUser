@@ -2,6 +2,7 @@ package com.example.cadappforuser;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ExpandableListView;
 
 import androidx.appcompat.app.ActionBar;
@@ -33,7 +34,7 @@ public class CompanyServicesOffered extends AppCompatActivity {
         // preparing list data
         prepareListData();
 
-        listAdapter = new ExpandableListAdapter1(this, listDataHeader, listDataChild);
+        listAdapter = new ExpandableListAdapter1(getApplicationContext(), listDataHeader, listDataChild);
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
@@ -42,6 +43,24 @@ public class CompanyServicesOffered extends AppCompatActivity {
         // setting list adapter
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+//        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+//
+//            @Override
+//            public boolean onGroupClick(ExpandableListView parent, View v,
+//                                        int groupPosition, long id) {
+//                setListViewHeight(parent, groupPosition);
+//
+//                return false;
+//            }
+//        });
+
+
+
+
+
+
     }
 
 
@@ -54,6 +73,7 @@ public class CompanyServicesOffered extends AppCompatActivity {
         listDataHeader.add("Macro");
         listDataHeader.add("Massage");
         listDataHeader.add("Manicure");
+        listDataHeader.add("Padicure");
 
         // Adding child data
         List<String> top250 = new ArrayList<String>();
@@ -68,6 +88,16 @@ public class CompanyServicesOffered extends AppCompatActivity {
         manicure.add("Face Massage ,50 minutes");
         manicure.add("Therapeutic Massage ,80 minutes");
         manicure.add("Classic Massage ,80 minutes");
+        manicure.add("Classic Massage ,80 minutes");
+
+
+
+        List<String> padicure = new ArrayList<String>();
+        padicure.add("Face Massage ,80 minutes");
+        padicure.add("Face Massage ,50 minutes");
+        padicure.add("Therapeutic Massage ,80 minutes");
+        padicure.add("Classic Massage ,80 minutes");
+        padicure.add("Classic Massage ,80 minutes");
 
 
         List<String> nowShowing = new ArrayList<String>();
@@ -75,7 +105,6 @@ public class CompanyServicesOffered extends AppCompatActivity {
         nowShowing.add("Despicable Me 2");
         nowShowing.add("Turbo");
         nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
         nowShowing.add("The Wolverine");
 
         List<String> comingSoon = new ArrayList<String>();
@@ -85,10 +114,11 @@ public class CompanyServicesOffered extends AppCompatActivity {
         comingSoon.add("The Canyons");
         comingSoon.add("Europa Report");
 
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+        listDataChild.put(listDataHeader.get(0), comingSoon); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), comingSoon);
+        listDataChild.put(listDataHeader.get(2), nowShowing);
         listDataChild.put(listDataHeader.get(3), manicure);
+        listDataChild.put(listDataHeader.get(4), padicure);
     }
 
     @Override

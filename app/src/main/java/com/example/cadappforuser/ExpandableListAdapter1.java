@@ -31,6 +31,8 @@ public class ExpandableListAdapter1 extends BaseExpandableListAdapter {
                 .get(childPosititon);
     }
 
+
+
     @Override
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
@@ -48,12 +50,12 @@ public class ExpandableListAdapter1 extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView
+        CheckBox txtListChild = (CheckBox) convertView
                 .findViewById(R.id.lblListItem);
-        CheckBox txtcheckbox = (CheckBox)convertView.findViewById(R.id.cb_group);
+        //CheckBox txtcheckbox = (CheckBox)convertView.findViewById(R.id.lblListItem);
 
        // txtListChild.setText(childText);
-        txtcheckbox.setText(childText);
+        txtListChild.setText(childText);
         return convertView;
     }
 
@@ -77,6 +79,8 @@ public class ExpandableListAdapter1 extends BaseExpandableListAdapter {
     public long getGroupId(int groupPosition) {
         return groupPosition;
     }
+
+
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,

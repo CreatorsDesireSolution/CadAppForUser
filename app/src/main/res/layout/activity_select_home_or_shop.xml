@@ -63,7 +63,6 @@
     <Button
         android:layout_width="116dp"
         android:layout_height="36dp"
-
         android:background="@drawable/checkbox_back"
         android:text="Home"
         android:textColor="#FFF"
