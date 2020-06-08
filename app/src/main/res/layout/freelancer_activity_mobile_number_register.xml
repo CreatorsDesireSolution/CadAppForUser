@@ -73,28 +73,35 @@
             android:layout_height="wrap_content"
             android:background="#FFF">
 
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:defaultCode="91" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="25dp"
-                android:drawableEnd="@drawable/ic_check_circle_black_24dp"
-                android:id="@+id/etMobileForCode"
-                android:inputType="phone"
-                android:paddingLeft="15sp"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:paddingRight="15sp"
-                android:drawableStart="@drawable/flagimage"
+                android:layout_toRightOf="@+id/ccp"
+                android:paddingLeft="15sp"
+                android:layout_marginLeft="150dp"
+                android:drawableEnd="@drawable/ic_check_circle_black_24dp"
+                android:id="@+id/etMobileForCode"
+                android:inputType="phone"
+                android:hint="Enter Number"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/mobile_number_back"
-                android:hint="+(1) 555 678 2810"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"></EditText>
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
