@@ -65,7 +65,8 @@ public class CartActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_for_cart,menu);
         MenuItem menuItem=menu.findItem(R.id.cart1);
-        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menuItem.setOnMenuItemClickListener(
+                new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 startActivity(new Intent(getApplicationContext(),CartActivity.class));
