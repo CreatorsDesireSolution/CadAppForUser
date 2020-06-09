@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerCurrentLocation"></activity>
-        <activity android:name=".CompanyCurrentLocation"></activity>
-        <activity android:name=".CurrentLocation"></activity>
+        <activity android:name=".LocationOfUserOrShop"></activity>
+        <activity android:name=".HomeAndShopLocation" />
+        <activity android:name=".FreelancerCurrentLocation" />
+        <activity android:name=".CompanyCurrentLocation" />
+        <activity android:name=".CurrentLocation" />
         <activity android:name=".Act_Forgot_password" />
         <activity android:name=".ShowCompanyStaffProfile" />
         <activity android:name=".ShowStaffList" />
@@ -39,21 +41,20 @@
         <activity android:name=".CompanyVerificationActivity" />
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".ServicesOffered" />
-        <activity android:name=".FreelancerServicesOffered"></activity>
-        <activity android:name=".FreelancerSetAvalibiltyCustomActivity"></activity>
+        <activity android:name=".FreelancerServicesOffered" />
+        <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
         <activity android:name=".FreelancerServicesProvide" />
-        <activity android:name=".FreelancerAddServicesActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".FreelancerAddServicesActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
         <activity android:name=".FreeelancerVerificationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".FreelancerTermAndCondition" /><activity
+        <activity android:name=".FreelancerTermAndCondition" />
+        <activity
             android:name=".FreelancerHomePageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".RegisterAsFreelancerActivity" />
@@ -78,27 +79,29 @@
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".HomePageActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SelectHomeOrShop"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".VerificationActivity" />
-        <activity
-            android:name=".MobileNumberRegisterActivity"
-        ></activity>
+        <activity android:name=".MobileNumberRegisterActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
-        <activity android:name=".SignInActivity"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".SignInActivity" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".MainActivity" />
 
         <meta-data

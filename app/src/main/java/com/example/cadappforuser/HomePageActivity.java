@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.example.cadappforuser.adapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.adapter.ServicesFreelancerAdapterHome;
@@ -30,6 +33,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
     RecyclerView recyclerView,recyclerView1;
+    ImageView women,man;
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
 
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
@@ -43,6 +47,25 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
+
+        women=findViewById(R.id.woman);
+        man=findViewById(R.id.man);
+
+        women.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomePageActivity.this,HomeAndShopLocation.class);
+                startActivity(intent);
+            }
+        });
+
+        man.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomePageActivity.this,HomeAndShopLocation.class);
+                startActivity(intent);
+            }
+        });
 
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();

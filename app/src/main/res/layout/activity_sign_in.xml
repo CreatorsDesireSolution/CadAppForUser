@@ -31,32 +31,27 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/card_background"
             >
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
                 android:id="@+id/etEmailLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:paddingLeft="15sp"
                 android:layout_marginLeft="18dp"
+                android:hint="Email"
                 android:layout_marginRight="18dp"
-                android:background="@drawable/edit_text_back"
-                >
+                android:background="@drawable/edit_text_back">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"/>
-            </com.google.android.material.textfield.TextInputLayout>
+            </EditText>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
                 android:id="@+id/etPasswordLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="18dp"
+                android:hint="Password"
+                android:paddingLeft="15sp"
                 android:layout_marginRight="18dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_text_back"
@@ -64,15 +59,8 @@
                 app:passwordToggleEnabled="true"
                 >
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp"
-                    android:hint="Password"
-                    android:inputType="textPassword"/>
-            </com.google.android.material.textfield.TextInputLayout>
+
+            </EditText>
 
                          <CheckBox
                              android:layout_width="wrap_content"

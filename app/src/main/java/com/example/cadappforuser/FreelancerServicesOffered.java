@@ -2,6 +2,7 @@ package com.example.cadappforuser;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -16,11 +17,20 @@ public class FreelancerServicesOffered extends AppCompatActivity {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
+    Button btnNextOffered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__list);
+
+        btnNextOffered=findViewById(R.id.btnNextoffered);
+        btnNextOffered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         expandableListView =  findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData();
