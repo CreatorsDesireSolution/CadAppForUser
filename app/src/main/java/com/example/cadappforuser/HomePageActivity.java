@@ -133,6 +133,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             case R.id.nav_choose_home_or_shop:
                 startActivity(new Intent(HomePageActivity.this,SelectHomeOrShop.class));
                 break;
+
+            case R.id.nav_services_list:
+                startActivity(new Intent(HomePageActivity.this,ServicesListActivity.class));
+                break;
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;

@@ -51,6 +51,7 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_location);
+
         btnAddress=findViewById(R.id.btn_address);
 
         textView=findViewById(R.id.textView);

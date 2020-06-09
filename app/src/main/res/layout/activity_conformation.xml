@@ -59,6 +59,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:id="@+id/btn_home"
         android:layout_alignParentBottom="true"
         android:text="Back To Home"
         android:textColor="#FFF"
