@@ -2,6 +2,7 @@ package com.example.cadappforuser;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
@@ -29,6 +30,31 @@ public class FreelancerServicesOffered extends AppCompatActivity {
         expandableListView.setAdapter(expandableListAdapter);
 
 
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+
+
+                long childcount = expandableListAdapter.getChildrenCount(groupPosition);
+
+                CheckBox checkbox = (CheckBox) v.findViewById(R.id.check);
+
+                if (checkbox.isChecked()) {
+
+                   // checkbox.setCheckMarkDrawable(null);
+                    checkbox.setChecked(false);
+                } else {
+
+                   // checkbox.setCheckMarkDrawable(R.drawable.ic_check_black_24dp);
+                    checkbox.setChecked(true);
+                }
+
+                return true;
+            }
+        });
+
+
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
@@ -50,21 +76,21 @@ public class FreelancerServicesOffered extends AppCompatActivity {
             }
         });
 
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                )
-                        .show();
-                return false;
-            }
-        });
+//        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                Toast.makeText(
+//                        getApplicationContext(),
+//                        expandableListTitle.get(groupPosition)
+//                                + " -> "
+//                                + expandableListDetail.get(
+//                                expandableListTitle.get(groupPosition)).get(
+//                                childPosition), Toast.LENGTH_SHORT
+//                )
+//                        .show();
+//                return false;
+//            }
+//        });
     }
 }
