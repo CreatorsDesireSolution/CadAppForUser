@@ -19,7 +19,8 @@ public class FreeelancerVerificationActivity extends AppCompatActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FreeelancerVerificationActivity.this,FreelancerHomePageActivity.class));
+                //startActivity(new Intent(FreeelancerVerificationActivity.this,FreelancerHomePageActivity.class));
+                startActivity(new Intent(FreeelancerVerificationActivity.this,FreelancerServicesProvide.class));
             }
         });
     }

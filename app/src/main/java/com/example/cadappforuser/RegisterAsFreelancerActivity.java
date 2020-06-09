@@ -16,7 +16,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
     Button btnRegister;
     TextView txtGender;
-    EditText etAddress;
+    TextView etAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

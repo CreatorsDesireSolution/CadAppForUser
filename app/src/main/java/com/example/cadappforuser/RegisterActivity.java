@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     Button btnRegister;
     TextView txtGender;
-    EditText etAddress;
+    TextView etAddress;
 
     TextView text_DOB;
 
