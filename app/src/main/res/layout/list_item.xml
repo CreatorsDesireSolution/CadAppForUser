@@ -1,23 +1,19 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:layout_gravity="center_vertical"
-    android:gravity="center_vertical">
+<?xml version="1.0" encoding="utf-8"?>
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/expandedListItem"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
 
     <CheckBox
-        android:id="@+id/lblListItem"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:paddingTop="5dp"
-        android:padding="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_gravity="center_vertical"
-        android:paddingBottom="5dp"
-        android:clickable="false"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp" />
-
-</LinearLayout>
+        android:layout_marginTop="10dp"
+        android:id="@+id/check"></CheckBox>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.example.cadappforuser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
     TextView txtSetAvailability;
     CheckBox checkKm,checkAtMyPlace;
     EditText etKm,etAtMyPlace;
+    Button btnNext;
 
 
     @Override
@@ -29,6 +31,15 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         etKm=findViewById(R.id.etKm);
         checkAtMyPlace=findViewById(R.id.checkAtMyPlace);
         etAtMyPlace=findViewById(R.id.etMyPlace);
+        btnNext=findViewById(R.id.btnNext);
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FreelancerServicesProvide.this,FreelancerServicesOffered.class);
+                startActivity(intent);
+            }
+        });
 
         checkAtMyPlace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

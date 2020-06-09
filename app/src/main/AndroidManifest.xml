@@ -28,7 +28,6 @@
         <activity android:name=".CompanySelectGenderActivity" />
         <activity android:name=".CompanyRegisterAsCompanyStaffActivity" />
         <activity android:name=".CompanyAddServicesActivity" />
-        <activity android:name=".CompanyServicesOffered" />
         <activity android:name=".CompanyServicesProvidedAndCancelationPolicy" />
         <activity android:name=".CertificationActivity" />
         <activity android:name=".TermAndCondition" />
@@ -39,17 +38,22 @@
         <activity android:name=".RegisterAsCompanyActivity" />
         <activity android:name=".CompanyVerificationActivity" />
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
-        <activity android:name=".FreelancerServicesOffered" />
         <activity android:name=".ServicesOffered" />
-        <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
+        <activity android:name=".FreelancerServicesOffered"></activity>
+        <activity android:name=".FreelancerSetAvalibiltyCustomActivity"></activity>
         <activity android:name=".FreelancerServicesProvide" />
-        <activity android:name=".FreelancerAddServicesActivity" />
+        <activity android:name=".FreelancerAddServicesActivity" android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
-        <activity android:name=".FreeelancerVerificationActivity" />
-        <activity android:name=".FreelancerTermAndCondition" />
-        <activity
+        <activity android:name=".FreeelancerVerificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FreelancerTermAndCondition" /><activity
             android:name=".FreelancerHomePageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".RegisterAsFreelancerActivity" />
@@ -93,11 +97,7 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 
