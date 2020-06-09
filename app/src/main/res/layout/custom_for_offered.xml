@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="service name"
+            android:paddingTop="15dp"
+            android:lines="2"
+            android:ems="2"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/serviceNameAdd"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
+            android:layout_toRightOf="@+id/serviceNameAdd"
+            android:paddingLeft="10sp"
+            android:background="@drawable/background2"
+            android:hint="Email"
+            android:layout_marginRight="18dp"></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Fixed"
+            android:id="@+id/policy"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:layout_toRightOf="@+id/etPrice"></TextView>
+    </RelativeLayout>
+
+</RelativeLayout>
