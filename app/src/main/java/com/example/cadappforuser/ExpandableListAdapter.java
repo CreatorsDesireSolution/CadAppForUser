@@ -2,11 +2,15 @@ package com.example.cadappforuser;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +20,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
+    SparseBooleanArray mSelections = new SparseBooleanArray();
+
+    boolean checkAll_flag = false;
+    boolean checkItem_flag = false;
+
 
     public ExpandableListAdapter(Context context, List<String> expandableListTitle,
                                  HashMap<String, List<String>> expandableListDetail) {
@@ -46,12 +55,23 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.expandedListItem);
+
+
+
+        final CheckBox chkbox = (CheckBox) convertView
+                .findViewById(R.id.check);
+
+
+
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
 
+
+
     @Override
     public int getChildrenCount(int listPosition) {
+
         return this.expandableListDetail.get(this.expandableListTitle.get(listPosition))
                 .size();
     }
@@ -89,11 +109,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
-        return true;
+        return false;
     }
 }

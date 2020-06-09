@@ -11,10 +11,13 @@ import android.widget.Button;
 
 public class PaymentMethodAddCart extends AppCompatActivity {
 
+    Button btn_home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_method_add_cart);
+
         Button btnAddCart=findViewById(R.id.btnAddCart);
 
         btnAddCart.setOnClickListener(new View.OnClickListener() {

@@ -50,11 +50,19 @@ public class ExpandableListAdapter1 extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
-       // CheckBox txtListChild = (CheckBox) convertView
+        CheckBox txtListChild = (CheckBox) convertView;
          //       .findViewById(R.id.lblListItem);
         //CheckBox txtcheckbox = (CheckBox)convertView.findViewById(R.id.lblListItem);
 
        // txtListChild.setText(childText);
+        txtListChild.setText(childText);
+
+
+
+        txtListChild.setTag(groupPosition);
+       // cb.setOnClickListener(this);
+      //  txtListChild.setChecked(_listDataHeader.get(groupPosition).isChecked());
+
       //  txtListChild.setText(childText);
         return convertView;
     }
@@ -101,11 +109,11 @@ public class ExpandableListAdapter1 extends BaseExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return true;
+        return false;
     }
 }

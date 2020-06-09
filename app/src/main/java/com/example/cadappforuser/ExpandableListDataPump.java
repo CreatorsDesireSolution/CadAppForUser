@@ -30,11 +30,10 @@ public class ExpandableListDataPump {
         science.add("Secret of sandstone shapes revealed");
 
         List<String> man = new ArrayList<String>();
-        man.add("Eggshell may act like sunblock");
-        man.add("Eggshell may act like sunblock");
-        man.add("Eggshell may act like sunblock");
-        man.add("Eggshell may act like sunblock");
-        man.add("Eggshell may act like sunblock");
+        man.add("Face Massage,80 minutes");
+        man.add("Face Massage, 50 minutes");
+        man.add("Therapeutic Massage,80 minutes");
+        man.add("Classic Massage,80 minutes");
 
         List<String> women = new ArrayList<String>();
         women.add("Eggshell may act like sunblock");
@@ -44,11 +43,11 @@ public class ExpandableListDataPump {
         women.add("Eggshell may act like sunblock");
 
 
-        expandableListDetail.put("TECHNOLOGY NEWS", technology);
-        expandableListDetail.put("ENTERTAINMENT NEWS", entertainment);
-        expandableListDetail.put("SCIENCE & ENVIRONMENT NEWS", science);
-        expandableListDetail.put("Man", man);
-        expandableListDetail.put("Women", women);
+        expandableListDetail.put("PADICURE", technology);
+        expandableListDetail.put("MANICURE", entertainment);
+        expandableListDetail.put("MASSAGE", science);
+        expandableListDetail.put("MAN", man);
+        expandableListDetail.put("MACRO", women);
 
         return expandableListDetail;
     }
