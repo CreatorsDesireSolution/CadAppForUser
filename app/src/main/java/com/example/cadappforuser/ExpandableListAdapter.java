@@ -2,6 +2,7 @@ package com.example.cadappforuser;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Pair;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,25 +13,38 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cadappforuser.model.CheckBoxModel;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> expandableListTitle;
+    ArrayList<CheckBoxModel> checkBoxModels;
     private HashMap<String, List<String>> expandableListDetail;
     SparseBooleanArray mSelections = new SparseBooleanArray();
 
     boolean checkAll_flag = false;
     boolean checkItem_flag = false;
 
+    int checked = 0;
+
+
+//    public Set<Pair<Long, Long>> getCheckedItems() {
+//        return mCheckedItems;
+//    }
+
 
     public ExpandableListAdapter(Context context, List<String> expandableListTitle,
-                                 HashMap<String, List<String>> expandableListDetail) {
+                                 ArrayList<CheckBoxModel> checkBoxModels,HashMap<String, List<String>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
+        this.checkBoxModels = checkBoxModels;
     }
 
     @Override
@@ -60,6 +74,19 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         final CheckBox chkbox = (CheckBox) convertView
                 .findViewById(R.id.check);
+
+        chkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    checked = 1;
+                    Toast.makeText(context, "Check Box Select....", Toast.LENGTH_SHORT).show();
+                }else{
+                    checked = 0;
+                }
+            }
+        });
+
 
 
 
