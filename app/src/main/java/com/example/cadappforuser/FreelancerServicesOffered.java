@@ -101,7 +101,7 @@ public class FreelancerServicesOffered extends AppCompatActivity {
                 updateTable(checked);
                 Toast.makeText(getApplicationContext(), "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), PrachiOffered.class);
+                Intent intent = new Intent(getApplicationContext(), ServicesOfferedWithprice.class);
 
 //                String str = (String) checkbox.getText();
 //                intent.putExtra("variable", str);

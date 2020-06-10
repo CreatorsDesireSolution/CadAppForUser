@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class PrachiOffered extends AppCompatActivity {
 
-    ArrayList<CheckBoxModel> checkBoxModels= new ArrayList<>();
+  //  ArrayList<CheckBoxModel> checkBoxModels= new ArrayList<>();
     TextView checkboxvalue;
 
     @Override
