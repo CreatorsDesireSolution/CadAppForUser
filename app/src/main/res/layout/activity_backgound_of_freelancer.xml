@@ -110,6 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:hint="Next"
+        android:id="@+id/btnBackground"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/btnback"
