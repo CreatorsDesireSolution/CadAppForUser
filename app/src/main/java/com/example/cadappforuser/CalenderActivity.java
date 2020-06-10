@@ -23,7 +23,7 @@ import java.util.Calendar;
 
 public class CalenderActivity extends AppCompatActivity {
 
-   Button btnConfirm;
+    Button btnConfirm;
     Calendar calendarView;
     int day,months,year;
     TextView selectedDate,choseDate,selectedTime,choseTime;

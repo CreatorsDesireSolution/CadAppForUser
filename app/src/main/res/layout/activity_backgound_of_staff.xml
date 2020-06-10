@@ -17,7 +17,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/et_aboutstaff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.116"></TextView>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_aboutstaff"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginTop="30dp"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.079"></EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/et_currentworkstaff"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"
@@ -63,11 +63,11 @@
         app:layout_constraintHorizontal_bias="0.0"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/et_aboutstaff"
         app:layout_constraintVertical_bias="0.064"></EditText>
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/et_previousworkstaff"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:background="@drawable/profileimageback"
@@ -82,12 +82,12 @@
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/et_currentworkstaff"
         app:layout_constraintVertical_bias="0.096"
         tools:layout_editor_absoluteX="10dp"></EditText>
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/et_experiencestaff"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="10dp"
@@ -103,7 +103,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/et_previousworkstaff"
         app:layout_constraintVertical_bias="0.133"></EditText>
 
     <Button
@@ -115,11 +115,12 @@
         android:background="@drawable/btnback"
         android:textStyle="bold"
         android:textColorHint="#FFF"
+        android:id="@+id/btn_nextstaff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/et_experiencestaff"
         app:layout_constraintVertical_bias="0.153"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,6 +16,8 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
 
     Spinner sp_male,sp_female,sp_team_size;
     String team,male,female;
+    EditText et_aboutcmpny,et_establishyear;
+    Button btn_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
         sp_team_size = findViewById(R.id.sp_team_size);
         sp_male = findViewById(R.id.sp_male);
         sp_female = findViewById(R.id.sp_female);
+        et_aboutcmpny = findViewById(R.id.et_establishyear);
+        et_establishyear = findViewById(R.id.et_establishyear);
+        btn_next = findViewById(R.id.btnNext);
+
 
 
         ArrayAdapter<String> teamadapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.team));

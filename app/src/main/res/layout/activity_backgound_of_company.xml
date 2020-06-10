@@ -46,6 +46,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/background2"
                     android:gravity="start"
+                    android:id="@+id/et_aboutcmpny"
                     android:hint="About Your Comapany"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
@@ -59,6 +60,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
+                android:id="@+id/et_establishyear"
                 android:background="@drawable/background2"
                 android:hint="Total years of establishment"
                 android:paddingLeft="10dp" />
@@ -200,6 +202,7 @@
                 android:background="@drawable/background_final"
                 android:backgroundTint="#000000"
                 android:text="Next"
+                android:id="@+id/btn_next"
                 android:textColor="#ffffff" />
 
 

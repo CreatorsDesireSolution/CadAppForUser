@@ -14,6 +14,7 @@ public class SignInActivity extends AppCompatActivity {
 
     Button btnRegister,btnSignIn;
     TextView forgetPassword;
+    TextView text_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         forgetPassword=findViewById(R.id.forget_password);
+        text_register = findViewById(R.id.txt_signup);
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,8 +31,8 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister=findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+
+        text_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
