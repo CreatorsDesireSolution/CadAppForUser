@@ -18,8 +18,10 @@ ArrayList<OfferedWithPriceModel> offeredWithPriceModelArrayList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services_offered_withprice);
+
         recyclerView=findViewById(R.id.recycleviewPrice);
         offeredWithPriceModelArrayList=new ArrayList<>();
+
 
         offeredWithPriceModelArrayList.add(new OfferedWithPriceModel("massage","fixed"));
         offeredWithPriceModelArrayList.add(new OfferedWithPriceModel("massage","fixed"));
