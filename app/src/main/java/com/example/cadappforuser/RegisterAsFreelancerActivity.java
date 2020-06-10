@@ -17,6 +17,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     Button btnRegister;
     TextView txtGender;
     TextView etAddress;
+    EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etGender,etReferralCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,12 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
         txtGender=findViewById(R.id.etGender);
         etAddress=findViewById(R.id.etAddress);
+        etFirstName = findViewById(R.id.etFirstName);
+        etUserEmail = findViewById(R.id.etUserEmail);
+        etLatName = findViewById(R.id.etLatName);
+        etUsePhoneNumber = findViewById(R.id.etUsePhoneNumber);
+        etReferralCode = findViewById(R.id.etReferralCode);
+
 
         final Intent intent=getIntent();
         final String gender=intent.getStringExtra("gender");
