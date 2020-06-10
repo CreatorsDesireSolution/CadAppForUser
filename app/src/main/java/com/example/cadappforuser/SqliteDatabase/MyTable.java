@@ -17,11 +17,15 @@ import java.util.Set;
     private String _ID = "id";
     private String _CHK_VALUES = "checkbox_value";
 
-    public String getTableName(){           return TABLE_NAME;}
-    public int getDatabaseVersion() {       return DATABASE_VERSION;}
+    public String getTableName(){
+        return TABLE_NAME;}
+    public int getDatabaseVersion() {
+        return DATABASE_VERSION;}
 
-    public String getID()       {       return _ID;         }
-    public String getScore()    {       return _CHK_VALUES;     }
+    public String getID()       {
+        return _ID;         }
+    public String getScore()    {
+        return _CHK_VALUES;     }
 
     public String getDatabaseCreateQuery()
     {
