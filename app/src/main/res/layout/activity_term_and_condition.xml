@@ -67,6 +67,7 @@
         android:layout_height="50dp"
         android:background="@drawable/btnback"
         android:text="Submit"
+        android:id="@+id/btn_submit"
         android:textColor="#FFF"
         android:textStyle="bold"
         android:textSize="18sp"

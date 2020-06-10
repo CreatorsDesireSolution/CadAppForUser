@@ -101,7 +101,7 @@
 
 
             <RadioGroup
-                android:id="@+id/radioGroup1"
+                android:id="@+id/radioGroup_cancelation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -176,7 +176,7 @@
 
 
             <RadioGroup
-                android:id="@+id/radioGroup2"
+                android:id="@+id/radioGroup_acceptance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

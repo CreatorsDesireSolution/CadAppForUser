@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.cadappforuser.adapter.CartAdapter;
 import com.example.cadappforuser.model.CartModel;
@@ -23,6 +24,7 @@ public class CartActivity extends AppCompatActivity {
     CartAdapter cartAdapter;
     ArrayList<CartModel>cartModelArrayList;
     Button btnCheckOut;
+    TextView txt_total_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class CartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         btnCheckOut=findViewById(R.id.btnCheckOut1);
+        txt_total_price= findViewById(R.id.txt_total_price);
 
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,6 +15,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
     Button btnRegister;
     TextView etAddress;
+    EditText etCompanyName,etRegistrationNumber,etMobileNumber,etEmail,etAboutCompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,12 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         actionBar.setTitle("Register");
 
         etAddress=findViewById(R.id.etAddress);
+        etCompanyName=findViewById(R.id.etCompanyName);
+        etRegistrationNumber=findViewById(R.id.etRegistrationNumber);
+        etMobileNumber=findViewById(R.id.etMobileNumber);
+        etEmail=findViewById(R.id.etEmail);
+        etAboutCompany=findViewById(R.id.etAboutCompany);
+
 
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override

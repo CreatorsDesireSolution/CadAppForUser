@@ -15,9 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class CompanyServicesProvidedAndCancelationPolicy extends AppCompatActivity {
 
-    RadioGroup radioGroup;
-    String type = "";
+    RadioGroup radioGroup,radioGroup_cancelation,radioGroup_acceptance;
+    String type = "",cancelation="",acceptance="";
     LinearLayout linearLayout;
+
 
 
     @Override
@@ -28,6 +29,8 @@ public class CompanyServicesProvidedAndCancelationPolicy extends AppCompatActivi
         setContentView(R.layout.company_services_provided_and_cancelation_policy);
 
         radioGroup = findViewById(R.id.radioGroup);
+        radioGroup_cancelation = findViewById(R.id.radioGroup_cancelation);
+        radioGroup_acceptance = findViewById(R.id.radioGroup_acceptance);
         linearLayout = findViewById(R.id.linearmain);
 
 

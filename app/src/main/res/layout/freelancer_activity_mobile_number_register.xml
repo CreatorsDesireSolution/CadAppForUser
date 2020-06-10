@@ -75,7 +75,7 @@
 
 
             <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp1"
+                android:id="@+id/ccpfreelancer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"

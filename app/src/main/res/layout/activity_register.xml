@@ -118,7 +118,7 @@
                android:textColorHint="#68000000"
                android:inputType="textEmailAddress"
                android:paddingTop="10dp"
-               android:id="@+id/et_DOB"
+               android:id="@+id/txt_DOB"
                android:layout_marginTop="8dp"
                android:layout_below="@+id/etUserEmail"
                android:layout_marginLeft="13dp"
@@ -142,7 +142,7 @@
                android:layout_marginRight="13dp"
                android:id="@+id/etUsePhoneNumber"
                android:layout_marginTop="8dp"
-               android:layout_below="@+id/et_DOB"
+               android:layout_below="@+id/txt_DOB"
 
                android:textColor="#8B000000"
                android:layout_marginBottom="5dp"

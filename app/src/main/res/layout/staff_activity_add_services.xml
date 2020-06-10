@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FreelancerAddServicesActivity">
+    tools:context=".FreelancerAddServicesActivity"
+    android:background="@color/white">
 
 
     <TextView
@@ -99,10 +100,11 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:text="Add"
         android:textColor="#FFF"
         android:textSize="16sp"
+        android:id="@+id/btn_add"
         android:background="@drawable/btnback"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"

@@ -26,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
     Calendar calendarView;
     int day,months,year;
 
+    EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode;
+
 
 
     @Override
@@ -38,7 +40,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         txtGender=findViewById(R.id.etGender);
         etAddress=findViewById(R.id.etAddress);
-        text_DOB = findViewById(R.id.et_DOB);
+        text_DOB = findViewById(R.id.txt_DOB);
+        etFirstName = findViewById(R.id.etFirstName);
+        etLatName = findViewById(R.id.etLatName);
+        etUserEmail = findViewById(R.id.etUserEmail);
+        etUsePhoneNumber = findViewById(R.id.etUsePhoneNumber);
+        etReferralCode = findViewById(R.id.etReferralCode);
+
+
 
 
         calendarView=Calendar.getInstance();

@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.cadappforuser.adapter.OrderSummaryAdapter;
 import com.example.cadappforuser.model.OrderSummaryModel;
@@ -23,6 +24,8 @@ public class OrderSummary extends AppCompatActivity {
     RecyclerView recyclerView;
     OrderSummaryAdapter  orderSummaryAdapter;
     ArrayList<OrderSummaryModel> orderSummaryModelArrayList;
+    TextView total_price;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,7 @@ public class OrderSummary extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Order Summary");
         btnOrderProceed=findViewById(R.id.btnProceed);
+        total_price = findViewById(R.id.total_price);
 
         btnOrderProceed.setOnClickListener(new View.OnClickListener() {
             @Override

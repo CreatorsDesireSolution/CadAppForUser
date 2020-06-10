@@ -16,6 +16,8 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
     Button btnRegister;
     TextView txtGender;
 
+    EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etGender,etAddress,etReferralCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,11 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         actionBar.setTitle("Register");
 
         txtGender=findViewById(R.id.etGender);
+        etFirstName = findViewById(R.id.etFirstName);
+        etUserEmail = findViewById(R.id.etUserEmail);
+        etUsePhoneNumber = findViewById(R.id.etUsePhoneNumber);
+        etAddress = findViewById(R.id.etAddress);
+        etReferralCode = findViewById(R.id.etReferralCode);
 
         Intent intent=getIntent();
         String gender=intent.getStringExtra("gender");

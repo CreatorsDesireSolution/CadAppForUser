@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class SignInActivity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class SignInActivity extends AppCompatActivity {
     Button btnRegister,btnSignIn;
     TextView forgetPassword;
     TextView text_register;
+    EditText etEmailLayout,etPasswordLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class SignInActivity extends AppCompatActivity {
 
         forgetPassword=findViewById(R.id.forget_password);
         text_register = findViewById(R.id.txt_signup);
+        etEmailLayout = findViewById(R.id.etEmailLayout);
+        etPasswordLayout = findViewById(R.id.etPasswordLayout);
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
