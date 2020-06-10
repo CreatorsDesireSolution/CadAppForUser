@@ -30,7 +30,7 @@ public class FreelancerServicesOffered extends AppCompatActivity {
     Button btnNextoffered;
     CheckBox cb;
     CheckBox checkbox;
-    int checked = 0;
+    int checked =0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class FreelancerServicesOffered extends AppCompatActivity {
         expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new ExpandableListAdapter(this, expandableListTitle, checkBoxModels, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
+
+       // checked = checkBoxModels.get(0).getChecked();
 
 
 
@@ -77,7 +79,7 @@ public class FreelancerServicesOffered extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                
+
                 Toast.makeText(
                         getApplicationContext(),
                         expandableListTitle.get(groupPosition)

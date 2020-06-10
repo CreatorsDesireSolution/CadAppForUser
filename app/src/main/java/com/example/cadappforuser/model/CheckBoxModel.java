@@ -2,25 +2,17 @@ package com.example.cadappforuser.model;
 
 public class CheckBoxModel {
 
-    String chekcboxvalue,policy;
+   int checked;
 
-    public CheckBoxModel(String chekcboxvalue) {
-        this.chekcboxvalue = chekcboxvalue;
+    public CheckBoxModel(int checked) {
+        this.checked = checked;
     }
 
-    public String getChekcboxvalue() {
-        return chekcboxvalue;
+    public int getChecked() {
+        return checked;
     }
 
-    public void setChekcboxvalue(String chekcboxvalue) {
-        this.chekcboxvalue = chekcboxvalue;
-    }
-
-    public String getPolicy() {
-        return policy;
-    }
-
-    public void setPolicy(String policy) {
-        this.policy = policy;
+    public void setChecked(int checked) {
+        this.checked = checked;
     }
 }

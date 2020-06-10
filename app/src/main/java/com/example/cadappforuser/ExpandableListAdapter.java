@@ -1,6 +1,8 @@
 package com.example.cadappforuser;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.util.Pair;
 import android.util.SparseBooleanArray;
@@ -13,7 +15,10 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cadappforuser.SqliteDatabase.MyTable;
+import com.example.cadappforuser.SqliteDatabase.dbOperation;
 import com.example.cadappforuser.model.CheckBoxModel;
+import com.example.cadappforuser.model.OrderSummaryModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +36,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     boolean checkAll_flag = false;
     boolean checkItem_flag = false;
 
-    int checked = 0;
+    int checked =0;
+
 
 
 //    public Set<Pair<Long, Long>> getCheckedItems() {
@@ -45,7 +51,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
         this.checkBoxModels = checkBoxModels;
+
+        initializeDB();
+
     }
+
+
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
@@ -80,12 +91,16 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     checked = 1;
-                    Toast.makeText(context, "Check Box Select....", Toast.LENGTH_SHORT).show();
-                }else{
-                    checked = 0;
+                    updateTable(checked);
+                    Toast.makeText(context, "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Check Box Select....", Toast.LENGTH_SHORT).show();
+                }else{ checked = 0;
                 }
             }
         });
+
+        checkBoxModels.add(new CheckBoxModel(checked));
+
 
 
 
@@ -142,5 +157,67 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
         return false;
+    }
+
+
+    public  void initializeDB(){
+        MyTable user = new MyTable();
+        String[] tableCreateArray = { user.getDatabaseCreateQuery() };
+        dbOperation operation = new dbOperation(context,tableCreateArray);
+        operation.open();
+        operation.close();
+    }
+
+    /*** SAVE THE DATA IN DB - GIVE FILENAME AND DATA ***/
+    public  void saveData(int data){
+        dbOperation operationObj = new dbOperation(context);
+        operationObj.open();
+        MyTable Fields = new MyTable();
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(Fields.getScore(), data);
+        operationObj.insertTableData(Fields.getTableName(),initialValues);
+        operationObj.close();
+    }
+
+    /*** GET THE DATA FROM DB ,PARAMS - FILENAME -> GET THE DATA ***/
+    public String getData(int id){
+        String _data = "";
+        dbOperation operationObj = new dbOperation(context);
+        operationObj.open();
+        MyTable fields = new MyTable();
+        String  condition2 = fields.getID() + " ='" + id + "'";
+        String[] dbFields4 = {fields.getScore()};
+        Cursor cursor2 =  operationObj.getTableRow(fields.getTableName(),dbFields4,condition2,fields.getID() + " ASC ","1");
+        if(cursor2.getCount() > 0)
+        {
+            cursor2.moveToFirst();
+            do{
+                _data = cursor2.getString(0);
+            }while(cursor2.moveToNext());
+        }else{
+            _data = "error";
+        }
+        cursor2.close();
+        cursor2.deactivate();
+        operationObj.close();
+        return _data;
+    }
+
+    /*** SAVE OR UPDATE DB -> GIVE THE FILENAME AND DATA ***/
+    public void updateTable(int updt_data){
+        dbOperation operationObj = new dbOperation(context);
+        operationObj.open();
+        MyTable Fields = new MyTable();
+        //check for the value to update if no value then insert.
+        String file_ = getData(1);
+        if(file_.equals("error")){
+            saveData(updt_data);
+        }else{
+            String  condition = Fields.getID() +" = '1'";
+            ContentValues initialValues = new ContentValues();
+            initialValues.put(Fields.getScore(), updt_data);
+            operationObj.updateTable(Fields.getTableName(),initialValues,condition);
+        }
+        operationObj.close();
     }
 }
