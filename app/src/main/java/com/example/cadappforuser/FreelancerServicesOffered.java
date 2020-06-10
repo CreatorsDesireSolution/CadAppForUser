@@ -133,7 +133,7 @@ public class FreelancerServicesOffered extends AppCompatActivity {
                 db.insertData(item);
         }
         //db.insertData(selItems);
-        startActivity(new Intent(FreelancerServicesOffered.this,ShowCheckBox.class));
+        startActivity(new Intent(FreelancerServicesOffered.this,ServicesOfferedWithprice.class));
         Toast.makeText(this, selItems, Toast.LENGTH_LONG).show();
     }
 
