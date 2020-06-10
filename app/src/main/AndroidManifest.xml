@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreelancerServicesOffered"></activity>
-        <activity android:name=".ServicesOfferedWithprice"></activity>
-        <activity android:name=".LocationOfUserOrShop"></activity>
+        <activity android:name=".ShowCheckBox"></activity>
+        <activity android:name=".FreelancerServicesOffered" />
+        <activity android:name=".ServicesOfferedWithprice" />
+        <activity android:name=".LocationOfUserOrShop" />
         <activity android:name=".HomeAndShopLocation" />
         <activity android:name=".FreelancerCurrentLocation" />
         <activity android:name=".CompanyCurrentLocation" />
@@ -43,7 +44,6 @@
         <activity android:name=".CompanyVerificationActivity" />
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".ServicesOffered" />
-
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
         <activity android:name=".FreelancerServicesProvide" />
         <activity
@@ -52,9 +52,7 @@
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
-        <activity android:name=".FreeelancerVerificationActivity">
-
-        </activity>
+        <activity android:name=".FreeelancerVerificationActivity"></activity>
         <activity android:name=".FreelancerTermAndCondition" />
         <activity
             android:name=".FreelancerHomePageActivity"
@@ -81,9 +79,7 @@
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".HomePageActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".SelectHomeOrShop"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

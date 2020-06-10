@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cadappforuser.SqliteDatabase.DatabaseHelper;
 import com.example.cadappforuser.SqliteDatabase.MyTable;
 import com.example.cadappforuser.SqliteDatabase.dbOperation;
 import com.example.cadappforuser.model.CheckBoxModel;
@@ -31,17 +33,20 @@ public class FreelancerServicesOffered extends AppCompatActivity {
     CheckBox cb;
     CheckBox checkbox;
     int checked =0 ;
+    ArrayList<String> selectedItems;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__list);
 
-        initializeDB();
 
         btnNextoffered = findViewById(R.id.btnNextoffered);
 
         cb = findViewById(R.id.check);
+        selectedItems=new ArrayList<String>();
+        db=new DatabaseHelper(this);
 
         expandableListView =  findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData();
@@ -80,6 +85,12 @@ public class FreelancerServicesOffered extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
 
+                String selectedItem = ((TextView) v).getText().toString();
+                if (selectedItems.contains(selectedItem))
+                    selectedItems.remove(selectedItem); //remove deselected item from the list of selected items
+                else
+                    selectedItems.add(selectedItem); //add selected item to the list of selected items
+
                 Toast.makeText(
                         getApplicationContext(),
                         expandableListTitle.get(groupPosition)
@@ -89,97 +100,49 @@ public class FreelancerServicesOffered extends AppCompatActivity {
                                 childPosition), Toast.LENGTH_SHORT
                 )
                         .show();
-                return false;
+                return true;
+
             }
+
         });
+
+
 
         btnNextoffered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                updateTable(checked);
-                Toast.makeText(getApplicationContext(), "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
+                showSelectedItems();
+              //  Toast.makeText(getApplicationContext(), "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), ServicesOfferedWithprice.class);
 
-//                String str = (String) checkbox.getText();
-//                intent.putExtra("variable", str);
-                  startActivity(intent);
             }
         });
 
-//        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(isChecked){
-//                    checked = 1;
-//                }else{
-//                    checked = 0;
-//                }
-//            }
-//        });
+
     }
 
-    public  void initializeDB(){
-        MyTable user = new MyTable();
-        String[] tableCreateArray = { user.getDatabaseCreateQuery() };
-        dbOperation operation = new dbOperation(this,tableCreateArray);
-        operation.open();
-        operation.close();
+
+    public void showSelectedItems(){
+        String selItems="";
+        for(String item:selectedItems){
+            if(selItems=="")
+                db.insertData(item);
+            else
+                db.insertData(item);
+        }
+        //db.insertData(selItems);
+        startActivity(new Intent(FreelancerServicesOffered.this,ShowCheckBox.class));
+        Toast.makeText(this, selItems, Toast.LENGTH_LONG).show();
     }
+
+
 
     /*** SAVE THE DATA IN DB - GIVE FILENAME AND DATA ***/
-    public  void saveData(int data){
-        dbOperation operationObj = new dbOperation(this);
-        operationObj.open();
-        MyTable Fields = new MyTable();
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(Fields.getScore(), data);
-        operationObj.insertTableData(Fields.getTableName(),initialValues);
-        operationObj.close();
-    }
+
 
     /*** GET THE DATA FROM DB ,PARAMS - FILENAME -> GET THE DATA ***/
-    public String getData(int id){
-        String _data = "";
-        dbOperation operationObj = new dbOperation(this);
-        operationObj.open();
-        MyTable fields = new MyTable();
-        String  condition2 = fields.getID() + " ='" + id + "'";
-        String[] dbFields4 = {fields.getScore()};
-        Cursor cursor2 =  operationObj.getTableRow(fields.getTableName(),dbFields4,condition2,fields.getID() + " ASC ","1");
-        if(cursor2.getCount() > 0)
-        {
-            cursor2.moveToFirst();
-            do{
-                _data = cursor2.getString(0);
-            }while(cursor2.moveToNext());
-        }else{
-            _data = "error";
-        }
-        cursor2.close();
-        cursor2.deactivate();
-        operationObj.close();
-        return _data;
-    }
 
-    /*** SAVE OR UPDATE DB -> GIVE THE FILENAME AND DATA ***/
-    public void updateTable(int updt_data){
-        dbOperation operationObj = new dbOperation(this);
-        operationObj.open();
-        MyTable Fields = new MyTable();
-        //check for the value to update if no value then insert.
-        String file_ = getData(1);
-        if(file_.equals("error")){
-            saveData(updt_data);
-        }else{
-            String  condition = Fields.getID() +" = '1'";
-            ContentValues initialValues = new ContentValues();
-            initialValues.put(Fields.getScore(), updt_data);
-            operationObj.updateTable(Fields.getTableName(),initialValues,condition);
-        }
-        operationObj.close();
-    }
 }
 
