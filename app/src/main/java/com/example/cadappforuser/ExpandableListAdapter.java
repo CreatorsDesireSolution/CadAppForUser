@@ -92,6 +92,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 if(isChecked){
                     checked = 1;
                     updateTable(checked);
+                    checkBoxModels.add(new CheckBoxModel(checked));
                     Toast.makeText(context, "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(context, "Check Box Select....", Toast.LENGTH_SHORT).show();
                 }else{ checked = 0;

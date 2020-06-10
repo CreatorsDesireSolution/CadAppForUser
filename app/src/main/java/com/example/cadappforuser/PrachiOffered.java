@@ -21,7 +21,7 @@ public class PrachiOffered extends AppCompatActivity {
         setContentView(R.layout.activity_prachi_offered);
 
         checkboxvalue = findViewById(R.id.txt_checkvalue);
-       // checkboxvalue.setText(checkBoxModels.get(0).getChecked());
+        //checkboxvalue.setText(checkBoxModels.get(0).getChecked());
 
 
 
