@@ -54,6 +54,9 @@ public class FreelancerServicesOffered extends AppCompatActivity {
         expandableListAdapter = new ExpandableListAdapter(this, expandableListTitle, checkBoxModels, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
+
+
+
        // checked = checkBoxModels.get(0).getChecked();
 
 
@@ -88,6 +91,8 @@ public class FreelancerServicesOffered extends AppCompatActivity {
                 db.insertData(expandableListDetail.get(
                         expandableListTitle.get(groupPosition)).get(
                         childPosition));
+                v.setBackgroundResource(R.color.quantum_orange);
+
                 // startActivity(new Intent(MainActivity.this,ShowData.class));
                 Toast.makeText(getApplicationContext(), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
                 return true;

@@ -3,6 +3,7 @@ package com.example.cadappforuser;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.Pair;
 import android.util.SparseBooleanArray;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +93,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.expandedListItem);
 
         expandedListTextView.setText(expandedListText);
+
         return convertView;
     }
 
@@ -131,8 +134,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.listTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
+
+
         return convertView;
     }
+
 
     @Override
     public boolean hasStableIds() {
