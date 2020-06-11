@@ -44,7 +44,7 @@ public class FreelancerServicesOffered extends AppCompatActivity {
 
         btnNextoffered = findViewById(R.id.btnNextoffered);
 
-        cb = findViewById(R.id.check);
+      //  cb = findViewById(R.id.check);
         selectedItems=new ArrayList<String>();
         db=new DatabaseHelper(this);
 
@@ -85,25 +85,13 @@ public class FreelancerServicesOffered extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
 
-                String selectedItem = ((TextView) v).getText().toString();
-                if (selectedItems.contains(selectedItem))
-                    selectedItems.remove(selectedItem); //remove deselected item from the list of selected items
-                else
-                    selectedItems.add(selectedItem); //add selected item to the list of selected items
-
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition) + " clicked on check ").get(
-                                childPosition), Toast.LENGTH_SHORT
-                )
-                        .show();
+                db.insertData(expandableListDetail.get(
+                        expandableListTitle.get(groupPosition)).get(
+                        childPosition));
+                // startActivity(new Intent(MainActivity.this,ShowData.class));
+                Toast.makeText(getApplicationContext(), expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
                 return true;
-
             }
-
         });
 
 

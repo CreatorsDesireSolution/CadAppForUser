@@ -30,6 +30,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         etMobileNumber=findViewById(R.id.etMobileNumber);
         etEmail=findViewById(R.id.etEmail);
         etAboutCompany=findViewById(R.id.etAboutCompany);
+        btnRegister=findViewById(R.id.btnSignedIncomapny);
 
 
         etAddress.setOnClickListener(new View.OnClickListener() {
@@ -43,17 +44,15 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         Intent intent2=getIntent();
         etAddress.setText(intent2.getStringExtra("address"));
 
-
-
-        btnRegister=findViewById(R.id.btnSignedIn);
-         btnRegister.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 startActivity(new Intent(RegisterAsCompanyActivity.this,CompanyMobileNumberRegisterActivity.class));
-             }
-         });
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterAsCompanyActivity.this,CompanyMobileNumberRegisterActivity.class));
+            }
+        });
+
 
     }
 

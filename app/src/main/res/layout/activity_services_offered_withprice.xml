@@ -21,21 +21,16 @@
 
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:layout_width="match_parent"
-        android:layout_marginBottom="60dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
-        android:background="@drawable/background111"
-        android:layout_height="wrap_content"
-        android:id="@+id/recycleviewPrice"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="500dp"
+        android:id="@+id/listview"></ListView>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="Next"
+        android:layout_marginTop="20dp"
         android:id="@+id/btnOffered"
         android:textColor="#FFF"
         android:layout_marginLeft="20dp"

@@ -90,42 +90,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView expandedListTextView = (TextView) convertView
                 .findViewById(R.id.expandedListItem);
 
-
-
-        chkbox = (CheckBox) convertView
-                .findViewById(R.id.check);
-
-        chkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
-                if(chkbox.isChecked())
-                {
-                     text=chkbox.getText().toString();
-                    //checked = 1;
-
-                   // String selectedItem = chkbox.getText().toString();
-                    if (selectedItems.contains(text))
-                        selectedItems.add(text); //remove deselected item from the list of selected items
-                    else
-                        selectedItems.remove(text); //add selected item to the list of selected items
-                }
-
-//                    updateTable(checked);
-//                    checkBoxModels.add(new CheckBoxModel(checked));
-                // Toast.makeText(context, "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "Check Box Select....", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-        checkBoxModels.add(new CheckBoxModel(checked));
-
-
-
-
-
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
@@ -172,12 +136,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
-        return false;
+        return true;
     }
 
 

@@ -23,6 +23,7 @@ public class CompanyMobileNumberRegisterActivity extends AppCompatActivity {
 
         btnGetCode=findViewById(R.id.btnGetCode);
         etMobileForCode = findViewById(R.id.etMobileForCode);
+        ccp = findViewById(R.id.ccp1);
 
 
 

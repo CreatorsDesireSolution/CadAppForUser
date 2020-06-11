@@ -174,7 +174,7 @@
                android:textStyle="normal"
                android:textColorHint="#FFF"
                android:textSize="15dp"
-               android:id="@+id/btnSignedIn"
+               android:id="@+id/btnSignedIncomapny"
                android:ems="8"
                android:textColor="#FFF"
                android:layout_marginTop="20sp"
@@ -184,13 +184,13 @@
                android:layout_below="@+id/etAboutCompany"
                android:layout_marginBottom="15dp"></Button>
 
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_below="@+id/btnSignedIn"
-               android:layout_centerHorizontal="true"
-               android:layout_marginBottom="10dp"
-               android:text="You are already a member?"></TextView>
+<!--           <TextView-->
+<!--               android:layout_width="wrap_content"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_below="@+id/btnSignedIn"-->
+<!--               android:layout_centerHorizontal="true"-->
+<!--               android:layout_marginBottom="10dp"-->
+<!--               android:text="You are already a member?"></TextView>-->
 
        </RelativeLayout>
 
