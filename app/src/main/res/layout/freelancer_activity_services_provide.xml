@@ -38,7 +38,7 @@
 
             android:layout_marginTop="22dp"
             android:layout_toRightOf="@+id/checkKm"
-            android:hint="Number of Km i will provide service like 2/4/8/10/15"
+            android:hint="I will give service in the distance (km)"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="12sp"></TextView>

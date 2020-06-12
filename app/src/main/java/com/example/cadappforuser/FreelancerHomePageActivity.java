@@ -129,7 +129,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerTermAndCondition.class));
                 break;
             case R.id.nav_services_offered:
-                //startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
                  break;
             case R.id.nav_add_services:
                 startActivity(new Intent(FreelancerHomePageActivity.this, FreelancerAddServicesActivity.class));

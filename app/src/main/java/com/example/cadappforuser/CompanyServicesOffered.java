@@ -34,7 +34,7 @@ public class CompanyServicesOffered extends AppCompatActivity {
         setContentView(R.layout.comapny_activity_act__list);
 
         btn_company_offered = findViewById(R.id.btn_companyoffered);
-        expandableListView =  findViewById(R.id.expandableListView1);
+        expandableListView =  findViewById(R.id.expandableListView);
 
         selectedItems=new ArrayList<String>();
         db=new DatabaseHelper(this);
