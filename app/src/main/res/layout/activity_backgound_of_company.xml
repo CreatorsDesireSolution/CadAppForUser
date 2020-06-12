@@ -47,7 +47,7 @@
                     android:background="@drawable/background2"
                     android:gravity="start"
                     android:id="@+id/et_aboutcmpny"
-                    android:hint="About Your Comapany"
+                    android:hint="About Your Company"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
                     android:textAlignment="textStart" />
@@ -62,7 +62,7 @@
                 android:layout_marginRight="20dp"
                 android:id="@+id/et_establishyear"
                 android:background="@drawable/background2"
-                android:hint="Total years of establishment"
+                android:hint="Total years of Establishment"
                 android:paddingLeft="10dp" />
 
             <LinearLayout
@@ -150,9 +150,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
-                        android:drawablePadding="10dp"
                         android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
+                        android:paddingTop="5dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="10dp"
                         android:text="team size"
@@ -179,7 +178,8 @@
                         android:layout_gravity="center_vertical"
                         android:drawablePadding="10dp"
                         android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
+                        android:paddingTop="5dp"
+
                         android:paddingRight="10dp"
                         android:paddingBottom="10dp"
                         android:text="team size"
