@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".FreelancherAddNewServices"></activity>
+        <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
-        <activity android:name=".At_Place_Location"></activity>
+        <activity android:name=".At_Place_Location" />
         <activity android:name=".FreelancerServicesOffered" />
         <activity android:name=".ServicesOfferedWithprice" />
         <activity android:name=".LocationOfUserOrShop" />
@@ -104,9 +103,7 @@
         <activity android:name=".SignInActivity" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".MainActivity" />
 
         <meta-data
