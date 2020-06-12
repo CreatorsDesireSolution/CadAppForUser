@@ -16,9 +16,9 @@ public class FreelancerServicesProvide extends AppCompatActivity {
     CheckBox checkSetAvailability;
     TextView txtSetAvailability;
     CheckBox checkKm,checkAtMyPlace;
-    EditText etKm,etAtMyPlace;
+    EditText etKm;TextView etAtMyPlace;
     Button btnNext;
-
+    String adress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,25 +33,47 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         etAtMyPlace=findViewById(R.id.etMyPlace);
         btnNext=findViewById(R.id.btnNext);
 
+
+        etAtMyPlace.setVisibility(View.VISIBLE);
+        etAtMyPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FreelancerServicesProvide.this,At_Place_Location.class);
+                startActivity(intent);
+            }
+        });
+        Intent intent=getIntent();
+        adress=intent.getStringExtra("address");
+        etAtMyPlace.setText(adress);
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(FreelancerServicesProvide.this,FreelancerServicesOffered.class);
+                Intent intent=new Intent(FreelancerServicesProvide.this,FreelancherAddNewServices.class);
                 startActivity(intent);
             }
         });
 
-        checkAtMyPlace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*checkAtMyPlace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
              if(b){
                  etAtMyPlace.setVisibility(View.VISIBLE);
+                 etAtMyPlace.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View view) {
+                         Intent intent=new Intent(FreelancerServicesProvide.this,At_Place_Location.class);
+                         startActivity(intent);
+                     }
+                 });
+
+                 etKm.setText(adress);
              }
              else{
                  etAtMyPlace.setVisibility(View.GONE);
              }
             }
-        });
+        });*/
 
 
         checkKm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

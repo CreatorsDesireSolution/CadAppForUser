@@ -60,7 +60,7 @@
             android:textColorHint="#68000000"
             android:textSize="15sp"
             android:textStyle="normal"
-            android:visibility="gone"></EditText>
+            android:visibility="visible"></EditText>
 
 
         <CheckBox
@@ -84,7 +84,7 @@
             android:textColorHint="@color/black"
             android:textSize="12sp"></TextView>
 
-        <EditText
+        <TextView
             android:id="@+id/etMyPlace"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -92,6 +92,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
+            android:paddingTop="10dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/profileimageback"
@@ -101,7 +102,7 @@
             android:textColorHint="#68000000"
             android:textSize="15sp"
             android:textStyle="normal"
-            android:visibility="gone"></EditText>
+            android:visibility="visible"></TextView>
 
         <TextView
             android:id="@+id/txtAv"
