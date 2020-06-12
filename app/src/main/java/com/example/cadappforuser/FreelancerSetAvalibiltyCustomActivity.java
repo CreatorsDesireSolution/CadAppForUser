@@ -2,12 +2,15 @@ package com.example.cadappforuser;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -24,6 +27,7 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     TextView txtStartTime,txtEndTime,txtSelectDay;
     Calendar calendarView;
     RelativeLayout relativeLayout;
+    Button btndone;
 
 
     @Override
@@ -79,6 +83,10 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
 
                 PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
                 pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+
+//                View layout = inflater.inflate(R.layout.activity_register,
+//                        (ViewGroup) FreelancerSetAvalibiltyCustomActivity.this.findViewById(R.id.done));
+
             }
         });
 

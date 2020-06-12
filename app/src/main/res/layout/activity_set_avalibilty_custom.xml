@@ -82,6 +82,7 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF"
+
         android:background="@drawable/btnback"></Button>
 
 </RelativeLayout>

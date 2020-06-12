@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowCheckBox"></activity>
+        <activity android:name=".FreelancherAddNewServices"></activity>
+        <activity android:name=".ShowCheckBox" />
         <activity android:name=".FreelancerServicesOffered" />
         <activity android:name=".ServicesOfferedWithprice" />
         <activity android:name=".LocationOfUserOrShop" />
@@ -52,7 +53,7 @@
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
-        <activity android:name=".FreeelancerVerificationActivity"></activity>
+        <activity android:name=".FreeelancerVerificationActivity" />
         <activity android:name=".FreelancerTermAndCondition" />
         <activity
             android:name=".FreelancerHomePageActivity"
@@ -79,7 +80,7 @@
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".HomePageActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SelectHomeOrShop"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

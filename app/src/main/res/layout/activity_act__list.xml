@@ -9,7 +9,7 @@
   >
     <ExpandableListView
         android:id="@+id/expandableListView"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:background="@drawable/background2"
@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Button"
+            android:text="Next"
+            android:layout_marginBottom="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:id="@+id/btnNextoffered"
