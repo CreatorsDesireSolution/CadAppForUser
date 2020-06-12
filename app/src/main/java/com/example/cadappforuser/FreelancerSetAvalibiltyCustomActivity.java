@@ -27,7 +27,7 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     TextView txtStartTime,txtEndTime,txtSelectDay;
     Calendar calendarView;
     RelativeLayout relativeLayout;
-    Button btndone;
+    Button btnAddSet;
 
 
     @Override
@@ -40,7 +40,15 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         txtSelectDay=findViewById(R.id.txtSelectDay);
 
 
+       btnAddSet=findViewById(R.id.btnAddSet);
+       btnAddSet.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               startActivity(new Intent(FreelancerSetAvalibiltyCustomActivity.this,FreelancerServicesProvide.class));
+           }
+       });
         relativeLayout=findViewById(R.id.relative);
+
 
 
 

@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FreelancerServicesProvide"></activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
         <activity android:name=".At_Place_Location" />
