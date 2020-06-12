@@ -27,6 +27,17 @@ public class SignInActivity extends AppCompatActivity {
         text_register = findViewById(R.id.txt_signup);
         etEmailLayout = findViewById(R.id.etEmailLayout);
         etPasswordLayout = findViewById(R.id.etPasswordLayout);
+        btnSignIn = findViewById(R.id.btnSignedIn);
+
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SignInActivity.this,FreelancerHomePageActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
