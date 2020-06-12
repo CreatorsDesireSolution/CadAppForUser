@@ -23,8 +23,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_as_freelancer_register);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Register");
+
 
 
         txtGender=findViewById(R.id.etGender);
@@ -61,21 +60,8 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
              }
          });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
 }

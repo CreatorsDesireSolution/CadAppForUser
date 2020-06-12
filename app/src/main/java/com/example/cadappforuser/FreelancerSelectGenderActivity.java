@@ -26,6 +26,7 @@ public class FreelancerSelectGenderActivity extends AppCompatActivity {
               startActivity(intent);
             }
         });
+
         btnMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
