@@ -3,6 +3,7 @@
     package="com.example.cadappforuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,9 @@
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
         <activity android:name=".At_Place_Location" />
-        <activity android:name=".FreelancerServicesOffered" />
+        <activity android:name=".FreelancerServicesOffered">
+
+        </activity>
         <activity android:name=".ServicesOfferedWithprice" />
         <activity android:name=".LocationOfUserOrShop" />
         <activity android:name=".HomeAndShopLocation" />

@@ -54,7 +54,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(FreelancerServicesProvide.this,FreelancherAddNewServices.class);
+                Intent intent=new Intent(FreelancerServicesProvide.this,FreelancerCertificationActivity.class);
                 startActivity(intent);
             }
         });

@@ -16,9 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center_horizontal"
-            android:text="ACCEPTED LOCATION WHERE I OFFER MY SERVICES"
+            android:text="SERVICES PROVIDED MAY VARY AS PER THE USERS GEOGRAPHICAL LOCATIONS"
             android:textColor="@color/black"
-            android:textSize="22dp"
+            android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
         <CheckBox
@@ -37,7 +37,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="17dp"
             android:layout_toRightOf="@+id/checkKm"
-            android:hint="I will give service in the distance (km)"
+            android:hint="Availability of my Services( in range of Kilometers )"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="12sp"></TextView>

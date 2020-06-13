@@ -111,12 +111,8 @@ public class FreelancerServicesOffered extends AppCompatActivity {
         btnNextoffered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 showSelectedItems();
               //  Toast.makeText(getApplicationContext(), "Saved '"+ checked + "' in DB", Toast.LENGTH_SHORT).show();
-
-
             }
         });
 
