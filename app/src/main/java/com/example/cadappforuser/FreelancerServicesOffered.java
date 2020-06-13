@@ -66,6 +66,13 @@ public class FreelancerServicesOffered extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
+
+//                int previousItem = -1;
+//
+//                if (groupPosition != previousItem)
+//                    expandableListView.collapseGroup(previousItem);
+//                previousItem = groupPosition;
+
                 Toast.makeText(getApplicationContext(),
                         expandableListTitle.get(groupPosition) + " List Expanded.",
                         Toast.LENGTH_SHORT).show();
