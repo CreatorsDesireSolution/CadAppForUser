@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Act_ShowDate"></activity>
+        <activity android:name=".ShowDays.Act_ShowDayComapany"></activity>
+        <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".FreelancerServicesProvide" />
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />

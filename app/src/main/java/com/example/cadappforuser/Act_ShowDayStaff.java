@@ -9,9 +9,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
-public class Act_ShowDate extends AppCompatActivity {
+public class Act_ShowDayStaff extends AppCompatActivity {
 
     Button btn_done;
 
@@ -26,9 +25,8 @@ public class Act_ShowDate extends AppCompatActivity {
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Act_ShowDate.this, "Done Click", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),CompanySetAvalibiltyCustomActivityStaff.class);
-                startActivity(intent);
+                startActivity(new Intent(Act_ShowDayStaff.this,CompanySetAvalibiltyCustomActivityStaff.class));
+
             }
         });
 
@@ -39,7 +37,7 @@ public class Act_ShowDate extends AppCompatActivity {
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int) (width * .9), (int) (height * .5));
+        getWindow().setLayout((int) (width * .9), (int) (height * .6));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;

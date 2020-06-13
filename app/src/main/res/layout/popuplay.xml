@@ -97,6 +97,7 @@
             android:layout_height="40dp"
             android:elevation="2dp"
             android:hint="Done"
+            android:id="@+id/done1"
             android:enabled="false"
             android:gravity="center"
             android:textColorHint="#ffffff"

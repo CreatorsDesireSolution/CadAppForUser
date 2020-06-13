@@ -1,18 +1,13 @@
 package com.example.cadappforuser;
 
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -45,7 +40,7 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
         btnAddAvalibilty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyServicesOffered.class));
+                startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyHomePageActivity.class));
             }
         });
 
@@ -91,7 +86,7 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(getApplicationContext(),Act_ShowDate.class);
+                Intent intent = new Intent(getApplicationContext(), Act_ShowDayStaff.class);
                 startActivity(intent);
 //                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //
