@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".ShowStaffList"></activity>
+        <activity android:name=".ShowDays.Act_ShowDayComapany"></activity>
+        <activity android:name=".Act_ShowDayStaff"></activity>
         <activity android:name=".FreelancerServicesProvide"></activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
@@ -24,7 +28,6 @@
         <activity android:name=".CurrentLocation" />
         <activity android:name=".Act_Forgot_password" />
         <activity android:name=".ShowCompanyStaffProfile" />
-        <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowStaffProfile" />
         <activity android:name=".StaffCertificationActivity" />
         <activity android:name=".StaffAddServicesActivity" />
@@ -50,11 +53,7 @@
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
 
         <activity android:name=".SignInActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".FreelancerAddServicesActivity"
@@ -104,7 +103,13 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
 
         <meta-data
