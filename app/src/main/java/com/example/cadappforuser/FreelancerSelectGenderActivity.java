@@ -22,7 +22,7 @@ public class FreelancerSelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
               Intent intent=new Intent(FreelancerSelectGenderActivity.this,RegisterAsFreelancerActivity.class);
-              intent.putExtra("gender","female");
+              intent.putExtra("gender","Female");
               startActivity(intent);
             }
         });
@@ -31,7 +31,7 @@ public class FreelancerSelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(FreelancerSelectGenderActivity.this,RegisterAsFreelancerActivity.class);
-                intent.putExtra("gender","male");
+                intent.putExtra("gender","Male");
                 startActivity(intent);
             }
         });

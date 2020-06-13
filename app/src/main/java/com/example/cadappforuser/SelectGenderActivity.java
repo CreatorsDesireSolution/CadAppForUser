@@ -22,7 +22,7 @@ public class SelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
               Intent intent=new Intent(SelectGenderActivity.this,RegisterActivity.class);
-              intent.putExtra("gender","female");
+              intent.putExtra("gender","Female");
               startActivity(intent);
             }
         });
@@ -30,7 +30,7 @@ public class SelectGenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(SelectGenderActivity.this,RegisterActivity.class);
-                intent.putExtra("gender","male");
+                intent.putExtra("gender","Male");
                 startActivity(intent);
             }
         });
