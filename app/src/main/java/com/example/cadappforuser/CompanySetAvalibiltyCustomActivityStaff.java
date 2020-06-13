@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
@@ -26,6 +28,7 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
     Calendar calendarView;
     RelativeLayout relativeLayout;
     Button btnAddAvalibilty;
+    Button done;
 
 
     @Override
@@ -86,10 +89,26 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
         txtSelectDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
-                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+
+                Intent intent = new Intent(getApplicationContext(),Act_ShowDate.class);
+                startActivity(intent);
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
+//                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+//                @SuppressLint("WrongViewCast") View layout = inflater.inflate(R.layout.popuplay,
+//                        (ViewGroup) CompanySetAvalibiltyCustomActivityStaff.this.findViewById(R.id.done));
+//
+//                done =  layout.findViewById(R.id.done);
+//                done.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(getApplicationContext(),CompanySetAvalibiltyCustomActivityStaff.class);
+//                        startActivity(intent);
+//                    }
+//                });
+
             }
         });
 
