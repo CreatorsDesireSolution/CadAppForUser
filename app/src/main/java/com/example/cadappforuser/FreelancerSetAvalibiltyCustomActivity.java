@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +21,8 @@ import android.widget.TimePicker;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cadappforuser.ShowDays.Act_ShowDayComapany;
+
 import java.util.Calendar;
 
 public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
@@ -28,6 +31,7 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     Calendar calendarView;
     RelativeLayout relativeLayout;
     Button btnAddSet;
+    Button done;
 
 
     @Override
@@ -87,13 +91,14 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         txtSelectDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
+//                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
 
-                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
-                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+             Intent intent = new Intent(getApplicationContext(), Act_ShowDayComapany.class);
+             startActivity(intent);
 
-//                View layout = inflater.inflate(R.layout.activity_register,
-//                        (ViewGroup) FreelancerSetAvalibiltyCustomActivity.this.findViewById(R.id.done));
 
             }
         });
