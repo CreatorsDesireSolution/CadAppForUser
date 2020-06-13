@@ -77,7 +77,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="Enter Otp"
+                android:hint="Enter OTP"
                 android:layout_marginTop="8dp"
                 android:textColorHint="@color/colorAccent"
                 android:layout_marginLeft="20dp"
