@@ -21,7 +21,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.new_login);
 
         forgetPassword=findViewById(R.id.forget_password);
         text_register = findViewById(R.id.txt_signup);

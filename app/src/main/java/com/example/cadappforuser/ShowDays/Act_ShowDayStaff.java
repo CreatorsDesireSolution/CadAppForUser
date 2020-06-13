@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cadappforuser.CompanySetAvalibiltyCustomActivityStaff;
 import com.example.cadappforuser.R;
 
-public class Act_ShowDayStaff extends AppCompatActivity {
+public class
+Act_ShowDayStaff extends AppCompatActivity {
 
     Button btn_done;
 
