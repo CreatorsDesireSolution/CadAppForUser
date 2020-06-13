@@ -31,7 +31,7 @@ Button btnService;
         int width = displayMetrics.widthPixels;
         int height = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int) (width * .9), (int) (height * .3));
+        getWindow().setLayout((int) (width * .9), (int) (height * .5));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;

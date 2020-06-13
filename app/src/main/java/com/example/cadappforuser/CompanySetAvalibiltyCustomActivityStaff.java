@@ -87,7 +87,6 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
                 PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
                 pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
             }

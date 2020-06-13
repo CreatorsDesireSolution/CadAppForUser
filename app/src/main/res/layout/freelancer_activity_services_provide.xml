@@ -27,16 +27,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtAcc"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"></CheckBox>
+            android:layout_marginTop="11dp"></CheckBox>
 
         <TextView
             android:id="@+id/txtKm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtAcc"
-            android:layout_marginLeft="10dp"
-
-            android:layout_marginTop="22dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="17dp"
             android:layout_toRightOf="@+id/checkKm"
             android:hint="I will give service in the distance (km)"
             android:textColor="@color/black"
@@ -49,11 +48,11 @@
             android:layout_height="55dp"
             android:layout_below="@+id/txtKm"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/profileimageback"
+            android:background="@drawable/background2"
             android:hint="10Km"
             android:paddingLeft="13dp"
             android:textColor="#8B000000"
@@ -69,17 +68,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/etKm"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"></CheckBox>
+            android:layout_marginTop="11dp"></CheckBox>
 
         <TextView
             android:id="@+id/txtAtMyPlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/etKm"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="17dp"
             android:layout_toRightOf="@+id/checkAtMyPlace"
-            android:hint="At My Place"
+            android:hint="At my place"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="12sp"></TextView>
@@ -90,12 +89,12 @@
             android:layout_height="55dp"
             android:layout_below="@+id/txtAtMyPlace"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginTop="15dp"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/profileimageback"
+            android:background="@drawable/background2"
             android:hint="401, karol bagh"
             android:paddingLeft="13dp"
             android:textColor="#8B000000"
@@ -131,11 +130,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtAv"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="13dp"
             android:layout_toRightOf="@+id/checkAlways"
             android:text="Always"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="normal"></TextView>
 
@@ -144,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtAv"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_toLeftOf="@+id/txtSetAvalibilty"></CheckBox>
 
 
@@ -155,9 +154,9 @@
             android:layout_below="@+id/txtAv"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="25dp"
             android:text="Set availabilty"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textStyle="normal"></TextView>
 
         <TextView
@@ -167,7 +166,7 @@
             android:layout_below="@+id/txtSetAvalibilty"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20sp"
-            android:text="CANCELLATION POLICY"
+            android:text="CANCELATION POLICY"
             android:textColor="@color/colorAccent"
             android:textSize="22dp"
             android:textStyle="bold"></TextView>
@@ -178,10 +177,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtCancel"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15sp"
+            android:layout_marginTop="6sp"
             android:layout_marginRight="20dp"
             android:text="Flexible means that customers receive full refund in case of cancellation no later than 2 hours before booked time. Moderate means that customers get full refund if canceled no later than 1 day before booked time. Strictly means that customer get full refund if canceled no later than 2 days before booked time."
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="normal"></TextView>
 
 
@@ -189,7 +188,8 @@
             android:id="@+id/checkFlexible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginLeft="10dp"
+            android:shadowColor="@color/colorAccent"
             android:layout_below="@+id/txtCancelText"
             android:layout_marginTop="20sp"></CheckBox>
 
@@ -202,7 +202,7 @@
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@+id/checkFlexible"
             android:text="Flexible"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"></TextView>
 
@@ -212,6 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtCancelText"
             android:layout_marginLeft="40dp"
+            android:shadowColor="@color/colorAccent"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/txtFlexible"></CheckBox>
 
@@ -224,12 +225,13 @@
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@+id/checkStrict"
             android:text="Strict"
-            android:textColor="@color/colorAccent"></TextView>
+            android:textColor="@color/black"></TextView>
 
         <CheckBox
             android:id="@+id/checkModerate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:shadowColor="@color/colorAccent"
             android:layout_below="@+id/txtCancelText"
             android:layout_marginTop="20dp"
             android:layout_toLeftOf="@+id/txtModerate"></CheckBox>
@@ -243,9 +245,9 @@
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="4dp"
             android:layout_marginTop="23dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:text="Moderate"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textStyle="normal"></TextView>
 
         <Button
