@@ -33,28 +33,28 @@
 
         <item
             android:id="@+id/nav_add_certificate"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_medal"
             android:title="Add Certification" />
 
         <item
             android:id="@+id/nav_term_and_condition"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_termscondition"
             android:title="Term And Condition" />
 
 
         <item
             android:id="@+id/nav_add_services"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_plus"
             android:title="Add Services" />
 
         <item
             android:id="@+id/nav_accepted_location"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_location"
             android:title="Services Provided area" />
 
         <item
             android:id="@+id/nav_services_offered"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_customers"
             android:title="Services Offered" />
 
         <item

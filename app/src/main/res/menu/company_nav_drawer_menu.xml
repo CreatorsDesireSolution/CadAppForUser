@@ -33,42 +33,39 @@
 
         <item
             android:id="@+id/nav_add_certificate"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_medal"
             android:title="Add Certification" />
 
         <item
             android:id="@+id/nav_term_and_condition"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_termscondition"
             android:title="Term And Condition" />
 
 
         <item
             android:id="@+id/nav_add_staff"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_desktopcomputer"
             android:title="Add Staff" />
         <item
             android:id="@+id/nav_show_staff_member"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_group"
             android:title="Show Staff Member" />
 
-        <item
-            android:id="@+id/nav_add_services"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="Add Services" />
+
 
         <item
             android:id="@+id/nav_company_services_provided_and_cancelataion_policy"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_insurance"
             android:title="Services Provide and Cancelation" />
 
         <item
             android:id="@+id/nav_company_services_offered"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_customers"
             android:title="Services Offered" />
 
         <item
             android:id="@+id/nav_company_add_services_manually"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_plus"
             android:title="Add Services Manually"
             ></item>
 
