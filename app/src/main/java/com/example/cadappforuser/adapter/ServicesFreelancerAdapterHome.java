@@ -1,6 +1,7 @@
 package com.example.cadappforuser.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
+import com.example.cadappforuser.ServiceDescription;
 import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
 
@@ -41,10 +44,13 @@ public class ServicesFreelancerAdapterHome extends RecyclerView.Adapter<Services
         holder.txtName.setText(servicesFreelancerHomeModel.getServicePriceFreelancer());
         holder.imageView.setImageResource(servicesFreelancerHomeModel.getImageFreelancer());
 
+
+
     }
 
     @Override
     public int getItemCount() {
+
         return servicesFreelancerHomeModelList.size();
     }
 

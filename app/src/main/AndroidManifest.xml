@@ -3,7 +3,7 @@
     package="com.example.cadappforuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,17 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".ShowStaffList"></activity>
-        <activity android:name=".ShowDays.Act_ShowDayComapany"></activity>
-        <activity android:name=".Act_ShowDayStaff"></activity>
-        <activity android:name=".FreelancerServicesProvide"></activity>
+        <activity android:name=".Act_FreelancerProfile"></activity>
+        <activity android:name=".Act_CustomerNewHome" />
+        <activity android:name=".ShowStaffList" />
+        <activity android:name=".ShowDays.Act_ShowDayComapany" />
+        <activity android:name=".Act_ShowDayStaff" />
+        <activity android:name=".FreelancerServicesProvide" />
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
         <activity android:name=".At_Place_Location" />
-        <activity android:name=".FreelancerServicesOffered">
-
-        </activity>
+        <activity android:name=".FreelancerServicesOffered" />
         <activity android:name=".ServicesOfferedWithprice" />
         <activity android:name=".LocationOfUserOrShop" />
         <activity android:name=".HomeAndShopLocation" />
@@ -54,10 +53,7 @@
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".ServicesOffered" />
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
-
-        <activity android:name=".SignInActivity">
-
-        </activity>
+        <activity android:name=".SignInActivity" />
         <activity
             android:name=".FreelancerAddServicesActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

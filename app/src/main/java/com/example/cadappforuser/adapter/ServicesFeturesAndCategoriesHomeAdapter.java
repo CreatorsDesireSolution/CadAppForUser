@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.Act_FreelancerProfile;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceDescription;
@@ -49,7 +50,7 @@ public class ServicesFeturesAndCategoriesHomeAdapter extends RecyclerView.Adapte
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
-                context.startActivity(new Intent(context, ServiceDescription.class));
+                context.startActivity(new Intent(context, Act_FreelancerProfile.class));
             }
         });
 

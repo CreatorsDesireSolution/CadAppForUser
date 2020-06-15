@@ -22,7 +22,7 @@ public class VerificationActivity extends AppCompatActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(VerificationActivity.this,HomePageActivity.class));
+                startActivity(new Intent(VerificationActivity.this,Act_CustomerNewHome.class));
             }
         });
     }

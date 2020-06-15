@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.cadappforuser.ServiceModel.AllServiceModel;
+import com.example.cadappforuser.adapter.AllServicesAdapter;
 import com.example.cadappforuser.adapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.adapter.ServicesFreelancerAdapterHome;
 import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
@@ -35,7 +37,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
-    RecyclerView recyclerView,recyclerView1;
+    RecyclerView recyclerView,recyclerView1,recyclerView2;
     ImageView women,man;
     SearchView searchView;
     ListView listView;
@@ -45,6 +47,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
 
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
+    ArrayList<AllServiceModel> allServiceModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
-        women=findViewById(R.id.woman);
-        man=findViewById(R.id.man);
+        recyclerView2= findViewById(R.id.recycleView2);
 
         listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
@@ -91,24 +93,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
 
 
-        women.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(HomePageActivity.this,HomeAndShopLocation.class);
-                startActivity(intent);
-            }
-        });
-
-        man.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(HomePageActivity.this,HomeAndShopLocation.class);
-                startActivity(intent);
-            }
-        });
 
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();
+        allServiceModels = new ArrayList<>();
 
         servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
         servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
@@ -139,7 +127,25 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         recyclerView1.setLayoutManager(layoutManager1);
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(servicesFreelancerAdapterHome);
+        recyclerView1.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
+
+
+
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+
+
+        AllServicesAdapter allServicesAdapter=new AllServicesAdapter(HomePageActivity.this,allServiceModels);
+        LinearLayoutManager layoutManager2=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        recyclerView2.setLayoutManager(layoutManager2);
+        recyclerView2.setHasFixedSize(true);
+        recyclerView2.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
 
 
 
@@ -149,6 +155,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 this,mDrawerLayout,toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
+
         );
         NavigationView navigationView=findViewById(R.id.navigation_view);
         mDrawerLayout.addDrawerListener(toggle);
