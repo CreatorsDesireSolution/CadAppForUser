@@ -41,13 +41,32 @@
            android:background="@drawable/card_background"
            android:layout_height="wrap_content">
 
-           <ImageView
+           <FrameLayout
                android:layout_width="150dp"
                android:layout_height="150dp"
-               android:layout_centerHorizontal="true"
+               android:layout_gravity="center"
                android:layout_marginTop="20dp"
-               android:id="@+id/userImageIcon"
-               android:src="@drawable/ic_account_circle_black_24dp"></ImageView>
+               android:id="@+id/frame1"
+               android:layout_centerHorizontal="true">
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:layout_width="150dp"
+                   android:layout_height="150dp"
+                   android:layout_centerHorizontal="true"
+                   android:id="@+id/userImageIcon"
+                   android:src="@drawable/ic_account_circle_black_24dp"></de.hdodenhof.circleimageview.CircleImageView>
+
+               <de.hdodenhof.circleimageview.CircleImageView
+                   android:id="@+id/iv_camera"
+                   android:layout_width="40dp"
+                   android:layout_height="40dp"
+                   android:padding="10dp"
+                   android:background="@drawable/circle_profileupload"
+                   android:src="@drawable/ic_photo_camera_black_24dp"
+                   android:layout_gravity="bottom|right"
+
+                   />
+           </FrameLayout>
 
 
            <EditText
@@ -61,7 +80,7 @@
 
                android:id="@+id/etCompanyName"
                android:layout_marginTop="8dp"
-               android:layout_below="@+id/userImageIcon"
+               android:layout_below="@+id/frame1"
                android:layout_marginLeft="13dp"
                android:layout_marginRight="13dp"
                android:textColor="#8B000000"

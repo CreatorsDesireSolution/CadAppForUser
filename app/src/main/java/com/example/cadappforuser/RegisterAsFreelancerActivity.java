@@ -23,12 +23,13 @@ import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etGender,etReferralCode;
 
     ImageView imageUserLogo;
+    CircleImageView iv_camera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
 
         imageUserLogo=findViewById(R.id.userImageIcon);
+        iv_camera = findViewById(R.id.iv_camera);
         txtGender=findViewById(R.id.etGender);
         etAddress=findViewById(R.id.etAddress);
         etFirstName = findViewById(R.id.etFirstName);
@@ -82,7 +85,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
              }
          });
 
-        imageUserLogo.setOnClickListener(new View.OnClickListener() {
+        iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -103,9 +106,13 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                            public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
                                 permissionToken.continuePermissionRequest();
+
                             }
+
+
+
                         }).check();
             }
         });

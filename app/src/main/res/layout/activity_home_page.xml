@@ -32,54 +32,39 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFF">
+                >
 
-                <EditText
-                    android:id="@+id/etFirstName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/userImageIcon"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/serachback"
-                    android:hint="Search by a name or shop"
-                    android:inputType="text"
-                    android:paddingLeft="13dp"
-                    android:paddingRight="13sp"
-                    android:textColor="#8B000000"
-                    android:textColorHint="#000"
-                    android:textSize="15sp"
-
-                    android:textStyle="normal"></EditText>
-
-                <ImageView
-                    android:id="@+id/serchicon"
-                    android:layout_width="wrap_content"
+                <SearchView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15sp"
-                    android:src="@drawable/ic_search_black_24dp"></ImageView>
+                    android:queryHint="Search By Shop Or Home"
+                    android:iconifiedByDefault="false"
+                    android:id="@+id/searchview"
+                    />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/serchicon"
-                    android:text=" | "
-                    android:textColor="#000"
-                    android:textSize="20dp"
-                    android:textStyle="bold"></TextView>
+
+
+
 
             </RelativeLayout>
+
         </androidx.cardview.widget.CardView>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/card"
+            android:id="@+id/mylist"
+            android:layout_marginTop="10dp"/>
+
+
+
 
         <TextView
             android:id="@+id/cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/card"
+            android:layout_below="@+id/mylist"
             android:layout_marginLeft="22dp"
             android:layout_marginTop="15sp"
             android:text="Categories"
@@ -113,7 +98,6 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:text="Shop"
                     android:textColor="#FFF"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
@@ -152,9 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"
-                    android:text="Home"
-                    android:textColor="#FFF"
+                    android:scaleType="centerCrop" android:textColor="#FFF"
                     android:textSize="20dp"
                     android:textStyle="bold"></TextView>
 
@@ -210,7 +192,7 @@
             android:id="@+id/feat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/shop"
+            android:layout_below="@id/linearlayout"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Featured"

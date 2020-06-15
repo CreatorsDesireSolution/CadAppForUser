@@ -17,7 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.cadappforuser.adapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.adapter.ServicesFreelancerAdapterHome;
@@ -34,6 +37,11 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     DrawerLayout mDrawerLayout;
     RecyclerView recyclerView,recyclerView1;
     ImageView women,man;
+    SearchView searchView;
+    ListView listView;
+
+    ArrayList<String> list;
+    ArrayAdapter<String> adapter;
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
 
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
@@ -47,9 +55,41 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
-
         women=findViewById(R.id.woman);
         man=findViewById(R.id.man);
+
+        listView = findViewById(R.id.mylist);
+        searchView = findViewById(R.id.searchview);
+
+        list = new ArrayList<String>();
+
+        list.add("Indore");
+        list.add("Ujjain");
+        list.add("Bhopal");
+        list.add("Sehore");
+        list.add("Nagda");
+        list.add("Dewas");
+        list.add("Neemuch");
+
+        adapter = new ArrayAdapter<>(this,R.layout.default_list,list);
+        listView.setAdapter(adapter);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+
 
         women.setOnClickListener(new View.OnClickListener() {
             @Override
