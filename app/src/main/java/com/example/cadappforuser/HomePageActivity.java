@@ -80,46 +80,45 @@ androidx.appcompat.widget.SearchView  searchView;
         recyclerView1=findViewById(R.id.recycleView1);
         recyclerView2= findViewById(R.id.recycleView2);
 
-        homerecyclerview = findViewById(R.id.homerecyclerview);
-
+       // homerecyclerview = findViewById(R.id.homerecyclerview);
       //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
 
-        list = new ArrayList<>();
-        list.add("Freelancer");
-        list.add("Company1");
-        list.add("Company2");
-        list.add("Men Freelancer");
-        list.add("Services");
-        list.add("Company1");
-        list.add("Freelancer");
+//        list = new ArrayList<>();
+//        list.add("Freelancer");
+//        list.add("Company1");
+//        list.add("Company2");
+//        list.add("Men Freelancer");
+//        list.add("Services");
+//        list.add("Company1");
+//        list.add("Freelancer");
 
-
-        homeSearchAdapter = new HomeSearchAdapter(list,context
-        );
-        homerecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        homerecyclerview.setAdapter(homeSearchAdapter);
-
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        homerecyclerview.addItemDecoration(dividerItemDecoration);
-
-        searchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" + getResources().getString(R.string.search) + "</font>"));
-
-
-
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                homeSearchAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
+//
+//        homeSearchAdapter = new HomeSearchAdapter(list,context
+//        );
+//        homerecyclerview.setLayoutManager(new LinearLayoutManager(this));
+//        homerecyclerview.setAdapter(homeSearchAdapter);
+//
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+//        homerecyclerview.addItemDecoration(dividerItemDecoration);
+//
+//        searchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" + getResources().getString(R.string.search) + "</font>"));
+//
+//
+//
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                homeSearchAdapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
 
 //
 //        adapter = new ArrayAdapter<>(this,R.layout.default_list,list);
