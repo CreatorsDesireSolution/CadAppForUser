@@ -202,6 +202,7 @@ androidx.appcompat.widget.SearchView  searchView;
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
+
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
         newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
@@ -232,7 +233,6 @@ androidx.appcompat.widget.SearchView  searchView;
 
 
         mDrawerLayout=findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,
                 R.string.navigation_drawer_open,
