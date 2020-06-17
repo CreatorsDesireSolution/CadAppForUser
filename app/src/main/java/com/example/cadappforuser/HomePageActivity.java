@@ -66,8 +66,9 @@ androidx.appcompat.widget.SearchView  searchView;
     RecyclerAdapter recyclerAdapter;
     HomeSearchAdapter homeSearchAdapter;
     Context context;
-
-
+    NewAdapter newAdapter;
+    CompanyNewAdapter companyNewAdapter;
+    AllServicesAdapter allServicesAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,63 +85,21 @@ androidx.appcompat.widget.SearchView  searchView;
       //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
 
-//        list = new ArrayList<>();
-//        list.add("Freelancer");
-//        list.add("Company1");
-//        list.add("Company2");
-//        list.add("Men Freelancer");
-//        list.add("Services");
-//        list.add("Company1");
-//        list.add("Freelancer");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-//
-//        homeSearchAdapter = new HomeSearchAdapter(list,context
-//        );
-//        homerecyclerview.setLayoutManager(new LinearLayoutManager(this));
-//        homerecyclerview.setAdapter(homeSearchAdapter);
-//
-//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-//        homerecyclerview.addItemDecoration(dividerItemDecoration);
-//
-//        searchView.setQueryHint(Html.fromHtml("<font color = #ffffff>" + getResources().getString(R.string.search) + "</font>"));
-//
-//
-//
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                homeSearchAdapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newAdapter.getFilter().filter(newText);
+                 companyNewAdapter.getFilter().filter(newText);
+                 allServicesAdapter.getFilter().filter(newText);
 
-//
-//        adapter = new ArrayAdapter<>(this,R.layout.default_list,list);
-//        listView.setAdapter(adapter);
-//
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-
-
-
+                return true;
+            }
+        });
 
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();
@@ -156,10 +115,7 @@ androidx.appcompat.widget.SearchView  searchView;
         servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 
         ServicesFeturesAndCategoriesHomeAdapter servicesFeturesAndCategoriesHomeAdapter=new ServicesFeturesAndCategoriesHomeAdapter(HomePageActivity.this,servicesFeatureAndCategoriesHomeModelArrayList);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 
         servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
         servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
@@ -172,7 +128,7 @@ androidx.appcompat.widget.SearchView  searchView;
 
 
         ServicesFreelancerAdapterHome servicesFreelancerAdapterHome=new ServicesFreelancerAdapterHome(HomePageActivity.this,servicesFreelancerHomeModelArrayList);
-        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 //        recyclerView1.setLayoutManager(layoutManager1);
 //        recyclerView1.setHasFixedSize(true);
 //        recyclerView1.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
@@ -180,20 +136,20 @@ androidx.appcompat.widget.SearchView  searchView;
 
 
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Massage","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Hair Spa","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Face Massage","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Classic Massage","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Threading","lorem ipsum"));
+        allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Beard Cut","lorem ipsum"));
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 
 
-        AllServicesAdapter allServicesAdapter=new AllServicesAdapter(HomePageActivity.this,allServiceModels);
-        LinearLayoutManager layoutManager2=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+       allServicesAdapter=new AllServicesAdapter(HomePageActivity.this,allServiceModels);
+        LinearLayoutManager layoutManager2=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setHasFixedSize(true);
-
+        recyclerView2.setAdapter(allServicesAdapter);
 
 
         newModels = new ArrayList<>();
@@ -201,29 +157,30 @@ androidx.appcompat.widget.SearchView  searchView;
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
         newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
         newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
 
-        NewAdapter newAdapter=new NewAdapter(HomePageActivity.this,newModels);
-        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+         newAdapter=new NewAdapter(HomePageActivity.this,newModels);
+        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(newAdapter);
 
+
+
         companyNewModels = new ArrayList<>();
 
         companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",val));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company1",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
 
-        CompanyNewAdapter companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+         companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
+        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
         recyclerView1.setHasFixedSize(true);
         recyclerView1.setAdapter(companyNewAdapter);

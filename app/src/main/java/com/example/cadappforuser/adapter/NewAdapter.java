@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,16 +20,19 @@ import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> {
+public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> implements Filterable {
 
     Context context;
     List<NewModel> newModels;
+    List<NewModel> newModelsAll;
 
     public NewAdapter(Context context, List<NewModel> newModels) {
         this.context = context;
         this.newModels = newModels;
+        this.newModelsAll=new ArrayList<>(newModels);
     }
 
     @NonNull
@@ -63,6 +68,42 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> {
     public int getItemCount() {
         return newModels.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter=new Filter() {
+        //run on background thread
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            List<NewModel> filterList=new ArrayList<>();
+            if(charSequence.toString()==null){
+                filterList.addAll(newModelsAll);
+            }else{
+                String serachStr=charSequence.toString().toUpperCase();
+                for (NewModel servicesS: newModelsAll){
+                    if(servicesS.getName().toUpperCase().contains(serachStr)){
+                        filterList.add(servicesS);
+                    }
+                }
+            }
+            FilterResults filterResults=new FilterResults();
+            filterResults.values=filterList;
+            return filterResults;
+        }
+
+        //run on ui thread
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+           newModels.clear();
+          newModels.addAll((List<NewModel>)filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     public class NewViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView facialImageFreelancer;
