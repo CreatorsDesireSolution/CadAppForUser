@@ -120,7 +120,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="3dp"
                             android:drawablePadding="10dp"
-                            android:text="Dhamnod Dhar"
+                            android:text="Indore (MP)"
                             android:textColor="@color/black"
                             android:textSize="14dp" />
 
@@ -173,7 +173,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Freeelance with 4 years experience"
+                            android:text="Background About Company"
                             android:textAlignment="textStart"
                             android:textColor="@color/colorPrimary"
                             android:textSize="12dp"

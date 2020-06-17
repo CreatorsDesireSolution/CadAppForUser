@@ -23,6 +23,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
 
     Context context;
     List<ServicesListModel> servicesListModelList;
+    private boolean[] favorites;
 
     public ServicesListAdapter(Context context, List<ServicesListModel> servicesListModelList) {
         this.context = context;
@@ -38,18 +39,34 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+
+
 
         ServicesListModel servicesListModel=servicesListModelList.get(position);
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
         holder.imageView.setImageResource(servicesListModel.getImage());
+
+
+
+
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
                 Intent intent=new Intent(context, ServiceDescription.class);
                 context.startActivity(intent);
+            }
+        });
+        holder.fevicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                holder.fevicon.setImageResource(R.drawable.ic_star_black_24dp);
+
+
+
             }
         });
 
@@ -61,7 +78,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        ImageView imageView;
+        ImageView imageView,fevicon;
         TextView price,name,sample;
         ItemClickListner itemClickListner;
         public ViewHolder(@NonNull View itemView) {
@@ -71,6 +88,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             price=itemView.findViewById(R.id.serviceListServicePrice);
             name=itemView.findViewById(R.id.serviceListServiceName);
             sample=itemView.findViewById(R.id.serviceListServiceSample);
+            fevicon = itemView.findViewById(R.id.fevicon);
 
             itemView.setOnClickListener(this);
 

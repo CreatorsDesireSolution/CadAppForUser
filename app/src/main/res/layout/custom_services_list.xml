@@ -71,6 +71,22 @@
                 android:layout_alignParentEnd="true"
                 ></TextView>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rs. 450"
+                android:textColor="@color/colorAccent"
+                android:layout_below="@id/serviceListServicePrice"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/fevicon"
+                android:src="@drawable/ic_star"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentEnd="true"
+                ></ImageView>
+
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
