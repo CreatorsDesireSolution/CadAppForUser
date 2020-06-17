@@ -18,7 +18,6 @@
         <activity android:name=".Act_CustomerProfileEdit" />
         <activity android:name=".Act_CompanyNewProfile" />
         <activity android:name=".Act_FreelancerProfile" />
-        <activity android:name=".SplashScreen" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
@@ -94,7 +93,7 @@
             android:name=".HomePageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".SelectHomeOrShop"
+            android:name=".Act_CustomerNewHome"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".VerificationActivity" />
         <activity android:name=".MobileNumberRegisterActivity" />
@@ -102,11 +101,15 @@
         <activity
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name=".SelectHomeOrShop"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Act_CustomerNewHome"
+            android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

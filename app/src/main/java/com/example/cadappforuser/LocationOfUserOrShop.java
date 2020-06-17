@@ -23,7 +23,7 @@ public class LocationOfUserOrShop extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LocationOfUserOrShop.this,FreelancerServicesOffered.class);
+                Intent intent=new Intent(LocationOfUserOrShop.this,HomePageActivity.class);
                 startActivity(intent);
             }
         });
