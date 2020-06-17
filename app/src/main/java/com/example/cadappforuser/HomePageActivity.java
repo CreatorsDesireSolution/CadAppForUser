@@ -251,6 +251,12 @@ androidx.appcompat.widget.SearchView  searchView;
                 startActivity(new Intent(HomePageActivity.this,Act_Logout.class));
                 break;
 
+            case R.id.nav_add_fev:
+                startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
+                break;
+
+
+
 
 
 
