@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".2"
+            android:layout_weight=".3"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="10dp"
@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="Freelancer"
                 android:textStyle="bold"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
@@ -45,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".6"
+            android:layout_weight=".65"
             android:padding="5dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
@@ -298,34 +299,38 @@
                 android:text="Services List"
                 android:textColor="@color/white"
                 android:id="@+id/serviceslist"/>
-
-
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".2"
-            android:padding="5dp">
-
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/background_final"
-                android:backgroundTint="@color/black"
-                android:text="next"
-                android:id="@+id/btn_next"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:layout_height="0dp"
+                android:layout_weight=".05"
+                android:padding="5dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="bottom"
+
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_final"
+                    android:backgroundTint="@color/black"
+                    android:text="next"
+                    android:id="@+id/btn_next"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
 
         </LinearLayout>
+
 
     </LinearLayout>
 

@@ -194,7 +194,7 @@ androidx.appcompat.widget.SearchView  searchView;
         LinearLayoutManager layoutManager2=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setHasFixedSize(true);
-        recyclerView2.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
+
 
 
         newModels = new ArrayList<>();
