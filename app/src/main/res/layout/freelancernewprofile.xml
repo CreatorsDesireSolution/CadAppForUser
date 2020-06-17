@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Act_CustomerProfileEdit">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/lay_frm1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+
+        <FrameLayout
+            android:id="@+id/lay_prof"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        android:id="@+id/relative"
+                        android:background="@drawable/curve2"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:id="@+id/lays"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/circle_profileupload"
+                            android:padding="3dp"
+                            android:backgroundTint="@color/quantum_grey">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_profile_image"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:padding="15dp"
+                                android:backgroundTint="@color/quantum_orange"
+                                android:src="@drawable/profileimage"
+                                />
+                        </LinearLayout>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Man Freelancer"
+                            android:textSize="16sp"
+                            android:id="@+id/name"
+                            android:textColor="@color/white"
+                            android:layout_toRightOf="@id/lays"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"/>
+
+
+
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:text="Haircut"
+                            android:numStars="5"
+                            android:layout_marginLeft="20dp"
+                            android:id="@+id/ratingbar"
+                            android:layout_toRightOf="@+id/lays"
+                            android:rating="5"
+                            android:background="@color/white"
+                            android:scaleX=".5"
+                            android:scaleY=".5"
+                            android:layout_centerHorizontal="true"
+                            android:transformPivotX="0dp"
+                            android:transformPivotY="0dp"
+                            android:isIndicator="true"
+                            android:layout_marginTop="2dp"
+                            android:layout_below="@+id/name"
+                            android:textStyle="normal"
+                            ></RatingBar>
+
+
+
+
+
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lay_loc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relative"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_location"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginLeft="-5dp"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_location"
+
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:drawablePadding="10dp"
+                            android:text="Dhamnod Dhar"
+                            android:textColor="@color/black"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/tv_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/exp"
+                        android:layout_below="@+id/lay_loc">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Experience     "
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:id="@+id/experience"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4 Years"
+                            android:textColor="@color/black"
+
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/experience"
+                            android:textSize="16sp"/>
+
+                    </RelativeLayout>
+
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:id="@+id/bg"
+                        android:background="@drawable/background_border15"
+                        android:orientation="vertical"
+                        android:layout_below="@id/exp"
+                        android:padding="7dp"
+                        android:backgroundTint="@color/white"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Freeelance with 4 years experience"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12dp"
+                            android:textAlignment="textStart"
+                            android:textStyle="normal" />
+
+
+                        <TextView
+                            android:id="@+id/tv_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/lay_images"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/bg"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp">
+
+                        <TextView
+                            android:id="@+id/tv_images_heading"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+
+                            android:background="@drawable/background_border15"
+                            android:layout_gravity="center_vertical"
+                            android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                            android:drawablePadding="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="CERTIFICATION"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+
+
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/lay1"
+                        android:layout_below="@+id/lay_images"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="vertical">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="1"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/card_viewshape"
+                            android:paddingTop="10dp"
+                            android:backgroundTint="@color/quantum_orange"
+                            android:paddingBottom="10dp"
+
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:layout_height="50dp">
+                            <!--bg_home-->
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:weightSum="1"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_weight=".8"
+                                    android:layout_width="0dp"
+                                    android:text="Services List"
+                                    android:textColor="@color/white"
+                                    android:layout_gravity="center_vertical"
+                                    android:textSize="16dp"
+                                    android:layout_marginLeft="70dp"
+                                    android:paddingLeft="10dp"
+                                    android:padding="10dp"
+                                    android:textStyle="bold"
+                                    android:layout_height="40dp"
+                                    tools:ignore="Suspicious0dp" />
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_weight=".2"
+                                    android:src="@drawable/ic_chevron_right_black_24dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_height="30dp"
+                                    tools:ignore="Suspicious0dp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+
+                    </FrameLayout>
+
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="bottom"
+                         android:layout_below="@id/lay1"
+                        android:layout_marginBottom="10dp"
+
+                        android:background="@drawable/background_final"
+                        android:backgroundTint="@color/black"
+                        android:text="next"
+                        android:layout_marginTop="50dp"
+                        android:id="@+id/btn_next"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"/>
+
+
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

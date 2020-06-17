@@ -85,8 +85,8 @@ androidx.appcompat.widget.SearchView  searchView;
       //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
 
-       list = new ArrayList<>();
-       list.add("Freelancer");
+        list = new ArrayList<>();
+        list.add("Freelancer");
         list.add("Company1");
         list.add("Company2");
         list.add("Men Freelancer");
