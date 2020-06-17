@@ -26,7 +26,6 @@
                 android:orientation="vertical">
 
 
-
                 <LinearLayout
                     android:id="@+id/lay_details"
                     android:layout_width="match_parent"
@@ -42,21 +41,19 @@
                         android:orientation="vertical">
 
 
-
-
                         <EditText
-                            android:id="@+id/et_name"
+                            android:id="@+id/et_firstname"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginRight="20dp"
                             android:layout_weight=".50"
-                            android:drawableRight="@drawable/ic_account_circle_black_24dp"
                             android:background="@drawable/background_border15"
+                            android:drawableRight="@drawable/ic_account_circle_black_24dp"
+                            android:hint="First Name"
                             android:inputType="textCapWords"
                             android:paddingLeft="10dp"
-                            android:hint="Name"
                             android:paddingTop="12dp"
                             android:paddingRight="12dp"
                             android:paddingBottom="12dp"
@@ -67,6 +64,32 @@
                             android:textSize="13dp"
                             android:textStyle="normal"
                             tools:ignore="Suspicious0dp" />
+
+
+                        <EditText
+                            android:id="@+id/et_lastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight=".50"
+                            android:background="@drawable/background_border15"
+                            android:drawableRight="@drawable/ic_account_circle_black_24dp"
+                            android:hint="Last Name"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="12dp"
+                            android:paddingTop="12dp"
+                            android:paddingRight="12dp"
+                            android:paddingBottom="12dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            tools:ignore="Suspicious0dp" />
+
 
 
                         <EditText
@@ -77,11 +100,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
                             android:layout_weight=".50"
-                            android:drawableRight="@drawable/ic_email_black_24dp"
                             android:background="@drawable/background_border15"
+                            android:drawableRight="@drawable/ic_email_black_24dp"
+                            android:hint="Email Address"
                             android:inputType="textEmailAddress"
                             android:paddingLeft="12dp"
-                            android:hint="Email Address"
                             android:paddingTop="12dp"
                             android:paddingRight="12dp"
                             android:paddingBottom="12dp"
@@ -94,7 +117,6 @@
                             tools:ignore="Suspicious0dp" />
 
 
-
                         <EditText
                             android:id="@+id/et_mobile"
                             android:layout_width="match_parent"
@@ -103,10 +125,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
                             android:layout_weight=".50"
-                            android:drawableRight="@drawable/ic_phone_iphone_black_24dp"
                             android:background="@drawable/background_border15"
-                            android:inputType="number"
+                            android:drawableRight="@drawable/ic_phone_iphone_black_24dp"
                             android:hint="Mobile"
+                            android:inputType="number"
                             android:paddingLeft="10dp"
                             android:paddingTop="12dp"
                             android:paddingRight="10dp"
@@ -151,7 +173,6 @@
                                 android:orientation="vertical">
 
 
-
                                 <TextView
                                     android:id="@+id/tv_dob"
                                     android:layout_width="match_parent"
@@ -188,45 +209,37 @@
                             android:textSize="15dp" />
 
 
-
-
                         <RelativeLayout
                             android:id="@+id/l55"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:orientation="horizontal"
                             android:paddingLeft="30dp"
                             android:paddingRight="30dp"
-                            android:weightSum="1"
 
-                            android:layout_marginTop="10dp"
-                            >
-
-
-
-
+                            android:weightSum="1">
 
 
                             <LinearLayout
+                                android:id="@+id/lay_male"
                                 android:layout_width="130dp"
                                 android:layout_height="120dp"
                                 android:layout_weight=".4"
-                                android:id="@+id/lay_male"
-                                android:orientation="vertical"
                                 android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white">
+                                android:backgroundTint="@color/white"
+                                android:orientation="vertical">
 
                                 <LinearLayout
                                     android:id="@+id/lay1"
                                     android:layout_width="70dp"
                                     android:layout_height="70dp"
-                                    android:orientation="vertical"
-                                    android:background="@drawable/circle_profileupload"
                                     android:layout_gravity="center"
-                                    android:padding="10dp"
                                     android:layout_marginTop="6dp"
+                                    android:background="@drawable/circle_profileupload"
                                     android:gravity="center"
-                                    >
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
 
                                     <ImageView
                                         android:layout_width="70dp"
@@ -236,13 +249,7 @@
                                         android:src="@drawable/men_image" />
 
 
-
-
-
-
                                 </LinearLayout>
-
-
 
 
                                 <!--<View-->
@@ -255,39 +262,37 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Male"
-
                                     android:layout_gravity="center"
+
                                     android:layout_marginTop="10dp"
+                                    android:text="Male"
                                     android:textColor="@color/black"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
-
 
 
                             <LinearLayout
                                 android:layout_width="130dp"
                                 android:layout_height="120dp"
-                                android:layout_weight=".4"
-                                android:layout_gravity="end"
-                                android:gravity="end"
                                 android:layout_alignParentEnd="true"
-                                android:orientation="vertical"
+                                android:layout_gravity="end"
+                                android:layout_weight=".4"
                                 android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white">
+                                android:backgroundTint="@color/white"
+                                android:gravity="end"
+                                android:orientation="vertical">
 
                                 <LinearLayout
                                     android:id="@+id/lay2"
                                     android:layout_width="70dp"
                                     android:layout_height="70dp"
-                                    android:orientation="vertical"
-                                    android:background="@drawable/circle_profileupload"
                                     android:layout_gravity="center"
-                                    android:padding="10dp"
                                     android:layout_marginTop="6dp"
+                                    android:background="@drawable/circle_profileupload"
                                     android:gravity="center"
-                                    >
+                                    android:orientation="vertical"
+                                    android:padding="10dp">
 
                                     <ImageView
                                         android:layout_width="70dp"
@@ -297,13 +302,7 @@
                                         android:src="@drawable/woman_image" />
 
 
-
-
-
-
                                 </LinearLayout>
-
-
 
 
                                 <!--<View-->
@@ -316,26 +315,19 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Female"
-
                                     android:layout_gravity="center"
+
                                     android:layout_marginTop="10dp"
+                                    android:text="Female"
                                     android:textColor="@color/black"
-                                    android:textSize="16sp"/>
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
-
-
-
-
 
 
                         </RelativeLayout>
 
 
-
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -346,111 +338,24 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="60dp"
-                                android:layout_weight="1"
                                 android:layout_marginLeft="20dp"
-                                android:layout_marginRight="20dp"
                                 android:layout_marginTop="10dp"
-                                android:orientation="vertical"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white">
+                                android:backgroundTint="@color/white"
+                                android:orientation="vertical">
 
 
                                 <EditText
-                                    android:id="@+id/et_pan"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_weight=".50"
-                                    android:hint="Pan Card No."
-                                    android:inputType="number"
-                                    android:paddingLeft="10dp"
-                                    android:paddingTop="12dp"
-                                    android:paddingRight="10dp"
-                                    android:paddingBottom="12dp"
-                                    android:scrollHorizontally="true"
-                                    android:singleLine="true"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="13dp"
-                                    android:textStyle="normal"
-                                    tools:ignore="Suspicious0dp" />
-
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingBottom="5dp"
-                            android:weightSum="1">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="60dp"
-                                android:layout_weight="1"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginRight="20dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white">
-
-                                <EditText
-                                    android:id="@+id/et_aadhar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight=".50"
-                                    android:hint="Aadhar No."
-                                    android:inputType="number"
-                                    android:paddingLeft="10dp"
-                                    android:paddingTop="12dp"
-                                    android:paddingRight="10dp"
-                                    android:paddingBottom="12dp"
-                                    android:scrollHorizontally="true"
-                                    android:singleLine="true"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="13dp"
-                                    android:textStyle="normal"
-                                    tools:ignore="Suspicious0dp" />
-
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingBottom="5dp"
-                            android:weightSum="1">
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="60dp"
-                                android:layout_weight="1"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginRight="20dp"
-                                android:layout_marginTop="10dp"
-                                android:orientation="vertical"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white">
-
-
-                                <EditText
-                                    android:id="@+id/et_city"
+                                    android:id="@+id/et_address"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:layout_weight=".50"
+                                    android:hint="Address"
                                     android:inputType="textCapWords"
                                     android:paddingLeft="10dp"
-                                    android:hint="City"
                                     android:paddingTop="12dp"
                                     android:paddingRight="10dp"
                                     android:paddingBottom="12dp"
@@ -463,44 +368,28 @@
                                     tools:ignore="Suspicious0dp" />
 
 
-
-
-                                <Button
-                                    android:id="@+id/btn_save"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_below="@id/lay_ediittext"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginLeft="50dp"
-                                    android:layout_marginTop="30dp"
-                                    android:layout_marginRight="50dp"
-                                    android:layout_marginBottom="30dp"
-                                    android:background="@drawable/btnback"
-                                    android:backgroundTint="@color/quantum_orange"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:foreground="?attr/selectableItemBackground"
-                                    android:text="SAVE"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="18sp"
-                                    android:visibility="gone" />
-
                             </LinearLayout>
-
-
-
 
 
                         </LinearLayout>
 
-
-
-
-
-
-
-
-
-
+                        <Button
+                            android:id="@+id/btn_save"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_below="@id/lay_ediittext"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginRight="50dp"
+                            android:layout_marginBottom="30dp"
+                            android:background="@drawable/btnback"
+                            android:backgroundTint="@color/quantum_orange"
+                            android:fontFamily="sans-serif-medium"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:text="SAVE"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
 
 
                         <!--<View-->
