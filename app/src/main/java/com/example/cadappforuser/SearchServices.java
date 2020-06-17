@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SearchServices extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+       RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
 
     List<String> moviesList;

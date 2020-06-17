@@ -17,6 +17,10 @@
         and approved by you first.
     </string>
 
+    <string name="search">
+        Search by services,companies,name
+    </string>
+
 
     <string name="services">
        first male services then female then category then sub category

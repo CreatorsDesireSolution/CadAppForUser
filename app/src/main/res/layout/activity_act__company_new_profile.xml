@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Act_FreelancerProfile">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Freelancer"
+                android:text="Company"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Name              :"
+                    android:text="Name                      :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -84,20 +84,20 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/Gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Gender            :"
-                    android:textSize="16sp"
+                    android:text="No. of Staff            :"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:id="@+id/Gender"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female"
+                    android:text="20"
                     android:textColor="@color/black"
 
                     android:layout_marginLeft="30dp"
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Age                  :"
+                    android:text="Age Of Company   :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -147,7 +147,7 @@
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:text="Rating             :"
+                    android:text="Rating                      :"
                     android:textSize="16sp" />
 
 
@@ -182,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Location         :"
+                    android:text="Location                 :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -192,7 +192,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dhamnod (Dhar)"
+                    android:text="Indore"
                     android:layout_marginLeft="30dp"
                     android:textColor="@color/black"
 
@@ -202,33 +202,6 @@
             </RelativeLayout>
 
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="Experience     :"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:id="@+id/experience"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4 Years"
-                    android:textColor="@color/black"
-
-                    android:layout_marginLeft="30dp"
-                    android:layout_toRightOf="@+id/experience"
-                    android:textSize="16sp"/>
-
-            </RelativeLayout>
 
 
             <RelativeLayout
@@ -241,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Background   :"
+                    android:text="Background           :"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -269,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Certification  :"
+                    android:text="Certification         :"
                     android:textSize="16sp"
                     android:id="@+id/certification"
                     android:textColor="@color/black"

@@ -26,50 +26,52 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="18dp"
             android:layout_marginRight="20dp"
-            android:background="#FFF"
             app:cardCornerRadius="6dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
-                <SearchView
-                    android:id="@+id/searchview"
+                <androidx.appcompat.widget.SearchView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="Search Company or Freelancer" />
+                    android:id="@+id/searchview"
+                    app:queryHint="Search by services,companies,name"
+                    app:searchIcon="@drawable/ic_search_black_24dp"
 
+                    />
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <ListView
-            android:id="@+id/mylist"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homerecyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:layout_below="@id/card"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            />
 
 
         <TextView
             android:id="@+id/feat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mylist"
+            android:layout_below="@id/homerecyclerview"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="Near by freelancer"
+            android:text="Near by Freelancer"
             android:textColor="@color/quantum_orange"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="normal"></TextView>
 
         <TextView
             android:id="@+id/seeAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/mylist"
+            android:layout_below="@id/homerecyclerview"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="20dp"
@@ -85,7 +87,10 @@
             android:layout_below="@+id/seeAll"
             android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
 
-
+   <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/quantum_grey"/>
         <TextView
             android:id="@+id/frella"
             android:layout_width="wrap_content"
@@ -93,9 +98,9 @@
             android:layout_below="@id/recycleView"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="Near by companies"
+            android:text="Near by Companies"
             android:textColor="@color/quantum_orange"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="normal"></TextView>
 
         <TextView
@@ -128,7 +133,7 @@
             android:layout_marginTop="10dp"
             android:text="Services"
             android:textColor="@color/quantum_orange"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="normal"></TextView>
 
         <TextView

@@ -1,12 +1,12 @@
-package com.example.cadappforuser.ServiceModel;
+package com.example.cadappforuser.companymodel;
 
-public class NewModel {
+public class CompanyNewModel {
 
     int image;
     String name;
     float rating;
 
-    public NewModel(int image, String name, float rating) {
+    public CompanyNewModel(int image, String name, float rating) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -38,3 +38,5 @@ public class NewModel {
         this.rating = rating;
     }
 }
+
+

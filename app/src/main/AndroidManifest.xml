@@ -12,8 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Act_FreelancerProfile"></activity>
-        <activity android:name=".Act_CustomerNewHome" />
+        <activity android:name=".Act_Logout"></activity>
+        <activity android:name=".Act_CustomerProfileEdit" />
+        <activity android:name=".Act_CompanyNewProfile" />
+        <activity android:name=".Act_FreelancerProfile" />
+        <activity android:name=".SplashScreen" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
@@ -101,7 +104,7 @@
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Act_CustomerNewHome"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
