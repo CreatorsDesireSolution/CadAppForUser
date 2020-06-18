@@ -31,15 +31,15 @@ public class ServicesListActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycle);
         servicesListModelArrayList=new ArrayList<>();
 
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Facial"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"250","Lorem Ipsum","Hair Styling"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"550","Lorem Ipsum","Hair Wash"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"650","Lorem Ipsum","Hair Spa"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"150","Lorem Ipsum","Hair cut"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"850","Lorem Ipsum","Hair Styling"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"50","Lorem Ipsum","Hair Wash"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"150","Lorem Ipsum","Hair Cut"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Face Massage"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Facial","0","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"250","Lorem Ipsum","Hair Styling","1","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"550","Lorem Ipsum","Hair Wash","2","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"650","Lorem Ipsum","Hair Spa","3","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"150","Lorem Ipsum","Hair cut","4","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"850","Lorem Ipsum","Hair Styling","5","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"50","Lorem Ipsum","Hair Wash","6","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"150","Lorem Ipsum","Hair Cut","7","0"));
+        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Face Massage","8","0"));
 
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         ServicesListAdapter servicesListAdapter=new ServicesListAdapter(this,servicesListModelArrayList);

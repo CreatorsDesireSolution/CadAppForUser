@@ -3,13 +3,15 @@ package com.example.cadappforuser.adapter;
 public class FevListModel {
 
     int image;
-    String price,sample,name;
+    String price,sample,name,key_id,fav_status;
 
-    public FevListModel(int image, String price, String sample, String name) {
+    public FevListModel(int image, String price, String sample, String name,String key_id,String fav_status) {
         this.image = image;
         this.price = price;
         this.sample = sample;
         this.name = name;
+        this.key_id=key_id;
+        this.fav_status=fav_status;
     }
 
     public int getImage() {
@@ -42,6 +44,22 @@ public class FevListModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getKey_id() {
+        return key_id;
+    }
+
+    public void setKey_id(String key_id) {
+        this.key_id = key_id;
+    }
+
+    public String getFav_status() {
+        return fav_status;
+    }
+
+    public void setFav_status(String fav_status) {
+        this.fav_status = fav_status;
     }
 }
 

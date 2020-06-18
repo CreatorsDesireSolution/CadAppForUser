@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.R;
+import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.model.ServicesListModel;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class AddFevAdapter extends RecyclerView.Adapter<AddFevAdapter.AddFevAdap
 
     Context context;
     List<FevListModel> fevListModels;
+    private FavDB favDB;
 
     public AddFevAdapter(Context context, List<FevListModel> fevListModels) {
         this.context = context;
@@ -31,6 +33,7 @@ public class AddFevAdapter extends RecyclerView.Adapter<AddFevAdapter.AddFevAdap
 
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_fev,parent,false);
         AddFevAdapter.AddFevAdapterViewHolder viewHolder=new AddFevAdapter.AddFevAdapterViewHolder(view);
+        favDB = new FavDB(context);
         return  viewHolder;
     }
 
@@ -61,7 +64,25 @@ public class AddFevAdapter extends RecyclerView.Adapter<AddFevAdapter.AddFevAdap
             imageView=itemView.findViewById(R.id.serviceListServiceImage);
             price=itemView.findViewById(R.id.serviceListServicePrice);
             name=itemView.findViewById(R.id.serviceListServiceName);
+            fevicon=itemView.findViewById(R.id.fevicon);
             sample=itemView.findViewById(R.id.serviceListServiceSample);
+
+            fevicon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    FevListModel fevListModel=fevListModels.get(position);
+                    favDB.remove_fav(fevListModel.getKey_id());
+                    removeItem(position);
+                }
+            });
+
         }
+    }
+
+    private void removeItem(int position) {
+        fevListModels.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position,fevListModels.size());
     }
 }
