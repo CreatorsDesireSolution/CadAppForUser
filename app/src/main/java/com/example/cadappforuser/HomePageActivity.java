@@ -23,6 +23,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     DrawerLayout mDrawerLayout;
     RecyclerView recyclerView,recyclerView1,recyclerView2;
     ImageView women,man;
-androidx.appcompat.widget.SearchView  searchView;
+    androidx.appcompat.widget.SearchView  searchView;
     float val = Float.parseFloat("4");
     String freelancer;
     List<String> list;
@@ -75,6 +76,7 @@ androidx.appcompat.widget.SearchView  searchView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
+
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
@@ -91,6 +93,16 @@ androidx.appcompat.widget.SearchView  searchView;
        // homerecyclerview = findViewById(R.id.homerecyclerview);
       //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
+
+        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
+        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+// set the hint text color
+        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+// set the text color
+        autoComplete.setTextColor(getResources().getColor(R.color.black));
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -261,9 +273,6 @@ androidx.appcompat.widget.SearchView  searchView;
             case R.id.nav_add_fev:
                 startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
                 break;
-
-
-
 
 
 

@@ -22,7 +22,7 @@ public class SelectHomeOrShop extends AppCompatActivity {
         btnShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(SelectHomeOrShop.this,HomeAndShopLocation.class);
+                Intent intent=new Intent(SelectHomeOrShop.this,Act_ShopLocation.class);
                 startActivity(intent);
             }
         });
