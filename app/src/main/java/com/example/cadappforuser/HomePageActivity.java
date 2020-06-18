@@ -24,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
@@ -69,6 +70,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
     AllServicesAdapter allServicesAdapter;
+    TextView txtCurrentLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,11 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
+
+        txtCurrentLocation=findViewById(R.id.txtLocation);
+
+        Intent intent=getIntent();
+        txtCurrentLocation.setText(intent.getStringExtra("address"));
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
@@ -146,7 +153,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 
 
-       allServicesAdapter=new AllServicesAdapter(HomePageActivity.this,allServiceModels);
+        allServicesAdapter=new AllServicesAdapter(HomePageActivity.this,allServiceModels);
         LinearLayoutManager layoutManager2=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setHasFixedSize(true);
