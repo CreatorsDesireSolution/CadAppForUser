@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
@@ -51,8 +54,9 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__home_for_customer_shop);
 
-     //   toolbar=findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        toolbar=findViewById(R.id.toolbar);
+       setSupportActionBar(toolbar);
+
         context = this;
 
         recyclerView=findViewById(R.id.recycleView);
@@ -65,6 +69,19 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         txtCurrentLocation=findViewById(R.id.txtLocation);
         Intent intent=getIntent();
         txtCurrentLocation.setText(intent.getStringExtra("address"));
+
+        searchView.setIconifiedByDefault(false);
+      //  searchView.setQueryHint("Search");
+        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
+        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+// set the hint text color
+        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+// set the text color
+        autoComplete.setTextColor(getResources().getColor(R.color.black));
+
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -128,12 +145,12 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        if(Build.VERSION.SDK_INT>=21){
-            Window window=this.getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorAccent));
-        }
+//        if(Build.VERSION.SDK_INT>=21){
+//            Window window=this.getWindow();
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            window.setStatusBarColor(this.getResources().getColor(R.color.colorAccent));
+//        }
 
 
     }
