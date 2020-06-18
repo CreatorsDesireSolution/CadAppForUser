@@ -48,7 +48,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     DrawerLayout mDrawerLayout;
     RecyclerView recyclerView,recyclerView1,recyclerView2;
     ImageView women,man;
-androidx.appcompat.widget.SearchView  searchView;
+    androidx.appcompat.widget.SearchView  searchView;
     float val = Float.parseFloat("4");
     String freelancer;
     List<String> list;
@@ -73,6 +73,7 @@ androidx.appcompat.widget.SearchView  searchView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
+
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
@@ -254,9 +255,6 @@ androidx.appcompat.widget.SearchView  searchView;
             case R.id.nav_add_fev:
                 startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
                 break;
-
-
-
 
 
 
