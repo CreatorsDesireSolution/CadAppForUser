@@ -1,5 +1,9 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,10 +16,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,8 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class HomeAndShopLocation extends AppCompatActivity implements OnMapReadyCallback {
-
+public class Act_ShopLocation extends AppCompatActivity implements OnMapReadyCallback {
 
     EditText textView;
     Geocoder geocoder;
@@ -42,7 +41,6 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
     ImageView btnAddress;
     GoogleMap mMap;
     private static  final int REQUEST_CODE_LOCATION_PERMISSION = 1;
-
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -50,7 +48,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_location);
+        setContentView(R.layout.activity_act__shop_location);
 
         btnAddress=findViewById(R.id.btn_address);
 
@@ -75,9 +73,9 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
                 if(location!=null){
                     currentLocation=location;
                     Log.d("curent","current"+currentLocation);
-                    Toast.makeText(HomeAndShopLocation.this, ""+currentLocation.getLatitude()+" "+currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Act_ShopLocation.this, ""+currentLocation.getLatitude()+" "+currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                    mapFragment.getMapAsync(HomeAndShopLocation.this);
+                    mapFragment.getMapAsync(Act_ShopLocation.this);
 
 
                 }
@@ -87,6 +85,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap=googleMap;
         LatLng latLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
         mMap.addMarker(new MarkerOptions().position(latLng));
@@ -107,7 +106,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(HomeAndShopLocation.this,HomePageActivity.class);
+                    Intent intent=new Intent(Act_ShopLocation.this,Act_HomeForCustomerShop.class);
                     intent.putExtra("address",fullAddress);
                     startActivity(intent);
                 }
@@ -128,4 +127,4 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
         }
     }
 
-}
+    }

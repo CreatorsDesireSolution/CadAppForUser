@@ -3,6 +3,7 @@ package com.example.cadappforuser;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
@@ -40,6 +42,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
 
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
+    TextView txtCurrentLocation;
 
 
 
@@ -48,8 +51,8 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__home_for_customer_shop);
 
-        toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+     //   toolbar=findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         context = this;
 
         recyclerView=findViewById(R.id.recycleView);
@@ -58,6 +61,28 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         searchView = findViewById(R.id.searchview);
         mDrawerLayout=findViewById(R.id.drawer_layout);
         NavigationView navigationView=findViewById(R.id.navigation_view);
+
+        txtCurrentLocation=findViewById(R.id.txtLocation);
+        Intent intent=getIntent();
+        txtCurrentLocation.setText(intent.getStringExtra("address"));
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                newAdapter.getFilter().filter(newText);
+                companyNewAdapter.getFilter().filter(newText);
+
+                return true;
+            }
+        });
+
+
 
         newModels = new ArrayList<>();
         newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
