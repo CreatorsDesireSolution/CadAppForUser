@@ -106,7 +106,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(HomeAndShopLocation.this,LocationOfUserOrShop.class);
+                    Intent intent=new Intent(HomeAndShopLocation.this,HomePageActivity.class);
                     intent.putExtra("address",fullAddress);
                     startActivity(intent);
                 }
