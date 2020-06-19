@@ -19,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.ServiceModel.NewModel;
+import com.example.cadappforuser.adapter.CompanyNewAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.freelanceradapter.ServicesFeturesAndCategoriesHomeAdapter;
@@ -39,8 +41,13 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
 
-    ArrayList<CompanyNewModel> companyNewModels = new ArrayList<>();
-    ArrayList<ServicesFreelancerHomeModel> newAdapters = new ArrayList<>();
+    ArrayList<NewModel> newModels;
+    ArrayList<CompanyNewModel> companyNewModels;
+    NewAdapter newAdapter;
+    CompanyNewAdapter companyNewAdapter;
+
+
+
 
     SearchView searchView;
     @Override
@@ -65,39 +72,75 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
 
-        servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
-        servicesFreelancerHomeModelArrayList=new ArrayList<>();
+//        servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
+//        servicesFreelancerHomeModelArrayList=new ArrayList<>();
+//
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//
+//        ServicesFeturesAndCategoriesHomeAdapter servicesFeturesAndCategoriesHomeAdapter=new ServicesFeturesAndCategoriesHomeAdapter(FreelancerHomePageActivity.this,servicesFeatureAndCategoriesHomeModelArrayList);
+//        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
+//
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//
+//
+//       com.example.cadappforuser.freelanceradapter.ServicesFreelancerAdapterHome servicesFreelancerAdapterHome=new ServicesFreelancerAdapterHome(FreelancerHomePageActivity.this,servicesFreelancerHomeModelArrayList);
+//        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+//        recyclerView1.setLayoutManager(layoutManager1);
+//        recyclerView1.setHasFixedSize(true);
+//        recyclerView1.setAdapter(servicesFreelancerAdapterHome);
 
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 
-        ServicesFeturesAndCategoriesHomeAdapter servicesFeturesAndCategoriesHomeAdapter=new ServicesFeturesAndCategoriesHomeAdapter(FreelancerHomePageActivity.this,servicesFeatureAndCategoriesHomeModelArrayList);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(layoutManager);
+
+        newModels = new ArrayList<>();
+        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
+        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
+        newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
+        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
+        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
+        newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
+        newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
+
+        newAdapter=new NewAdapter(FreelancerHomePageActivity.this,newModels);
+        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager3);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
-
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+        recyclerView.setAdapter(newAdapter);
 
 
-       com.example.cadappforuser.freelanceradapter.ServicesFreelancerAdapterHome servicesFreelancerAdapterHome=new ServicesFreelancerAdapterHome(FreelancerHomePageActivity.this,servicesFreelancerHomeModelArrayList);
-        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView1.setLayoutManager(layoutManager1);
+        companyNewModels = new ArrayList<>();
+
+        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
+        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
+
+        companyNewAdapter=new CompanyNewAdapter(FreelancerHomePageActivity.this,companyNewModels);
+        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView1.setLayoutManager(linearLayoutManager4);
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(servicesFreelancerAdapterHome);
+        recyclerView1.setAdapter(companyNewAdapter);
+
+
 
 
 
