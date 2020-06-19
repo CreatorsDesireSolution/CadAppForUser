@@ -1,8 +1,5 @@
 package com.example.cadappforuser;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +8,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Act_FreelancerProfile extends AppCompatActivity {
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
-    Button btn_serviceslist,btn_next;
+public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
+
     FrameLayout lay1;
     TextView background11;
     boolean isOpen = false;
@@ -23,14 +22,14 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.freelancernewprofile);
+        setContentView(R.layout.freelancernewprofileonltshow);
 
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Profile");
 
         //btn_serviceslist = findViewById(R.id.serviceslist);
-        btn_next = findViewById(R.id.btn_next);
+
         lay1 = findViewById(R.id.lay1);
         tvbg= findViewById(R.id.tvbg);
         background11 = findViewById(R.id.background11);
@@ -38,16 +37,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
-                startActivity(intent);
-            }
-        });
-
-
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
+                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 startActivity(intent);
             }
         });

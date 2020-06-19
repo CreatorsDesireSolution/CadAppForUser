@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
+import com.example.cadappforuser.Act_CompanyNewProfileOnlyShow;
 import com.example.cadappforuser.Act_FreelancerProfile;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
@@ -58,7 +59,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
             @Override
             public void onItemClickListner(View v, int position) {
 
-                context.startActivity(new Intent(context, Act_CompanyNewProfile.class));
+                context.startActivity(new Intent(context, Act_CompanyNewProfileOnlyShow.class));
 
 
             }

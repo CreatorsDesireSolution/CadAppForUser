@@ -24,7 +24,7 @@
             android:text="Current Location"
             android:textColor="#000"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_below="@+id/toolbar"
             android:id="@+id/txtLocation"></TextView>
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtLocation"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="12dp"
             android:layout_marginRight="20dp"
             app:cardCornerRadius="6dp">
 
