@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/etSName"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="45dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
@@ -32,34 +32,33 @@
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="110dp"
-         android:lines="5"
-        android:ems="5"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/background2"
+        android:ems="5"
         android:hint="Description"
         android:inputType="textEmailAddress"
+        android:lines="5"
         android:paddingLeft="13dp"
         android:textColor="#8B000000"
         android:textColorHint="#68000000"
         android:textSize="15sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSName"
-        app:layout_constraintVertical_bias="0.024"></EditText>
+        app:layout_constraintVertical_bias="0.009"></EditText>
 
     <EditText
         android:id="@+id/etSetPrice"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="45dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background2"
         android:hint="Set Price"
         android:inputType="textEmailAddress"
@@ -68,27 +67,38 @@
         android:textColorHint="#68000000"
         android:textSize="15sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddSevice"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5"
-        app:layout_constraintVertical_bias="0.086"></EditText>
+        app:layout_constraintVertical_bias="0.0"></EditText>
 
-    <Button
-        android:id="@+id/btnAddSevice"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/registerbtn_back"
-        android:text="ADD"
-        android:textColor="#FFF"
-        android:textStyle="bold"
+
+    <Spinner
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:id="@+id/spinner"
+        android:spinnerMode="dropdown"
+        android:background="@drawable/background2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.565"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSetPrice"
-        app:layout_constraintVertical_bias="0.299"></Button>
+        app:layout_constraintVertical_bias="0.066"></Spinner>
 
+    <Button
+        android:layout_width="270dp"
+        android:layout_height="45dp"
+        android:background="@drawable/btnback"
+        android:text="Add Services"
+        android:textColor="#FFF"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintVertical_bias="0.054"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

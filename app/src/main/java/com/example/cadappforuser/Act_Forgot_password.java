@@ -30,7 +30,7 @@ public class Act_Forgot_password extends AppCompatActivity {
         btn_passsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+                Intent intent = new Intent(getApplicationContext(),FreelancerHomePageActivity.class);
                 startActivity(intent);
             }
         });

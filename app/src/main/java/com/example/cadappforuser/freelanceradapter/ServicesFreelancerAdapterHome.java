@@ -37,7 +37,7 @@ public class ServicesFreelancerAdapterHome extends RecyclerView.Adapter<Services
       ServicesFreelancerHomeModel servicesFreelancerHomeModel=servicesFreelancerHomeModelList.get(position);
         holder.txtSample.setText(servicesFreelancerHomeModel.getSampleFreelancer());
         holder.txtPrice.setText("Rs."+servicesFreelancerHomeModel.getServicePriceFreelancer());
-        holder.txtName.setText(servicesFreelancerHomeModel.getServicePriceFreelancer());
+        holder.txtName.setText(servicesFreelancerHomeModel.getServiceNameFreelancer());
         holder.imageView.setImageResource(servicesFreelancerHomeModel.getImageFreelancer());
 
     }

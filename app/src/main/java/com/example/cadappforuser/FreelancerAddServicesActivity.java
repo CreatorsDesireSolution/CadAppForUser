@@ -7,42 +7,69 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FreelancerAddServicesActivity extends AppCompatActivity {
 Button btnService;
+
+Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancer_activity_add_services);
 
-      btnService=findViewById(R.id.btnAddSevice);
-      btnService.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              startActivity(new Intent(FreelancerAddServicesActivity.this,FreelancherAddNewServices.class));
-          }
-      });
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int width = displayMetrics.widthPixels;
-        int height = displayMetrics.heightPixels;
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Add Services");
+        spinner=findViewById(R.id.spinner);
+        List<String> list=new ArrayList<>();
+         list.add("Select Category");
+        list.add("RICA Waxing");
+        list.add("Honey Waxing");
+        list.add("Hair Color & Care");
+        list.add("Threading");
+        list.add("Waxing");
+        list.add("Facial, Cleanup & Detan");
+        list.add("Massage");
+        list.add("Pedicure & Manicure");
 
-        getWindow().setLayout((int) (width * .9), (int) (height * .5));
+        ArrayAdapter<String>arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                 spinner.setSelection(i);
+            }
 
-        WindowManager.LayoutParams params = getWindow().getAttributes();
-        params.gravity = Gravity.CENTER;
-        params.x = 0;
-        params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        params.dimAmount=0.7f;
-        params.y = -20;
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-        getWindow().setAttributes(params);
+            }
+        });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
 

@@ -60,8 +60,9 @@
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
         <activity android:name=".SignInActivity" />
         <activity
-            android:name=".FreelancerAddServicesActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:name=".FreelancerAddServicesActivity">
+
+        </activity>
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
@@ -108,7 +109,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -116,11 +124,7 @@
         <activity
             android:name=".Act_HomeForCustomerShop"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 
