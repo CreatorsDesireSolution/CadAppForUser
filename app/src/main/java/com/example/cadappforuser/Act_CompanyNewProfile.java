@@ -13,6 +13,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
     FrameLayout lay1;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
+                Intent intent = new Intent(getApplicationContext(),Act_SelectGenderForList.class);
                 startActivity(intent);
             }
         });
