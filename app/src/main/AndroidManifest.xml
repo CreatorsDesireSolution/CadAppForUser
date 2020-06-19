@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Act_CompanyNewProfileOnlyShow"></activity>
+        <activity android:name=".AddServiceSelectGender"></activity>
         <activity android:name=".ServicesListActivityForShow"></activity>
         <activity android:name=".Act_FreelancerProfileOnlyShow"></activity>
         <activity android:name=".Act_womenservicelist"></activity>

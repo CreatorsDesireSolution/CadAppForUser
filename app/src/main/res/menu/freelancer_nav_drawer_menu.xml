@@ -17,6 +17,11 @@
 
 
         <item
+            android:id="@+id/nav_add_services"
+            android:icon="@drawable/ic_plus"
+            android:title="Add Services" />
+
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_account_circle_black_24dp"
             android:title="Profile" />
@@ -42,10 +47,7 @@
             android:title="Term And Condition" />
 
 
-        <item
-            android:id="@+id/nav_add_services"
-            android:icon="@drawable/ic_plus"
-            android:title="Add Services" />
+
 
         <item
             android:id="@+id/nav_accepted_location"
