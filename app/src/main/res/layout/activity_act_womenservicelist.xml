@@ -37,7 +37,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".33"
-                android:layout_marginRight="10dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -58,9 +57,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/men_image" />
+                        android:src="@drawable/facial" />
 
 
                 </LinearLayout>
@@ -79,7 +78,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="waxing"
+                    android:text="RICA Waxing"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -90,6 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".33"
+                android:layout_marginLeft="10dp"
                 android:background="@color/white"
                 android:orientation="vertical">
 
@@ -110,9 +111,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/woman_image" />
+                        android:src="@drawable/womanfacial" />
 
 
                 </LinearLayout>
@@ -162,9 +163,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/woman_image" />
+                        android:src="@drawable/haircut" />
 
 
                 </LinearLayout>
@@ -183,7 +184,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="Hair Cut"
+                    android:text="Padicure"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -200,18 +201,22 @@
             android:id="@+id/l22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@color/lightgrey1"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingRight="20dp"
             android:weightSum="1">
 
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
+                android:layout_weight=".33"
+                android:layout_marginRight="10dp"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -231,9 +236,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/men_image" />
+                        android:src="@drawable/hairspa" />
 
 
                 </LinearLayout>
@@ -252,7 +257,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="BUDGET"
+                    android:text="Manicure"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -262,7 +267,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
+                android:layout_weight=".33"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -282,9 +288,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/woman_image" />
+                        android:src="@drawable/facial" />
 
 
                 </LinearLayout>
@@ -303,11 +309,65 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="WARRANT"
+                    android:text="Facial and Cleanup"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".33"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lay44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_profileupload"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_profileupload"
+                        android:backgroundTint="@color/white"
+                        android:padding="5dp"
+                        android:src="@drawable/hairwash" />
+
+
+                </LinearLayout>
+
+
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:background="@color/card_bg_dark"-->
+                <!--android:layout_height="2dp"/>-->
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Hair Color"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
 
 
         </LinearLayout>
@@ -316,18 +376,21 @@
             android:id="@+id/l44"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff"
+            android:background="@color/lightgrey1"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:weightSum="1">
 
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
+                android:layout_weight=".33"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -347,9 +410,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/men_image" />
+                        android:src="@drawable/facial" />
 
 
                 </LinearLayout>
@@ -368,7 +431,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="PARA"
+                    android:text="Hair cut"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -378,8 +441,10 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:orientation="vertical">
+                android:layout_weight=".33"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
 
                 <LinearLayout
                     android:id="@+id/lay6"
@@ -398,9 +463,9 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:background="@drawable/circle_profileupload"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/white"
                         android:padding="5dp"
-                        android:src="@drawable/woman_image" />
+                        android:src="@drawable/hairwash" />
 
 
                 </LinearLayout>
@@ -419,11 +484,64 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
-                    android:text="ALPHABETICAL"
+                    android:text="Contactless Threading"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".33"
+                android:background="@color/white"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lay66"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_profileupload"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/circle_profileupload"
+                        android:backgroundTint="@color/white"
+                        android:padding="5dp"
+                        android:src="@drawable/haircut" />
+
+
+                </LinearLayout>
+
+
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:background="@color/card_bg_dark"-->
+                <!--android:layout_height="2dp"/>-->
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="Massage"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
 
 
         </LinearLayout>

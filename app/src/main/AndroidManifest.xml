@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Act_womenservicelist"></activity>
+        <activity android:name=".Act_AboutUS"></activity>
+        <activity android:name=".Act_womenservicelist" />
         <activity android:name=".Act_SelectGenderForList" />
         <activity android:name=".Act_ShopLocation" />
         <activity android:name=".Act_AddToFev" />
@@ -61,10 +62,7 @@
         <activity android:name=".ServicesOffered" />
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
         <activity android:name=".SignInActivity" />
-        <activity
-            android:name=".FreelancerAddServicesActivity">
-
-        </activity>
+        <activity android:name=".FreelancerAddServicesActivity"></activity>
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
@@ -110,8 +108,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            >
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -123,9 +120,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Act_HomeForCustomerShop"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".MainActivity" />
 
         <meta-data

@@ -48,13 +48,13 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/circle_profileupload"
             android:padding="3dp"
-            android:backgroundTint="@color/quantum_grey">
+            android:backgroundTint="@color/white">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile_image"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:backgroundTint="@color/quantum_orange"
                 android:src="@drawable/profileimage"
                 />
@@ -118,7 +118,6 @@
                 android:layout_marginLeft="-5dp"
                 android:padding="3dp"
                 android:src="@drawable/ic_location"
-
                 android:textColor="@color/white" />
 
             <TextView
