@@ -273,6 +273,11 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             case R.id.nav_add_fev:
                 startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
                 break;
+            case  R.id.nav_aboutus:
+
+                startActivity(new Intent(HomePageActivity.this,Act_AboutUS.class));
+                break;
+
 
 
 
