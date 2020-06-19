@@ -19,6 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.adapter.NewAdapter;
+import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.freelanceradapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.freelanceradapter.ServicesFreelancerAdapterHome;
 import com.example.cadappforuser.modelfreelancer.ServicesFeatureAndCategoriesHomeModel;
@@ -36,6 +38,9 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
 
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
+
+    ArrayList<CompanyNewModel> companyNewModels = new ArrayList<>();
+    ArrayList<ServicesFreelancerHomeModel> newAdapters = new ArrayList<>();
 
     SearchView searchView;
     @Override
