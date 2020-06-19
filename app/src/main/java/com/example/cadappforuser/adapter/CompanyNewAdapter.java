@@ -68,12 +68,14 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return companyNewModels.size();
     }
 
     @Override
     public Filter getFilter() {
+
         return filter;
     }
 
