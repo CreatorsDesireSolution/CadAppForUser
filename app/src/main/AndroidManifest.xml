@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Act_ShopLocation"></activity>
+        <activity android:name=".Act_womenservicelist"></activity>
+        <activity android:name=".Act_SelectGenderForList" />
+        <activity android:name=".Act_ShopLocation" />
         <activity android:name=".Act_AddToFev" />
         <activity android:name=".Act_EditCustomerInformation" />
         <activity android:name=".Act_Logout" />
@@ -91,10 +93,9 @@
         <activity android:name=".ChatActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".ProfileActivity" />
-
-        <activity android:name=".SelectHomeOrShop"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-
+        <activity
+            android:name=".SelectHomeOrShop"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".HomePageActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -120,7 +121,6 @@
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
         <activity
             android:name=".Act_HomeForCustomerShop"
             android:theme="@style/Theme.AppCompat.NoActionBar">
