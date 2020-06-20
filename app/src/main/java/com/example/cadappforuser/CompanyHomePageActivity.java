@@ -123,7 +123,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 startActivity(new Intent(CompanyHomePageActivity.this,BackgoundOfCompanyActivity.class));
                 break;
             case R.id.nav_profile:
-                 //startActivity(new Intent(HomePageActivity.this,BarberInfo.class));
+                 startActivity(new Intent(CompanyHomePageActivity.this,CompanyPersonalProfile.class));
                 break;
             case R.id.nav_set_avalibilty:
                // startActivity(new Intent(HomePageActivity.this,SetAvalibiltyCustomActivity.class));
@@ -153,6 +153,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             case R.id.nav_show_staff_member:
                 startActivity(new Intent(CompanyHomePageActivity.this,ChoiceStaffOrComapnyOwner.class));
                 break;
+
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);

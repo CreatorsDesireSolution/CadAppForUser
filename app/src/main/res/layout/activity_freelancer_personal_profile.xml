@@ -44,7 +44,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:id="@+id/tv_edit"
+                android:drawableRight="@drawable/ic_pencil"/>
 
 
         </RelativeLayout>
