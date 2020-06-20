@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
+import com.example.cadappforuser.Act_FreelancerProfileOnlyShow;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
@@ -56,7 +57,7 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
             @Override
             public void onItemClickListner(View v, int position) {
 
-                context.startActivity(new Intent(context, Act_CompanyNewProfile.class));
+                context.startActivity(new Intent(context, Act_FreelancerProfileOnlyShow.class));
 
 
             }
