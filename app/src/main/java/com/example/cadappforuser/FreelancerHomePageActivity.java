@@ -20,11 +20,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.ServiceModel.NewModel;
+import com.example.cadappforuser.adapter.Ad_Company;
+import com.example.cadappforuser.adapter.Ad_Freelancer;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.freelanceradapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.freelanceradapter.ServicesFreelancerAdapterHome;
+import com.example.cadappforuser.model.Ad_Companymodel;
+import com.example.cadappforuser.model.Ad_freelancermodel;
 import com.example.cadappforuser.modelfreelancer.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.modelfreelancer.ServicesFreelancerHomeModel;
 import com.google.android.material.navigation.NavigationView;
@@ -45,7 +49,10 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
     ArrayList<CompanyNewModel> companyNewModels;
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
-
+   ArrayList<Ad_Companymodel> ad_companymodels;
+   ArrayList<Ad_freelancermodel> ad_freelancermodels;
+   Ad_Freelancer ad_freelancer;
+   Ad_Company ad_company;
 
 
 
@@ -108,37 +115,37 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
 
-        newModels = new ArrayList<>();
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
+        ad_freelancermodels = new ArrayList<>();
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon2,"Man Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon1,"Women",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Women Freelancer",5));
 
-        newAdapter=new NewAdapter(FreelancerHomePageActivity.this,newModels);
+        ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(newAdapter);
+        recyclerView.setAdapter(ad_freelancer);
 
 
-        companyNewModels = new ArrayList<>();
+        ad_companymodels = new ArrayList<>();
 
-        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.mansaloon,"Company1",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company2",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company3",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company4",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company5",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company6",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company7",5));
 
-        companyNewAdapter=new CompanyNewAdapter(FreelancerHomePageActivity.this,companyNewModels);
+        ad_company=new Ad_Company(FreelancerHomePageActivity.this,ad_companymodels);
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(companyNewAdapter);
+        recyclerView1.setAdapter(ad_company);
 
 
 
@@ -201,6 +208,10 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             case R.id.nav_accepted_location:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesProvide.class));
                 break;
+            case  R.id.nav_profile:
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfile.class));
+
+
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;

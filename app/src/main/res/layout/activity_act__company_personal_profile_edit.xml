@@ -166,23 +166,45 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
-                            android:background="@drawable/editborder"
                             android:backgroundTint="@color/white">
 
-                        <TextView
-                            android:id="@+id/tv_workperform"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
-                            android:drawablePadding="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:text="WORK PERFORM"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14dp"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/tv_workperform"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/editborder"
+                                android:backgroundTint="@color/white"
+                                android:layout_gravity="center_vertical"
+                                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                android:drawablePadding="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="WORK PERFORM"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14dp"
+                                android:textStyle="bold"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_no_of_staff"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@drawable/editborder"
+                                android:backgroundTint="@color/white"
+                                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+                                android:drawablePadding="10dp"
+                                android:layout_marginTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:layout_below="@id/tv_workperform"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="No. Of Staff"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14dp"
+                                android:textStyle="bold" />
+
 
                             <LinearLayout
                                 android:id="@+id/lay_workperform"
