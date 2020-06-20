@@ -1,191 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Act_CustomerProfileEdit">
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/lay_frm1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-
-
-    <FrameLayout
-        android:id="@+id/lay_prof"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:orientation="horizontal"
+   android:background="@color/white" >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:id="@+id/relative"
-        android:background="@drawable/curve2"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:id="@+id/lays"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/circle_profileupload"
-            android:padding="3dp"
-            android:backgroundTint="@color/white">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_profile_image"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:padding="10dp"
-                android:backgroundTint="@color/quantum_orange"
-                android:src="@drawable/profileimage"
-                />
-        </LinearLayout>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/tv_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:id="@+id/tv_editprofile"
-            android:textColor="@color/white"/>
+            android:fontFamily="sans-serif"
+            android:text="Profile"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
-        <TextView
+        <ImageButton
+            android:id="@+id/iv_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="Prachi Prajapat"
-            android:textSize="16sp"
-            android:id="@+id/name"
-            android:textColor="@color/white"
-            android:layout_toRightOf="@id/lays"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="prachiprajapat861@gmail.com"
-            android:textSize="16sp"
-            android:id="@+id/email"
-            android:layout_below="@+id/name"
-            android:textColor="@color/white"
-            android:layout_toRightOf="@id/lays"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"/>
-
-
-
-        <LinearLayout
-            android:id="@+id/lay_loc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_below="@id/email"
-
-            android:layout_toRightOf="@+id/lays"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif"
+           android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:background="@color/colorPrimaryDark"
+
             android:layout_marginRight="20dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:id="@+id/iv_location"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginLeft="-5dp"
-                android:padding="3dp"
-                android:src="@drawable/ic_location"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/tv_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:drawablePadding="10dp"
-                android:text="Dhamnod Dhar"
-                android:textColor="@color/white"
-                android:textSize="14dp" />
-
-            <TextView
-                android:id="@+id/tv_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:textColor="@color/white"
-                android:textSize="14dp" />
-        </LinearLayout>
+            android:src="@drawable/ic_mode_edit_black_24dp"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
 
     </RelativeLayout>
 
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2">
+
+
+    </androidx.constraintlayout.widget.Guideline>
+
+
+    <ImageView
+        android:id="@+id/imageView_upper"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_profileupload"
+        android:backgroundTint="@color/white"
+        android:padding="15dp"
+        android:src="@drawable/profileimage"
+        app:layout_constraintBottom_toBottomOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight=".2"
+        android:id="@+id/lay"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_upper"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/background111"
-            android:orientation="vertical"
-            android:layout_below="@id/relative"
-            android:padding="7dp"
-            android:backgroundTint="@color/white"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BACKGROUND"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12dp"
-                android:textAlignment="textStart"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/tv_background"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:ellipsize="end"
-                android:maxLines="2"
+                android:padding="5dp"
+                android:text="Prachi Prajpat"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_gravity="center"
                 android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="+919977952101"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="prachiprajapat861@gmail.com"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Female"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="02/06/1997"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/et_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:maxLines="1"
+                    android:layout_gravity="center"
+
+                    android:src="@drawable/ic_location"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Dhamnod (Dhar) 454552"
+                    android:textColor="@color/black"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/btnback"
+                android:backgroundTint="@color/black"
+                android:text="Back"
+
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
-
-    </RelativeLayout>
     </LinearLayout>
-    </FrameLayout>
-    </FrameLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
