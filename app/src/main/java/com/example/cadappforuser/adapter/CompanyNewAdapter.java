@@ -59,7 +59,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
             @Override
             public void onItemClickListner(View v, int position) {
 
-                context.startActivity(new Intent(context, Act_CompanyNewProfileOnlyShow.class));
+                context.startActivity(new Intent(context, Act_CompanyNewProfile.class));
 
 
             }

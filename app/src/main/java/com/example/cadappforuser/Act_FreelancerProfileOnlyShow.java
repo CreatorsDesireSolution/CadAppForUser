@@ -37,7 +37,7 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
+                Intent intent = new Intent(getApplicationContext(),FreelancerGenderSelectSeeList.class);
                 startActivity(intent);
             }
         });
