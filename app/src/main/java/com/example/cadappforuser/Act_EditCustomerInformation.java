@@ -3,6 +3,7 @@ package com.example.cadappforuser;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -20,6 +21,7 @@ public class Act_EditCustomerInformation extends AppCompatActivity {
     Calendar calendar;
     DatePickerDialog datePickerDialog;
     TextView tv_date_from, tv_date_to, tv_dob;
+    TextView tv_address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,20 @@ public class Act_EditCustomerInformation extends AppCompatActivity {
 
 
         tv_dob = findViewById(R.id.tv_dob);
+        tv_address = findViewById(R.id.tv_address);
+
+
+        tv_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CurrentLocation.class);
+                startActivity(intent);
+            }
+        });
+
+        Intent intent2=getIntent();
+        tv_address.setText(intent2.getStringExtra("address"));
+       // txtGender.setText(intent2.getStringExtra("gender"));
 
         tv_dob.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -250,7 +250,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 //startActivity(new Intent(HomePageActivity.this,SearchByNameOrServicesOrNearby.class));
                 break;
             case R.id.nav_profile:
-                 startActivity(new Intent(HomePageActivity.this,CustomerProfile.class));
+                 startActivity(new Intent(HomePageActivity.this,Act_CustomerProfileEdit.class));
                 break;
             case R.id.nav_history:
                 startActivity(new Intent(HomePageActivity.this,SearchServices.class));
@@ -274,9 +274,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
                 break;
             case  R.id.nav_aboutus:
-
                 startActivity(new Intent(HomePageActivity.this,Act_AboutUS.class));
                 break;
+            case  R.id.nav_contactus:
+                startActivity(new Intent(HomePageActivity.this,Act_ContactUs.class));
+                break;
+
+
 
 
 
