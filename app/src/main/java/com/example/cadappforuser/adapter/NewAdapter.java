@@ -56,10 +56,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
      holder.setItemClickListner(new ItemClickListner() {
          @Override
          public void onItemClickListner(View v, int position) {
-
              context.startActivity(new Intent(context, Act_FreelancerProfile.class));
-
-
          }
      });
     }

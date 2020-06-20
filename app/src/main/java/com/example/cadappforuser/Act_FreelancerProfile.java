@@ -38,7 +38,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
+                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
+                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 startActivity(intent);
             }
         });
