@@ -212,7 +212,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 break;
             case  R.id.nav_profile:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfile.class));
-
+            case R.id.nav_set_avalibilty:
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);

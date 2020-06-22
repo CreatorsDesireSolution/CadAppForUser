@@ -129,7 +129,7 @@ public class SignInActivity extends AppCompatActivity {
             permissionsNeeded.add("Location");
         if (!addPermission(permissionsList, Manifest.permission.INTERNET))
             permissionsNeeded.add("Internet");
-        
+
         if (!addPermission(permissionsList, Manifest.permission.CAMERA))
             permissionsNeeded.add("Camera");
         if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))

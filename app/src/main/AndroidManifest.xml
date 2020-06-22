@@ -45,6 +45,8 @@
         <activity android:name=".Act_AddToFev" />
         <activity android:name=".Act_EditCustomerInformation" />
         <activity android:name=".Act_Logout" />
+        <activity android:name=".Act_AboutUS"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Act_CustomerProfileEdit"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

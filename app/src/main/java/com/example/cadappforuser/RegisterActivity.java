@@ -26,13 +26,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -40,6 +46,8 @@ import java.io.InputStream;
 import java.util.Calendar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -53,11 +61,16 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView imageUserLogo;
     Bitmap bitmap;
     String encodeImage;
-    EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode;
+    EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode,etpassword;
     MarshMallowPermission marshMallowPermission;
     Activity activity;
     Context context;
     String deviceId;
+    BaseRequest baseRequest;
+    String firstname,lastname,email,DOB,mobilenumber,gender,address,referrelcode,password;
+    Act_Session act_session;
+
+
 
 
 
@@ -70,12 +83,14 @@ public class RegisterActivity extends AppCompatActivity {
         context = this;
         activity = this;
         marshMallowPermission = new MarshMallowPermission(activity);
+        act_session = new Act_Session(getApplicationContext());
 
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
 
         txtGender=findViewById(R.id.etGender);
+        etpassword= findViewById(R.id.etpassword);
         imageUserLogo=findViewById(R.id.userImageIcon);
         iv_camera = findViewById(R.id.iv_camera);
         etAddress=findViewById(R.id.etAddress);
@@ -96,8 +111,11 @@ public class RegisterActivity extends AppCompatActivity {
         months=months+1;
 
         final Intent intent=getIntent();
-        final String gender=intent.getStringExtra("gender");
+        gender = intent.getStringExtra("gender");
         txtGender.setText(gender);
+
+
+       // final String gender=intent.getStringExtra("gender");
 
 
         final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -145,7 +163,9 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         Intent intent2=getIntent();
-        etAddress.setText(intent2.getStringExtra("address"));
+        address = intent2.getStringExtra("address");
+        etAddress.setText(address);
+       // etAddress.setText(intent2.getStringExtra("address"));
         txtGender.setText(intent2.getStringExtra("gender"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -157,7 +177,44 @@ public class RegisterActivity extends AppCompatActivity {
          btnRegister.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
+                // startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
+
+
+                   password = etpassword.getText().toString();
+                 firstname = etFirstName.getText().toString();
+                 lastname = etLatName.getText().toString();
+                 email = etUserEmail.getText().toString();
+                 mobilenumber = etUsePhoneNumber.getText().toString();
+                 address = etAddress.getText().toString();
+                 DOB = text_DOB.getText().toString();
+                 if (firstname.equals("")){
+                     Toast.makeText(activity, "Please enter firstname", Toast.LENGTH_SHORT).show();
+                 }else  if(lastname.equals("")){
+                     Toast.makeText(activity, "Please enter lastname", Toast.LENGTH_SHORT).show();
+
+                 }else if (email.equals("")){
+                     Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show();
+
+
+                 }else  if(mobilenumber.equals("")){
+                     Toast.makeText(activity, "Please enter mobilenumber", Toast.LENGTH_SHORT).show();
+
+
+                 }else  if (address.equals("")){
+                     Toast.makeText(activity, "Please enter current location", Toast.LENGTH_SHORT).show();
+
+
+                 }else if (DOB.equals("")){
+                     Toast.makeText(activity, "Please select dob", Toast.LENGTH_SHORT).show();
+
+                 }else if(etpassword.equals("")) {
+                     Toast.makeText(activity, "Please Enter password", Toast.LENGTH_SHORT).show();
+
+                 }else {
+
+                     api_register();
+                 }
+
              }
          });
 
@@ -219,6 +276,62 @@ public class RegisterActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
         byte[] imageBytes=stream.toByteArray();
         encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+
+    private void api_register() {
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                act_session.loginSession(context);
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    act_session = new Act_Session(context, jsonObject1);
+
+                    Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
+
+
+                    finish();
+
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
+        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
+        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
+        RequestBody dob_ = RequestBody.create(MediaType.parse("text/plain"), DOB);
+        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
+        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
+        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+        RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
+        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+
+
+        baseRequest.callAPIRegister(1,"https://aoneservice.net.in/salon/" , firstname_, lastname_, email_, dob_, mobilenumber_, gender_,address_,deviceid_,password_);
+
     }
 
 
