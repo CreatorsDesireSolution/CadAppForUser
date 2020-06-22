@@ -1,11 +1,17 @@
 package com.example.cadappforuser;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +21,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -39,13 +47,22 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     Bitmap bitmap;
     String encodeImage;
     EditText etCompanyName,etRegistrationNumber,etMobileNumber,etEmail,etAboutCompany;
+    MarshMallowPermission marshMallowPermission;
+    Activity activity;
+    Context context;
+    String deviceId;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_as_company_register);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
+
+        context = this;
+        activity = this;
+        marshMallowPermission = new MarshMallowPermission(activity);
 
         etAddress=findViewById(R.id.etAddress);
         imageUserLogo=findViewById(R.id.userImageIcon);
@@ -107,6 +124,25 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
                         }).check();
             }
         });
+
+        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        if (mTelephony.getDeviceId() != null) {
+            deviceId = mTelephony.getDeviceId();
+        } else {
+            deviceId = Settings.Secure.getString(
+                    context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        }
 
     }
 

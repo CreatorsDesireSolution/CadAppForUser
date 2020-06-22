@@ -1,16 +1,23 @@
 package com.example.cadappforuser;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +27,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -38,9 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     TextView txtGender;
     TextView etAddress;
-
     TextView text_DOB;
-
     Calendar calendarView;
     int day,months,year;
     CircleImageView iv_camera;
@@ -48,13 +54,23 @@ public class RegisterActivity extends AppCompatActivity {
     Bitmap bitmap;
     String encodeImage;
     EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode;
+    MarshMallowPermission marshMallowPermission;
+    Activity activity;
+    Context context;
+    String deviceId;
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        context = this;
+        activity = this;
+        marshMallowPermission = new MarshMallowPermission(activity);
+
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Register");
@@ -82,6 +98,26 @@ public class RegisterActivity extends AppCompatActivity {
         final Intent intent=getIntent();
         final String gender=intent.getStringExtra("gender");
         txtGender.setText(gender);
+
+
+        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        if (mTelephony.getDeviceId() != null) {
+            deviceId = mTelephony.getDeviceId();
+        } else {
+            deviceId = Settings.Secure.getString(
+                    context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        }
 
         text_DOB.setOnClickListener(new View.OnClickListener() {
             @Override

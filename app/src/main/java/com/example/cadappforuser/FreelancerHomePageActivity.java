@@ -130,7 +130,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(ad_freelancer);
 
-        
+
 
 
         ad_companymodels = new ArrayList<>();
