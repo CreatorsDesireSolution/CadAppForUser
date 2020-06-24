@@ -120,7 +120,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         etMobileNumber.setText(mobilenumber);
         etEmail.setText(email);
 
-        etAddress.setText(intent2.getStringExtra("address"));
+        etAddress.setText(address);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

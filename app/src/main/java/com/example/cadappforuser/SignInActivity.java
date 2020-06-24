@@ -156,7 +156,7 @@ public class SignInActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
                     progressDialog.cancel();
                     if (act_session.flag.equals("0")) {
-                        Intent intent = new Intent(SignInActivity.this, HomePageActivity.class);
+                        Intent intent = new Intent(SignInActivity.this, HomeAndShopLocation.class);
                         startActivity(intent);
                         finish();
                     } if(act_session.flag.equals("1")){

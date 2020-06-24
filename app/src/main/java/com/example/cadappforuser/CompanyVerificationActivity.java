@@ -39,7 +39,6 @@ public class CompanyVerificationActivity extends AppCompatActivity {
                 OTPchheck= etOtp.getText().toString();
 
                 if (OTPchheck.equals(OTP)) {
-
                     startActivity(new Intent(CompanyVerificationActivity.this, CompanyHomePageActivity.class));
                 }else {
                     Toast.makeText(CompanyVerificationActivity.this, "please enter valid otp", Toast.LENGTH_SHORT).show();

@@ -117,7 +117,7 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
                     intent.putExtra("address",fullAddress);
                     intent.putExtra("name",companyname);
                     intent.putExtra("registernumber",registrationnumber);
-                    intent.putExtra("address",address);
+                 //   intent.putExtra("address",address);
                     intent.putExtra("mobileaddress",mobilenumber);
                     intent.putExtra("email",email);
 

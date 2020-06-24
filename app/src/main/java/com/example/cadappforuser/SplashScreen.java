@@ -31,9 +31,9 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
 
-//                if (act_session.login.equals("yes")) {
+//                if (act_session.login.equals("yes"))  {
 //                    if (act_session.flag.equals("0")) {
-//                        Intent i = new Intent(SplashScreen.this, HomePageActivity.class);
+//                        Intent i = new Intent(SplashScreen.this, HomeAndShopLocation.class);
 //                        startActivity(i);
 //                        finish();
 //
@@ -50,9 +50,9 @@ public class SplashScreen extends AppCompatActivity {
 //                        }
 //
 //                    } else {
-                        Intent intent = new Intent(SplashScreen.this, SignInActivity.class);
-                        startActivity(intent);
-                        finish();
+                    Intent intent = new Intent(SplashScreen.this, SignInActivity.class);
+                    startActivity(intent);
+                    finish();
 
 
                 }

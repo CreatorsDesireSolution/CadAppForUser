@@ -277,30 +277,27 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        {
             super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == REQUEST_IMAGE) {
-                if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
 
-                    selectedImage = data.getParcelableExtra("path");
-                    imageUserLogo.setImageURI(selectedImage);
+                Uri filepath = data.getData();
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(filepath);
+                    bitmap = BitmapFactory.decodeStream(inputStream);
+                    imageUserLogo.setImageBitmap(bitmap);
 
-                    File actualImageFile = new File(selectedImage.getPath());
-                    file = saveBitmapToFile(actualImageFile);
+                    imageStore(bitmap);
 
-                    long fileSizeInBytes = file.length();
-                    long fileSizeInKB = fileSizeInBytes / 1024;
-                    long fileSizeInMB = fileSizeInKB / 1024;
-
-                    Log.e("SIZE>>>", String.valueOf(fileSizeInKB));
-
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
             }
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
-    public File saveBitmapToFile(File file){
+        public File saveBitmapToFile(File file){
         try {
 
             // BitmapFactory options to downsize the image
