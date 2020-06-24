@@ -90,13 +90,26 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.etpassword);
 
 
+        Intent intent = getIntent();
+        gender1 = intent.getStringExtra("gender");
+        txtGender.setText(intent.getStringExtra("gender"));
 
 
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                firstname = etFirstName.getText().toString();
+                lastname = etLatName.getText().toString();
+                email = etUserEmail.getText().toString();
+                mobilenumber = etUsePhoneNumber.getText().toString();
+
                 Intent intent1 = new Intent(RegisterAsFreelancerActivity.this, FreelancerCurrentLocation.class);
                 intent1.putExtra("gender", gender1);
+                intent1.putExtra("firstname",firstname);
+                intent1.putExtra("lastname",lastname);
+                intent1.putExtra("email",email);
+                intent1.putExtra("mobilenumber",mobilenumber);
                 startActivity(intent1);
             }
         });
@@ -104,10 +117,17 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         Intent intent2 = getIntent();
         etAddress.setText(intent2.getStringExtra("address"));
         address = intent2.getStringExtra(address);
-        Intent intent = getIntent();
-        gender1 = intent.getStringExtra(gender1);
-        txtGender.setText(intent.getStringExtra("gender"));
 
+        firstname=intent2.getStringExtra("firstname");
+        lastname=intent2.getStringExtra("lastname");
+        email=intent2.getStringExtra("email");
+        mobilenumber=intent2.getStringExtra("mobilenumber");
+
+        etFirstName.setText(firstname);
+        etLatName.setText(lastname);
+        etUserEmail.setText(email);
+        etUsePhoneNumber.setText(mobilenumber);
+        txtGender.setText(intent2.getStringExtra("gender"));
         btnRegister = findViewById(R.id.btnSignedIn);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
