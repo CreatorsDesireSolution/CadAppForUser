@@ -235,7 +235,9 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterAsCompanyActivity.this,CompanyMobileNumberRegisterActivity.class));
+                    Intent intent = new Intent(getApplicationContext(),CompanyMobileNumberRegisterActivity.class);
+                    intent.putExtra("mobilenumber",mobilenumber);
+                    startActivity(intent);
 
                     finish();
 

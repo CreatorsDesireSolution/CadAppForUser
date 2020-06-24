@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ public class CompanyMobileNumberRegisterActivity extends AppCompatActivity {
     CountryCodePicker ccp;
     EditText etMobileForCode;
     String code;
+    String mobilenumber,mobilenumber1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,14 @@ public class CompanyMobileNumberRegisterActivity extends AppCompatActivity {
         btnGetCode=findViewById(R.id.btnGetCode);
         etMobileForCode = findViewById(R.id.etMobileForCode);
         ccp = findViewById(R.id.ccp1);
+
+
+
+        Intent intent = getIntent();
+        mobilenumber = intent.getStringExtra("mobilenumber");
+        etMobileForCode.setText(mobilenumber);
+
+
 
 
 
@@ -40,7 +50,16 @@ public class CompanyMobileNumberRegisterActivity extends AppCompatActivity {
         btnGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CompanyMobileNumberRegisterActivity.this,CompanyVerificationActivity.class));
+
+                mobilenumber1 = etMobileForCode.getText().toString();
+
+                if (mobilenumber1.equals(mobilenumber)) {
+                    startActivity(new Intent(CompanyMobileNumberRegisterActivity.this, CompanyVerificationActivity.class));
+                }else {
+                    Toast.makeText(CompanyMobileNumberRegisterActivity.this, "please enter valid number", Toast.LENGTH_SHORT).show();
+                }
+
+              //  startActivity(new Intent(CompanyMobileNumberRegisterActivity.this,CompanyVerificationActivity.class));
             }
         });
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +17,7 @@ public class FreelancerMobileNumberRegisterActivity extends AppCompatActivity {
     CountryCodePicker ccp;
     String code;
     EditText etMobileForCode;
-    String mobilenumber;
+    String mobilenumber,mobilenumber1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,14 @@ public class FreelancerMobileNumberRegisterActivity extends AppCompatActivity {
         btnGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
-                startActivity(new Intent(FreelancerMobileNumberRegisterActivity.this,FreeelancerVerificationActivity.class));
+                mobilenumber1 = etMobileForCode.getText().toString();
+
+                if (mobilenumber1.equals(mobilenumber)) {
+                    startActivity(new Intent(FreelancerMobileNumberRegisterActivity.this, FreeelancerVerificationActivity.class));
+                }else {
+                    Toast.makeText(FreelancerMobileNumberRegisterActivity.this, "please enter valid number", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
