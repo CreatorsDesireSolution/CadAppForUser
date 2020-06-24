@@ -104,11 +104,23 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
             final String fullAddress=addresse+", "+area+", "+city;
             textView.setText(fullAddress);
 
+            Intent intent=getIntent();
+            final String companyname=intent.getStringExtra("name");
+            final String registrationnumber=intent.getStringExtra("registernumber");
+            final String address=intent.getStringExtra("address");
+           final   String mobilenumber=intent.getStringExtra("mobileaddress");
+            final String email=intent.getStringExtra("email");
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent=new Intent(CompanyCurrentLocation.this,RegisterAsCompanyActivity.class);
                     intent.putExtra("address",fullAddress);
+                    intent.putExtra("name",companyname);
+                    intent.putExtra("registernumber",registrationnumber);
+                    intent.putExtra("address",address);
+                    intent.putExtra("mobileaddress",mobilenumber);
+                    intent.putExtra("email",email);
+
                     startActivity(intent);
                 }
             });

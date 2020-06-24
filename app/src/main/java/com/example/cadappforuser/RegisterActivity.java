@@ -108,6 +108,10 @@ public class RegisterActivity extends AppCompatActivity {
         etReferralCode = findViewById(R.id.etReferralCode);
 
 
+        firstname = etFirstName.getText().toString();
+        lastname = etLatName.getText().toString();
+        email = etUserEmail.getText().toString();
+        mobilenumber = etUsePhoneNumber.getText().toString();
 
 
         calendarView=Calendar.getInstance();
@@ -126,13 +130,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
             return;
         }
         if (mTelephony.getDeviceId() != null) {
@@ -162,24 +159,40 @@ public class RegisterActivity extends AppCompatActivity {
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                firstname = etFirstName.getText().toString();
+                lastname = etLatName.getText().toString();
+                email = etUserEmail.getText().toString();
+                mobilenumber = etUsePhoneNumber.getText().toString();
+
                 Intent intent1=new Intent(RegisterActivity.this,CurrentLocation.class);
                 intent1.putExtra("gender",gender);
+                intent1.putExtra("firstname",firstname);
+                intent1.putExtra("lastname",lastname);
+                intent1.putExtra("email",email);
+                intent1.putExtra("mobilenumber",mobilenumber);
+               // Toast.makeText(activity, ""+firstname, Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
+
+
             }
         });
 
         Intent intent2=getIntent();
         address = intent2.getStringExtra("address");
+        firstname=intent2.getStringExtra("firstname");
+        lastname=intent2.getStringExtra("lastname");
+        email=intent2.getStringExtra("email");
+        mobilenumber=intent2.getStringExtra("mobilenumber");
+
+        etFirstName.setText(firstname);
+        etLatName.setText(lastname);
+        etUserEmail.setText(email);
+        etUsePhoneNumber.setText(mobilenumber);
+
         etAddress.setText(address);
-       // etAddress.setText(intent2.getStringExtra("address"));
         txtGender.setText(intent2.getStringExtra("gender"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
-
-
-
 
         btnRegister=findViewById(R.id.btnSignedIn);
          btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -383,7 +396,6 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, dob_, mobilenumber_, gender_,address_,deviceid_,password_);
 

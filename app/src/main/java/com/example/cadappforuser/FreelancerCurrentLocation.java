@@ -103,11 +103,24 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
             final String fullAddress=addresse+", "+area+", "+city;
             textView.setText(fullAddress);
 
+            Intent intent=getIntent();
+            final String gender=intent.getStringExtra("gender");
+            final String firstname=intent.getStringExtra("firstname");
+            final String lastname=intent.getStringExtra("lastname");
+            final String email=intent.getStringExtra("email");
+            final String mobilenumber=intent.getStringExtra("mobilenumber");
+
+
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent=new Intent(FreelancerCurrentLocation.this,RegisterAsFreelancerActivity.class);
                     intent.putExtra("address",fullAddress);
+                    intent.putExtra("gender",gender);
+                    intent.putExtra("firstname",firstname);
+                    intent.putExtra("lastname",lastname);
+                    intent.putExtra("email",email);
+                    intent.putExtra("mobilenumber",mobilenumber);
                     startActivity(intent);
                 }
             });

@@ -93,15 +93,34 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                companyname = etCompanyName.getText().toString();
+                registrationnumber =etRegistrationNumber.getText().toString();
+
+                mobilenumber = etMobileNumber.getText().toString();
+                email = etEmail.getText().toString();
                 Intent intent1 = new Intent(RegisterAsCompanyActivity.this, CompanyCurrentLocation.class);
+                intent1.putExtra("name",companyname);
+                intent1.putExtra("registernumber",registrationnumber);
+
+                intent1.putExtra("mobileaddress",mobilenumber);
+                intent1.putExtra("email",email);
                 startActivity(intent1);
             }
         });
 
         Intent intent2 = getIntent();
         address = intent2.getStringExtra("address");
-        etAddress.setText(intent2.getStringExtra("address"));
+        companyname=intent2.getStringExtra("name");
+        registrationnumber=intent2.getStringExtra("registernumber");
+        mobilenumber=intent2.getStringExtra("mobileaddress");
+        email=intent2.getStringExtra("email");
 
+        etCompanyName.setText(companyname);
+        etRegistrationNumber.setText(registrationnumber);
+        etMobileNumber.setText(mobilenumber);
+        etEmail.setText(email);
+
+        etAddress.setText(intent2.getStringExtra("address"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

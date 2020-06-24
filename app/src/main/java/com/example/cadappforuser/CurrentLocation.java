@@ -106,12 +106,26 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
 
             Intent intent=getIntent();
             final String gender=intent.getStringExtra("gender");
+            final String firstname=intent.getStringExtra("firstname");
+            final String lastname=intent.getStringExtra("lastname");
+            final String email=intent.getStringExtra("email");
+            final String mobilenumber=intent.getStringExtra("mobilenumber");
+
+
+
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent=new Intent(CurrentLocation.this,RegisterActivity.class);
                     intent.putExtra("address",fullAddress);
                     intent.putExtra("gender",gender);
+                    intent.putExtra("firstname",firstname);
+                    intent.putExtra("lastname",lastname);
+                    intent.putExtra("email",email);
+                    intent.putExtra("mobilenumber",mobilenumber);
+
+                   // Toast.makeText(CurrentLocation.this, ""+firstname+fullAddress,Toast.LENGTH_SHORT).show();
+
                     startActivity(intent);
                 }
             });
