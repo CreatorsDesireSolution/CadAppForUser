@@ -10,16 +10,12 @@ public class Act_Session {
 
     public String signupStage = "0";
     public String userId = "", name = "", login = "";
-    public  String usr_name ="",mobile_verified="",usr_code = "", usr_mobile = "",usr_age ="",usr_gender="",usr_country="",device_id ="",token="";
+    public  String usr_name ="",mobile_verified="",usr_code = "", usr_mobile = "",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
-    String Signup_session;
-    String session_id="",login_start="",login_end="",login_status="",creation_date="";
     Context _context;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor prefsEditor;
+
     public static String USER_ID;
-    static  Boolean active = true;
-    String receiver_id,reciver_code,reciver_loginstart,reciver_login_end;
+
 
     public Act_Session(Context context, String signupStage) {
         this.signupStage = signupStage;
@@ -37,17 +33,10 @@ public class Act_Session {
     @SuppressLint("LongLogTag")
     public Act_Session(Context context, JSONObject jsonObject) {
         if (jsonObject != null) {
-            usr_name = (jsonObject.optString("usr_name"));
+            flag = (jsonObject.optString("flag"));
             userId = (jsonObject.optString("id"));
-            mobile_verified = (jsonObject.optString("mobile_verified"));
-            usr_code = (jsonObject.optString("usr_code"));
-            usr_mobile = jsonObject.optString("usr_mobile");
-            usr_age = jsonObject.optString("usr_age");
-            usr_gender = jsonObject.optString("usr_gender");
-            usr_country = jsonObject.optString("usr_country");
-            device_id = jsonObject.optString("device_id");
-            token = jsonObject.optString("token");
-            login_start = jsonObject.optString("login_start");
+
+
             // session_id = jsonObject.optString("id");
 
 
@@ -55,15 +44,11 @@ public class Act_Session {
 
             userId(context,userId);
             userName(context, usr_name);
+
             userDevice(context, device_id);
             userCode(context, usr_code);
-            userMobile(context,usr_mobile);
-            usergender(context, usr_gender);
-            usercountry(context, usr_country);
-            usertoken(context, token);
-            usermobileverified(context,mobile_verified);
-            userage(context,usr_age);
-            userlogin(context,login_start);
+            userflag(context,flag);
+
 
 
 
@@ -77,15 +62,10 @@ public class Act_Session {
         this.usr_name = sharedPreferences.getString("usr_name", "");
         this.usr_mobile = sharedPreferences.getString("usr_mobile", "");
         this.userId = sharedPreferences.getString("id", "");
-        this.usr_age = sharedPreferences.getString("usr_age", "");
-        this.device_id = sharedPreferences.getString("device_id", "");
-        this.usr_code = sharedPreferences.getString("usr_code", "");
-        this.usr_country = sharedPreferences.getString("usr_country", "");
-        this.usr_gender = sharedPreferences.getString("usr_gender", "");
-        this.mobile_verified = sharedPreferences.getString("mobile_verified", "");
-        this.token = sharedPreferences.getString("token", "");
+        this.flag = sharedPreferences.getString("flag", "");
         this.login = sharedPreferences.getString("login", "");
-        this.login_start = sharedPreferences.getString("login_start","");
+
+
         // this.session_id = sharedPreferences.getString("id", "");
 
 
@@ -217,7 +197,12 @@ public class Act_Session {
         prefsEditor.commit();
     }
 
-
+    public void userflag(Context context, String flag) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("flag", flag);
+        prefsEditor.commit();
+    }
 
 
     public void clearPreferences(Context context) {

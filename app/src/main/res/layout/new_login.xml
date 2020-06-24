@@ -112,7 +112,7 @@
                     android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
-                    <com.scottyab.showhidepasswordedittext.ShowHidePasswordEditText
+                    <EditText
                         android:id="@+id/etPasswordLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
