@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,6 +66,8 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_login);
+
+
 
         activity = this;
         context = this;
@@ -156,14 +159,14 @@ public class SignInActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
                     progressDialog.cancel();
                     if (act_session.flag.equals("0")) {
-                        Intent intent = new Intent(SignInActivity.this, HomePageActivity.class);
+                        Intent intent = new Intent(SignInActivity.this, SelectHomeOrShop.class);
                         startActivity(intent);
                         finish();
                     } if(act_session.flag.equals("1")){
                         Intent intent = new Intent(SignInActivity.this, FreelancerHomePageActivity.class);
                         startActivity(intent);
                         finish();
-                }if(act_session.flag.equals("2")){
+                    }if(act_session.flag.equals("2")){
                         Intent intent = new Intent(SignInActivity.this, CompanyHomePageActivity.class);
                         startActivity(intent);
                         finish();

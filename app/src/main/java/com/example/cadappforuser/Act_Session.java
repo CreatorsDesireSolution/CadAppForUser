@@ -45,9 +45,7 @@ public class Act_Session {
             address =(jsonObject.optString("address"));
             otp =(jsonObject.optString("otp"));
 
-
             // session_id = jsonObject.optString("id");
-
 
             USER_ID = userId;
 
@@ -83,10 +81,7 @@ public class Act_Session {
         this.gender = sharedPreferences.getString("gender", "");
         this.address = sharedPreferences.getString("address", "");
 
-
         // this.session_id = sharedPreferences.getString("id", "");
-
-
     }
 
     public void userId(Context context, String userId) {
@@ -101,8 +96,6 @@ public class Act_Session {
         prefsEditor.putString("firstname", firstname);
         prefsEditor.commit();
     }
-
-
 
     public void userlastname(Context context, String lastname) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -133,10 +126,6 @@ public class Act_Session {
         prefsEditor.commit();
     }
 
-
-
-
-
     public void useraddress(Context context, String address) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
@@ -150,10 +139,6 @@ public class Act_Session {
         prefsEditor.putString("mobilenumber", mobilenumber);
         prefsEditor.commit();
     }
-
-
-
-
 
     public void profileImage(Context context, String profileImage) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
