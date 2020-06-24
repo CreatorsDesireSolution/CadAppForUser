@@ -10,7 +10,7 @@ public class Act_Session {
 
     public String signupStage = "0";
     public String userId = "", name = "", login = "";
-    public  String usr_name ="",mobile_verified="",usr_code = "", usr_mobile = "",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
+    public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
     Context _context;
 
@@ -35,6 +35,7 @@ public class Act_Session {
         if (jsonObject != null) {
             flag = (jsonObject.optString("flag"));
             userId = (jsonObject.optString("id"));
+            email=(jsonObject.optString("email"));
 
 
             // session_id = jsonObject.optString("id");
@@ -44,6 +45,7 @@ public class Act_Session {
 
             userId(context,userId);
             userName(context, usr_name);
+            emilid(context,email);
 
             userDevice(context, device_id);
             userCode(context, usr_code);
@@ -64,6 +66,8 @@ public class Act_Session {
         this.userId = sharedPreferences.getString("id", "");
         this.flag = sharedPreferences.getString("flag", "");
         this.login = sharedPreferences.getString("login", "");
+        this.email = sharedPreferences.getString("email", "");
+
 
 
         // this.session_id = sharedPreferences.getString("id", "");
@@ -92,6 +96,14 @@ public class Act_Session {
         prefsEditor.putString("login_status", login_status);
         prefsEditor.commit();
     }
+
+    public void emilid(Context context, String email) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("login_status", email);
+        prefsEditor.commit();
+    }
+
 
     public void userlogin(Context context, String login_start) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
