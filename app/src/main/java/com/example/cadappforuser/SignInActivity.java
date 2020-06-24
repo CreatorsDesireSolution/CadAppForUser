@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 
@@ -85,6 +86,15 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 username = etEmailLayout.getText().toString();
                 password = etPasswordLayout.getText().toString();
+
+                if (username.equals("")){
+                    Toast.makeText(activity, "enter userrname", Toast.LENGTH_SHORT).show();
+                }else if(password.equals("")){
+                    Toast.makeText(activity, "enter password", Toast.LENGTH_SHORT).show();
+                }else {
+                   ApiLogin();
+                }
+
                 Intent intent=new Intent(SignInActivity.this,FreelancerHomePageActivity.class);
                 startActivity(intent);
                 finish();
@@ -108,6 +118,10 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public  void ApiLogin(){
 
     }
 
