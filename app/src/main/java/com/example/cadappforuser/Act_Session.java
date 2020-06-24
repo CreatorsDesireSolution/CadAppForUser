@@ -71,8 +71,7 @@ public class Act_Session {
         this.email = sharedPreferences.getString("email", "");
         this.otp = sharedPreferences.getString("otp", "");
 
-
-
+        
         // this.session_id = sharedPreferences.getString("id", "");
 
 
