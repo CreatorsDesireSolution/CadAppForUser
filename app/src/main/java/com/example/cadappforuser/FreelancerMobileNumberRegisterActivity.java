@@ -16,6 +16,7 @@ public class FreelancerMobileNumberRegisterActivity extends AppCompatActivity {
     CountryCodePicker ccp;
     String code;
     EditText etMobileForCode;
+    String mobilenumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,13 @@ public class FreelancerMobileNumberRegisterActivity extends AppCompatActivity {
         btnGetCode=findViewById(R.id.btnGetCode);
         ccp = findViewById(R.id.ccpfreelancer);
         etMobileForCode = findViewById(R.id.etMobileForCode);
+
+
+
+        Intent intent = getIntent();
+        mobilenumber = intent.getStringExtra("mobilenumber");
+        etMobileForCode.setText(mobilenumber);
+
 
 
 
@@ -39,6 +47,7 @@ public class FreelancerMobileNumberRegisterActivity extends AppCompatActivity {
         btnGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                
                 startActivity(new Intent(FreelancerMobileNumberRegisterActivity.this,FreeelancerVerificationActivity.class));
             }
         });

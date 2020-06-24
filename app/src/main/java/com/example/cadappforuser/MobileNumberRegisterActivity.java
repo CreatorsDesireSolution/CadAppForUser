@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hbb20.CountryCodePicker;
 
@@ -15,6 +17,8 @@ public class MobileNumberRegisterActivity extends AppCompatActivity {
     Button btnGetCode;
     String code;
     CountryCodePicker ccp;
+    EditText etMobileForCode;
+    String mobilenumber,mobilenumber1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,24 @@ public class MobileNumberRegisterActivity extends AppCompatActivity {
 
         btnGetCode=findViewById(R.id.btnGetCode);
         ccp = findViewById(R.id.ccp);
+        etMobileForCode= findViewById(R.id.etMobileForCode);
+
+
+        Intent intent = getIntent();
+        mobilenumber = intent.getStringExtra("mobilenumber");
+        etMobileForCode.setText(mobilenumber);
+
 
         btnGetCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MobileNumberRegisterActivity.this,VerificationActivity.class));
+                mobilenumber1 = etMobileForCode.getText().toString();
+
+                if (mobilenumber1.equals(mobilenumber)) {
+                    startActivity(new Intent(MobileNumberRegisterActivity.this, VerificationActivity.class));
+                }else {
+                    Toast.makeText(MobileNumberRegisterActivity.this, "please enter valid number", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

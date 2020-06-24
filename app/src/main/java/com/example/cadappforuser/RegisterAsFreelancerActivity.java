@@ -263,7 +263,10 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));
+                   // startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));
+                    Intent intent = new Intent(getApplicationContext(),FreelancerMobileNumberRegisterActivity.class);
+                    intent.putExtra("mobilenumber",mobilenumber);
+                    startActivity(intent);
 
                     finish();
 

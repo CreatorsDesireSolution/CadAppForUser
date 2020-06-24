@@ -110,6 +110,7 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
             final String lastname=intent.getStringExtra("lastname");
             final String email=intent.getStringExtra("email");
             final String mobilenumber=intent.getStringExtra("mobilenumber");
+            final String dob=intent.getStringExtra("dob");
 
 
 
@@ -123,6 +124,7 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
                     intent.putExtra("lastname",lastname);
                     intent.putExtra("email",email);
                     intent.putExtra("mobilenumber",mobilenumber);
+                    intent.putExtra("dob",dob);
 
                    // Toast.makeText(CurrentLocation.this, ""+firstname+fullAddress,Toast.LENGTH_SHORT).show();
 

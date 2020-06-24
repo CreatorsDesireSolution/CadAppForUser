@@ -10,7 +10,7 @@ public class Act_Session {
 
     public String signupStage = "0";
     public String userId = "", name = "", login = "";
-    public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
+    public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",otp="",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
     Context _context;
 
@@ -36,6 +36,7 @@ public class Act_Session {
             flag = (jsonObject.optString("flag"));
             userId = (jsonObject.optString("id"));
             email=(jsonObject.optString("email"));
+            otp =(jsonObject.optString("otp"));
 
 
             // session_id = jsonObject.optString("id");
@@ -50,6 +51,7 @@ public class Act_Session {
             userDevice(context, device_id);
             userCode(context, usr_code);
             userflag(context,flag);
+            userotp(context,otp);
 
 
 
@@ -67,6 +69,7 @@ public class Act_Session {
         this.flag = sharedPreferences.getString("flag", "");
         this.login = sharedPreferences.getString("login", "");
         this.email = sharedPreferences.getString("email", "");
+        this.otp = sharedPreferences.getString("otp", "");
 
 
 
@@ -94,6 +97,13 @@ public class Act_Session {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putString("login_status", login_status);
+        prefsEditor.commit();
+    }
+
+    public void userotp(Context context, String otp) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("otp", otp);
         prefsEditor.commit();
     }
 

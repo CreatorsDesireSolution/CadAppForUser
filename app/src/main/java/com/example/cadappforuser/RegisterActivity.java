@@ -171,6 +171,7 @@ public class RegisterActivity extends AppCompatActivity {
                 intent1.putExtra("lastname",lastname);
                 intent1.putExtra("email",email);
                 intent1.putExtra("mobilenumber",mobilenumber);
+                intent1.putExtra("dob",DOB);
                // Toast.makeText(activity, ""+firstname, Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
 
@@ -184,11 +185,13 @@ public class RegisterActivity extends AppCompatActivity {
         lastname=intent2.getStringExtra("lastname");
         email=intent2.getStringExtra("email");
         mobilenumber=intent2.getStringExtra("mobilenumber");
+        DOB= intent2.getStringExtra("dob");
 
         etFirstName.setText(firstname);
         etLatName.setText(lastname);
         etUserEmail.setText(email);
         etUsePhoneNumber.setText(mobilenumber);
+        text_DOB.setText(DOB);
 
         etAddress.setText(address);
         txtGender.setText(intent2.getStringExtra("gender"));
@@ -360,7 +363,10 @@ public class RegisterActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
+                    Intent intent = new Intent(getApplicationContext(),MobileNumberRegisterActivity.class);
+                    intent.putExtra("mobilenumber",mobilenumber);
+                    startActivity(intent);
+
 
                     finish();
 
