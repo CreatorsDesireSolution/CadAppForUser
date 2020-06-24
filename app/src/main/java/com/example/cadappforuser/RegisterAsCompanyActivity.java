@@ -209,7 +209,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
             public void onSuccess(int requestCode, String Json, Object object) {
-                act_session.loginSession(context);
+               // act_session.loginSession(context);
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
@@ -255,7 +255,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
 
         baseRequest.callAPIRegisterascompany(1,"https://aoneservice.net.in/" , companyname_,
-                aboutcompany_, address_, mobilenumber_,email_,registarion_no_,deviceId_,password_,staff_);
+                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_);
 
     }
 

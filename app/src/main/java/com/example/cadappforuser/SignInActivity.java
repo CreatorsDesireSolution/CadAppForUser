@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +25,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
+import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -42,6 +55,9 @@ public class SignInActivity extends AppCompatActivity {
     public boolean datafinish = false;
     String device_id;
     String username, password;
+    Act_Session act_session;
+    BaseRequest baseRequest;
+    ProgressDialog progressDialog;
 
 
 
@@ -53,12 +69,20 @@ public class SignInActivity extends AppCompatActivity {
         activity = this;
         context = this;
         marshMallowPermission = new MarshMallowPermission(activity);
+        act_session = new Act_Session(getApplicationContext());
 
         forgetPassword=findViewById(R.id.forget_password);
         text_register = findViewById(R.id.txt_signup);
         etEmailLayout = findViewById(R.id.etEmailLayout);
         etPasswordLayout = findViewById(R.id.etPasswordLayout);
         btnSignIn = findViewById(R.id.btnSignedIn);
+
+
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Loading...");
+        progressDialog.setCancelable(false); // disable dismiss by tapping outside of the dialog
+
 
 
 
@@ -95,9 +119,7 @@ public class SignInActivity extends AppCompatActivity {
                    ApiLogin();
                 }
 
-                Intent intent=new Intent(SignInActivity.this,FreelancerHomePageActivity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
 
@@ -122,8 +144,57 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public  void ApiLogin(){
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                act_session.loginSession(context);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    act_session = new Act_Session(context, jsonObject1);
+                    progressDialog.cancel();
+                    if (act_session.flag.equals("0")) {
+                        Intent intent = new Intent(SignInActivity.this, HomePageActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } if(act_session.flag.equals("1")){
+                        Intent intent = new Intent(SignInActivity.this, FreelancerHomePageActivity.class);
+                        startActivity(intent);
+                        finish();
+                }if(act_session.flag.equals("2")){
+                        Intent intent = new Intent(SignInActivity.this, CompanyHomePageActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), username);
+        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+
+        baseRequest.callAPILogin(1, "https://aoneservice.net.in/", email_, password_);
 
     }
+
+
 
 
     @Override

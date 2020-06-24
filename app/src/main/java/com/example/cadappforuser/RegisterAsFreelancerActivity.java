@@ -236,7 +236,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
             public void onSuccess(int requestCode, String Json, Object object) {
-                act_session.loginSession(context);
+               // act_session.loginSession(context);
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
