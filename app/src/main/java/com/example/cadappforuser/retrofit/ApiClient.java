@@ -11,7 +11,7 @@ import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
 
 public class ApiClient {
 
-    public static final String ROOT_URL = "https://thevarsity.in/";
+    public static final String ROOT_URL = "https://aoneservice.net.in/";
 
     private static Retrofit retrofit = null;
 

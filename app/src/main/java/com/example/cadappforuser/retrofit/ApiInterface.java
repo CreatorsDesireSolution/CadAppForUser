@@ -82,7 +82,7 @@ public interface ApiInterface {
 
 
     @Multipart
-    @POST("register_api.php")
+    @POST("salon/register_api.php")
     Call<JsonElement> postRegister( @Part("firstname") RequestBody name_,
                                    @Part("lastname") RequestBody lastname,
                                    @Part("email") RequestBody email,
@@ -92,6 +92,33 @@ public interface ApiInterface {
                                    @Part("address") RequestBody address,
                                    @Part("deviceid") RequestBody deviceid,
                                    @Part("password") RequestBody password
+    );
+
+
+    @Multipart
+    @POST("salon/freelancer_registration.php")
+    Call<JsonElement> postregisterfreelancer( @Part("firstname") RequestBody name_,
+                                    @Part("lastname") RequestBody lastname,
+                                    @Part("email") RequestBody email,
+                                    @Part("mobilenumber") RequestBody mobilenumber,
+                                    @Part("gender") RequestBody gender,
+                                    @Part("address") RequestBody address,
+                                    @Part("deviceid") RequestBody deviceid,
+                                    @Part("password") RequestBody password
+    );
+
+
+    @Multipart
+    @POST("salon/company_registration.php")
+    Call<JsonElement> postregistercompany( @Part("companyname") RequestBody companyname_,
+                                    @Part("regnumber") RequestBody regnumber_,
+                                    @Part("address") RequestBody address_,
+                                    @Part("mobilenumber") RequestBody mobilenumber_,
+                                    @Part("email") RequestBody email_,
+                                    @Part("no_of_staff") RequestBody staff_,
+                                    @Part("about_company") RequestBody aboutcompany_,
+                                    @Part("deviceid") RequestBody deviceid_,
+                                    @Part("password") RequestBody password
     );
 
     @Multipart

@@ -94,6 +94,7 @@ public abstract class BaseRequestParser {
 
 
     public JSONArray getDataArray() {
+
         if (null == mRespJSONObject) {
             return null;
         }

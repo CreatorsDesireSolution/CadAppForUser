@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Calendar;
 
@@ -69,7 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
     BaseRequest baseRequest;
     String firstname,lastname,email,DOB,mobilenumber,gender,address,referrelcode,password;
     Act_Session act_session;
-
+    Uri selectedImage;
+    File file;
+    public static final int REQUEST_IMAGE = 100;
 
 
 
@@ -173,6 +179,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
+
         btnRegister=findViewById(R.id.btnSignedIn);
          btnRegister.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -253,22 +261,70 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==1 && resultCode==RESULT_OK && data!=null){
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == REQUEST_IMAGE) {
+                if (resultCode == Activity.RESULT_OK) {
 
-            Uri filepath=data.getData();
-            try {
-                InputStream inputStream=getContentResolver().openInputStream(filepath);
-                bitmap= BitmapFactory.decodeStream(inputStream);
-                imageUserLogo.setImageBitmap(bitmap);
+                    selectedImage = data.getParcelableExtra("path");
+                    imageUserLogo.setImageURI(selectedImage);
 
-                imageStore(bitmap);
+                    File actualImageFile = new File(selectedImage.getPath());
+                    file = saveBitmapToFile(actualImageFile);
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                    long fileSizeInBytes = file.length();
+                    long fileSizeInKB = fileSizeInBytes / 1024;
+                    long fileSizeInMB = fileSizeInKB / 1024;
+
+                    Log.e("SIZE>>>", String.valueOf(fileSizeInKB));
+
+                }
             }
         }
-        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    public File saveBitmapToFile(File file){
+        try {
+
+            // BitmapFactory options to downsize the image
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            o.inSampleSize = 6;
+            // factor of downsizing the image
+
+            FileInputStream inputStream = new FileInputStream(file);
+            //Bitmap selectedBitmap = null;
+            BitmapFactory.decodeStream(inputStream, null, o);
+            inputStream.close();
+
+            // The new size we want to scale to
+            final int REQUIRED_SIZE=75;
+
+            // Find the correct scale value. It should be the power of 2.
+            int scale = 1;
+            while(o.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+                scale *= 2;
+            }
+
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = scale;
+            inputStream = new FileInputStream(file);
+
+            Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
+            inputStream.close();
+
+            // here i override the original image file
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+
+            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , outputStream);
+
+            return file;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private void imageStore(Bitmap bitmap) {
@@ -292,7 +348,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
-
 
                     finish();
 
@@ -330,7 +385,7 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
 
 
-        baseRequest.callAPIRegister(1,"https://aoneservice.net.in/salon/" , firstname_, lastname_, email_, dob_, mobilenumber_, gender_,address_,deviceid_,password_);
+        baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, dob_, mobilenumber_, gender_,address_,deviceid_,password_);
 
     }
 

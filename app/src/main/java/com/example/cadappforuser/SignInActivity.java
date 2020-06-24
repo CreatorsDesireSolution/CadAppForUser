@@ -40,6 +40,7 @@ public class SignInActivity extends AppCompatActivity {
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
     public boolean datafinish = false;
     String device_id;
+    String username, password;
 
 
 
@@ -82,6 +83,8 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                username = etEmailLayout.getText().toString();
+                password = etPasswordLayout.getText().toString();
                 Intent intent=new Intent(SignInActivity.this,FreelancerHomePageActivity.class);
                 startActivity(intent);
                 finish();
