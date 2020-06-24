@@ -11,7 +11,7 @@ public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 3000;
     Act_Session act_session;
-    String flag;
+    String flagcheck;
     Context context;
 
     @Override
@@ -21,6 +21,7 @@ public class SplashScreen extends AppCompatActivity {
 
         act_session = new Act_Session(getApplicationContext());
         context = this;
+        flagcheck= act_session.flag;
 
 
     }
@@ -31,28 +32,29 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
 
-//                if (act_session.login.equals("yes"))  {
-//                    if (act_session.flag.equals("0")) {
-//                        Intent i = new Intent(SplashScreen.this, HomeAndShopLocation.class);
-//                        startActivity(i);
-//                        finish();
-//
-//                    } if (act_session.flag.equals("1")) {
-//                        Intent intent = new Intent(SplashScreen.this, FreelancerHomePageActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//
-//
-//                    } if (act_session.flag.equals("2")) {
-//                            Intent intent = new Intent(SplashScreen.this, CompanyHomePageActivity.class);
-//                            startActivity(intent);
-//                            finish();
-//                        }
-//
-//                    } else {
+                if (act_session.login.equals("yes"))  {
+                    if (act_session.flag.equals(flagcheck)) {
+                        Intent i = new Intent(SplashScreen.this, HomePageActivity.class);
+                        startActivity(i);
+                        finish();
+
+                    } if (act_session.flag.equals(flagcheck)) {
+                        Intent intent = new Intent(SplashScreen.this, FreelancerHomePageActivity.class);
+                        startActivity(intent);
+                        finish();
+
+
+                    } if (act_session.flag.equals(flagcheck)) {
+                            Intent intent = new Intent(SplashScreen.this, CompanyHomePageActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                    } else {
                     Intent intent = new Intent(SplashScreen.this, SignInActivity.class);
                     startActivity(intent);
                     finish();
+                }
 
 
                 }
