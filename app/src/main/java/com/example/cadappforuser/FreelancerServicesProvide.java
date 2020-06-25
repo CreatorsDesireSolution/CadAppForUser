@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -21,6 +23,10 @@ public class FreelancerServicesProvide extends AppCompatActivity {
     EditText etKm;TextView etAtMyPlace;
     Button btnNext;
     String adress;
+    RadioGroup radioGroup;
+    RadioButton typeradioButton;
+    String type = "";
+    String days;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +36,17 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Services Provided Area");
 
-        checkSetAvailability=findViewById(R.id.checkSetAvalibilty);
-        txtSetAvailability=findViewById(R.id.txtSetAvalibilty);
+
         checkKm=findViewById(R.id.checkKm);
         etKm=findViewById(R.id.etKm);
         checkAtMyPlace=findViewById(R.id.checkAtMyPlace);
         etAtMyPlace=findViewById(R.id.etMyPlace);
         btnNext=findViewById(R.id.btnNext);
+        radioGroup = findViewById(R.id.radioGroup);
+
+//        Intent intent1 = getIntent();
+//        days = intent1.getStringExtra("days");
+
 
 
         etAtMyPlace.setVisibility(View.VISIBLE);
@@ -93,6 +103,22 @@ public class FreelancerServicesProvide extends AppCompatActivity {
             }
         });
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // find which radio button is selected
+                if (checkedId == R.id.radioalways) {
+                    type = "always";
+                } else {
+                    type = "setavailability";
+                    startActivity(new Intent(FreelancerServicesProvide.this, FreelancerSetAvalibiltyCustomActivity.class));
+
+                }
+            }
+
+        });
+
        /* txtSetAvailability.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,17 +126,17 @@ public class FreelancerServicesProvide extends AppCompatActivity {
             }
         });*/
 
-        checkSetAvailability.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    startActivity(new Intent(FreelancerServicesProvide.this, FreelancerSetAvalibiltyCustomActivity.class));
-                }
-                else {
-
-                }
-            }
-        });
+//        checkSetAvailability.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b){
+//                    startActivity(new Intent(FreelancerServicesProvide.this, FreelancerSetAvalibiltyCustomActivity.class));
+//                }
+//                else {
+//
+//                }
+//            }
+//        });
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

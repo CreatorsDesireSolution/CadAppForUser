@@ -9,7 +9,7 @@ import android.os.Handler;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 5000;
     Act_Session act_session;
     String flagcheck;
     Context context;
@@ -33,18 +33,18 @@ public class SplashScreen extends AppCompatActivity {
 
 
                 if (act_session.login.equals("yes"))  {
-                    if (act_session.flag.equals(flagcheck)) {
+                    if (flagcheck.equals("0")) {
                         Intent i = new Intent(SplashScreen.this, HomePageActivity.class);
                         startActivity(i);
                         finish();
 
-                    } if (act_session.flag.equals(flagcheck)) {
+                    } if (flagcheck.equals("1")) {
                         Intent intent = new Intent(SplashScreen.this, FreelancerHomePageActivity.class);
                         startActivity(intent);
                         finish();
 
 
-                    } if (act_session.flag.equals(flagcheck)) {
+                    } if (flagcheck.equals("2")) {
                             Intent intent = new Intent(SplashScreen.this, CompanyHomePageActivity.class);
                             startActivity(intent);
                             finish();

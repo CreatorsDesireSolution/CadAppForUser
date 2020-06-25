@@ -62,6 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="Select Day"
+        android:hint="Select Day"
         android:layout_below="@+id/txtEndTime"
         android:layout_marginTop="20sp"
         android:layout_marginRight="20sp"

@@ -22,6 +22,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadappforuser.ShowDays.Act_ShowDayComapany;
+import com.example.cadappforuser.retrofit.BaseRequest;
 
 import java.util.Calendar;
 
@@ -32,6 +33,11 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     Button btnAddSet;
     Button done;
+    String daysselect;
+    BaseRequest baseRequest;
+    Act_Session act_session;
+    Context context;
+    String startimr,endtime;
 
 
     @Override
@@ -43,19 +49,25 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         txtStartTime=findViewById(R.id.txtStartTime);
         txtSelectDay=findViewById(R.id.txtSelectDay);
 
+        context = this;
+        act_session = new Act_Session(context);
+
 
        btnAddSet=findViewById(R.id.btnAddSet);
-       btnAddSet.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               startActivity(new Intent(FreelancerSetAvalibiltyCustomActivity.this,FreelancerServicesProvide.class));
-           }
-       });
+
+
+      // txtSelectDay.setText(days);
+
+
+
+
         relativeLayout=findViewById(R.id.relative);
 
 
 
-
+        Intent intent = getIntent();
+        daysselect = intent.getStringExtra("days");
+        txtSelectDay.setText(daysselect);
 
         calendarView=Calendar.getInstance();
         final int hours=calendarView.get(Calendar.HOUR_OF_DAY);
@@ -91,15 +103,25 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         txtSelectDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //
-//                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
-//                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
-
              Intent intent = new Intent(getApplicationContext(), Act_ShowDayComapany.class);
              startActivity(intent);
 
 
+            }
+        });
+
+        btnAddSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startimr = txtStartTime.getText().toString();
+                endtime = txtEndTime.getText().toString();
+                daysselect = txtSelectDay.getText().toString();
+
+                Intent intent1 = new Intent(getApplicationContext(),FreelancerServicesProvide.class);
+                //  intent1.putExtra("days",days);
+
+                startActivity(intent1);
             }
         });
 
