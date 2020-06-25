@@ -108,7 +108,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
                 }else if (atmyplace.equals("")){
 
                 }else {
-                    ApiPOST();
+                    //ApiPOST();
                 }
 
 
@@ -230,16 +230,16 @@ public class FreelancerServicesProvide extends AppCompatActivity {
             }
         });
         RequestBody user_id = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
-        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
-        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
-        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
-        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender1);
-        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
-        RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
-        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-
-
-        baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_);
+//        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
+//        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
+//        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
+//        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender1);
+//        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+//        RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
+//        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+//
+//
+//        baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_);
 
     }
 
