@@ -302,6 +302,22 @@ public class BaseRequest<T> extends BaseRequestParser {
 //    }
 
 
+
+
+    public void callAPIUploadImage(final int APINumber, String remainingURL,RequestBody encodeimage_, RequestBody user_id_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postUploadImage(encodeimage_, user_id_);
+        call.enqueue(responseCallback);
+    }
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void callAPIRegisterascompany(final int APINumber, String remainingURL, RequestBody companyname_,
                                          RequestBody aboutcompany_, RequestBody address_, RequestBody mobilenumber_,
@@ -330,6 +346,23 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postRegister(firstname_,lastname_,email_,dob,mobilenumber_,gender_,address_,deviceid_,password_);
+        call.enqueue(responseCallback);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void callApiPOstBAckgroundfreelancer(final int APINumber, String remainingURL, RequestBody userid,
+                                                RequestBody aboutyourself_,  RequestBody currentworkplace_, RequestBody previousworkplace_,
+                                                RequestBody experience_)
+                                               {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postbackgroundfreelancer(userid,aboutyourself_,currentworkplace_,previousworkplace_,experience_);
         call.enqueue(responseCallback);
     }
 

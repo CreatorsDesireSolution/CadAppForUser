@@ -79,7 +79,15 @@ public interface ApiInterface {
 
 //    name_,action_,mobile_no_,title_,body,story_desc_,user_id_
 
+    @Multipart
+    @POST("salon/freelancer_background_api.php")
+    Call<JsonElement> postbackgroundfreelancer( @Part("id") RequestBody userid_,
+                                    @Part("about_yourself") RequestBody aboutyourself_,
+                                    @Part("curr_workplace") RequestBody currentworkplace_,
+                                    @Part("prev_workplace") RequestBody previousworkplace_,
+                                    @Part("experience") RequestBody experience_
 
+    );
 
     @Multipart
     @POST("salon/register_api.php")
@@ -151,9 +159,9 @@ public interface ApiInterface {
 
 
     @Multipart
-    @POST(METHOD_UPLOAD)
-    Call<JsonElement> postUploadImage(@Part MultipartBody.Part file,
-                                      @Part("user_id") RequestBody user_id_);
+    @POST("salon/freelancer_upload_api.php")
+    Call<JsonElement> postUploadImage(@Part("certificate") RequestBody  encodeimage_,
+                                      @Part("id") RequestBody user_id_);
 
     @Multipart
     @POST(METHOD_UPLOAD_FEATURE)
