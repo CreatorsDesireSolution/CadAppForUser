@@ -147,7 +147,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public  void ApiLogin(){
-        baseRequest = new BaseRequest();
+        baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
             public void onSuccess(int requestCode, String Json, Object object) {

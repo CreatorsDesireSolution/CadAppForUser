@@ -79,7 +79,15 @@ public interface ApiInterface {
 
 //    name_,action_,mobile_no_,title_,body,story_desc_,user_id_
 
+    @Multipart
+    @POST("salon/freelancer_background_api.php")
+    Call<JsonElement> postbackgroundfreelancer( @Part("id") RequestBody userid_,
+                                    @Part("about_yourself") RequestBody aboutyourself_,
+                                    @Part("curr_workplace") RequestBody currentworkplace_,
+                                    @Part("prev_workplace") RequestBody previousworkplace_,
+                                    @Part("experience") RequestBody experience_
 
+    );
 
     @Multipart
     @POST("salon/register_api.php")

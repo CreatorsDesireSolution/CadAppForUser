@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.047"></EditText>
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/et_servicedescription"
         android:layout_width="280dp"
         android:layout_height="110dp"
         android:layout_marginLeft="20dp"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/et_servicedescription"
         app:layout_constraintVertical_bias="0.0"></EditText>
 
 
@@ -94,6 +94,7 @@
         android:background="@drawable/btnback"
         android:text="Add Services"
         android:textColor="#FFF"
+        android:id="@+id/btn_add_service"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
