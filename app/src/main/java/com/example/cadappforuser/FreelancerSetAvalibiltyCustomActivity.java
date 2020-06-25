@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,7 +66,7 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
 
 
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         daysselect = intent.getStringExtra("days");
         txtSelectDay.setText(daysselect);
 
@@ -117,11 +118,24 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
                 startimr = txtStartTime.getText().toString();
                 endtime = txtEndTime.getText().toString();
                 daysselect = txtSelectDay.getText().toString();
+                if (startimr.equals("")){
+                    Toast.makeText(context, "Please select start time", Toast.LENGTH_SHORT).show();
 
-                Intent intent1 = new Intent(getApplicationContext(),FreelancerServicesProvide.class);
-                //  intent1.putExtra("days",days);
+                }else if(endtime.equals("")){
+                    Toast.makeText(context, "Please select end time", Toast.LENGTH_SHORT).show();
 
-                startActivity(intent1);
+                }else if(daysselect.equals("")){
+                    Toast.makeText(context, "Please select days ", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    Intent intent1 = new Intent(getApplicationContext(), FreelancerServicesProvide.class);
+                      intent1.putExtra("days",daysselect);
+                      intent1.putExtra("starttime",startimr);
+                      intent1.putExtra("endtime",endtime);
+
+                    startActivity(intent1);
+                }
             }
         });
 
