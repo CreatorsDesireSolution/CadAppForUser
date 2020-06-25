@@ -55,7 +55,13 @@
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
-        <activity android:name=".FreelancerServicesProvide" />
+        <activity android:name=".FreelancerServicesProvide">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
         <activity android:name=".At_Place_Location" />
@@ -139,11 +145,7 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"

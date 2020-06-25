@@ -39,7 +39,8 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     Act_Session act_session;
     Context context;
     String startimr,endtime;
-
+String check,address,atkm;
+String relcheck,reladdress,relstarttime="start time",relendtime="end time",relatkm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,29 +51,44 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         txtStartTime=findViewById(R.id.txtStartTime);
         txtSelectDay=findViewById(R.id.txtSelectDay);
 
+       // txtStartTime.setText("start time");
+        //txtEndTime.setText("end time");
+
+
         context = this;
         act_session = new Act_Session(context);
 
 
        btnAddSet=findViewById(R.id.btnAddSet);
 
-
-      // txtSelectDay.setText(days);
-
-
-
-
         relativeLayout=findViewById(R.id.relative);
 
-
-
-        final Intent intent = getIntent();
-        daysselect = intent.getStringExtra("days");
-        txtSelectDay.setText(daysselect);
 
         calendarView=Calendar.getInstance();
         final int hours=calendarView.get(Calendar.HOUR_OF_DAY);
         final int minute=calendarView.get(Calendar.MINUTE);
+
+        Intent intent1=getIntent();
+        check=intent1.getStringExtra("check");
+        address= intent1.getStringExtra("address");
+        atkm=intent1.getStringExtra("atkm");
+         startimr=intent1.getStringExtra("start");
+        endtime=intent1.getStringExtra("end");
+        txtStartTime.setText(startimr);
+        txtEndTime.setText(endtime);
+
+        final Intent intent = getIntent();
+        daysselect = intent.getStringExtra("days");
+        relcheck=intent.getStringExtra("check");
+        reladdress= intent.getStringExtra("address");
+       String startimr1=intent.getStringExtra("starttime");
+        String endtime1=intent.getStringExtra("endtime");
+        relatkm=intent.getStringExtra("atkm");
+        txtStartTime.setText(startimr1);
+        txtEndTime.setText(endtime1);
+        txtSelectDay.setText(daysselect);
+
+
 
 
         txtStartTime.setOnClickListener(new View.OnClickListener() {
@@ -101,16 +117,27 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
             }
         });
 
+
         txtSelectDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//
+                startimr = txtStartTime.getText().toString();
+                endtime = txtEndTime.getText().toString();
              Intent intent = new Intent(getApplicationContext(), Act_ShowDayComapany.class);
-             startActivity(intent);
-
+                intent.putExtra("check",check);
+                intent.putExtra("address",address);
+                intent.putExtra("starttime",startimr);
+                intent.putExtra("endtime",endtime);
+                intent.putExtra("atkm",atkm);
+                startActivity(intent);
 
             }
         });
+
+        txtStartTime.setText(startimr1);
+        txtEndTime.setText(endtime1);
+        txtSelectDay.setText(daysselect);
+
 
         btnAddSet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,11 +157,12 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
                 }else {
 
                     Intent intent1 = new Intent(getApplicationContext(), FreelancerServicesProvide.class);
-                      intent1.putExtra("days",daysselect);
-                      intent1.putExtra("starttime",startimr);
-                      intent1.putExtra("endtime",endtime);
-
-                    startActivity(intent1);
+                    intent1.putExtra("days",daysselect);
+                    intent1.putExtra("starttime",startimr);
+                    intent1.putExtra("endtime",endtime);
+                    intent1.putExtra("address",reladdress);
+                    intent1.putExtra("check",relcheck);
+                      startActivity(intent1);
                 }
             }
         });

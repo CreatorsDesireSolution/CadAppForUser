@@ -20,53 +20,11 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
-
-        <CheckBox
-            android:id="@+id/checkKm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtAcc"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="11dp"></CheckBox>
-
-        <TextView
-            android:id="@+id/txtKm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtAcc"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="17dp"
-            android:layout_toRightOf="@+id/checkKm"
-            android:hint="Availability of my Services( in range of Kilometers )"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="12sp"></TextView>
-
-        <EditText
-            android:id="@+id/etKm"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_below="@+id/txtKm"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/background2"
-            android:hint="10Km"
-            android:paddingLeft="13dp"
-            android:textColor="#8B000000"
-            android:textColorHint="#68000000"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            android:visibility="visible"></EditText>
-
-
         <CheckBox
             android:id="@+id/checkAtMyPlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etKm"
+           android:layout_below="@+id/txtAcc"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="11dp"></CheckBox>
 
@@ -74,7 +32,7 @@
             android:id="@+id/txtAtMyPlace"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etKm"
+            android:layout_below="@+id/txtAcc"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="17dp"
             android:layout_toRightOf="@+id/checkAtMyPlace"
@@ -103,11 +61,56 @@
             android:textStyle="normal"
             android:visibility="visible"></TextView>
 
+
+
+
+        <CheckBox
+            android:id="@+id/checkKm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etMyPlace"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="11dp"></CheckBox>
+
+        <TextView
+            android:id="@+id/txtKm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etMyPlace"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/checkKm"
+            android:hint="Availability of my Services( in range of Kilometers )"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="12sp"></TextView>
+
+        <EditText
+            android:id="@+id/etKm"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/txtKm"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background2"
+            android:hint="10Km"
+            android:paddingLeft="13dp"
+            android:textColor="#8B000000"
+            android:textColorHint="#68000000"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:visibility="visible"></EditText>
+
+
+
         <TextView
             android:id="@+id/txtAv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etMyPlace"
+            android:layout_below="@+id/etKm"
             android:layout_marginLeft="22dp"
             android:layout_marginTop="15sp"
             android:text="AVALIBILITY"

@@ -101,6 +101,8 @@ public class At_Place_Location extends AppCompatActivity implements OnMapReadyCa
             String area= addresses.get(0).getLocality();
             String city=addresses.get(0).getSubAdminArea();
 
+            Intent intent=getIntent();
+
             final String fullAddress=addresse+", "+area+", "+city;
             textView.setText(fullAddress);
 
@@ -109,6 +111,7 @@ public class At_Place_Location extends AppCompatActivity implements OnMapReadyCa
                 public void onClick(View view) {
                     Intent intent=new Intent(At_Place_Location.this,FreelancerServicesProvide.class);
                     intent.putExtra("address",fullAddress);
+
                     startActivity(intent);
                 }
             });

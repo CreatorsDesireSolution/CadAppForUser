@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.github.scottyab:showhidepasswordedittext:0.8'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
-
+    implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.squareup.retrofit2:retrofit:2.0.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 }

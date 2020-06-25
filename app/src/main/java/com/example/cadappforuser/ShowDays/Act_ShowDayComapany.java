@@ -21,6 +21,7 @@ public class Act_ShowDayComapany extends AppCompatActivity {
 
     Button btn_done;
     CheckBox chk1,chk2,chk3,chk4,chk5,chk6,chk7;
+    String check,address,starttime,endtime,atkm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,13 @@ public class Act_ShowDayComapany extends AppCompatActivity {
         chk6 = findViewById(R.id.chk6);
         chk7 = findViewById(R.id.chk7);
 
+
+        Intent intent=getIntent();
+       check=intent.getStringExtra("check");
+       address=intent.getStringExtra("address");
+      starttime=intent.getStringExtra("starttime");
+        endtime=intent.getStringExtra("endtime");
+        atkm=intent.getStringExtra("atkm");
 
 
         btn_done.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +78,12 @@ public class Act_ShowDayComapany extends AppCompatActivity {
                 Toast.makeText(Act_ShowDayComapany.this, r, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(),FreelancerSetAvalibiltyCustomActivity.class);
                 intent.putExtra("days",r);
+                intent.putExtra("check",check);
+                intent.putExtra("address",address);
+                intent.putExtra("starttime",starttime);
+                intent.putExtra("endtime",endtime);
+                intent.putExtra("atkm",atkm);
+
                 startActivity(intent);
 
 
