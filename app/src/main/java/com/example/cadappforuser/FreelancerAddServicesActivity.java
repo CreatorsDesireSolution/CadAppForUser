@@ -89,7 +89,8 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
                  }else if (selectcategory.equals("Select Category")){
 
                  }else {
-                     
+
+
 
                  }
 

@@ -159,9 +159,9 @@ public interface ApiInterface {
 
 
     @Multipart
-    @POST(METHOD_UPLOAD)
-    Call<JsonElement> postUploadImage(@Part MultipartBody.Part file,
-                                      @Part("user_id") RequestBody user_id_);
+    @POST("salon/freelancer_upload_api.php")
+    Call<JsonElement> postUploadImage(@Part("certificate") RequestBody  encodeimage_,
+                                      @Part("id") RequestBody user_id_);
 
     @Multipart
     @POST(METHOD_UPLOAD_FEATURE)
