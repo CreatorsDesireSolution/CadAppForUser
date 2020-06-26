@@ -108,7 +108,8 @@ public class CurrentLocationofcompanyStaff extends AppCompatActivity implements 
             final String firstname=intent.getStringExtra("firstname");
             final String lastname=intent.getStringExtra("lastname");
             final String email=intent.getStringExtra("email");
-            final   String mobilenumber=intent.getStringExtra("mobileaddress");
+            final   String mobilenumber=intent.getStringExtra("mobilenumber");
+            final   String gender=intent.getStringExtra("gender");
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -116,8 +117,9 @@ public class CurrentLocationofcompanyStaff extends AppCompatActivity implements 
                     intent.putExtra("address",fullAddress);
                     intent.putExtra("firstname",firstname);
                     intent.putExtra("lastname",lastname);
+                    intent.putExtra("gender",gender);
                     //   intent.putExtra("address",address);
-                    intent.putExtra("mobileaddress",mobilenumber);
+                    intent.putExtra("mobilenumber",mobilenumber);
                     intent.putExtra("email",email);
 
                     startActivity(intent);

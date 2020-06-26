@@ -337,10 +337,9 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void CallApiPOstStaff(final int APINumber, String remainingURL, RequestBody companyname_,
-                                         RequestBody aboutcompany_, RequestBody address_, RequestBody mobilenumber_,
-                                         RequestBody email_, RequestBody password_, RequestBody register_no,
-                                         RequestBody deviceid_, RequestBody staff_) {
+    public void CallApiPOstStaff(final int APINumber, String remainingURL, RequestBody userid_,
+                                         RequestBody firstname_, RequestBody lastname_, RequestBody email_,
+                                         RequestBody mobilenumber_, RequestBody gender_,RequestBody address_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -348,8 +347,8 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
-        Call<JsonElement> call = apiInterface_.postregistercompany(companyname_,aboutcompany_,address_,mobilenumber_,
-                email_,password_,register_no,deviceid_,staff_);
+        Call<JsonElement> call = apiInterface_.postsatff(userid_,firstname_,lastname_,email_,
+                mobilenumber_,gender_,address_);
         call.enqueue(responseCallback);
     }
 
@@ -489,7 +488,16 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
     }
 
-
+    public void callApiPostCompanyBackground(final int APINumber, String remainingURL, RequestBody email_, RequestBody password_) {//user_type_,device_id_,email_,password_,org_id_
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.postbackgroundcompany( email_, password_);
+        call.enqueue(responseCallback);
+    }
 
 
 

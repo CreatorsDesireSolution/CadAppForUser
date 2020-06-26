@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +13,35 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
+import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
+
 public class BackgoundOfCompanyActivity extends AppCompatActivity {
 
     Spinner sp_male,sp_female,sp_team_size;
     String team,male,female;
     EditText et_aboutcmpny,et_establishyear;
     Button btn_next;
+    BaseRequest baseRequest;
+    Act_Session act_session;
+    Context context;
+    String aboutcompany,totalyear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backgound_of_company);
 
-
+        context = this;
+        act_session = new Act_Session(getApplicationContext());
         sp_team_size = findViewById(R.id.sp_team_size);
         sp_male = findViewById(R.id.sp_male);
         sp_female = findViewById(R.id.sp_female);
@@ -45,7 +62,7 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
         sp_male.setAdapter(male_adapter);
 
 
-        ArrayAdapter<String> female_adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.female));
+        final ArrayAdapter<String> female_adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.female));
         female_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_female.setAdapter(female_adapter);
 
@@ -103,5 +120,74 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
             }
         });
 
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               aboutcompany = et_aboutcmpny.getText().toString();
+               totalyear= et_establishyear.getText().toString();
+
+               if (aboutcompany.equals("")){
+                   Toast.makeText(context, "please enter about company", Toast.LENGTH_SHORT).show();
+               }else  if (totalyear.equals("")){
+                   Toast.makeText(context, "please enter established year", Toast.LENGTH_SHORT).show();
+               }else  if (team.equals("")){
+                   Toast.makeText(context, "please  select team size", Toast.LENGTH_SHORT).show();
+
+               }else  if (male.equals("")){
+                   Toast.makeText(context, "please select no.of male", Toast.LENGTH_SHORT).show();
+
+               }else  if (female.equals("")){
+                   Toast.makeText(context, "please select no.of female", Toast.LENGTH_SHORT).show();
+
+               }else {
+                   ApiPostcompanybackground();
+               }
+
+            }
+        });
+
     }
+    public  void ApiPostcompanybackground(){
+        baseRequest = new BaseRequest(context);
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                act_session.loginSession(context);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+
+                    Intent intent = new Intent(getApplicationContext(),CompanyHomePageActivity.class);
+                    startActivity(intent);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        RequestBody userid = RequestBody.create(MediaType.parse("text/plain"), act_session.userId);
+        RequestBody aboutcompany_ = RequestBody.create(MediaType.parse("text/plain"), aboutcompany);
+        RequestBody totalyear_ = RequestBody.create(MediaType.parse("text/plain"), team);
+        RequestBody team_size_ = RequestBody.create(MediaType.parse("text/plain"), aboutcompany);
+        RequestBody male_ = RequestBody.create(MediaType.parse("text/plain"), male);
+        RequestBody female_ = RequestBody.create(MediaType.parse("text/plain"), female);
+
+     //   baseRequest.callApiPostCompanyBackground(1, BASE_URL, email_, password_);
+
+    }
+
 }

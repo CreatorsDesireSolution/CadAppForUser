@@ -146,16 +146,15 @@ public interface ApiInterface {
 
 
     @Multipart
-    @POST("salon/company_registration.php")
-    Call<JsonElement> postsatff( @Part("companyname") RequestBody companyname_,
-                                           @Part("about_company") RequestBody aboutcompany_,
-                                           @Part("address") RequestBody address_,
-                                           @Part("mobilenumber") RequestBody mobilenumber_,
+    @POST("salon/company_staffregister_api.php")
+    Call<JsonElement> postsatff( @Part("id") RequestBody userid_,
+                                           @Part("firstname") RequestBody firstname_,
+                                           @Part("lastname") RequestBody lastname_,
                                            @Part("email") RequestBody email_,
-                                           @Part("password") RequestBody password_,
-                                           @Part("regnumber") RequestBody regnumber_,
-                                           @Part("deviceid") RequestBody deviceid_,
-                                           @Part("no_of_staff") RequestBody staff_
+                                           @Part("mobilenumber") RequestBody mobilenumber_,
+                                           @Part("gender") RequestBody gender_,
+                                           @Part("address") RequestBody address_
+
     );
 
     @Multipart
@@ -209,6 +208,16 @@ public interface ApiInterface {
     Call<JsonElement> postLogin(
             @Part("email") RequestBody email_,
             @Part("password") RequestBody password_);
+
+
+
+    @Multipart
+    @POST("salon/company_background_api.php")
+    Call<JsonElement> postbackgroundcompany(
+            @Part("email") RequestBody email_,
+            @Part("password") RequestBody password_);
+
+
 
 
 /*

@@ -73,6 +73,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                 intent1.putExtra("lastname",lastname);
                 intent1.putExtra("mobilenumber",mobilenumber);
                 intent1.putExtra("email",email);
+                intent1.putExtra("gender",gender);
                 startActivity(intent1);
             }
         });
@@ -82,14 +83,17 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         address = intent2.getStringExtra("address");
         firstname=intent2.getStringExtra("firstname");
         lastname=intent2.getStringExtra("lastname");
-        mobilenumber=intent2.getStringExtra("mobileaddress");
+        mobilenumber=intent2.getStringExtra("mobilenumber");
         email=intent2.getStringExtra("email");
+        gender= intent2.getStringExtra("gender");
 
 
         etFirstName.setText(firstname);
         etLastName.setText(lastname);
         etUsePhoneNumber.setText(mobilenumber);
         etUserEmail.setText(email);
+        etAddress.setText(address);
+      //  etGender.setText(gender);
 
 
         btnRegister=findViewById(R.id.btnSignedIn);
@@ -100,7 +104,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                  lastname= etLastName.getText().toString();
                  mobilenumber =etUsePhoneNumber.getText().toString();
                  email = etUserEmail.getText().toString();
-                 gender = etGender.getText().toString();
+                 gender = txtGender.getText().toString();
                  address = etAddress.getText().toString();
 
                  if (firstname.equals("")){
@@ -167,19 +171,18 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
             }
         });
-//        RequestBody userid = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
-//        RequestBody aboutcompany_ = RequestBody.create(MediaType.parse("text/plain"),aboutcompany );
-//        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
-//        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
-//        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
-//        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-//        RequestBody registarion_no_ = RequestBody.create(MediaType.parse("text/plain"), registrationnumber);
-//        RequestBody deviceId_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
-//        RequestBody staff_ = RequestBody.create(MediaType.parse("text/plain"), staff);
+        RequestBody userid = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
+        RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
+        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"), lastname);
+        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
+        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
+        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
+        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
 
 
-//        baseRequest.CallApiPOstStaff(1,BASE_URL , companyname_,
-//                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_);
+
+        baseRequest.CallApiPOstStaff(1,BASE_URL , userid,
+                firstname_, lastname_, email_,mobilenumber_,gender_,address_);
 
 
     }
