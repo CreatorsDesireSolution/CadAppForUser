@@ -75,18 +75,25 @@
         app:layout_constraintVertical_bias="0.0"></EditText>
 
 
-    <Spinner
+    <EditText
+        android:id="@+id/et_duration"
         android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:id="@+id/spinner"
-        android:spinnerMode="dropdown"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/background2"
+        android:hint="duration in minutes"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="13dp"
+        android:textColor="#8B000000"
+        android:textColorHint="#68000000"
+        android:textSize="15sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSetPrice"
-        app:layout_constraintVertical_bias="0.066"></Spinner>
+        app:layout_constraintVertical_bias="0.0"></EditText>
 
     <Button
         android:layout_width="270dp"
