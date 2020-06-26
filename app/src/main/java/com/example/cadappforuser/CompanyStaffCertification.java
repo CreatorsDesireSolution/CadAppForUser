@@ -1,7 +1,9 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,68 +26,52 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cadappforuser.retrofit.BaseRequest;
-import com.example.cadappforuser.retrofit.RequestReciever;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-
-import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
-
-public class FreelancerCertificationActivity extends AppCompatActivity {
-
-    Button btnCertificate;
-    TextView txt_uploadcertification, txt_upload_picture;
-    Bitmap bitmap, bitmap1;
-    ImageView imageViewworkperform, imageViewcertificate;
-    String encodeImage, encodeImage1;
-    public static final int REQUEST_IMAGE = 100;
-    BaseRequest baseRequest;
+public class CompanyStaffCertification extends AppCompatActivity {
     Act_Session act_session;
     Context context;
     ProgressDialog progressDialog;
 
     private Uri filepath1, filepath2, filepath3, filepath4;
 
+    TextView txt_uploadcertification, txt_upload_picture;
+    Bitmap bitmap, bitmap1;
+    ImageView imageViewworkperform, imageViewcertificate;
+    String encodeImage, encodeImage1;
+    Button btnCertificateStaff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_certification);
+        setContentView(R.layout.activity_company_staff_certification);
 
-        act_session = new Act_Session(getApplicationContext());
-        context = this;
+        btnCertificateStaff=findViewById(R.id.btn_staff_certificate);
 
-        btnCertificate = findViewById(R.id.btnCertificate);
         txt_uploadcertification = findViewById(R.id.txt_uploadcertification);
         txt_upload_picture = findViewById(R.id.txt_upload_picture);
 
         imageViewcertificate = findViewById(R.id.imageViewcertificate);
         imageViewworkperform = findViewById(R.id.imageViewworkperform);
 
-
         txt_uploadcertification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Dexter.withActivity(FreelancerCertificationActivity.this)
+                Dexter.withActivity(CompanyStaffCertification.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -120,7 +103,7 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Dexter.withActivity(FreelancerCertificationActivity.this)
+                Dexter.withActivity(CompanyStaffCertification.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -148,16 +131,16 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
         });
 
 
-        btnCertificate.setOnClickListener(new View.OnClickListener() {
+        btnCertificateStaff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                progressDialog=new ProgressDialog(FreelancerCertificationActivity.this,R.style.MyAlertDialogStyle);
+                progressDialog=new ProgressDialog(CompanyStaffCertification.this,R.style.MyAlertDialogStyle);
                 progressDialog.setTitle("Upload");
                 progressDialog.setMessage("Please Wait......");
                 progressDialog.show();
 
-                final StringRequest request=new StringRequest(Request.Method.POST, "http://aoneservice.net.in/salon/freelancer_upload_api.php", new Response.Listener<String>() {
+                final StringRequest request=new StringRequest(Request.Method.POST, "http://aoneservice.net.in/salon/company_staffupload_api.php", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         JSONObject jsonObject= null;
@@ -168,26 +151,26 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
 
                             if(status.equals("true") || message.equals("Success")){
                                 progressDialog.dismiss();
-                                Toast.makeText(FreelancerCertificationActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
                                 progressDialog.dismiss();
-                                Toast.makeText(FreelancerCertificationActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                         Log.d("res","res"+response);
-                        Toast.makeText(FreelancerCertificationActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
                         Log.d("resorde","resse"+error.getMessage());
-                        Toast.makeText(FreelancerCertificationActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CompanyStaffCertification.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }){
                     @Override
@@ -202,12 +185,11 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
                     }
                 };
 
-                RequestQueue requestQueue= Volley.newRequestQueue(FreelancerCertificationActivity.this);
+                RequestQueue requestQueue= Volley.newRequestQueue(CompanyStaffCertification.this);
                 requestQueue.add(request);
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -254,5 +236,4 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
         byte[] imageBytes = stream.toByteArray();
         encodeImage1 = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
-
 }

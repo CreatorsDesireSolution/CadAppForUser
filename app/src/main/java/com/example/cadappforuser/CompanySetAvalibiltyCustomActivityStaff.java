@@ -73,7 +73,7 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
 //                    intent1.putExtra("check",relcheck);
                     startActivity(intent1);
                 }
-                startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyServicesOffered.class));
+                startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyStaffBackground.class));
             }
         });
 
