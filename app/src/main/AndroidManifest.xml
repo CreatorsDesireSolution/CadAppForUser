@@ -25,7 +25,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".CompanyStaffCertification"></activity>
-        <activity android:name=".CompanyStaffBackground" />
+        <activity android:name=".CompanyStaffBackground">
+
+        </activity>
         <activity android:name=".CompanyServicesOffered" />
         <activity android:name=".Act_ShowDayForStaff" />
         <activity android:name=".CurrentLocationofcompanyStaff" />

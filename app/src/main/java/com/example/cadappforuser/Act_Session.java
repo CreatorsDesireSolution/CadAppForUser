@@ -62,8 +62,6 @@ public class Act_Session {
             useraddress(context,address);
             userstaffid(context,staffid);
 
-
-
         }
     }
 

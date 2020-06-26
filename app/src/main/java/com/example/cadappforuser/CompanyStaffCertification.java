@@ -58,7 +58,7 @@ public class CompanyStaffCertification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_staff_certification);
 
-        btnCertificateStaff=findViewById(R.id.btn_staff_certificate);
+      //  btnCertificateStaff=findViewById(R.id.btn_staff);
 
         txt_uploadcertification = findViewById(R.id.txt_uploadcertification);
         txt_upload_picture = findViewById(R.id.txt_upload_picture);
