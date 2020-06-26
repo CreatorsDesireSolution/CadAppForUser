@@ -181,7 +181,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 //        baseRequest.CallApiPOstStaff(1,BASE_URL , companyname_,
 //                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_);
 
-        
+
     }
 
 
