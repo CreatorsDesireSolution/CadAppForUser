@@ -187,4 +187,5 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
         getWindow().setAttributes(params);
 
     }
+
 }

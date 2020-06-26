@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -23,14 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Act_seemoredetails_Company"></activity>
+        <activity android:name=".Act_seemoredetails_Company" />
         <activity android:name=".Act_CompanyPersonalProfileEdit" />
         <activity android:name=".Act_seemoredetails_Freelancer" />
         <activity android:name=".Act_FreelancerPersonalEditProfile" />
         <activity android:name=".Act_ContactUs" />
         <activity android:name=".Act_EditCurrentLocation" />
-        <activity android:name=".FreelancerGenderSelectSeeList"></activity>
+        <activity android:name=".FreelancerGenderSelectSeeList" />
         <activity android:name=".SelectGenderCustomerServiceList" />
         <activity android:name=".Act_FreelancerProfileOnlyShow" />
         <activity android:name=".Act_CompanyNewProfileOnlyShow" />
@@ -41,11 +39,11 @@
         <activity android:name=".Act_womenservicelist" />
         <activity android:name=".Act_SelectGenderForList" />
         <activity android:name=".Act_ShopLocation" />
-
         <activity android:name=".Act_AddToFev" />
         <activity android:name=".Act_EditCustomerInformation" />
         <activity android:name=".Act_Logout" />
-        <activity android:name=".Act_AboutUS"
+        <activity
+            android:name=".Act_AboutUS"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".Act_CustomerProfileEdit"
@@ -79,7 +77,6 @@
         <activity android:name=".StaffAddServicesActivity" />
         <activity android:name=".BackgoundOfStaffActivity" />
         <activity android:name=".StaffProfile" />
-        <activity android:name=".ChoiceStaffOrComapnyOwner" />
         <activity android:name=".CompanyStaffList" />
         <activity android:name=".CompanySetAvalibiltyCustomActivityStaff" />
         <activity android:name=".CompanySelectGenderActivity" />
@@ -144,9 +141,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".FreelancerServicesProvide"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

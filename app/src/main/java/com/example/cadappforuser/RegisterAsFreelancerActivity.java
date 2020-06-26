@@ -15,7 +15,6 @@ import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,9 +30,12 @@ import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONException;
@@ -42,10 +44,13 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+
+import static java.security.AccessController.getContext;
 
 public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
@@ -170,11 +175,10 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         });
 
 
-
+//
         iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
                 Dexter.withActivity(RegisterAsFreelancerActivity.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
@@ -200,8 +204,44 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
 
                         }).check();
+
             }
         });
+
+
+
+//        iv_camera.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Dexter.withActivity(RegisterAsFreelancerActivity.this)
+//                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+//                        .withListener(new PermissionListener() {
+//                            @Override
+//                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+//
+//                                Intent intent=new Intent(Intent.ACTION_PICK);
+//                                intent.setType("image/*");
+//                                startActivityForResult(Intent.createChooser(intent,"Select Image"),1);
+//                            }
+//
+//                            @Override
+//                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
+//                                permissionToken.continuePermissionRequest();
+//
+//                            }
+//
+//
+//
+//                        }).check();
+//            }
+//        });
+
 
 
         final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -243,6 +283,10 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
+
 
     private void imageStore(Bitmap bitmap) {
         ByteArrayOutputStream stream=new ByteArrayOutputStream();
