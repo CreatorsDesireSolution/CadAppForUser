@@ -232,7 +232,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    act_session = new Act_Session(context, jsonObject1);
+                   // act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),CompanyMobileNumberRegisterActivity.class);

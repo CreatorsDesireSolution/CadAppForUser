@@ -12,7 +12,7 @@ public class Act_Session {
     public String userId = "", name = "", login = "";
     public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",otp="",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
-    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="";
+    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="",staffid;
     Context _context;
 
     public static String USER_ID;
@@ -44,6 +44,7 @@ public class Act_Session {
             gender =(jsonObject.optString("gender"));
             address =(jsonObject.optString("address"));
             otp =(jsonObject.optString("otp"));
+            staffid =(jsonObject.optString("staffid"));
 
             // session_id = jsonObject.optString("id");
 
@@ -59,6 +60,7 @@ public class Act_Session {
             usermobilenumber(context,mobilenumber);
             usergender(context,gender);
             useraddress(context,address);
+            userstaffid(context,staffid);
 
 
 
@@ -80,6 +82,7 @@ public class Act_Session {
         this.dob = sharedPreferences.getString("dob", "");
         this.gender = sharedPreferences.getString("gender", "");
         this.address = sharedPreferences.getString("address", "");
+        this.staffid = sharedPreferences.getString("staffid", "");
 
         // this.session_id = sharedPreferences.getString("id", "");
     }
@@ -94,6 +97,14 @@ public class Act_Session {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putString("firstname", firstname);
+        prefsEditor.commit();
+    }
+
+
+    public void userstaffid(Context context, String staffid) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("staffid", staffid);
         prefsEditor.commit();
     }
 
