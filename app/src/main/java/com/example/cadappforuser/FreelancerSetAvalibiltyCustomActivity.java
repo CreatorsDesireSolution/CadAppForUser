@@ -39,8 +39,8 @@ public class FreelancerSetAvalibiltyCustomActivity extends AppCompatActivity {
     Act_Session act_session;
     Context context;
     String startimr,endtime;
-String check,address,atkm;
-String relcheck,reladdress,relstarttime="start time",relendtime="end time",relatkm;
+    String check,address,atkm;
+    String relcheck,reladdress,relstarttime="start time",relendtime="end time",relatkm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

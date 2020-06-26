@@ -66,7 +66,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         setContentView(R.layout.freelancer_activity_services_provide);
 
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Services Provided Area");
+//        actionBar.setTitle("Services Provided Area");
 
         act_session = new Act_Session(getApplicationContext());
 
@@ -266,7 +266,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         });
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
   /*  private void ApiPOST() {
