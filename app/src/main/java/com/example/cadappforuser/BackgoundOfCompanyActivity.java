@@ -45,9 +45,9 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
         sp_team_size = findViewById(R.id.sp_team_size);
         sp_male = findViewById(R.id.sp_male);
         sp_female = findViewById(R.id.sp_female);
-        et_aboutcmpny = findViewById(R.id.et_establishyear);
+        et_aboutcmpny = findViewById(R.id.et_aboutcmpny);
         et_establishyear = findViewById(R.id.et_establishyear);
-        btn_next = findViewById(R.id.btnNext);
+        btn_next = findViewById(R.id.btn_next);
 
 
 
@@ -181,12 +181,12 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
         });
         RequestBody userid = RequestBody.create(MediaType.parse("text/plain"), act_session.userId);
         RequestBody aboutcompany_ = RequestBody.create(MediaType.parse("text/plain"), aboutcompany);
-        RequestBody totalyear_ = RequestBody.create(MediaType.parse("text/plain"), team);
-        RequestBody team_size_ = RequestBody.create(MediaType.parse("text/plain"), aboutcompany);
+        RequestBody totalyear_ = RequestBody.create(MediaType.parse("text/plain"), totalyear);
+        RequestBody team_size_ = RequestBody.create(MediaType.parse("text/plain"), team);
         RequestBody male_ = RequestBody.create(MediaType.parse("text/plain"), male);
         RequestBody female_ = RequestBody.create(MediaType.parse("text/plain"), female);
 
-     //   baseRequest.callApiPostCompanyBackground(1, BASE_URL, email_, password_);
+        baseRequest.callApiPostCompanyBackground(1, BASE_URL, userid, aboutcompany_,totalyear_,team_size_,male_,female_);
 
     }
 

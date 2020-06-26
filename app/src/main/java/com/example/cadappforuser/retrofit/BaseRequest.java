@@ -412,6 +412,20 @@ public class BaseRequest<T> extends BaseRequestParser {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void callApiAddservicecompany(final int APINumber,  String remainingURL,RequestBody userid_,RequestBody service_name_, RequestBody description_, RequestBody set_price_, RequestBody duration_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postservicecompany(userid_,service_name_,description_,set_price_,duration_);
+        call.enqueue(responseCallback);
+    }
+
+
     public void callAPIPost(final int APINumber, JsonObject jsonObject, String remainingURL) {
         requestType = RequestType.Post;
         APINumber_ = APINumber;
@@ -488,14 +502,14 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
     }
 
-    public void callApiPostCompanyBackground(final int APINumber, String remainingURL, RequestBody email_, RequestBody password_) {//user_type_,device_id_,email_,password_,org_id_
+    public void callApiPostCompanyBackground(final int APINumber, String remainingURL, RequestBody userid, RequestBody aboutcompany_, RequestBody totalyear_, RequestBody team_size_, RequestBody male_, RequestBody female_) {//user_type_,device_id_,email_,password_,org_id_
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
         //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
-        Call<JsonElement> call = apiInterface_.postbackgroundcompany( email_, password_);
+        Call<JsonElement> call = apiInterface_.postbackgroundcompany( userid,aboutcompany_,totalyear_,team_size_,male_,female_);
         call.enqueue(responseCallback);
     }
 

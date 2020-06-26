@@ -129,6 +129,17 @@ public interface ApiInterface {
 
 
 
+    @Multipart
+    @POST("salon/company_addservice_api.php")
+    Call<JsonElement> postservicecompany( @Part("id") RequestBody userid_,
+                                             @Part("service_name") RequestBody service_name_,
+                                             @Part("description") RequestBody description_,
+                                             @Part("set_price") RequestBody set_price_,
+                                             @Part("duration") RequestBody duration_
+
+    );
+
+
 
     @Multipart
     @POST("salon/company_registration.php")
@@ -214,8 +225,13 @@ public interface ApiInterface {
     @Multipart
     @POST("salon/company_background_api.php")
     Call<JsonElement> postbackgroundcompany(
-            @Part("email") RequestBody email_,
-            @Part("password") RequestBody password_);
+            @Part("id") RequestBody userid,
+            @Part("about_your_company") RequestBody password_,
+            @Part("total_year_establishment") RequestBody totalyear_,
+            @Part("team_size") RequestBody team_,
+            @Part("no_of_men") RequestBody male_,
+            @Part("no_of_women") RequestBody female_
+            );
 
 
 
