@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:largeHeap="true"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -57,11 +58,7 @@
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
@@ -101,7 +98,13 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".FreelancerAddServicesActivity" />
         <activity android:name=".FreelancerSelectGenderActivity" />
-        <activity android:name=".FreelancerCertificationActivity" />
+        <activity android:name=".FreelancerCertificationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".BackgoundOfFreelancerActivity" />
         <activity android:name=".FreeelancerVerificationActivity" />
         <activity android:name=".FreelancerTermAndCondition" />

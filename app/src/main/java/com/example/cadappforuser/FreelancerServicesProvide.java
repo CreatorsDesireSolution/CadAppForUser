@@ -180,7 +180,6 @@ public class FreelancerServicesProvide extends AppCompatActivity {
                             if(status.equals("true") || message.equals("Success")){
                                 progressDialog.dismiss();
                                 Toast.makeText(FreelancerServicesProvide.this, ""+response, Toast.LENGTH_SHORT).show();
-
                             }
                             else
                             {
