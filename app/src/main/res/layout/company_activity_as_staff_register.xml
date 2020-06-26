@@ -75,7 +75,7 @@
                android:inputType="text"
                android:paddingLeft="13dp"
                android:textColorHint="#68000000"
-               android:id="@+id/etLatName"
+               android:id="@+id/etLastName"
              android:layout_alignParentRight="true"
                android:layout_marginTop="8dp"
                android:layout_marginRight="13dp"
@@ -166,7 +166,7 @@
                android:textStyle="normal"
                ></TextView>
 
-           <EditText
+           <TextView
                android:layout_width="match_parent"
                android:layout_height="40dp"
                android:hint="Address"
@@ -183,7 +183,7 @@
                android:layout_marginBottom="5dp"
                android:background="@drawable/edit_text_back"
                android:textStyle="normal"
-               ></EditText>
+               ></TextView>
 
            <EditText
                android:layout_width="match_parent"

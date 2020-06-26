@@ -118,15 +118,13 @@ public interface ApiInterface {
 
 
     @Multipart
-    @POST("salon/freelancer_registration.php")
-    Call<JsonElement> postservicefreelancer( @Part("firstname") RequestBody name_,
-                                              @Part("lastname") RequestBody lastname,
-                                              @Part("email") RequestBody email,
-                                              @Part("mobilenumber") RequestBody mobilenumber,
-                                              @Part("gender") RequestBody gender,
-                                              @Part("address") RequestBody address,
-                                              @Part("deviceid") RequestBody deviceid,
-                                              @Part("password") RequestBody password
+    @POST("salon/freelancer_addservice_api.php")
+    Call<JsonElement> postservicefreelancer( @Part("id") RequestBody userid_,
+                                              @Part("service_name") RequestBody service_name_,
+                                              @Part("description") RequestBody description_,
+                                              @Part("set_price") RequestBody set_price_,
+                                              @Part("duration") RequestBody duration_
+
     );
 
 
@@ -140,6 +138,21 @@ public interface ApiInterface {
                                     @Part("mobilenumber") RequestBody mobilenumber_,
                                     @Part("email") RequestBody email_,
                                     @Part("password") RequestBody password_,
+                                           @Part("regnumber") RequestBody regnumber_,
+                                           @Part("deviceid") RequestBody deviceid_,
+                                           @Part("no_of_staff") RequestBody staff_
+    );
+
+
+
+    @Multipart
+    @POST("salon/company_registration.php")
+    Call<JsonElement> postsatff( @Part("companyname") RequestBody companyname_,
+                                           @Part("about_company") RequestBody aboutcompany_,
+                                           @Part("address") RequestBody address_,
+                                           @Part("mobilenumber") RequestBody mobilenumber_,
+                                           @Part("email") RequestBody email_,
+                                           @Part("password") RequestBody password_,
                                            @Part("regnumber") RequestBody regnumber_,
                                            @Part("deviceid") RequestBody deviceid_,
                                            @Part("no_of_staff") RequestBody staff_

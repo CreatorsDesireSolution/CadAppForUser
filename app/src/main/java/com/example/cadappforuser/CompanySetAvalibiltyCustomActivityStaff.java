@@ -14,9 +14,12 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.cadappforuser.ShowDays.Act_ShowDayComapany;
 
 import java.util.Calendar;
 
@@ -26,6 +29,9 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
     Calendar calendarView;
     RelativeLayout relativeLayout;
     Button btnAddAvalibilty;
+    String daysselect,startimr,endtime;
+    Context context;
+
 
 
     @Override
@@ -38,10 +44,35 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
         txtSelectDay=findViewById(R.id.txtSelectDay);
         btnAddAvalibilty=findViewById(R.id.btnAddAvalibilty);
 
+        context = this;
+
 
         btnAddAvalibilty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                startimr = txtStartTime.getText().toString();
+                endtime = txtEndTime.getText().toString();
+                daysselect = txtSelectDay.getText().toString();
+                if (startimr.equals("")){
+                    Toast.makeText(context, "Please select start time", Toast.LENGTH_SHORT).show();
+
+                }else if(endtime.equals("")){
+                    Toast.makeText(context, "Please select end time", Toast.LENGTH_SHORT).show();
+
+                }else if(daysselect.equals("")){
+                    Toast.makeText(context, "Please select days ", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    Intent intent1 = new Intent(getApplicationContext(), CompanyHomePageActivity.class);
+                    intent1.putExtra("days",daysselect);
+                    intent1.putExtra("starttime",startimr);
+                    intent1.putExtra("endtime",endtime);
+//                    intent1.putExtra("address",reladdress);
+//                    intent1.putExtra("check",relcheck);
+                    startActivity(intent1);
+                }
                 startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyServicesOffered.class));
             }
         });
@@ -86,10 +117,14 @@ public class CompanySetAvalibiltyCustomActivityStaff extends AppCompatActivity {
         txtSelectDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
-                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
+
+                Intent intent = new Intent(getApplicationContext(), Act_ShowDayForStaff.class);
+                startActivity(intent);
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//
+//                PopupWindow pw = new PopupWindow(inflater.inflate(R.layout.popuplay, null, false), 600, 700, true);
+//                pw.showAtLocation(relativeLayout, Gravity.CENTER, 0, 0);
             }
         });
 

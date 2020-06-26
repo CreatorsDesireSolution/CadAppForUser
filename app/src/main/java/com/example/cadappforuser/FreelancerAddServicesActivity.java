@@ -46,7 +46,7 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
 
         context = this;
         act_session = new Act_Session(context);
-        btn_addservice = findViewById(R.id.btn_addservices);
+        btn_addservice = findViewById(R.id.btn_add_service);
         et_duration = findViewById(R.id.et_duration);
         et_servicedescription = findViewById(R.id.et_servicedescription);
         et_servicename = findViewById(R.id.etSName);
@@ -159,17 +159,15 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
 
             }
         });
-        RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
-        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
-        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
-        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
-        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender1);
-        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
-        RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
-        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody userid_ = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
+        RequestBody service_name_ = RequestBody.create(MediaType.parse("text/plain"),setservicename );
+        RequestBody description_ = RequestBody.create(MediaType.parse("text/plain"), description);
+        RequestBody set_price_ = RequestBody.create(MediaType.parse("text/plain"), setprice);
+        RequestBody duration_ = RequestBody.create(MediaType.parse("text/plain"), duration);
 
 
-        baseRequest.callApiAddservicefreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_);
+
+        baseRequest.callApiAddservicefreelancer(1,"https://aoneservice.net.in/" , userid_, service_name_, description_, set_price_, duration_);
 
     }
 
