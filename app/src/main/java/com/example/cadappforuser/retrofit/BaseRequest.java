@@ -491,6 +491,18 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
 
+    public void callApipostCertificatecompany(final int APINumber, String remainingURL, RequestBody userid, RequestBody certificate,RequestBody pic_work_perform) {//user_type_,device_id_,email_,password_,org_id_
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.postcertificatecompany( userid, certificate,pic_work_perform);
+        call.enqueue(responseCallback);
+    }
+
+
     public void callAPILogin(final int APINumber, String remainingURL, RequestBody email_, RequestBody password_) {//user_type_,device_id_,email_,password_,org_id_
         APINumber_ = APINumber;
         requestType = RequestType.Post;
