@@ -49,6 +49,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.Calendar;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -130,25 +131,47 @@ public class RegisterActivity extends AppCompatActivity {
         // a("gender");
 
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            deviceId = Settings.Secure.getString(
-                    context.getContentResolver(),
-                    Settings.Secure.ANDROID_ID);
-        } else {
-            if (marshMallowPermission.checkPermissionForPhoneState()) {
-                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                if (TelephonyMgr.getDeviceId() != null) {
-                    deviceId = TelephonyMgr.getDeviceId();
-                } else {
-                    deviceId = Settings.Secure.getString(
-                            context.getContentResolver(),
-                            Settings.Secure.ANDROID_ID);
-                }
-            }
+//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//            deviceId = Settings.Secure.getString(
+//                    context.getContentResolver(),
+//                    Settings.Secure.ANDROID_ID);
+//        } else {
+//            if (marshMallowPermission.checkPermissionForPhoneState()) {
+//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
+//                if (TelephonyMgr.getDeviceId() != null) {
+//                    deviceId = TelephonyMgr.getDeviceId();
+//                } else {
+//                    deviceId = Settings.Secure.getString(
+//                            context.getContentResolver(),
+//                            Settings.Secure.ANDROID_ID);
+//                }
+//            }
+//        }
+
+
+
+        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+        final String tmDevice, tmSerial, androidId;
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
         }
+        tmDevice = "" + tm.getDeviceId();
+        tmSerial = "" + tm.getSimSerialNumber();
+        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        deviceId = deviceUuid.toString();
 
 
 
@@ -413,7 +436,7 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("multipart/form-data"), encodeImage);
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
                 dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);

@@ -61,7 +61,7 @@
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".FreelancerCertificationActivity">
 
         </activity>
         <activity android:name=".FreelancherAddNewServices" />
@@ -102,7 +102,7 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".FreelancerAddServicesActivity" />
         <activity android:name=".FreelancerSelectGenderActivity" />
-        <activity android:name=".FreelancerCertificationActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
