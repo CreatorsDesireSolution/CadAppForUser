@@ -1,6 +1,10 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,17 +12,20 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.cadappforuser.retrofit.BaseRequest;
-import com.example.cadappforuser.retrofit.RequestReciever;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -31,49 +38,40 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
+public class CompanyStaffCertification extends AppCompatActivity {
+    Act_Session act_session;
+    Context context;
+    ProgressDialog progressDialog;
 
-import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
+    private Uri filepath1, filepath2, filepath3, filepath4;
 
-public class CertificationActivity extends AppCompatActivity {
-
-    TextView txt_uploadcertification,txt_uploadPicture;
-    Button btn_nextcertificate;
-
+    TextView txt_uploadcertification, txt_upload_picture;
     Bitmap bitmap, bitmap1;
     ImageView imageViewworkperform, imageViewcertificate;
     String encodeImage, encodeImage1;
-    private Uri filepath1, filepath2, filepath3, filepath4;
-    BaseRequest baseRequest;
-    Act_Session act_session;
-    Context context;
-
-
+    Button btnCertificateStaff;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.company_activity_certification);
+        setContentView(R.layout.activity_company_staff_certification);
 
-        context = this;
+      //  btnCertificateStaff=findViewById(R.id.btn_staff);
 
-        act_session = new Act_Session(getApplicationContext());
-        txt_uploadPicture =findViewById(R.id.txt_uploadPicture);
         txt_uploadcertification = findViewById(R.id.txt_uploadcertification);
-        imageViewcertificate= findViewById(R.id.imageViewcertificate);
+        txt_upload_picture = findViewById(R.id.txt_upload_picture);
+
+        imageViewcertificate = findViewById(R.id.imageViewcertificate);
         imageViewworkperform = findViewById(R.id.imageViewworkperform);
-
-        btn_nextcertificate = findViewById(R.id.btn_nextcertificate);
-
-
 
         txt_uploadcertification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Dexter.withActivity(CertificationActivity.this)
+                Dexter.withActivity(CompanyStaffCertification.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -101,14 +99,11 @@ public class CertificationActivity extends AppCompatActivity {
         });
 
 
-
-
-
-        txt_uploadPicture.setOnClickListener(new View.OnClickListener() {
+        txt_upload_picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Dexter.withActivity(CertificationActivity.this)
+                Dexter.withActivity(CompanyStaffCertification.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -135,21 +130,66 @@ public class CertificationActivity extends AppCompatActivity {
 
         });
 
-        btn_nextcertificate.setOnClickListener(new View.OnClickListener() {
+
+        btnCertificateStaff.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-//                if (encodeImage.equals("")){
-//                    Toast.makeText(CertificationActivity.this, "Please choose certificate", Toast.LENGTH_SHORT).show();
-//                }else if (encodeImage1.equals("")){
-//                    Toast.makeText(CertificationActivity.this, "Please select picture", Toast.LENGTH_SHORT).show();
-//                }else {
-//                    APiPostCertificate();
-//                }
-                APiPostCertificate();
+            public void onClick(View view) {
+
+                progressDialog=new ProgressDialog(CompanyStaffCertification.this,R.style.MyAlertDialogStyle);
+                progressDialog.setTitle("Upload");
+                progressDialog.setMessage("Please Wait......");
+                progressDialog.show();
+
+                final StringRequest request=new StringRequest(Request.Method.POST, "http://aoneservice.net.in/salon/company_staffupload_api.php", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        JSONObject jsonObject= null;
+                        try {
+                            jsonObject = new JSONObject(response);
+                            String status=jsonObject.getString("status");
+                            String message=jsonObject.getString("message");
+
+                            if(status.equals("true") || message.equals("Success")){
+                                progressDialog.dismiss();
+                                Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                progressDialog.dismiss();
+                                Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Log.d("res","res"+response);
+                        Toast.makeText(CompanyStaffCertification.this, ""+response, Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Log.d("resorde","resse"+error.getMessage());
+                        Toast.makeText(CompanyStaffCertification.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> map=new HashMap<>();
+                        map.put("certificate",encodeImage);
+                        map.put("pic_work_performed",encodeImage1);
+                        map.put("id",act_session.userId);
+                        Log.d("id","id"+act_session.userId);
+
+                        return  map;
+                    }
+                };
+
+                RequestQueue requestQueue= Volley.newRequestQueue(CompanyStaffCertification.this);
+                requestQueue.add(request);
             }
         });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -196,43 +236,4 @@ public class CertificationActivity extends AppCompatActivity {
         byte[] imageBytes = stream.toByteArray();
         encodeImage1 = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
-    public  void APiPostCertificate(){
-        baseRequest = new BaseRequest(context);
-        baseRequest.setBaseRequestListner(new RequestReciever() {
-            @Override
-            public void onSuccess(int requestCode, String Json, Object object) {
-                //act_session.loginSession(context);
-
-                try {
-                    JSONObject jsonObject = new JSONObject(Json);
-                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int requestCode, String errorCode, String message) {
-
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNetworkFailure(int requestCode, String message) {
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        RequestBody userid_ = RequestBody.create(MediaType.parse("text/plain"), act_session.userId);
-        RequestBody certificate = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
-        RequestBody picture_of_workperform = RequestBody.create(MediaType.parse("text/plain"), encodeImage1);
-
-        baseRequest.callApipostCertificatecompany(1, BASE_URL, userid_, certificate,picture_of_workperform);
-
-    }
 }
-
-

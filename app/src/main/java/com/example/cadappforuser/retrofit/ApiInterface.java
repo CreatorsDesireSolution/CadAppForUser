@@ -221,6 +221,15 @@ public interface ApiInterface {
             @Part("password") RequestBody password_);
 
 
+    @Multipart
+    @POST("salon/company_upload_api.php")
+    Call<JsonElement> postcertificatecompany(
+            @Part("id") RequestBody userid_,
+            @Part("certificate") RequestBody certificate_,
+            @Part("pic_work_performed") RequestBody pic_work_perform
+            );
+
+
 
     @Multipart
     @POST("salon/company_background_api.php")
