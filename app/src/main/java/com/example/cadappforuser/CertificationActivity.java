@@ -138,13 +138,14 @@ public class CertificationActivity extends AppCompatActivity {
         btn_nextcertificate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (encodeImage.equals("")){
-                    Toast.makeText(CertificationActivity.this, "Please choose certificate", Toast.LENGTH_SHORT).show();
-                }else if (encodeImage1.equals("")){
-                    Toast.makeText(CertificationActivity.this, "Please select picture", Toast.LENGTH_SHORT).show();
-                }else {
-                    APiPostCertificate();
-                }
+//                if (encodeImage.equals("")){
+//                    Toast.makeText(CertificationActivity.this, "Please choose certificate", Toast.LENGTH_SHORT).show();
+//                }else if (encodeImage1.equals("")){
+//                    Toast.makeText(CertificationActivity.this, "Please select picture", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    APiPostCertificate();
+//                }
+                APiPostCertificate();
             }
         });
     }
