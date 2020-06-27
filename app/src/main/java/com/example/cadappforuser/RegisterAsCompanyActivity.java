@@ -42,6 +42,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -55,7 +56,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     ImageView imageUserLogo;
     Bitmap bitmap;
     String encodeImage;
-    EditText etCompanyName,etRegistrationNumber,etMobileNumber,etEmail,etAboutCompany,etPassword;
+    EditText etCompanyName, etRegistrationNumber, etMobileNumber, etEmail, etAboutCompany, etPassword;
     MarshMallowPermission marshMallowPermission;
     Activity activity;
     Context context;
@@ -63,7 +64,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     Act_Session act_session;
     BaseRequest baseRequest;
     EditText et_staff;
-    String companyname,registrationnumber,address,mobilenumber,email,password,aboutcompany,staff;
+    String companyname, registrationnumber, address, mobilenumber, email, password, aboutcompany, staff;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -95,26 +96,26 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 companyname = etCompanyName.getText().toString();
-                registrationnumber =etRegistrationNumber.getText().toString();
+                registrationnumber = etRegistrationNumber.getText().toString();
 
                 mobilenumber = etMobileNumber.getText().toString();
                 email = etEmail.getText().toString();
                 Intent intent1 = new Intent(RegisterAsCompanyActivity.this, CompanyCurrentLocation.class);
-                intent1.putExtra("name",companyname);
-                intent1.putExtra("registernumber",registrationnumber);
+                intent1.putExtra("name", companyname);
+                intent1.putExtra("registernumber", registrationnumber);
 
-                intent1.putExtra("mobileaddress",mobilenumber);
-                intent1.putExtra("email",email);
+                intent1.putExtra("mobileaddress", mobilenumber);
+                intent1.putExtra("email", email);
                 startActivity(intent1);
             }
         });
 
         Intent intent2 = getIntent();
         address = intent2.getStringExtra("address");
-        companyname=intent2.getStringExtra("name");
-        registrationnumber=intent2.getStringExtra("registernumber");
-        mobilenumber=intent2.getStringExtra("mobileaddress");
-        email=intent2.getStringExtra("email");
+        companyname = intent2.getStringExtra("name");
+        registrationnumber = intent2.getStringExtra("registernumber");
+        mobilenumber = intent2.getStringExtra("mobileaddress");
+        email = intent2.getStringExtra("email");
 
         etCompanyName.setText(companyname);
         etRegistrationNumber.setText(registrationnumber);
@@ -125,25 +126,46 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            deviceId = Settings.Secure.getString(
-                    context.getContentResolver(),
-                    Settings.Secure.ANDROID_ID);
-        } else {
-            if (marshMallowPermission.checkPermissionForPhoneState()) {
-                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                if (ActivityCompat.checkSelfPermission(RegisterAsCompanyActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                if (TelephonyMgr.getDeviceId() != null) {
-                    deviceId = TelephonyMgr.getDeviceId();
-                } else {
-                    deviceId = Settings.Secure.getString(
-                            context.getContentResolver(),
-                            Settings.Secure.ANDROID_ID);
-                }
-            }
+        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+        final String tmDevice, tmSerial, androidId;
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
         }
+        tmDevice = "" + tm.getDeviceId();
+        tmSerial = "" + tm.getSimSerialNumber();
+        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        deviceId = deviceUuid.toString();
+
+
+//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//            deviceId = Settings.Secure.getString(
+//                    context.getContentResolver(),
+//                    Settings.Secure.ANDROID_ID);
+//        } else {
+//            if (marshMallowPermission.checkPermissionForPhoneState()) {
+//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//                if (ActivityCompat.checkSelfPermission(RegisterAsCompanyActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
+//                if (TelephonyMgr.getDeviceId() != null) {
+//                    deviceId = TelephonyMgr.getDeviceId();
+//                } else {
+//                    deviceId = Settings.Secure.getString(
+//                            context.getContentResolver(),
+//                            Settings.Secure.ANDROID_ID);
+//                }
+//            }
+//        }
 
 
 

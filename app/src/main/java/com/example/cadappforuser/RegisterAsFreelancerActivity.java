@@ -46,6 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -244,26 +245,48 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 //        });
 
 
+//
+//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//            deviceId = Settings.Secure.getString(
+//                    context.getContentResolver(),
+//                    Settings.Secure.ANDROID_ID);
+//        } else {
+//            if (marshMallowPermission.checkPermissionForPhoneState()) {
+//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//                if (ActivityCompat.checkSelfPermission(RegisterAsFreelancerActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
+//                if (TelephonyMgr.getDeviceId() != null) {
+//                    deviceId = TelephonyMgr.getDeviceId();
+//                } else {
+//                    deviceId = Settings.Secure.getString(
+//                            context.getContentResolver(),
+//                            Settings.Secure.ANDROID_ID);
+//                }
+//            }
+//        }
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            deviceId = Settings.Secure.getString(
-                    context.getContentResolver(),
-                    Settings.Secure.ANDROID_ID);
-        } else {
-            if (marshMallowPermission.checkPermissionForPhoneState()) {
-                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                if (ActivityCompat.checkSelfPermission(RegisterAsFreelancerActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                if (TelephonyMgr.getDeviceId() != null) {
-                    deviceId = TelephonyMgr.getDeviceId();
-                } else {
-                    deviceId = Settings.Secure.getString(
-                            context.getContentResolver(),
-                            Settings.Secure.ANDROID_ID);
-                }
-            }
+
+
+        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+
+        final String tmDevice, tmSerial, androidId;
+        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
         }
+        tmDevice = "" + tm.getDeviceId();
+        tmSerial = "" + tm.getSimSerialNumber();
+        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        deviceId = deviceUuid.toString();
     }
 
     @Override
