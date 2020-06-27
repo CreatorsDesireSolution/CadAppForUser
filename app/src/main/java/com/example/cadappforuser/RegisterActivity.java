@@ -436,10 +436,10 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-        RequestBody profile_pic = RequestBody.create(MediaType.parse("multipart/form-data"), encodeImage);
+     //   RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
-                dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
+                dob_, mobilenumber_, gender_,address_,deviceid_,password_);
 
     }
 

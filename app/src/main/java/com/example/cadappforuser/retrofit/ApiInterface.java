@@ -99,8 +99,7 @@ public interface ApiInterface {
                                    @Part("gender") RequestBody gender,
                                    @Part("address") RequestBody address,
                                    @Part("deviceid") RequestBody deviceid,
-                                   @Part("password") RequestBody password,
-                                   @Part("profile_pic") RequestBody profile_pic
+                                   @Part("password") RequestBody password
     );
 
 
