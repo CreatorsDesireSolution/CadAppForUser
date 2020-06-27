@@ -131,27 +131,6 @@ public class RegisterActivity extends AppCompatActivity {
         // a("gender");
 
 
-//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//            deviceId = Settings.Secure.getString(
-//                    context.getContentResolver(),
-//                    Settings.Secure.ANDROID_ID);
-//        } else {
-//            if (marshMallowPermission.checkPermissionForPhoneState()) {
-//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-//                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//                    return;
-//                }
-//                if (TelephonyMgr.getDeviceId() != null) {
-//                    deviceId = TelephonyMgr.getDeviceId();
-//                } else {
-//                    deviceId = Settings.Secure.getString(
-//                            context.getContentResolver(),
-//                            Settings.Secure.ANDROID_ID);
-//                }
-//            }
-//        }
-
-
 
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
 
@@ -172,6 +151,26 @@ public class RegisterActivity extends AppCompatActivity {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
+
+//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//            deviceId = Settings.Secure.getString(
+//                    context.getContentResolver(),
+//                    Settings.Secure.ANDROID_ID);
+//        } else {
+//            if (marshMallowPermission.checkPermissionForPhoneState()) {
+//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
+//                if (TelephonyMgr.getDeviceId() != null) {
+//                    deviceId = TelephonyMgr.getDeviceId();
+//                } else {
+//                    deviceId = Settings.Secure.getString(
+//                            context.getContentResolver(),
+//                            Settings.Secure.ANDROID_ID);
+//                }
+//            }
+//        }
 
 
 
@@ -436,7 +435,11 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+
      //   RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
                 dob_, mobilenumber_, gender_,address_,deviceid_,password_);

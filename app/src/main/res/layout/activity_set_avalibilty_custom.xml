@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:text="Start Time"
+
         android:layout_marginTop="20sp"
         android:layout_below="@+id/tset"
         android:textColor="@color/black"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:text="End Time"
+
         android:layout_marginTop="20sp"
         android:layout_below="@+id/tset"
         android:textColor="@color/black"
@@ -63,7 +63,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Select Day"
+
         android:hint="Select Day"
         android:layout_below="@+id/txtEndTime"
         android:layout_marginTop="20sp"
