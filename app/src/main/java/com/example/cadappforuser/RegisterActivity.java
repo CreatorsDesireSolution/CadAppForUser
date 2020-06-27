@@ -37,6 +37,7 @@ import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONException;
@@ -64,8 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
     int day,months,year;
     CircleImageView iv_camera;
     ImageView imageUserLogo;
-    Bitmap bitmap;
-    String encodeImage;
     EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode,etpassword;
     MarshMallowPermission marshMallowPermission;
     Activity activity;
@@ -74,8 +73,9 @@ public class RegisterActivity extends AppCompatActivity {
     BaseRequest baseRequest;
     String firstname,lastname,email,DOB,mobilenumber,gender,address,referrelcode,password;
     Act_Session act_session;
-    Uri selectedImage;
-    File file;
+    Bitmap bitmap;
+    String encode;
+
     public static final int REQUEST_IMAGE = 100;
 
 
@@ -255,63 +255,64 @@ public class RegisterActivity extends AppCompatActivity {
 
              }
          });
+iv_camera.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
 
-        iv_camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        Dexter.withActivity(RegisterActivity.this)
+                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
 
-                Dexter.withActivity(RegisterActivity.this)
-                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                        Intent intent=new Intent(Intent.ACTION_PICK);
+                        intent.setType("image/*");
+                        startActivityForResult(Intent.createChooser(intent,"Select Image"),1);
+                    }
 
-                                Intent intent=new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent,"Select Image"),1);
-                            }
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
 
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                    }
 
-                            }
-
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                                permissionToken.continuePermissionRequest();
-
-                            }
-
-
-
-                        }).check();
-            }
-        });
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
+                    }
+                }).check();
+    }
+});
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode==RESULT_OK && data!=null){
 
-                Uri filepath = data.getData();
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(filepath);
-                    bitmap = BitmapFactory.decodeStream(inputStream);
-                    imageUserLogo.setImageBitmap(bitmap);
+            Uri filepath=data.getData();
+            try {
+                InputStream inputStream=getContentResolver().openInputStream(filepath);
+                bitmap= BitmapFactory.decodeStream(inputStream);
+                imageUserLogo.setImageBitmap(bitmap);
+                imageStore(bitmap);
 
-                    imageStore(bitmap);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-            super.onActivityResult(requestCode, resultCode, data);
         }
     }
-        public File saveBitmapToFile(File file){
+
+    private void imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] imageBytes=stream.toByteArray();
+        encode=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+
+
+      /*  public File saveBitmapToFile(File file){
         try {
 
             // BitmapFactory options to downsize the image
@@ -352,14 +353,9 @@ public class RegisterActivity extends AppCompatActivity {
         } catch (Exception e) {
             return null;
         }
-    }
+    }*/
 
-    private void imageStore(Bitmap bitmap) {
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-        byte[] imageBytes=stream.toByteArray();
-        encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
-    }
+
 
 
     private void api_register() {
@@ -377,31 +373,17 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),MobileNumberRegisterActivity.class);
                     intent.putExtra("mobilenumber",mobilenumber);
                     startActivity(intent);
-
-
                     finish();
-
-
-
-
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
+                    e.printStackTrace(); }
             }
-
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
             }
-
             @Override
-
             public void onNetworkFailure(int requestCode, String message) {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
             }
         });
         RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
@@ -413,16 +395,12 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encode);
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
                 dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
 
     }
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
