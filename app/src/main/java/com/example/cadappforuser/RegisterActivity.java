@@ -126,7 +126,8 @@ public class RegisterActivity extends AppCompatActivity {
         txtGender.setText(gender);
 
 
-       // final String gender=intent.getStringExtra("gender");
+       // final String gender=intent.getStringExtr0
+        // a("gender");
 
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
