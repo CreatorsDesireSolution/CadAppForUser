@@ -153,6 +153,9 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             case R.id.nav_show_staff_member:
                 startActivity(new Intent(CompanyHomePageActivity.this,ChoiceStaffOrComapnyOwner.class));
                 break;
+            case R.id.nav_logout:
+                startActivity(new Intent(CompanyHomePageActivity.this,SignInActivity.class));
+                break;
 
 
         }

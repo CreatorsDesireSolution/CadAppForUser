@@ -67,8 +67,8 @@ public class CompanyStaffBackground extends AppCompatActivity {
                             if(status.equals("true")&& message.equals("Success")){
                                 Toast.makeText(CompanyStaffBackground.this, ""+response, Toast.LENGTH_SHORT).show();
                                 Log.d("response","response"+response);
-                                Intent intent=new Intent(CompanyStaffBackground.this,FreelancerCertificationActivity.class);
-                                startActivity(intent);
+                                //Intent intent=new Intent(CompanyStaffBackground.this,.class);
+                                //startActivity(intent);
                                 et_aboutstaff.setText("");
                                 et_currentplacestaff.setText("");
                                 et_priviouswork.setText("");

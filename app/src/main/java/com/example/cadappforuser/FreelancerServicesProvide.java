@@ -180,6 +180,8 @@ public class FreelancerServicesProvide extends AppCompatActivity {
                             if(status.equals("true") || message.equals("Success")){
                                 progressDialog.dismiss();
                                 Toast.makeText(FreelancerServicesProvide.this, ""+response, Toast.LENGTH_SHORT).show();
+                            Intent intent2=new Intent(FreelancerServicesProvide.this,FreelancerCertificationActivity.class);
+                            startActivity(intent2);
                             }
                             else
                             {
@@ -319,7 +321,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
 
     }*/
 
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();

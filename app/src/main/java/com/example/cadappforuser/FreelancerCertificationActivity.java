@@ -195,8 +195,8 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
                         Map<String, String> map=new HashMap<>();
                         map.put("certificate",encodeImage);
                         map.put("pic_work_performed",encodeImage1);
-                        map.put("id",act_session.staffid);
-                        Log.d("id","id"+act_session.staffid);
+                        map.put("id",act_session.userId);
+                        Log.d("id","id"+act_session.userId);
 
                         return  map;
                     }
