@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -128,17 +129,29 @@ public class RegisterActivity extends AppCompatActivity {
        // final String gender=intent.getStringExtra("gender");
 
 
-        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        if (mTelephony.getDeviceId() != null) {
-            deviceId = mTelephony.getDeviceId();
-        } else {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             deviceId = Settings.Secure.getString(
                     context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
+        } else {
+            if (marshMallowPermission.checkPermissionForPhoneState()) {
+                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                if (TelephonyMgr.getDeviceId() != null) {
+                    deviceId = TelephonyMgr.getDeviceId();
+                } else {
+                    deviceId = Settings.Secure.getString(
+                            context.getContentResolver(),
+                            Settings.Secure.ANDROID_ID);
+                }
+            }
         }
+
+
+
+
 
         text_DOB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +207,7 @@ public class RegisterActivity extends AppCompatActivity {
         text_DOB.setText(DOB);
 
         etAddress.setText(address);
-        txtGender.setText(intent2.getStringExtra("gender"));
+     //   txtGender.setText(intent2.getStringExtra("gender"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnRegister=findViewById(R.id.btnSignedIn);
@@ -353,11 +366,11 @@ public class RegisterActivity extends AppCompatActivity {
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
             public void onSuccess(int requestCode, String Json, Object object) {
-              //  act_session.loginSession(context);
+                act_session.loginSession(context);
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                  //  act_session = new Act_Session(context, jsonObject1);
+                   act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MobileNumberRegisterActivity.class);
@@ -399,8 +412,10 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
-        baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, dob_, mobilenumber_, gender_,address_,deviceid_,password_);
+        baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
+                dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
 
     }
 

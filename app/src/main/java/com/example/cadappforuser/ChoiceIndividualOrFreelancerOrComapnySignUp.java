@@ -29,7 +29,7 @@ public class ChoiceIndividualOrFreelancerOrComapnySignUp extends AppCompatActivi
         btnCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ChoiceIndividualOrFreelancerOrComapnySignUp.this,RegisterAsCompanyActivity.class));
+                startActivity(new Intent(ChoiceIndividualOrFreelancerOrComapnySignUp.this,CompanySelectGenderActivity.class));
             }
         });
     }

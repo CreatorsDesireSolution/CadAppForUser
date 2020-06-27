@@ -354,7 +354,9 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void callAPIRegister(final int APINumber, String remainingURL, RequestBody firstname_, RequestBody lastname_, RequestBody email_, RequestBody dob, RequestBody mobilenumber_, RequestBody gender_, RequestBody address_, RequestBody deviceid_, RequestBody password_) {
+    public void callAPIRegister(final int APINumber, String remainingURL, RequestBody firstname_, RequestBody lastname_,
+                                RequestBody email_, RequestBody dob, RequestBody mobilenumber_, RequestBody gender_,
+                                RequestBody address_, RequestBody deviceid_, RequestBody password_,RequestBody profile_pic_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -362,7 +364,8 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
-        Call<JsonElement> call = apiInterface_.postRegister(firstname_,lastname_,email_,dob,mobilenumber_,gender_,address_,deviceid_,password_);
+        Call<JsonElement> call = apiInterface_.postRegister(firstname_,lastname_,email_,dob,mobilenumber_,gender_,
+                address_,deviceid_,password_,profile_pic_);
         call.enqueue(responseCallback);
     }
 

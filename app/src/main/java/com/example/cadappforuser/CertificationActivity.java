@@ -39,7 +39,7 @@ import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
 
 public class CertificationActivity extends AppCompatActivity {
 
-    TextView txt_uploadcertification,txt_uploadPicture;
+    TextView txt_uploadcertification, txt_uploadPicture;
     Button btn_nextcertificate;
 
     Bitmap bitmap, bitmap1;
@@ -59,13 +59,12 @@ public class CertificationActivity extends AppCompatActivity {
         context = this;
 
         act_session = new Act_Session(getApplicationContext());
-        txt_uploadPicture =findViewById(R.id.txt_uploadPicture);
+        txt_uploadPicture = findViewById(R.id.txt_uploadPicture);
         txt_uploadcertification = findViewById(R.id.txt_uploadcertification);
-        imageViewcertificate= findViewById(R.id.imageViewcertificate);
-        imageViewworkperform = findViewById(R.id.imageViewworkperform);
+        imageViewcertificate = findViewById(R.id.imageView2);
+        imageViewworkperform = findViewById(R.id.imageView4);
 
         btn_nextcertificate = findViewById(R.id.btn_nextcertificate);
-
 
 
         txt_uploadcertification.setOnClickListener(new View.OnClickListener() {
@@ -99,9 +98,6 @@ public class CertificationActivity extends AppCompatActivity {
             }
 
         });
-
-
-
 
 
         txt_uploadPicture.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +192,8 @@ public class CertificationActivity extends AppCompatActivity {
         byte[] imageBytes = stream.toByteArray();
         encodeImage1 = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
-    public  void APiPostCertificate(){
+
+    public void APiPostCertificate() {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -206,7 +203,8 @@ public class CertificationActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-
+                    Intent intent = new Intent(getApplicationContext(), CompanyHomePageActivity.class);
+                    startActivity(intent);
 
 
                 } catch (JSONException e) {
@@ -228,11 +226,10 @@ public class CertificationActivity extends AppCompatActivity {
         });
         RequestBody userid_ = RequestBody.create(MediaType.parse("text/plain"), act_session.userId);
         RequestBody certificate = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
-        RequestBody picture_of_workperform = RequestBody.create(MediaType.parse("text/plain"), encodeImage1);
+          RequestBody picture_of_workperform = RequestBody.create(MediaType.parse("text/plain"), encodeImage1);
 
         baseRequest.callApipostCertificatecompany(1, BASE_URL, userid_, certificate,picture_of_workperform);
 
     }
 }
-
 

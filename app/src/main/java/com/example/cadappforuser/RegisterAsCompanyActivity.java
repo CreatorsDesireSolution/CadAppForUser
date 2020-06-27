@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.example.cadappforuser.retrofit.BaseRequest;
@@ -124,23 +125,24 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        final TelephonyManager mTelephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
-            return;
-        }
-        if (mTelephony.getDeviceId() != null) {
-            deviceId = mTelephony.getDeviceId();
-        } else {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             deviceId = Settings.Secure.getString(
                     context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
+        } else {
+            if (marshMallowPermission.checkPermissionForPhoneState()) {
+                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                if (ActivityCompat.checkSelfPermission(RegisterAsCompanyActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                if (TelephonyMgr.getDeviceId() != null) {
+                    deviceId = TelephonyMgr.getDeviceId();
+                } else {
+                    deviceId = Settings.Secure.getString(
+                            context.getContentResolver(),
+                            Settings.Secure.ANDROID_ID);
+                }
+            }
         }
 
 
