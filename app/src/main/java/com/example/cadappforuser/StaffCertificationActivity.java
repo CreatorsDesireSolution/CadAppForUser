@@ -48,14 +48,14 @@ public class StaffCertificationActivity extends AppCompatActivity {
     TextView txt_uploadcertification, txt_upload_picture;
     Bitmap bitmap, bitmap1;
     ImageView imageViewworkperform, imageViewcertificate;
-    String encodeImage, encodeImage1;
+    String encodeImage;
     public static final int REQUEST_IMAGE = 100;
     BaseRequest baseRequest;
     Act_Session act_session;
     Context context;
     ProgressDialog progressDialog;
 
-    private Uri filepath1, filepath2, filepath3, filepath4;
+    private Uri filepath1;
 
 
     @Override
@@ -76,8 +76,6 @@ public class StaffCertificationActivity extends AppCompatActivity {
         txt_uploadcertification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Dexter.withActivity(StaffCertificationActivity.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
@@ -105,37 +103,6 @@ public class StaffCertificationActivity extends AppCompatActivity {
 
         });
 
-
-        txt_upload_picture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Dexter.withActivity(StaffCertificationActivity.this)
-                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-
-                                Intent intent = new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent, "Select Image"), 2);
-                            }
-
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-                            }
-
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                                permissionToken.continuePermissionRequest();
-
-                            }
-
-                        }).check();
-            }
-
-        });
 
 
         btnCertificate.setOnClickListener(new View.OnClickListener() {
@@ -184,8 +151,7 @@ public class StaffCertificationActivity extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> map=new HashMap<>();
                         map.put("certificate",encodeImage);
-                        map.put("pic_work_performed",encodeImage1);
-                        map.put("id",act_session.staffid);
+                        map.put("id","31");
                         Log.d("id","id"+act_session.staffid);
 
                         return  map;
@@ -208,27 +174,31 @@ public class StaffCertificationActivity extends AppCompatActivity {
                 InputStream inputStream = getContentResolver().openInputStream(filepath1);
                 bitmap = BitmapFactory.decodeStream(inputStream);
                 imageViewcertificate.setImageBitmap(bitmap);
+                bitmap=getResizedBitmap(bitmap,1024);
                 imageStore(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
 
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-
-            filepath2 = data.getData();
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(filepath2);
-                bitmap1 = BitmapFactory.decodeStream(inputStream);
-                imageViewworkperform.setImageBitmap(bitmap1);
-                imageStoreWork(bitmap1);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
 
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
     private void imageStore(Bitmap bitmap) {
@@ -238,10 +208,5 @@ public class StaffCertificationActivity extends AppCompatActivity {
         encodeImage = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
-    private void imageStoreWork(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] imageBytes = stream.toByteArray();
-        encodeImage1 = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
-    }
+
 }

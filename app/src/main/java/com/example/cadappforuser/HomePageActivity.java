@@ -26,7 +26,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
@@ -39,6 +46,9 @@ import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +82,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     CompanyNewAdapter companyNewAdapter;
     AllServicesAdapter allServicesAdapter;
     TextView txtCurrentLocation;
+    String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,35 +135,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         servicesFreelancerHomeModelArrayList=new ArrayList<>();
         allServiceModels = new ArrayList<>();
 
-       /* servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-
-        ServicesFeturesAndCategoriesHomeAdapter servicesFeturesAndCategoriesHomeAdapter=new ServicesFeturesAndCategoriesHomeAdapter(HomePageActivity.this,servicesFeatureAndCategoriesHomeModelArrayList);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);*/
-
-        /*servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-
-
-        ServicesFreelancerAdapterHome servicesFreelancerAdapterHome=new ServicesFreelancerAdapterHome(HomePageActivity.this,servicesFreelancerHomeModelArrayList);
-        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);*/
-//        recyclerView1.setLayoutManager(layoutManager1);
-//        recyclerView1.setHasFixedSize(true);
-//        recyclerView1.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
-
-
 
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Massage","lorem ipsum"));
@@ -170,42 +152,115 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         recyclerView2.setHasFixedSize(true);
         recyclerView2.setAdapter(allServicesAdapter);
 
-
         newModels = new ArrayList<>();
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",val));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
-        newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
 
-         newAdapter=new NewAdapter(HomePageActivity.this,newModels);
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(newAdapter);
 
+        StringRequest request=new StringRequest(Request.Method.POST, apiurl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    if (sucess.equals("1")) {
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                //String category=object.getString("item_category");
+                                String id = object.getString("id");
+                                String name = object.getString("firstname");
+                                String lastname = object.getString("lastname");
+                                String email = object.getString("email");
+                                String mobilenumber = object.getString("mobilenumber");
+                                String gender = object.getString("gender");
+                                String address = object.getString("address");
+                                //String item_image = object.getString("item_image");
+                                //String u = "https://inventivepartner.com/petmart/images/" + item_image;
+                                newModels.add(new NewModel(R.drawable.womanfacial,name,5));
+                                newAdapter=new NewAdapter(HomePageActivity.this,newModels);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setAdapter(newAdapter);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(request);
 
 
         companyNewModels = new ArrayList<>();
 
-        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",val));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
-
-         companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
-        recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(companyNewAdapter);
 
 
+        StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    if (sucess.equals("1")) {
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            //String category=object.getString("item_category");
+                            String id = object.getString("id");
+                            String nameC = object.getString("companyname");
+                            //String lastname = object.getString("lastname");
+                            //String email = object.getString("email");
+                            //String mobilenumber = object.getString("mobilenumber");
+                            //String gender = object.getString("gender");
+                           /// String address = object.getString("address");
+                            //String item_image = object.getString("item_image");
+                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
+                            companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,nameC,3));
+
+                            companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
+
+                            recyclerView1.setHasFixedSize(true);
+                            recyclerView1.setAdapter(companyNewAdapter);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue1= Volley.newRequestQueue(this);
+        requestQueue1.add(request1);
+
+         //companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
+        //LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        //recyclerView1.setLayoutManager(linearLayoutManager4);
+        //recyclerView1.setHasFixedSize(true);
+        //recyclerView1.setAdapter(companyNewAdapter);
 
         mDrawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(

@@ -6,62 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".FreelancerCertificationActivity">
 
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CERTIFICATION"
+        android:text="PICTURES OF WORK PERFORMED"
         android:textColor="@color/colorAccent"
         android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022"></TextView>
+        app:layout_constraintVertical_bias="0.059"></TextView>
 
     <ImageView
-        android:id="@+id/imageViewcertificate"
+        android:id="@+id/imageViewworkperform"
         android:layout_width="100dp"
         android:layout_height="90dp"
         android:background="@drawable/documentback"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.029"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.079"></ImageView>
+
 
     <TextView
-        android:id="@+id/txt_uploadcertification"
+        android:id="@+id/txt_upload_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_attach_file_black_24dp"
-
-        android:text="Upload Certification"
+        android:text="Upload Picture (optional)"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewcertificate"
-        app:layout_constraintVertical_bias="0.029"></TextView>
-
+        app:layout_constraintTop_toBottomOf="@+id/imageViewworkperform"
+        app:layout_constraintVertical_bias="0.082"></TextView>
 
     <Button
         android:id="@+id/btnCertificate"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginBottom="316dp"
         android:background="@drawable/btnback"
         android:text="Next"
-        android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="20dp"></Button>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_upload_picture"
+        app:layout_constraintVertical_bias="0.248"></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

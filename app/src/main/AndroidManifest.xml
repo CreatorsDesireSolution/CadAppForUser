@@ -24,9 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CompanyStaffBackground">
+        <activity android:name=".CompanyUploadWorkPerformed">
 
         </activity>
+        <activity android:name=".StaffWorkPictureImage"></activity>
+        <activity android:name=".FreelancerUploadWorkImage" />
+        <activity android:name=".CompanyStaffBackground" />
         <activity android:name=".CompanyServicesOffered" />
         <activity android:name=".Act_ShowDayForStaff" />
         <activity android:name=".CurrentLocationofcompanyStaff" />
@@ -62,6 +65,11 @@
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".FreelancherAddNewServices" />
@@ -77,7 +85,7 @@
         <activity android:name=".Act_Forgot_password" />
         <activity android:name=".ShowCompanyStaffProfile" />
         <activity android:name=".ShowStaffProfile" />
-        <activity android:name=".StaffCertificationActivity" />
+        <activity android:name=".StaffCertificationActivity"></activity>
         <activity android:name=".StaffAddServicesActivity" />
         <activity android:name=".BackgoundOfStaffActivity" />
         <activity android:name=".StaffProfile" />
@@ -88,7 +96,9 @@
         <activity android:name=".CompanyRegisterAsCompanyStaffActivity" />
         <activity android:name=".CompanyAddServicesActivity" />
         <activity android:name=".CompanyServicesProvidedAndCancelationPolicy" />
-        <activity android:name=".CertificationActivity" />
+        <activity android:name=".CertificationActivity">
+
+        </activity>
         <activity android:name=".TermAndCondition" />
         <activity android:name=".BackgoundOfCompanyActivity" />
         <activity
@@ -102,13 +112,7 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".FreelancerAddServicesActivity" />
         <activity android:name=".FreelancerSelectGenderActivity" />
-        <activity android:name=".FreelancerCertificationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
         <activity android:name=".FreeelancerVerificationActivity" />
         <activity android:name=".FreelancerTermAndCondition" />
@@ -150,9 +154,7 @@
         <activity
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".FreelancerServicesProvide"
-            />
+        <activity android:name=".FreelancerServicesProvide" />
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

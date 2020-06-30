@@ -46,7 +46,7 @@ public class Act_Session {
             otp =(jsonObject.optString("otp"));
             staffid =(jsonObject.optString("staffid"));
 
-            // session_id = jsonObject.optString("id");
+            //session_id = jsonObject.optString("id");
 
             USER_ID = userId;
 

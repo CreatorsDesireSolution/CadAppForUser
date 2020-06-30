@@ -85,20 +85,14 @@ public class BackgoundOfFreelancerActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Send Successfully", Toast.LENGTH_SHORT).show();
                     finish();
 
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
