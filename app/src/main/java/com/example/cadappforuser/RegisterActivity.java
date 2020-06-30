@@ -12,11 +12,13 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
@@ -53,6 +55,7 @@ import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -75,10 +78,19 @@ public class RegisterActivity extends AppCompatActivity {
     BaseRequest baseRequest;
     String firstname,lastname,email,DOB,mobilenumber,gender,address,referrelcode,password;
     Act_Session act_session;
-    Uri selectedImage;
-    File file;
+
     public static final int REQUEST_IMAGE = 100;
 
+
+
+    private final int REQ_CODE_Gallery = 1;
+    private final int REQ_CODE_Camera = 1888;
+    Bitmap mainBitmap;
+    public boolean datafinish = false;
+    Bundle bundle = null;
+    Uri tempUri;
+    Uri selectedImage;
+    Uri file;
 
 
 
@@ -94,14 +106,14 @@ public class RegisterActivity extends AppCompatActivity {
         act_session = new Act_Session(getApplicationContext());
 
 
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Register");
 
-        txtGender=findViewById(R.id.etGender);
-        etpassword= findViewById(R.id.etpassword);
-        imageUserLogo=findViewById(R.id.userImageIcon);
+        txtGender = findViewById(R.id.etGender);
+        etpassword = findViewById(R.id.etpassword);
+        imageUserLogo = findViewById(R.id.userImageIcon);
         iv_camera = findViewById(R.id.iv_camera);
-        etAddress=findViewById(R.id.etAddress);
+        etAddress = findViewById(R.id.etAddress);
         text_DOB = findViewById(R.id.txt_DOB);
         etFirstName = findViewById(R.id.etFirstName);
         etLatName = findViewById(R.id.etLatName);
@@ -116,20 +128,19 @@ public class RegisterActivity extends AppCompatActivity {
         mobilenumber = etUsePhoneNumber.getText().toString();
 
 
-        calendarView=Calendar.getInstance();
-        day=calendarView.get(Calendar.DAY_OF_MONTH);
-        months=calendarView.get(Calendar.MONTH);
-        year=calendarView.get(Calendar.YEAR);
-        months=months+1;
+        calendarView = Calendar.getInstance();
+        day = calendarView.get(Calendar.DAY_OF_MONTH);
+        months = calendarView.get(Calendar.MONTH);
+        year = calendarView.get(Calendar.YEAR);
+        months = months + 1;
 
-        final Intent intent=getIntent();
+        final Intent intent = getIntent();
         gender = intent.getStringExtra("gender");
         txtGender.setText(gender);
 
 
-       // final String gender=intent.getStringExtr0
+        // final String gender=intent.getStringExtr0
         // a("gender");
-
 
 
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
@@ -149,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity {
         tmSerial = "" + tm.getSimSerialNumber();
         androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
 
 //        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -174,22 +185,30 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+        iv_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, 1);
+            }
+            });
+
 
 
         text_DOB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonhts) {
-                        month=month+1;
-                        text_DOB.setText(dayOfMonhts+"/"+month+"/"+year);
+                        month = month + 1;
+                        text_DOB.setText(dayOfMonhts + "/" + month + "/" + year);
                     }
-                },year,months,day);
+                }, year, months, day);
                 datePickerDialog.show();
             }
         });
-
 
 
         etAddress.setOnClickListener(new View.OnClickListener() {
@@ -201,27 +220,27 @@ public class RegisterActivity extends AppCompatActivity {
                 email = etUserEmail.getText().toString();
                 mobilenumber = etUsePhoneNumber.getText().toString();
 
-                Intent intent1=new Intent(RegisterActivity.this,CurrentLocation.class);
-                intent1.putExtra("gender",gender);
-                intent1.putExtra("firstname",firstname);
-                intent1.putExtra("lastname",lastname);
-                intent1.putExtra("email",email);
-                intent1.putExtra("mobilenumber",mobilenumber);
-                intent1.putExtra("dob",DOB);
-               // Toast.makeText(activity, ""+firstname, Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(RegisterActivity.this, CurrentLocation.class);
+                intent1.putExtra("gender", gender);
+                intent1.putExtra("firstname", firstname);
+                intent1.putExtra("lastname", lastname);
+                intent1.putExtra("email", email);
+                intent1.putExtra("mobilenumber", mobilenumber);
+                intent1.putExtra("dob", DOB);
+                // Toast.makeText(activity, ""+firstname, Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
 
 
             }
         });
 
-        Intent intent2=getIntent();
+        Intent intent2 = getIntent();
         address = intent2.getStringExtra("address");
-        firstname=intent2.getStringExtra("firstname");
-        lastname=intent2.getStringExtra("lastname");
-        email=intent2.getStringExtra("email");
-        mobilenumber=intent2.getStringExtra("mobilenumber");
-        DOB= intent2.getStringExtra("dob");
+        firstname = intent2.getStringExtra("firstname");
+        lastname = intent2.getStringExtra("lastname");
+        email = intent2.getStringExtra("email");
+        mobilenumber = intent2.getStringExtra("mobilenumber");
+        DOB = intent2.getStringExtra("dob");
 
         etFirstName.setText(firstname);
         etLatName.setText(lastname);
@@ -230,53 +249,57 @@ public class RegisterActivity extends AppCompatActivity {
         text_DOB.setText(DOB);
 
         etAddress.setText(address);
-     //   txtGender.setText(intent2.getStringExtra("gender"));
+        //   txtGender.setText(intent2.getStringExtra("gender"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        btnRegister=findViewById(R.id.btnSignedIn);
-         btnRegister.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
+        btnRegister = findViewById(R.id.btnSignedIn);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 // startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
 
 
-                   password = etpassword.getText().toString();
-                 firstname = etFirstName.getText().toString();
-                 lastname = etLatName.getText().toString();
-                 email = etUserEmail.getText().toString();
-                 mobilenumber = etUsePhoneNumber.getText().toString();
-                 address = etAddress.getText().toString();
-                 DOB = text_DOB.getText().toString();
-                 if (firstname.equals("")){
-                     Toast.makeText(activity, "Please enter firstname", Toast.LENGTH_SHORT).show();
-                 }else  if(lastname.equals("")){
-                     Toast.makeText(activity, "Please enter lastname", Toast.LENGTH_SHORT).show();
+                password = etpassword.getText().toString();
+                firstname = etFirstName.getText().toString();
+                lastname = etLatName.getText().toString();
+                email = etUserEmail.getText().toString();
+                mobilenumber = etUsePhoneNumber.getText().toString();
+                address = etAddress.getText().toString();
+                DOB = text_DOB.getText().toString();
+                if (firstname.equals("")) {
+                    Toast.makeText(activity, "Please enter firstname", Toast.LENGTH_SHORT).show();
+                } else if (lastname.equals("")) {
+                    Toast.makeText(activity, "Please enter lastname", Toast.LENGTH_SHORT).show();
 
-                 }else if (email.equals("")){
-                     Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show();
-
-
-                 }else  if(mobilenumber.equals("")){
-                     Toast.makeText(activity, "Please enter mobilenumber", Toast.LENGTH_SHORT).show();
+                } else if (email.equals("")) {
+                    Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show();
 
 
-                 }else  if (address.equals("")){
-                     Toast.makeText(activity, "Please enter current location", Toast.LENGTH_SHORT).show();
+                } else if (mobilenumber.equals("")) {
+                    Toast.makeText(activity, "Please enter mobilenumber", Toast.LENGTH_SHORT).show();
 
 
-                 }else if (DOB.equals("")){
-                     Toast.makeText(activity, "Please select dob", Toast.LENGTH_SHORT).show();
+                } else if (address.equals("")) {
+                    Toast.makeText(activity, "Please enter current location", Toast.LENGTH_SHORT).show();
 
-                 }else if(etpassword.equals("")) {
-                     Toast.makeText(activity, "Please Enter password", Toast.LENGTH_SHORT).show();
 
-                 }else {
+                } else if (DOB.equals("")) {
+                    Toast.makeText(activity, "Please select dob", Toast.LENGTH_SHORT).show();
 
-                     api_register();
-                 }
+                } else if (etpassword.equals("")) {
+                    Toast.makeText(activity, "Please Enter password", Toast.LENGTH_SHORT).show();
 
-             }
-         });
+                } else if (file== null){
+
+                    Toast.makeText(activity, "Please Choose Profile", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    api_register();
+
+                }
+
+            }
+        });
 
         iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -318,9 +341,9 @@ public class RegisterActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
 
-                Uri filepath = data.getData();
+                file = data.getData();
                 try {
-                    InputStream inputStream = getContentResolver().openInputStream(filepath);
+                    InputStream inputStream = getContentResolver().openInputStream(file);
                     bitmap = BitmapFactory.decodeStream(inputStream);
                     imageUserLogo.setImageBitmap(bitmap);
 
@@ -330,6 +353,7 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+            
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
@@ -436,13 +460,16 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
 
-     //   RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+      //  RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+//
+//        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//        MultipartBody.Part body = MultipartBody.Part.createFormData("profile_pic", file.getName(), requestFile);
 
-        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+       RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
-                dob_, mobilenumber_, gender_,address_,deviceid_,password_);
+                dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
 
     }
 
@@ -462,5 +489,112 @@ public class RegisterActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        switch (requestCode) {
+//            case REQ_CODE_Gallery: {
+//                try {
+//                    selectedImage = data.getData();
+//                    mainBitmap = MediaStore.Images.Media.getBitmap(RegisterActivity.this.getContentResolver(), selectedImage);
+//                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+//                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+//                    cursor.moveToFirst();
+//                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//                    String filePath = cursor.getString(columnIndex);
+//                    cursor.close();
+//                    file = new File(filePath);
+//                    long fileSizeInBytes = file.length();
+//                    long fileSizeInKB = fileSizeInBytes / 1024;
+//                    long fileSizeInMB = fileSizeInKB / 1024;
+//                    mainBitmap = ShrinkBitmap(filePath, 550, 550);
+//                    bitmapToBase64(mainBitmap);
+//                    datafinish = false;
+//                    imageUserLogo.setImageURI(selectedImage);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                break;
+//            }
+//            case REQ_CODE_Camera: {
+//                if (resultCode == RESULT_OK) {
+//                    Bitmap photo = (Bitmap) data.getExtras().get("data");
+//                    tempUri = getImageUri(getApplicationContext(), photo);
+//                    file = new File(getRealPathFromURI(tempUri));
+//                    mainBitmap = ShrinkBitmap(getRealPathFromURI(tempUri), 600, 600);
+//                    bitmapToBase64(mainBitmap);
+//                    datafinish = false;
+//                    imageUserLogo.setImageBitmap(mainBitmap);
+//                }
+//                break;
+//            }
+//
+//        }
+//    }
+//
+//    Bitmap ShrinkBitmap(String file, int width, int height) {
+//        BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
+//        bmpFactoryOptions.inJustDecodeBounds = true;
+//        Bitmap bitmap = BitmapFactory.decodeFile(file, bmpFactoryOptions);
+//
+//        int heightRatio = (int) Math.ceil(bmpFactoryOptions.outHeight / (float) height);
+//        int widthRatio = (int) Math.ceil(bmpFactoryOptions.outWidth / (float) width);
+//
+//        if (heightRatio > 1 || widthRatio > 1) {
+//            if (heightRatio > widthRatio) {
+//                bmpFactoryOptions.inSampleSize = heightRatio;
+//            } else {
+//                bmpFactoryOptions.inSampleSize = widthRatio;
+//            }
+//        }
+//
+//        bmpFactoryOptions.inJustDecodeBounds = false;
+//        bitmap = BitmapFactory.decodeFile(file, bmpFactoryOptions);
+//        return bitmap;
+//    }
+//
+//
+//    public static String bitmapToBase64(Bitmap bitmap) {
+//        String base64 = null;
+//        try {
+//            if (bitmap != null) {
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
+//                byte[] _byteArray = baos.toByteArray();
+//                base64 = Base64.encodeToString(_byteArray, Base64.DEFAULT);
+////				base64 = Base64.encodeToString(_byteArray,Base64.NO_WRAP);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } catch (OutOfMemoryError e) {
+//            e.printStackTrace();
+//        }
+//        return base64;
+//    }
+//
+//    public Uri getImageUri(Context inContext, Bitmap inImage) {
+//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+//        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+//        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+//        return Uri.parse(path);
+//    }
+//
+//    public String getRealPathFromURI(Uri uri) {
+//        String path = "";
+//        if (getContentResolver() != null) {
+//            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+//            if (cursor != null) {
+//                cursor.moveToFirst();
+//                int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+//                path = cursor.getString(idx);
+//                cursor.close();
+//            }
+//        }
+//        return path;
+//    }
 
 }

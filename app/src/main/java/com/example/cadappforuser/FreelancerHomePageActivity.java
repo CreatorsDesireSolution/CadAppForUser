@@ -210,10 +210,15 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             case R.id.nav_accepted_location:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesProvide.class));
                 break;
+            case R.id.nav_logout:
+                startActivity(new Intent(FreelancerHomePageActivity.this,Act_Logout.class));
+             break;
             case  R.id.nav_profile:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfile.class));
+                break;
             case R.id.nav_set_avalibilty:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
+                break;
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
