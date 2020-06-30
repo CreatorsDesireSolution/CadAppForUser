@@ -158,7 +158,7 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
 
-                    Intent intent = new Intent(getApplicationContext(),CompanyHomePageActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),CertificationActivity.class);
                     startActivity(intent);
 
 

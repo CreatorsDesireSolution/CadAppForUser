@@ -52,11 +52,22 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         holder.ratingBar.setRating(newModel.getRating());
         holder.facialImageFreelancer.setImageResource(newModel.getImage());
 
+        final String name = newModel.getName();
+       // String name = object.getString("firstname");
+        //String lastname = object.getString("lastname");
+        //String email = object.getString("email");
+        //String mobilenumber = object.getString("mobilenumber");
+        //String gender = object.getString("gender");
+        //String address = object.getString("address");
+
 
      holder.setItemClickListner(new ItemClickListner() {
          @Override
          public void onItemClickListner(View v, int position) {
-             context.startActivity(new Intent(context, Act_FreelancerProfile.class));
+             Intent intent=new Intent(context,Act_FreelancerProfile.class);
+             intent.putExtra("name",name);
+             context.startActivity(intent);
+             //context.startActivity(new Intent(context, Act_FreelancerProfile.class));
          }
      });
     }

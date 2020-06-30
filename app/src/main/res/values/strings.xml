@@ -73,7 +73,7 @@ and live a more fulfilling and productive life. .    </string>
 
 
     <string-array name="team">
-          <item>Team Size</item>
+        <item>Team Size</item>
         <item>[1 to 10]</item>
         <item>[10 to 20]</item>
         <item>[20 to 30]</item>

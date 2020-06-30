@@ -18,12 +18,15 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     TextView background11;
     boolean isOpen = false;
     LinearLayout tvbg;
+    TextView name;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancernewprofile);
+
+        name=findViewById(R.id.name);
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -34,6 +37,10 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         lay1 = findViewById(R.id.lay1);
         tvbg= findViewById(R.id.tvbg);
         background11 = findViewById(R.id.background11);
+
+        Intent intent=getIntent();
+        name.setText(intent.getStringExtra("name"));
+
 
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
