@@ -61,6 +61,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     Activity activity;
     Context context;
     String deviceId;
+    Uri file;
     Act_Session act_session;
     BaseRequest baseRequest;
     EditText et_staff;
@@ -204,8 +205,11 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
                 }else if(aboutcompany.equals("")) {
                     Toast.makeText(activity, "Please enter about company", Toast.LENGTH_SHORT).show();
 
-                }else {
+                }else  if (file==null){
 
+                    Toast.makeText(activity, "Please choose profile", Toast.LENGTH_SHORT).show();
+
+                }else {
                     api_register();
                 }
 
@@ -297,10 +301,12 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         RequestBody registarion_no_ = RequestBody.create(MediaType.parse("text/plain"), registrationnumber);
         RequestBody deviceId_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody staff_ = RequestBody.create(MediaType.parse("text/plain"), staff);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+
 
 
         baseRequest.callAPIRegisterascompany(1,"https://aoneservice.net.in/" , companyname_,
-                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_);
+                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_,profile_pic);
 
     }
 
@@ -308,9 +314,9 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode==1 && resultCode==RESULT_OK && data!=null){
 
-            Uri filepath=data.getData();
+            file=data.getData();
             try {
-                InputStream inputStream=getContentResolver().openInputStream(filepath);
+                InputStream inputStream=getContentResolver().openInputStream(file);
                 bitmap= BitmapFactory.decodeStream(inputStream);
                 imageUserLogo.setImageBitmap(bitmap);
 

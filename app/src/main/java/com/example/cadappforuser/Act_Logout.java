@@ -10,12 +10,15 @@ import android.widget.TextView;
 public class Act_Logout extends AppCompatActivity {
 
     TextView tv_cancel,tv_logout;
+    Act_Session act_session;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__logout);
+
+        act_session = new Act_Session(getApplicationContext());
 
         tv_cancel = findViewById(R.id.tv_cancel);
         tv_logout = findViewById(R.id.tv_logout);
@@ -33,8 +36,10 @@ public class Act_Logout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                act_session.clearPreferences(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

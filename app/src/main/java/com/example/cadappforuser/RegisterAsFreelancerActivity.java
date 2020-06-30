@@ -68,6 +68,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     MarshMallowPermission marshMallowPermission;
     Activity activity;
     Context context;
+    Uri file;
     String firstname, lastname, email, DOB, mobilenumber, gender1, address, referrelcode, password;
     String deviceId;
     BaseRequest baseRequest;
@@ -168,9 +169,12 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                 } else if (etpassword.equals("")) {
                     Toast.makeText(activity, "Please Enter password", Toast.LENGTH_SHORT).show();
 
-                } else {
+                } else  if (file==null){
+                    Toast.makeText(activity, "Please Choose image", Toast.LENGTH_SHORT).show();
 
+                }else {
                     api_register();
+
                 }
 
             }
@@ -293,9 +297,9 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode==1 && resultCode==RESULT_OK && data!=null){
 
-            Uri filepath=data.getData();
+            file=data.getData();
             try {
-                InputStream inputStream=getContentResolver().openInputStream(filepath);
+                InputStream inputStream=getContentResolver().openInputStream(file);
                 bitmap= BitmapFactory.decodeStream(inputStream);
                 imageUserLogo.setImageBitmap(bitmap);
 
@@ -369,9 +373,12 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
-        baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_);
+
+        baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_,
+                lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
 
     }
 

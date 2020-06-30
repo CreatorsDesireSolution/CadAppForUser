@@ -99,7 +99,9 @@ public interface ApiInterface {
                                    @Part("gender") RequestBody gender,
                                    @Part("address") RequestBody address,
                                    @Part("deviceid") RequestBody deviceid,
-                                   @Part("password") RequestBody password
+                                   @Part("password") RequestBody password,
+                                    @Part ("profile_image")RequestBody profile_pic
+
     );
 
 
@@ -112,7 +114,8 @@ public interface ApiInterface {
                                     @Part("gender") RequestBody gender,
                                     @Part("address") RequestBody address,
                                     @Part("deviceid") RequestBody deviceid,
-                                    @Part("password") RequestBody password
+                                    @Part("password") RequestBody password,
+                                    @Part("profile_pic") RequestBody profile_pic
     );
 
 
@@ -151,7 +154,8 @@ public interface ApiInterface {
                                     @Part("password") RequestBody password_,
                                            @Part("regnumber") RequestBody regnumber_,
                                            @Part("deviceid") RequestBody deviceid_,
-                                           @Part("no_of_staff") RequestBody staff_
+                                           @Part("no_of_staff") RequestBody staff_,
+                                           @Part("profile_pic") RequestBody profile_pic
     );
 
 
