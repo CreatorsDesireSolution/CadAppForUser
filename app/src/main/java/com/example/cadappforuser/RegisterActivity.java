@@ -353,7 +353,8 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            
+
+
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
