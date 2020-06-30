@@ -24,9 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CompanyUploadWorkPerformed">
-
-        </activity>
+        <activity android:name=".CompanyUploadWorkPerformed"></activity>
         <activity android:name=".StaffWorkPictureImage"></activity>
         <activity android:name=".FreelancerUploadWorkImage" />
         <activity android:name=".CompanyStaffBackground" />
@@ -70,7 +68,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
@@ -96,9 +93,7 @@
         <activity android:name=".CompanyRegisterAsCompanyStaffActivity" />
         <activity android:name=".CompanyAddServicesActivity" />
         <activity android:name=".CompanyServicesProvidedAndCancelationPolicy" />
-        <activity android:name=".CertificationActivity">
-
-        </activity>
+        <activity android:name=".CertificationActivity"></activity>
         <activity android:name=".TermAndCondition" />
         <activity android:name=".BackgoundOfCompanyActivity" />
         <activity
