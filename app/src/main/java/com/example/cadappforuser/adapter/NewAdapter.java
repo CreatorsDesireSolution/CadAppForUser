@@ -12,6 +12,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.TintTypedArray;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_FreelancerProfile;
@@ -53,19 +54,27 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         holder.facialImageFreelancer.setImageResource(newModel.getImage());
 
         final String name = newModel.getName();
-       // String name = object.getString("firstname");
-        //String lastname = object.getString("lastname");
-        //String email = object.getString("email");
-        //String mobilenumber = object.getString("mobilenumber");
+        final String lastname = newModel.getLastname();
+        final String email = newModel.getEmail();
+        final String mobilenumber = newModel.getMobile();
         //String gender = object.getString("gender");
-        //String address = object.getString("address");
+        final String address = newModel.getAddress();
+        final String experience=newModel.getAddress();
+        final String aboutus=newModel.getAbout_yourself();
 
 
      holder.setItemClickListner(new ItemClickListner() {
          @Override
          public void onItemClickListner(View v, int position) {
              Intent intent=new Intent(context,Act_FreelancerProfile.class);
-             intent.putExtra("name",name);
+              intent.putExtra("name",name);
+              intent.putExtra("last",lastname);
+              intent.putExtra("email",email);
+              intent.putExtra("mobile",mobilenumber);
+             intent.putExtra("address",address);
+             intent.putExtra("experience",experience);
+             intent.putExtra("aboutus",aboutus);
+
              context.startActivity(intent);
              //context.startActivity(new Intent(context, Act_FreelancerProfile.class));
          }

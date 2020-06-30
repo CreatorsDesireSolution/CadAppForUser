@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Act_FreelancerProfile extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     TextView background11;
     boolean isOpen = false;
     LinearLayout tvbg;
-    TextView name;
+    TextView name,email,mobile,last,address,experience,background;
 
 
     @Override
@@ -27,6 +28,11 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         setContentView(R.layout.freelancernewprofile);
 
         name=findViewById(R.id.name);
+        email=findViewById(R.id.tv_email);
+        mobile=findViewById(R.id.mobile_nummber);
+        address=findViewById(R.id.tv_city);
+        experience=findViewById(R.id.established);
+        background=findViewById(R.id.backbg);
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -39,7 +45,16 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         background11 = findViewById(R.id.background11);
 
         Intent intent=getIntent();
-        name.setText(intent.getStringExtra("name"));
+        String last=intent.getStringExtra("last");
+        name.setText(intent.getStringExtra("name" +last));
+        address.setText(intent.getStringExtra("address"));
+        mobile.setText(intent.getStringExtra("mobile"));
+        email.setText(intent.getStringExtra("email"));
+        experience.setText(intent.getStringExtra("experience"));
+        Toast.makeText(this, ""+intent.getStringExtra("aboutus"), Toast.LENGTH_SHORT).show();
+       // background.setText(intent.getStringExtra("aboutus"));
+
+
 
 
         lay1.setOnClickListener(new View.OnClickListener() {
