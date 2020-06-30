@@ -194,138 +194,36 @@
 
                             </LinearLayout>
 
+                            <EditText
+                                android:id="@+id/et_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight=".50"
+                                android:background="@drawable/background_border15"
+                                android:hint="Gender"
+                                android:inputType="number"
+                                android:paddingLeft="10dp"
+                                android:paddingTop="12dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="12dp"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                tools:ignore="Suspicious0dp" />
+
+
 
                         </LinearLayout>
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="20dp"
-
-                            android:text="Choose Gender(Male or Female)"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp" />
 
 
-                        <RelativeLayout
-                            android:id="@+id/l55"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:paddingLeft="30dp"
-                            android:paddingRight="30dp"
-
-                            android:weightSum="1">
-
-
-                            <LinearLayout
-                                android:id="@+id/lay_male"
-                                android:layout_width="130dp"
-                                android:layout_height="120dp"
-                                android:layout_weight=".4"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/lay1"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:background="@drawable/circle_profileupload"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    android:padding="10dp">
-
-                                    <ImageView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        android:layout_gravity="center"
-                                        android:padding="5dp"
-                                        android:src="@drawable/men_image" />
-
-
-                                </LinearLayout>
-
-
-                                <!--<View-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_marginTop="5dp"-->
-                                <!--android:background="@color/card_bg_dark"-->
-                                <!--android:layout_height="2dp"/>-->
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-
-                                    android:layout_marginTop="10dp"
-                                    android:text="Male"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="130dp"
-                                android:layout_height="120dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_gravity="end"
-                                android:layout_weight=".4"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white"
-                                android:gravity="end"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/lay2"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:background="@drawable/circle_profileupload"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    android:padding="10dp">
-
-                                    <ImageView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        android:layout_gravity="center"
-                                        android:padding="5dp"
-                                        android:src="@drawable/woman_image" />
-
-
-                                </LinearLayout>
-
-
-                                <!--<View-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_marginTop="5dp"-->
-                                <!--android:background="@color/card_bg_dark"-->
-                                <!--android:layout_height="2dp"/>-->
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-
-                                    android:layout_marginTop="10dp"
-                                    android:text="Female"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
 
 
                         <LinearLayout
@@ -347,7 +245,7 @@
                                 android:orientation="vertical">
 
 
-                                <TextView
+                                <EditText
                                     android:id="@+id/tv_address"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
