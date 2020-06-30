@@ -52,7 +52,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         email.setText(intent.getStringExtra("email"));
         experience.setText(intent.getStringExtra("experience"));
         Toast.makeText(this, ""+intent.getStringExtra("aboutus"), Toast.LENGTH_SHORT).show();
-       // background.setText(intent.getStringExtra("aboutus"));
+        background.setText(intent.getStringExtra("aboutus"));
 
 
 

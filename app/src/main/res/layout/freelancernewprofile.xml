@@ -415,9 +415,6 @@
                             android:weightSum="1">
                             <!--bg_home-->
 
-
-
-
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
@@ -430,11 +427,6 @@
                                     android:textSize="16dp"
                                     android:textStyle="bold"
                                     tools:ignore="Suspicious0dp" />
-
-
-
-
-
                         </LinearLayout>
 
 

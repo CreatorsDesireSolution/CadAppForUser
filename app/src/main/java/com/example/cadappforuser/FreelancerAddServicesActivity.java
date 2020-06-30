@@ -68,24 +68,6 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
         list.add("Massage");
         list.add("Pedicure & Manicure");
 
-//        ArrayAdapter<String>arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,list);
-//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(arrayAdapter);
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                 spinner.setSelection(i);
-//                Object item = adapterView.getItemAtPosition(i);
-//                 selectcategory = spinner.getSelectedItem().toString();
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
          btn_addservice.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -128,35 +110,22 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-
                     Toast.makeText(getApplicationContext(), "Add Successfully", Toast.LENGTH_SHORT).show();
                     // startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));
                     Intent intent = new Intent(getApplicationContext(),FreelancerHomePageActivity.class);
                     startActivity(intent);
-
                     finish();
-
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
-
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
             }
-
             @Override
-
             public void onNetworkFailure(int requestCode, String message) {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-
             }
         });
         RequestBody userid_ = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
@@ -164,8 +133,6 @@ public class FreelancerAddServicesActivity extends AppCompatActivity {
         RequestBody description_ = RequestBody.create(MediaType.parse("text/plain"), description);
         RequestBody set_price_ = RequestBody.create(MediaType.parse("text/plain"), setprice);
         RequestBody duration_ = RequestBody.create(MediaType.parse("text/plain"), duration);
-
-
 
         baseRequest.callApiAddservicefreelancer(1,"https://aoneservice.net.in/" , userid_, service_name_, description_, set_price_, duration_);
 

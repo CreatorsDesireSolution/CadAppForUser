@@ -177,10 +177,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                                 String email = object.getString("email");
                                 String mobilenumber = object.getString("mobilenumber");
                                 String experinace=object.getString("experience");
-                               // String gender = object.getString("gender");
+                                //String gender = object.getString("gender");
                                 String address = object.getString("address");
                                 String aboutus=object.getString("about_yourself");
-                                Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
                                 //String item_image = object.getString("item_image");
                                 //String u = "https://inventivepartner.com/petmart/images/" + item_image;
                                 newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
