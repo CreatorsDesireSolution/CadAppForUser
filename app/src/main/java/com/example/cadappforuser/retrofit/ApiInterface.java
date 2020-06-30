@@ -105,6 +105,24 @@ public interface ApiInterface {
     );
 
 
+
+
+    @Multipart
+    @POST("salon/customer_editdata_api.php")
+    Call<JsonElement> postupdateprofile( @Part("firstname") RequestBody name_,
+                                    @Part("lastname") RequestBody lastname,
+                                    @Part("email") RequestBody email,
+                                    @Part("dob") RequestBody dob_,
+                                    @Part("mobilenumber") RequestBody mobilenumber,
+                                    @Part("gender") RequestBody gender,
+                                    @Part("address") RequestBody address
+
+
+    );
+
+
+
+
     @Multipart
     @POST("salon/freelancer_registration.php")
     Call<JsonElement> postregisterfreelancer( @Part("firstname") RequestBody name_,

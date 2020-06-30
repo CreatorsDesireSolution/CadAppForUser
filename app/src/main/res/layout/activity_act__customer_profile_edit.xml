@@ -107,6 +107,7 @@
                 android:padding="5dp"
                 android:text="Prachi Prajpat"
                 android:gravity="center"
+                android:id="@+id/tv_name"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
@@ -118,33 +119,36 @@
                 android:padding="5dp"
                 android:text="+919977952101"
                 android:gravity="center"
+                android:id="@+id/tv_number"
                 android:textStyle="normal"
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="47dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="prachiprajapat861@gmail.com"
-                android:gravity="center"
-                android:textStyle="normal"
-                android:layout_gravity="center"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
 
             <TextView
+                android:id="@+id/tv_gender"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="21dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="Female"
-                android:gravity="center"
-                android:textStyle="normal"
-                android:layout_gravity="center"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="normal" />
 
 
             <TextView
@@ -152,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="02/06/1997"
+                android:id="@+id/tv_dob"
                 android:gravity="center"
                 android:textStyle="normal"
                 android:layout_gravity="center"
@@ -187,6 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:padding="5dp"
+                    android:id="@+id/tv_addresss"
                     android:text="Dhamnod (Dhar) 454552"
                     android:textColor="@color/black"/>
 
