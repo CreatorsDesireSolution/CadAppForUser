@@ -19,6 +19,7 @@ import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceDescription;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.model.ServicesListModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -59,16 +60,14 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-
-
         ServicesListModel servicesListModel=servicesListModelList.get(position);
 
         readCursorData(servicesListModel,holder);
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
-        holder.imageView.setImageResource(servicesListModel.getImage());
-
+        //holder.imageView.setImageResource(servicesListModel.getImage());
+        Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
     }
 
     private void readCursorData(ServicesListModel servicesListModel, ViewHolder holder) {
@@ -114,7 +113,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
             sample=itemView.findViewById(R.id.serviceListServiceSample);
             fevicon = itemView.findViewById(R.id.fevicon);
 
-            fevicon.setOnClickListener(new View.OnClickListener() {
+           /* fevicon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int postion=getAdapterPosition();
@@ -133,7 +132,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                        fevicon.setSelected(false);
                     }
                 }
-            });
+            });*/
 
         }
 

@@ -20,6 +20,7 @@ import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceDescription;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.model.ServicesListModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -68,7 +69,11 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
-        holder.imageView.setImageResource(servicesListModel.getImage());
+
+        //Picasso.with(context).load(imageUri).into(ivBasicImage);
+        //Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
+        Picasso.get().load(servicesListModel.getImage()).into(holder.imageView);
+        //holder.imageView.setImageResource(servicesListModel.getImage());
 
 
 
@@ -135,7 +140,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             sample=itemView.findViewById(R.id.serviceListServiceSample);
             fevicon = itemView.findViewById(R.id.fevicon);
 
-            fevicon.setOnClickListener(new View.OnClickListener() {
+           /* fevicon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int postion=getAdapterPosition();
@@ -154,7 +159,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
                        fevicon.setSelected(false);
                     }
                 }
-            });
+            });*/
             itemView.setOnClickListener(this);
 
         }

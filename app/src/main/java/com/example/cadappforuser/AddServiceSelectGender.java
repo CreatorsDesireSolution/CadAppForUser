@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +12,7 @@ public class AddServiceSelectGender extends AppCompatActivity {
 
     Button btnMale,btnFeMale;
     String gender;
+    ImageView image_service,iv_camera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,7 @@ public class AddServiceSelectGender extends AppCompatActivity {
 
         btnFeMale=findViewById(R.id.btnFemale);
         btnMale=findViewById(R.id.btnMale);
+
 
         btnFeMale.setOnClickListener(new View.OnClickListener() {
             @Override
