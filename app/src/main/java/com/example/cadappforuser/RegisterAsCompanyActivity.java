@@ -222,7 +222,9 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
             }
         });
 
-        iv_camera.setOnClickListener(new View.OnClickListener() {
+        iv_camera.setOnClickListener(
+
+                new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
