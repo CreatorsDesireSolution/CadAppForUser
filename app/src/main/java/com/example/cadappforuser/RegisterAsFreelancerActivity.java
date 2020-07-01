@@ -58,9 +58,9 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
     Button btnRegister;
     TextView txtGender;
-    Bitmap bitmap;
+    Bitmap bitmap,bitmap1;
     TextView etAddress;
-    String encodeImage;
+    String encodeImage,encodeImage1;
     EditText etFirstName, etLatName, etUserEmail, etUsePhoneNumber, etGender, etReferralCode, etpassword;
 
     ImageView imageUserLogo;
@@ -68,7 +68,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     MarshMallowPermission marshMallowPermission;
     Activity activity;
     Context context;
-    Uri file;
+    Uri file,file1;
     String firstname, lastname, email, DOB, mobilenumber, gender1, address, referrelcode, password;
     String deviceId;
     BaseRequest baseRequest;
@@ -118,6 +118,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                 intent1.putExtra("lastname",lastname);
                 intent1.putExtra("email",email);
                 intent1.putExtra("mobilenumber",mobilenumber);
+                intent1.putExtra("image",file);
                 startActivity(intent1);
             }
         });
@@ -130,6 +131,23 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         lastname=intent2.getStringExtra("lastname");
         email=intent2.getStringExtra("email");
         mobilenumber=intent2.getStringExtra("mobilenumber");
+
+
+       file1 = intent2.getParcelableExtra("image");
+       imageUserLogo.setImageURI(file1);
+
+
+
+
+
+
+
+
+//        encodeImage= intent2.getParcelableExtra("image");
+       // imageUserLogo.setImageBitmap();
+
+       // bitmap= BitmapFactory.decodeStream("");
+
 
         etFirstName.setText(firstname);
         etLatName.setText(lastname);
@@ -170,9 +188,12 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                     Toast.makeText(activity, "Please Enter password", Toast.LENGTH_SHORT).show();
 
                 } else  if (file==null){
+
+
                     Toast.makeText(activity, "Please Choose image", Toast.LENGTH_SHORT).show();
 
-                }else {
+                }
+               else {
                     api_register();
 
                 }
@@ -295,12 +316,13 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==1 && resultCode==RESULT_OK && data!=null){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
 
-            file=data.getData();
+            file = data.getData();
             try {
-                InputStream inputStream=getContentResolver().openInputStream(file);
-                bitmap= BitmapFactory.decodeStream(inputStream);
+                InputStream inputStream = getContentResolver().openInputStream(file);
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 imageUserLogo.setImageBitmap(bitmap);
 
                 imageStore(bitmap);
@@ -309,7 +331,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
 
@@ -323,7 +345,14 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
-    private void api_register() {
+    private void imageStore1(Bitmap bitmap) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] imageBytes=stream.toByteArray();
+        encodeImage1=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+    private void api_register( ) {
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override

@@ -38,6 +38,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comapny_nav_drawable_layout);
+
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

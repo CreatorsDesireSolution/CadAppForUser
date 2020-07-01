@@ -7,16 +7,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.cadappforuser.model.FreelancerProfileDetailsModel;
+import com.example.cadappforuser.model.ProfilesDetailModel;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class FreelancerPersonalProfile extends AppCompatActivity {
 
     TextView tv_edit;
+    BaseRequest baseRequest;
+    Act_Session act_session;
+    ArrayList<FreelancerProfileDetailsModel> profile_list1 = new ArrayList<>();
+    TextView tv_name,tv_mobile,tv_adresss,tv_gender,tv_email,tv_dob,tv_surname,background;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_personal_profile);
 
+        act_session = new Act_Session(getApplicationContext());
         tv_edit = findViewById(R.id.tv_edit);
+        tv_name = findViewById(R.id.name1);
+        tv_surname = findViewById(R.id.lastname1);
+        tv_email = findViewById(R.id.email1);
+        tv_mobile = findViewById(R.id.mobile1);
+        tv_gender = findViewById(R.id.gender1);
+        tv_adresss = findViewById(R.id.Location1);
+        background= findViewById(R.id.background111);
 
         tv_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,7 +51,52 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
             }
         });
 
+        Apigetprofile1();
 
 
     }
+
+    private void Apigetprofile1() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONArray jsonArray = jsonObject.optJSONArray("data");
+                    profile_list1 = baseRequest.getDataList(jsonArray, FreelancerProfileDetailsModel.class);
+
+                    if (profile_list1.size() != 0) {
+
+                        tv_name.setText(profile_list1.get(0).getFirstname());
+                        tv_surname.setText(profile_list1.get(0).getLastname());
+                        tv_email.setText(profile_list1.get(0).getEmail());
+                        tv_gender.setText(profile_list1.get(0).getGender());
+                        tv_mobile.setText(profile_list1.get(0).getMobilenumber());
+                        tv_adresss.setText(profile_list1.get(0).getAddress());
+                        background.setText(profile_list1.get(0).getBackground());
+                       // tv_surname.setText(profile_list1.get(0).getLastname());
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_dataedit_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
+    }
 }
+
+

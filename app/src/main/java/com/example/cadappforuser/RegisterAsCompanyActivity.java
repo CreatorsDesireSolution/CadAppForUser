@@ -107,6 +107,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
                 intent1.putExtra("mobileaddress", mobilenumber);
                 intent1.putExtra("email", email);
+                intent1.putExtra("image",file);
                 startActivity(intent1);
             }
         });
@@ -117,6 +118,10 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         registrationnumber = intent2.getStringExtra("registernumber");
         mobilenumber = intent2.getStringExtra("mobileaddress");
         email = intent2.getStringExtra("email");
+
+        file = getIntent().getParcelableExtra("image");
+        imageUserLogo.setImageURI(file);
+
 
         etCompanyName.setText(companyname);
         etRegistrationNumber.setText(registrationnumber);

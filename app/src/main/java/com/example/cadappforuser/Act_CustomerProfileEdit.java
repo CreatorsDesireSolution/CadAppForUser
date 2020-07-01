@@ -27,7 +27,7 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
     BaseRequest baseRequest;
     ArrayList<ProfilesDetailModel> profile_list1 = new ArrayList<>();
 
-    TextView tv_name,tv_mobile,tv_adresss,tv_gender,tv_email,tv_dob;
+    TextView tv_name,tv_mobile,tv_adresss,tv_gender,tv_email,tv_dob,tv_surname;
 
 
 
@@ -46,6 +46,7 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
         tv_email = findViewById(R.id.tv_email);
         tv_gender = findViewById(R.id.tv_gender);
         tv_mobile = findViewById(R.id.tv_number);
+        tv_surname = findViewById(R.id.tv_surname);
 
 
 
@@ -80,6 +81,7 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
                         tv_mobile.setText(profile_list1.get(0).getMobilenumber());
                         tv_adresss.setText(profile_list1.get(0).getAddress());
                         tv_dob.setText(profile_list1.get(0).getDob());
+                        tv_surname.setText(profile_list1.get(0).getLastname());
 
 
                     }

@@ -83,70 +83,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sagar  Jain"
+                        android:text="Company"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/name"
                         android:textSize="16sp"
+                        android:id="@+id/tv_companyname"
                         android:textColor="@color/black"/>
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="Gender            :"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:id="@+id/Gender"/>
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Male"
-                        android:textColor="@color/black"
-
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@+id/Gender"
-                        android:textSize="16sp"/>
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="Age                  :"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:id="@+id/Age"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20"
-                        android:textColor="@color/black"
-
-                        android:layout_marginLeft="30dp"
-                        android:layout_toRightOf="@+id/Age"
-                        android:textSize="16sp"/>
-
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -208,7 +155,7 @@
                         android:text="Damoh"
                         android:layout_marginLeft="30dp"
                         android:textColor="@color/black"
-
+                       android:id="@+id/tv_location"
                         android:layout_toRightOf="@+id/location"
                         android:textSize="16sp"/>
 
@@ -232,14 +179,14 @@
 
 
                     <TextView
+                        android:id="@+id/tv_mobile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="6260268380"
-                        android:textColor="@color/black"
-
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/experience"
-                        android:textSize="16sp"/>
+                        android:text="6260268380"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -265,7 +212,7 @@
                         android:layout_height="wrap_content"
                         android:text="sagarjian@gmail.com"
                         android:textColor="@color/black"
-
+                         android:id="@+id/tv_email"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/email"
                         android:textSize="16sp"/>
@@ -293,6 +240,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4 Year"
+                        android:id="@+id/tv_ageofcompany"
                         android:textColor="@color/black"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/certification"
@@ -317,13 +265,14 @@
 
 
                     <TextView
+                        android:id="@+id/tv_no_of_staff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="15"
-                        android:textColor="@color/black"
                         android:layout_marginLeft="30dp"
                         android:layout_toRightOf="@+id/noofstaff"
-                        android:textSize="16sp"/>
+                        android:text="15"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -416,6 +365,7 @@
                         android:paddingLeft="10dp"
                         android:layout_marginBottom="15dp"
                         android:paddingTop="10dp"
+                        android:id="@+id/tv_background"
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/card_background"

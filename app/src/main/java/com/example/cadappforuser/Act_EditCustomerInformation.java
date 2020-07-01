@@ -89,7 +89,8 @@ public class Act_EditCustomerInformation extends AppCompatActivity {
         });
 
         Intent intent2=getIntent();
-        tv_address.setText(intent2.getStringExtra("address"));
+        address = intent2.getStringExtra("address");
+        tv_address.setText(address);
        //
         // tv_address= intent2.getStringExtra("address");
 

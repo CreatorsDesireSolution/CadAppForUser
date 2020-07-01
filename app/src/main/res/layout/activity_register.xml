@@ -128,25 +128,6 @@
 
 
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="40dp"
-               android:hint="Date of Birth"
-               android:paddingLeft="13dp"
-               android:textSize="15sp"
-               android:textColorHint="#68000000"
-               android:inputType="textEmailAddress"
-               android:paddingTop="10dp"
-               android:id="@+id/txt_DOB"
-               android:layout_marginTop="8dp"
-               android:layout_below="@+id/etUserEmail"
-               android:layout_marginLeft="13dp"
-               android:layout_marginRight="13dp"
-               android:textColor="@color/black"
-               android:layout_marginBottom="5dp"
-               android:background="@drawable/editborder"
-               android:textStyle="normal"
-               />
 
 
            <EditText
@@ -161,7 +142,7 @@
                android:layout_marginRight="13dp"
                android:id="@+id/etUsePhoneNumber"
                android:layout_marginTop="8dp"
-               android:layout_below="@+id/txt_DOB"
+               android:layout_below="@+id/etUserEmail"
 
                android:textColor="@color/black"
                android:layout_marginBottom="5dp"
@@ -232,6 +213,29 @@
                android:textStyle="normal"
                ></TextView>
 
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="40dp"
+               android:hint="Date of Birth"
+               android:paddingLeft="13dp"
+               android:textSize="15sp"
+               android:textColorHint="#68000000"
+               android:inputType="textEmailAddress"
+               android:paddingTop="10dp"
+               android:id="@+id/txt_DOB"
+               android:layout_marginTop="8dp"
+               android:layout_below="@+id/etAddress"
+               android:layout_marginLeft="13dp"
+               android:layout_marginRight="13dp"
+               android:textColor="@color/black"
+               android:layout_marginBottom="5dp"
+               android:background="@drawable/editborder"
+               android:textStyle="normal"
+               />
+
+
+
            <EditText
                android:layout_width="match_parent"
                android:layout_height="40dp"
@@ -243,7 +247,7 @@
                android:layout_marginRight="13dp"
                android:id="@+id/etReferralCode"
                android:layout_marginTop="8dp"
-               android:layout_below="@+id/etAddress"
+               android:layout_below="@+id/txt_DOB"
                android:paddingLeft="13dp"
                android:textColor="#8B000000"
                android:layout_marginBottom="5dp"
