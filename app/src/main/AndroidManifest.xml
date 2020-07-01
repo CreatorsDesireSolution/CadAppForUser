@@ -24,7 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CurrentLocation1"></activity>
+        <activity android:name=".CurrentLocation3"></activity>
+        <activity android:name=".CurrentLocation2" />
+        <activity android:name=".CurrentLocationEditFreelancer" />
+        <activity android:name=".CurrentLocation1" />
         <activity android:name=".CompanyUploadWorkPerformed" />
         <activity android:name=".StaffWorkPictureImage" />
         <activity android:name=".FreelancerUploadWorkImage" />

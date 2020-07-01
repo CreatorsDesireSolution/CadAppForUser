@@ -371,6 +371,57 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void CallUpdateprofileCustomer(final int APINumber, String remainingURL, RequestBody firstname_, RequestBody lastname_,
+                                RequestBody email_, RequestBody dob, RequestBody mobilenumber_, RequestBody gender_,
+                                RequestBody address_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postupdateprofile(firstname_,lastname_,email_,dob,mobilenumber_,gender_,
+                address_);
+        call.enqueue(responseCallback);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void CallUpdateprofileFreelancer(final int APINumber, String remainingURL, RequestBody firstname_, RequestBody lastname_,
+                                          RequestBody email_, RequestBody mobilenumber_, RequestBody gender_,
+                                          RequestBody address_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postupdateprofileFreelancer(firstname_,lastname_,email_,mobilenumber_,gender_,
+                address_);
+        call.enqueue(responseCallback);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void CallUpdateprofileComapay(final int APINumber, String remainingURL, RequestBody compnyanme, RequestBody background,
+                                            RequestBody staff_, RequestBody registernumber, RequestBody mobile_,
+                                            RequestBody address_,RequestBody email_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postupdateprofileCompany(compnyanme,background,staff_,registernumber,mobile_,
+                address_,email_);
+        call.enqueue(responseCallback);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void callApiPOstBAckgroundfreelancer(final int APINumber, String remainingURL, RequestBody userid,
                                                 RequestBody aboutyourself_,  RequestBody currentworkplace_, RequestBody previousworkplace_,
                                                 RequestBody experience_)

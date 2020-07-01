@@ -128,6 +128,8 @@ public class CompanyUploadWorkPerformed extends AppCompatActivity {
                             if(status.equals("true") || message.equals("Success")){
                                 progressDialog.dismiss();
                                 Toast.makeText(CompanyUploadWorkPerformed.this, ""+response, Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(CompanyUploadWorkPerformed.this,CompanyHomePageActivity.class);
+                                startActivity(intent);
                             }
                             else
                             {

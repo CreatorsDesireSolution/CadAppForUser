@@ -66,29 +66,6 @@
                             tools:ignore="Suspicious0dp" />
 
 
-                        <EditText
-                            android:id="@+id/et_lastname"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="20dp"
-                            android:layout_weight=".50"
-                            android:background="@drawable/background_border15"
-                            android:drawableRight="@drawable/ic_account_circle_black_24dp"
-                            android:hint="Last Name"
-                            android:inputType="textEmailAddress"
-                            android:paddingLeft="12dp"
-                            android:paddingTop="12dp"
-                            android:paddingRight="12dp"
-                            android:paddingBottom="12dp"
-                            android:scrollHorizontally="true"
-                            android:singleLine="true"
-                            android:text=""
-                            android:textColor="@color/black"
-                            android:textSize="13dp"
-                            android:textStyle="normal"
-                            tools:ignore="Suspicious0dp" />
 
 
                         <EditText
@@ -141,15 +118,28 @@
                             tools:ignore="Suspicious0dp" />
 
 
-                        <TextView
+                        <EditText
+                            android:id="@+id/et_regnumber"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
-                            android:paddingLeft="20dp"
-                            android:id="@+id/tv_seemore"
-                            android:text="...See More Details"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp" />
+                            android:layout_marginRight="20dp"
+                            android:layout_weight=".50"
+                            android:background="@drawable/background_border15"
+                            android:hint="Registration Number"
+                            android:inputType="number"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="12dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="12dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            tools:ignore="Suspicious0dp" />
 
 
 
@@ -166,39 +156,22 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
-                            android:backgroundTint="@color/white">
+                            android:backgroundTint="@color/white"
+                            android:layout_below="@id/et_mobile"
+                            >
 
-                            <TextView
-                                android:id="@+id/tv_workperform"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/editborder"
-                                android:backgroundTint="@color/white"
-                                android:layout_gravity="center_vertical"
-                                android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
-                                android:drawablePadding="10dp"
-                                android:paddingLeft="15dp"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="WORK PERFORM"
-                                android:textColor="@color/colorPrimaryDark"
-                                android:textSize="14dp"
-                                android:textStyle="bold"
-                                />
 
-                            <TextView
+                            <EditText
                                 android:id="@+id/tv_no_of_staff"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:background="@drawable/editborder"
                                 android:backgroundTint="@color/white"
-                                android:drawableRight="@drawable/ic_chevron_right_black_24dp"
                                 android:drawablePadding="10dp"
-                                android:layout_marginTop="10dp"
                                 android:paddingLeft="15dp"
-                                android:layout_below="@id/tv_workperform"
                                 android:paddingTop="10dp"
+
                                 android:paddingBottom="10dp"
                                 android:text="No. Of Staff"
                                 android:textColor="@color/colorPrimaryDark"
@@ -233,134 +206,8 @@
                         </RelativeLayout>
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:paddingLeft="20dp"
-
-                            android:text="Choose Gender(Male or Female)"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="15dp" />
 
 
-                        <RelativeLayout
-                            android:id="@+id/l55"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:paddingLeft="30dp"
-                            android:paddingRight="30dp"
-
-                            android:weightSum="1">
-
-
-                            <LinearLayout
-                                android:id="@+id/lay_male"
-                                android:layout_width="130dp"
-                                android:layout_height="120dp"
-                                android:layout_weight=".4"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/lay1"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:background="@drawable/circle_profileupload"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    android:padding="10dp">
-
-                                    <ImageView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        android:layout_gravity="center"
-                                        android:padding="5dp"
-                                        android:src="@drawable/men_image" />
-
-
-                                </LinearLayout>
-
-
-                                <!--<View-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_marginTop="5dp"-->
-                                <!--android:background="@color/card_bg_dark"-->
-                                <!--android:layout_height="2dp"/>-->
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-
-                                    android:layout_marginTop="10dp"
-                                    android:text="Male"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="130dp"
-                                android:layout_height="120dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_gravity="end"
-                                android:layout_weight=".4"
-                                android:background="@drawable/background_border15"
-                                android:backgroundTint="@color/white"
-                                android:gravity="end"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:id="@+id/lay2"
-                                    android:layout_width="70dp"
-                                    android:layout_height="70dp"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="6dp"
-                                    android:background="@drawable/circle_profileupload"
-                                    android:gravity="center"
-                                    android:orientation="vertical"
-                                    android:padding="10dp">
-
-                                    <ImageView
-                                        android:layout_width="70dp"
-                                        android:layout_height="70dp"
-                                        android:layout_gravity="center"
-                                        android:padding="5dp"
-                                        android:src="@drawable/woman_image" />
-
-
-                                </LinearLayout>
-
-
-                                <!--<View-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_marginTop="5dp"-->
-                                <!--android:background="@color/card_bg_dark"-->
-                                <!--android:layout_height="2dp"/>-->
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-
-                                    android:layout_marginTop="10dp"
-                                    android:text="Female"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
 
 
                         <LinearLayout
@@ -406,7 +253,34 @@
                             </LinearLayout>
 
 
+
+
                         </LinearLayout>
+
+
+                        <EditText
+                            android:id="@+id/et_aboutcompany"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight=".50"
+                            android:background="@drawable/background_border15"
+                            android:hint="About Company"
+                            android:inputType="text"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="12dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="12dp"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            tools:ignore="Suspicious0dp" />
+
 
                         <Button
                             android:id="@+id/btn_save"

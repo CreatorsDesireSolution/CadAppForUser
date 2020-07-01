@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,7 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    Uri path;
 
 
     @Override
@@ -109,6 +111,8 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
             final String lastname=intent.getStringExtra("lastname");
             final String email=intent.getStringExtra("email");
             final String mobilenumber=intent.getStringExtra("mobilenumber");
+            path= getIntent().getParcelableExtra("image");
+
 
 
             btnAddress.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +125,7 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
                     intent.putExtra("lastname",lastname);
                     intent.putExtra("email",email);
                     intent.putExtra("mobilenumber",mobilenumber);
+                    intent.putExtra("image",path);
                     startActivity(intent);
                 }
             });

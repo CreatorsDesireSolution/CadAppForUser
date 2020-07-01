@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +44,7 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
     ImageView btnAddress;
     GoogleMap mMap;
     private static  final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    Uri path;
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -111,6 +113,10 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
             final String email=intent.getStringExtra("email");
             final String mobilenumber=intent.getStringExtra("mobilenumber");
             final String dob=intent.getStringExtra("dob");
+           // final String image=intent.getStringExtra("image");
+           // final String path = intent.getStringExtra("image");
+             path= getIntent().getParcelableExtra("image");
+
 
 
 
@@ -125,6 +131,7 @@ public class CurrentLocation extends AppCompatActivity implements OnMapReadyCall
                     intent.putExtra("email",email);
                     intent.putExtra("mobilenumber",mobilenumber);
                     intent.putExtra("dob",dob);
+                    intent.putExtra("image",path);
 
                    // Toast.makeText(CurrentLocation.this, ""+firstname+fullAddress,Toast.LENGTH_SHORT).show();
 

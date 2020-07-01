@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     int day,months,year;
     CircleImageView iv_camera;
     ImageView imageUserLogo;
-    Bitmap bitmap;
+    Bitmap bitmap,bitmap1;
     String encodeImage;
     EditText etFirstName,etLatName,etUserEmail,etUsePhoneNumber,etReferralCode,etpassword;
     MarshMallowPermission marshMallowPermission;
@@ -227,6 +227,7 @@ public class RegisterActivity extends AppCompatActivity {
                 intent1.putExtra("email", email);
                 intent1.putExtra("mobilenumber", mobilenumber);
                 intent1.putExtra("dob", DOB);
+                intent1.putExtra("image",file);
                 // Toast.makeText(activity, ""+firstname, Toast.LENGTH_SHORT).show();
                 startActivity(intent1);
 
@@ -242,6 +243,10 @@ public class RegisterActivity extends AppCompatActivity {
         mobilenumber = intent2.getStringExtra("mobilenumber");
         DOB = intent2.getStringExtra("dob");
 
+
+        final String path = getIntent().getStringExtra("image");
+        bitmap1 = BitmapFactory.decodeFile(path);
+
         etFirstName.setText(firstname);
         etLatName.setText(lastname);
         etUserEmail.setText(email);
@@ -249,6 +254,12 @@ public class RegisterActivity extends AppCompatActivity {
         text_DOB.setText(DOB);
 
         etAddress.setText(address);
+        file = getIntent().getParcelableExtra("image");
+        imageUserLogo.setImageURI(file);
+
+
+        //  encodeImage =intent2.getStringExtra("image");
+
         //   txtGender.setText(intent2.getStringExtra("gender"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -345,7 +356,13 @@ public class RegisterActivity extends AppCompatActivity {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(file);
                     bitmap = BitmapFactory.decodeStream(inputStream);
-                    imageUserLogo.setImageBitmap(bitmap);
+
+
+                        imageUserLogo.setImageBitmap(bitmap);
+
+
+                    Bundle extras=data.getExtras();
+//                    bitmap=(Bitmap)extras.get("image");
 
                     imageStore(bitmap);
 

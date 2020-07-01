@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,7 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    Uri path;
 
 
     @Override
@@ -110,6 +112,8 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
             final String address=intent.getStringExtra("address");
            final   String mobilenumber=intent.getStringExtra("mobileaddress");
             final String email=intent.getStringExtra("email");
+            path= getIntent().getParcelableExtra("image");
+
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -120,6 +124,7 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
                  //   intent.putExtra("address",address);
                     intent.putExtra("mobileaddress",mobilenumber);
                     intent.putExtra("email",email);
+                    intent.putExtra("image",path);
 
                     startActivity(intent);
                 }
