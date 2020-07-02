@@ -61,7 +61,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     Activity activity;
     Context context;
     String deviceId;
-    Uri file;
+    Uri file,file1;
     Act_Session act_session;
     BaseRequest baseRequest;
     EditText et_staff;
@@ -119,8 +119,8 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         mobilenumber = intent2.getStringExtra("mobileaddress");
         email = intent2.getStringExtra("email");
 
-        file = getIntent().getParcelableExtra("image");
-        imageUserLogo.setImageURI(file);
+        file1 = getIntent().getParcelableExtra("image");
+        imageUserLogo.setImageURI(file1);
 
 
         etCompanyName.setText(companyname);
