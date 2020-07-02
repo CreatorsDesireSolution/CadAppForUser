@@ -57,6 +57,8 @@ public class CompanyUploadWorkPerformed extends AppCompatActivity {
 
     private Uri filepath1, filepath2, filepath3, filepath4;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

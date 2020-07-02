@@ -7,6 +7,30 @@
     android:background="#FFF"
     tools:context=".FreelancerAddServicesActivity">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/serviceImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_account_circle_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/etSName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_camera"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="22dp"
+        android:background="@drawable/circle_profileupload"
+        android:padding="10dp"
+
+        android:src="@drawable/ic_photo_camera_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/etSName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/userImageIcon" />
 
     <EditText
         android:id="@+id/etSName"
@@ -25,10 +49,10 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047"></EditText>
+        app:layout_constraintVertical_bias="0.263"></EditText>
 
     <EditText
         android:id="@+id/et_servicedescription"
@@ -49,10 +73,10 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintHorizontal_bias="0.618"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSName"
-        app:layout_constraintVertical_bias="0.009"></EditText>
+        app:layout_constraintVertical_bias="0.023"></EditText>
 
     <EditText
         android:id="@+id/etSetPrice"
@@ -69,11 +93,10 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintHorizontal_bias="0.618"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_servicedescription"
         app:layout_constraintVertical_bias="0.0"></EditText>
-
 
     <EditText
         android:id="@+id/et_duration"
@@ -90,23 +113,23 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintHorizontal_bias="0.618"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etSetPrice"
         app:layout_constraintVertical_bias="0.0"></EditText>
 
     <Button
+        android:id="@+id/btn_add_service"
         android:layout_width="270dp"
         android:layout_height="45dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btnback"
         android:text="Add Services"
         android:textColor="#FFF"
-        android:id="@+id/btn_add_service"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintHorizontal_bias="0.617"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_duration"
-        app:layout_constraintVertical_bias="0.054"></Button>
+        app:layout_constraintVertical_bias="0.0"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
