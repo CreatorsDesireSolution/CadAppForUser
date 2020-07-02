@@ -72,7 +72,7 @@ public class CompanyShowServices extends AppCompatActivity {
 
                     if (!jsonObject.getString("message").equals("Failed")) {
 
-                        JSONArray jsonArray = jsonObject.optJSONArray("data");
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
                         companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
 
                         companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
