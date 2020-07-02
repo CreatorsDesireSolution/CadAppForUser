@@ -69,46 +69,58 @@ public class CompanyShowServices extends AppCompatActivity {
             public void onSuccess(int requestCode, String Json, Object object) {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
-                    JSONArray jsonArray = jsonObject.optJSONArray("data");
-                    companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
 
-                    if (companyAddServiceModels.size() != 0) {
+                    if (!jsonObject.getString("message").equals("Failed")) {
 
-                      //  CompanyAddServiceModel model = new CompanyAddServiceModel();
-                       // model.setDescription(companyAddServiceModels.get(0).getDescription());
-                       // model.setCommentId(notification_list.get(i).getCommentId());
+                        JSONArray jsonArray = jsonObject.optJSONArray("data");
+                        companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
 
-
-
-                        addServiceAdapater=new CompanyAddServiceAdapater(CompanyShowServices.this,companyAddServiceModels);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setAdapter(addServiceAdapater);
+                        companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
+                        for (int i = 0; i < companyAddServiceModels.size(); i++) {
+                            if (companyAddServiceModels != null) {
 
 
-                    }else {
+                                CompanyAddServiceModel model = new CompanyAddServiceModel();
+                                model.setDescription(companyAddServiceModels.get(0).getDescription());
+                                model.setDuration(companyAddServiceModels.get(0).getDuration());
+                                model.setServiceImage(companyAddServiceModels.get(0).getServiceImage());
+                                model.setServiceName(companyAddServiceModels.get(0).getServiceName());
+                                companyAddServiceModels2.add(model);
+
+                                addServiceAdapater = new CompanyAddServiceAdapater(CompanyShowServices.this, companyAddServiceModels);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setAdapter(addServiceAdapater);
+
+
+                            } else {
+                                Toast.makeText(CompanyShowServices.this, "No Data", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
                         Toast.makeText(CompanyShowServices.this, "No Data", Toast.LENGTH_SHORT).show();
+
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
+                @Override
+                public void onFailure(int requestCode, String errorCode, String message) {
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                }
 
+                @Override
 
+                public void onNetworkFailure(int requestCode, String message) {
 
-            @Override
-            public void onFailure(int requestCode, String errorCode, String message) {
-
-            }
-
-            @Override
-            public void onNetworkFailure(int requestCode, String message) {
-
-            }
-        });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_servicedata_api.php?" + "id=" + act_session.userId;
+                }
+            });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_servicedata_api.php?" + "id=" + act_session.userId;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
+
 
     private void ApiAddService() {
         baseRequest = new BaseRequest(context);
