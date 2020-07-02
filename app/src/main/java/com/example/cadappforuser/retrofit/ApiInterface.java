@@ -186,6 +186,13 @@ public interface ApiInterface {
 
     );
 
+    @Multipart
+    @POST("salon/get-apis/company_servicedata_api.php")
+    Call<JsonElement> postserviceee( @Part("id") RequestBody userid_
+
+
+    );
+
 
 
     @Multipart

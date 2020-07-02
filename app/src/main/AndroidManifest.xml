@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SelectCompanyServicegender"></activity>
+        <activity android:name=".CompanyShowServices"></activity>
+        <activity android:name=".SelectCompanyServicegender" />
         <activity android:name=".CurrentLocation3" />
         <activity android:name=".CurrentLocation2" />
         <activity android:name=".CurrentLocationEditFreelancer" />

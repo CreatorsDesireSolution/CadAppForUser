@@ -156,7 +156,7 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
                 // act_session.loginSession(context);
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
-                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                   // JSONObject jsonObject1 = jsonObject.optJSONObject("data");
 
                     Toast.makeText(getApplicationContext(), "Add Successfully", Toast.LENGTH_SHORT).show();
                     // startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));

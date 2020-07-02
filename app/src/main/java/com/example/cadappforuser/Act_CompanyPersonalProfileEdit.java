@@ -156,6 +156,7 @@ public class Act_CompanyPersonalProfileEdit extends AppCompatActivity {
                     startActivity(intent);
 
 
+
                     finish();
 
 
