@@ -48,7 +48,7 @@ public class Act_FreelancerPersonalEditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__freelancer_personal_edit_profile);
 
-
+       context = this;
         tv_address = findViewById(R.id.tv_address);
         et_firstname = findViewById(R.id.et_firstname);
         et_lastname = findViewById(R.id.et_lastname);
