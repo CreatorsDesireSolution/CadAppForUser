@@ -57,6 +57,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
 
 
 
+
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

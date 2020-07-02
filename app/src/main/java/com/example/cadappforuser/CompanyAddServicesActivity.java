@@ -51,6 +51,8 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
     private Uri filepath1, filepath2, filepath3, filepath4;
     String encodeImage, encodeImage1;
     Bitmap bitmap, bitmap1;
+    String gender;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,6 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Add Services");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -72,6 +73,11 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
         et_servicedescription = findViewById(R.id.et_servicedescription);
         et_servicename = findViewById(R.id.etSName);
         et_setprice = findViewById(R.id.etSetPrice);
+
+        Intent intent = getIntent();
+        gender = intent.getStringExtra("gender");
+
+
 
 
         iv_camera.setOnClickListener(new View.OnClickListener() {
@@ -126,11 +132,14 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
                 }else if (duration.equals("")){
                     Toast.makeText(CompanyAddServicesActivity.this, "Please enter duration", Toast.LENGTH_SHORT).show();
 
-                }else {
+                }else if (filepath1 == null){
+                    Toast.makeText(CompanyAddServicesActivity.this, "Please select image ", Toast.LENGTH_SHORT).show();
 
+                }else {
                     ApiAddService();
 
                 }
+
 
 
             }
@@ -184,10 +193,13 @@ public class CompanyAddServicesActivity extends AppCompatActivity {
         RequestBody description_ = RequestBody.create(MediaType.parse("text/plain"), description);
         RequestBody set_price_ = RequestBody.create(MediaType.parse("text/plain"), setprice);
         RequestBody duration_ = RequestBody.create(MediaType.parse("text/plain"), duration);
+        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
+        RequestBody image_ = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
-        baseRequest.callApiAddservicecompany(1,"https://aoneservice.net.in/" , userid_, service_name_, description_, set_price_, duration_);
+        baseRequest.callApiAddservicecompany(1,"https://aoneservice.net.in/" , userid_, service_name_,
+                description_, set_price_, duration_,gender_,image_);
 
     }
 

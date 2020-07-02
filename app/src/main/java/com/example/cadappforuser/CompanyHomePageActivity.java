@@ -149,7 +149,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 startActivity(new Intent(CompanyHomePageActivity.this,FreelancerServicesOffered.class));
                  break;
             case R.id.nav_company_add_services_manually:
-                startActivity(new Intent(CompanyHomePageActivity.this,CompanyAddServicesActivity.class));
+                startActivity(new Intent(CompanyHomePageActivity.this,SelectCompanyServicegender.class));
                 break;
             case R.id.nav_show_staff_member:
                 startActivity(new Intent(CompanyHomePageActivity.this,ChoiceStaffOrComapnyOwner.class));
