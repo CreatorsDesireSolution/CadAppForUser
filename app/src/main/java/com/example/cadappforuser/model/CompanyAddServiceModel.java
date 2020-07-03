@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class CompanyAddServiceModel {
 
-    @SerializedName("id")
+    @SerializedName("service_id")
     @Expose
     private String id;
     @SerializedName("companyid")

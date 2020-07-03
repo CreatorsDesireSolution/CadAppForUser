@@ -107,6 +107,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     public Callback<JsonElement> responseCallbackCustom = new Callback<JsonElement>() {
         @Override
         public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+
             String responseServer = "";
             hideLoader();
 

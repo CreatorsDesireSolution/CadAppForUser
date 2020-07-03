@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class CompanyShowServices extends AppCompatActivity {
     BaseRequest baseRequest;
      Act_Session act_session;
      Context context;
+     Activity activity;
 
 
     @Override
@@ -45,6 +47,7 @@ public class CompanyShowServices extends AppCompatActivity {
         setContentView(R.layout.activity_company_show_services);
 
         context = this;
+        activity = this;
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Services List");
 
@@ -87,7 +90,7 @@ public class CompanyShowServices extends AppCompatActivity {
                                 model.setServiceName(companyAddServiceModels.get(0).getServiceName());
                                 companyAddServiceModels2.add(model);
 
-                                addServiceAdapater = new CompanyAddServiceAdapater(CompanyShowServices.this, companyAddServiceModels);
+                                addServiceAdapater = new CompanyAddServiceAdapater(CompanyShowServices.this, companyAddServiceModels,act_session,activity);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(addServiceAdapater);
 
@@ -133,7 +136,7 @@ public class CompanyShowServices extends AppCompatActivity {
                      //JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                   //  companyAddServiceModels = baseRequest.getDataList(jsonArray, CompanyAddServiceModel.class);
-                    addServiceAdapater=new CompanyAddServiceAdapater(CompanyShowServices.this,companyAddServiceModels);
+                   // addServiceAdapater=new CompanyAddServiceAdapater(CompanyShowServices.this,companyAddServiceModels);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setAdapter(addServiceAdapater);
 

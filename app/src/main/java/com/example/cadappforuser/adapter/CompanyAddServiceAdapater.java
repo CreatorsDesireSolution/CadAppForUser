@@ -1,5 +1,6 @@
 package com.example.cadappforuser.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.Act_Session;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.model.CompanyAddServiceModel;
@@ -28,10 +30,15 @@ public class CompanyAddServiceAdapater extends RecyclerView.Adapter<CompanyAddSe
     List<CompanyAddServiceModel> companyAddServiceModels;
     private boolean[] favorites;
     private FavDB favDB;
+    Activity activity;
+    int count;
+    Act_Session act_session;
 
-    public CompanyAddServiceAdapater(Context context, List<CompanyAddServiceModel> companyAddServiceModels) {
+    public CompanyAddServiceAdapater(Context context, List<CompanyAddServiceModel> companyAddServiceModels,Act_Session act_session,Activity activity) {
         this.context = context;
         this.companyAddServiceModels = companyAddServiceModels;
+        this.act_session = act_session;
+        this.activity = activity;
     }
 
     @NonNull
