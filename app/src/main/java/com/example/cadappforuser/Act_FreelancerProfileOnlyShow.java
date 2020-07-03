@@ -17,6 +17,7 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
     TextView background11;
     boolean isOpen = false;
     LinearLayout tvbg;
+    String id;
 
 
     @Override
@@ -34,10 +35,13 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
         tvbg= findViewById(R.id.tvbg);
         background11 = findViewById(R.id.background11);
 
+        Intent intent=getIntent();
+        id=intent.getStringExtra("id");
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),FreelancerGenderSelectSeeList.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

@@ -34,6 +34,7 @@ import java.util.Map;
 public class ServicesListActivityForShow extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    String id;
     ArrayList<ServicesListModel> servicesListModelArrayList;
     String url="http://aoneservice.net.in/salon/get-apis/freelancer_servicedata_api.php";
 
@@ -52,6 +53,9 @@ public class ServicesListActivityForShow extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         final Act_Session act_session=new Act_Session(this);
+
+        Intent intent=getIntent();
+         id=intent.getStringExtra("id");
        // Log.d("actid","actid"+act_session.userId);
 
         StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -104,8 +108,8 @@ public class ServicesListActivityForShow extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params=new HashMap<>();
-                params.put("id",act_session.userId);
-                Log.d("actid","actid"+act_session.userId);
+                params.put("id",id);
+                Log.d("actid","actid"+id);
 
                 return params;
             }

@@ -2,21 +2,31 @@ package com.example.cadappforuser.model;
 
 public class Ad_Companymodel {
 
-    int image;
+    String id;
+    String  image;
     String name;
     float rating;
 
-    public Ad_Companymodel(int image, String name, float rating) {
+    public Ad_Companymodel(String  id,String  image, String name, float rating) {
+        this.id=id;
         this.image = image;
         this.name = name;
         this.rating = rating;
     }
 
-    public int getImage() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

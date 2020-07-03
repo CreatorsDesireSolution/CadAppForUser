@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +21,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.Ad_Company;
 import com.example.cadappforuser.adapter.Ad_Freelancer;
@@ -32,6 +40,9 @@ import com.example.cadappforuser.model.Ad_freelancermodel;
 import com.example.cadappforuser.modelfreelancer.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.modelfreelancer.ServicesFreelancerHomeModel;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -53,6 +64,9 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
    ArrayList<Ad_freelancermodel> ad_freelancermodels;
    Ad_Freelancer ad_freelancer;
    Ad_Company ad_company;
+
+   String url="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
+
 
 
 
@@ -79,75 +93,168 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
 
-//        servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
-//        servicesFreelancerHomeModelArrayList=new ArrayList<>();
-//
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        servicesFeatureAndCategoriesHomeModelArrayList.add(new ServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//
-//        ServicesFeturesAndCategoriesHomeAdapter servicesFeturesAndCategoriesHomeAdapter=new ServicesFeturesAndCategoriesHomeAdapter(FreelancerHomePageActivity.this,servicesFeatureAndCategoriesHomeModelArrayList);
-//        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(servicesFeturesAndCategoriesHomeAdapter);
-//
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        servicesFreelancerHomeModelArrayList.add(new ServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//
-//
-//       com.example.cadappforuser.freelanceradapter.ServicesFreelancerAdapterHome servicesFreelancerAdapterHome=new ServicesFreelancerAdapterHome(FreelancerHomePageActivity.this,servicesFreelancerHomeModelArrayList);
-//        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-//        recyclerView1.setLayoutManager(layoutManager1);
-//        recyclerView1.setHasFixedSize(true);
-//        recyclerView1.setAdapter(servicesFreelancerAdapterHome);
-
-
 
         ad_freelancermodels = new ArrayList<>();
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
+       /* ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
         ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
         ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon2,"Man Freelancer",5));
         ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
         ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
         ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon1,"Women",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Women Freelancer",5));
+        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Women Freelancer",5));*/
 
-        ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
+        /*ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(ad_freelancer);
+        recyclerView.setAdapter(ad_freelancer);*/
 
+        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager3);
+
+
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    if (sucess.equals("1")) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String id = object.getString("id");
+                            String name = object.getString("firstname");
+                            String image=object.getString("profile_pic");
+
+                            String u = "http://aoneservice.net.in/salon/documents/" + image;
+
+                            //Toast.makeText(FreelancerHomePageActivity.this, ""+id, Toast.LENGTH_SHORT).show();
+
+                           //String u="222004744_1593440811.jpeg";
+                            //   String lastname = object.getString("lastname");
+                           // String email = object.getString("email");
+                            //String mobilenumber = object.getString("mobilenumber");
+                            //String experinace=object.getString("experience");
+                            //String gender = object.getString("gender");
+                            //String address = object.getString("address");
+                            //String aboutus=object.getString("about_yourself");
+                            //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
+                            //String item_image = object.getString("item_image");
+                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
+                           // newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            //newAdapter=new NewAdapter(FreelancerHomePageActivity.this,newModels);
+                            //recyclerView.setHasFixedSize(true);
+                            //recyclerView.setAdapter(newAdapter);
+
+                           // newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            ad_freelancermodels.add(new Ad_freelancermodel(id,u,name,5));
+                            ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
+                           // ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
+
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setAdapter(ad_freelancer);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FreelancerHomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(request);
 
 
 
         ad_companymodels = new ArrayList<>();
 
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.mansaloon,"Company1",5));
+        /*ad_companymodels.add(new Ad_Companymodel(R.drawable.mansaloon,"Company1",5));
         ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company2",5));
         ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company3",5));
         ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company4",5));
         ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company5",5));
         ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company6",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company7",5));
+        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company7",5));*/
 
-        ad_company=new Ad_Company(FreelancerHomePageActivity.this,ad_companymodels);
+
+
+        StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                   // Toast.makeText(FreelancerHomePageActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                    if (sucess.equals("1")) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String id = object.getString("id");
+                            String name = object.getString("companyname");
+                            String image=object.getString("profile_pic");
+
+                            String u = "http://aoneservice.net.in/salon/documents/" + image;
+
+                            //Toast.makeText(FreelancerHomePageActivity.this, ""+id, Toast.LENGTH_SHORT).show();
+
+                            //String u="222004744_1593440811.jpeg";
+                            //   String lastname = object.getString("lastname");
+                            // String email = object.getString("email");
+                            //String mobilenumber = object.getString("mobilenumber");
+                            //String experinace=object.getString("experience");
+                            //String gender = object.getString("gender");
+                            //String address = object.getString("address");
+                            //String aboutus=object.getString("about_yourself");
+                            //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
+                            //String item_image = object.getString("item_image");
+                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
+                            // newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            //newAdapter=new NewAdapter(FreelancerHomePageActivity.this,newModels);
+                            //recyclerView.setHasFixedSize(true);
+                            //recyclerView.setAdapter(newAdapter);
+
+                            // newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            ad_companymodels.add(new Ad_Companymodel(id,u,name,5));
+                            ad_company=new Ad_Company(FreelancerHomePageActivity.this,ad_companymodels);
+
+                            LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(FreelancerHomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
+                            recyclerView1.setLayoutManager(linearLayoutManager4);
+                            recyclerView1.setHasFixedSize(true);
+                            recyclerView1.setAdapter(ad_company);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FreelancerHomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue1= Volley.newRequestQueue(this);
+        requestQueue1.add(request1);
+
+
+
+
+       /* ad_company=new Ad_Company(FreelancerHomePageActivity.this,ad_companymodels);
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(ad_company);
+        recyclerView1.setAdapter(ad_company);*/
 
 
 

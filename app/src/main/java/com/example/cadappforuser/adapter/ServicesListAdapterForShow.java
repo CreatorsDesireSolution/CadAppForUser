@@ -68,6 +68,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
         holder.price.setText("Rs."+servicesListModel.getPrice());
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
+
     }
 
     private void readCursorData(ServicesListModel servicesListModel, ViewHolder holder) {

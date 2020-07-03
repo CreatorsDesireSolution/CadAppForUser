@@ -289,7 +289,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="Certificate            :"
+                    android:text="See Lis             :"
                     android:textSize="16sp"
                     android:layout_marginTop="12dp"
                     android:id="@+id/certificate"
@@ -300,7 +300,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="View Certificates"
+                    android:text="See List"
+                    android:id="@+id/btnSeeList"
                     android:background="@drawable/background2"
                     android:textColor="@color/black"
                    android:paddingLeft="5dp"

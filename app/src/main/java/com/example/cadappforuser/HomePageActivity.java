@@ -167,7 +167,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                     String sucess = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     if (sucess.equals("1")) {
-
                         for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject object = jsonArray.getJSONObject(i);
                                 //String category=object.getString("item_category");

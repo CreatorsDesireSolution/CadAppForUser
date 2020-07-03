@@ -20,6 +20,7 @@ import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.model.Ad_Companymodel;
 import com.example.cadappforuser.model.Ad_freelancermodel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +51,16 @@ public class Ad_Company extends RecyclerView.Adapter<Ad_Company.ViewHolder> impl
         Ad_Companymodel ad_companymodel=ad_companymodels.get(position);
         holder.tv_freelancername.setText(ad_companymodel.getName());
         holder.ratingBar.setRating(ad_companymodel.getRating());
-        holder.facialImageFreelancer.setImageResource(ad_companymodel.getImage());
+
+        //holder.facialImageFreelancer.setImageResource(ad_companymodel.getImage());
+
+        Picasso.get().load(ad_companymodel.getImage()).resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
 
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
 
                 context.startActivity(new Intent(context, Act_CompanyNewProfileOnlyShow.class));
-
 
             }
         });

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cadappforuser.model.FreelancerProfileDetailsModel;
@@ -25,7 +26,7 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
     Act_Session act_session;
     ArrayList<FreelancerProfileDetailsModel> profile_list1 = new ArrayList<>();
     TextView tv_name,tv_mobile,tv_adresss,tv_gender,tv_email,tv_dob,tv_surname,background;
-
+Button btnSeeList;
 
 
     @Override
@@ -42,6 +43,16 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
         tv_gender = findViewById(R.id.gender1);
         tv_adresss = findViewById(R.id.Location1);
         background= findViewById(R.id.background111);
+
+        btnSeeList=findViewById(R.id.btnSeeList);
+
+        btnSeeList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FreelancerPersonalProfile.this,FreelancerGenderSelectSeeList.class);
+                startActivity(intent);
+            }
+        });
 
         tv_edit.setOnClickListener(new View.OnClickListener() {
             @Override

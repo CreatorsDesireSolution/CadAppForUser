@@ -2,6 +2,7 @@ package com.example.cadappforuser.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,7 @@ import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.model.Ad_freelancermodel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,7 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
 
     Context context;
     List<Ad_freelancermodel> ad_freelancermodels;
+    String id;
     List<Ad_freelancermodel> Allad_freelancermodels;
 
     public Ad_Freelancer(Context context, List<Ad_freelancermodel> ad_freelancermodels) {
@@ -48,16 +52,28 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Ad_freelancermodel ad_freelancermodel=ad_freelancermodels.get(position);
+       final Ad_freelancermodel ad_freelancermodel=ad_freelancermodels.get(position);
         holder.tv_freelancername.setText(ad_freelancermodel.getName());
         holder.ratingBar.setRating(ad_freelancermodel.getRating());
-        holder.facialImageFreelancer.setImageResource(ad_freelancermodel.getImage());
+
+        //String name=ad_freelancermodel.getName();
+       // holder.facialImageFreelancer.setImageResource(ad_freelancermodel.getImage());
+
+
+        Picasso.get().load(ad_freelancermodel.getImage()).resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
 
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
+                String name=ad_freelancermodel.getName();
+                Toast.makeText(context, ""+name, Toast.LENGTH_SHORT).show();
+                String id=ad_freelancermodel.getId();
+                Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(context, Act_FreelancerProfileOnlyShow.class);
+                intent.putExtra("id",id);
 
-                context.startActivity(new Intent(context, Act_FreelancerProfileOnlyShow.class));
+                context.startActivity(intent);
+
 
 
             }

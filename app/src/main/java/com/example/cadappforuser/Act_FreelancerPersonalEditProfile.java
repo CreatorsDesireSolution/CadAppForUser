@@ -41,6 +41,8 @@ public class Act_FreelancerPersonalEditProfile extends AppCompatActivity {
     Button btn_save;
     ArrayList<FreelancerProfileDetailsModel> profile_list1 = new ArrayList<>();
 
+    Button btnSeeList;
+
 
 
     @Override
@@ -56,6 +58,7 @@ public class Act_FreelancerPersonalEditProfile extends AppCompatActivity {
         et_email = findViewById(R.id.et_email);
         et_mobile = findViewById(R.id.et_mobile);
         btn_save = findViewById(R.id.btn_save);
+
 
         act_session= new Act_Session(getApplicationContext());
 
