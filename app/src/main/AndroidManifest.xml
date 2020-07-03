@@ -24,7 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CurrentLocation3"></activity>
+        <activity android:name=".CompanyServiceVolley"></activity>
+        <activity android:name=".CompanyShowServices" />
+        <activity android:name=".SelectCompanyServicegender" />
+        <activity android:name=".CurrentLocation3" />
         <activity android:name=".CurrentLocation2" />
         <activity android:name=".CurrentLocationEditFreelancer" />
         <activity android:name=".CurrentLocation1" />
@@ -61,7 +64,9 @@
         <activity
             android:name=".Act_CustomerProfileEdit"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Act_CompanyNewProfile" />
+        <activity android:name=".Act_CompanyNewProfile"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
         <activity android:name=".Act_FreelancerProfile" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />

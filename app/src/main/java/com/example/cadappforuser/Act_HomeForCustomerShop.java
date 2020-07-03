@@ -119,13 +119,13 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
 
         companyNewModels = new ArrayList<>();
 
-        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
-        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
+//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
 
         companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);

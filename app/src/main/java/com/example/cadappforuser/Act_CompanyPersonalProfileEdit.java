@@ -107,6 +107,7 @@ public class Act_CompanyPersonalProfileEdit extends AppCompatActivity {
 
                     if (companyProfileDataModels.size() != 0) {
 
+
                         et_name.setText(companyProfileDataModels.get(0).getCompanyname());
                         et_mobile.setText(companyProfileDataModels.get(0).getMobilenumber());
                         et_email.setText(companyProfileDataModels.get(0).getEmail());
@@ -121,6 +122,9 @@ public class Act_CompanyPersonalProfileEdit extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
+
+
 
             @Override
             public void onFailure(int requestCode, String errorCode, String message) {
@@ -150,6 +154,7 @@ public class Act_CompanyPersonalProfileEdit extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),CompanyHomePageActivity.class);
                     // intent.putExtra("mobilenumber",mobilenumber);
                     startActivity(intent);
+
 
 
                     finish();

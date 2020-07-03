@@ -107,6 +107,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     public Callback<JsonElement> responseCallbackCustom = new Callback<JsonElement>() {
         @Override
         public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+
             String responseServer = "";
             hideLoader();
 
@@ -471,7 +472,9 @@ public class BaseRequest<T> extends BaseRequestParser {
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public void callApiAddservicecompany(final int APINumber,  String remainingURL,RequestBody userid_,RequestBody service_name_, RequestBody description_, RequestBody set_price_, RequestBody duration_) {
+    public void callApiAddservicecompany(final int APINumber,  String remainingURL,RequestBody userid_,RequestBody
+            service_name_, RequestBody description_, RequestBody set_price_, RequestBody duration_,RequestBody gender_,
+                                         RequestBody image_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -479,9 +482,24 @@ public class BaseRequest<T> extends BaseRequestParser {
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
-        Call<JsonElement> call = apiInterface_.postservicecompany(userid_,service_name_,description_,set_price_,duration_);
+        Call<JsonElement> call = apiInterface_.postservicecompany(userid_,service_name_,description_,set_price_,duration_,gender_,image_);
         call.enqueue(responseCallback);
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void callgetservice(final int APINumber,  String remainingURL,RequestBody userid_) {
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
+        Call<JsonElement> call = apiInterface_.postserviceee(userid_);
+        call.enqueue(responseCallbackCustom);
+    }
+
 
 
     public void callAPIPost(final int APINumber, JsonObject jsonObject, String remainingURL) {

@@ -23,7 +23,7 @@ public class CompanyPersonalProfile extends AppCompatActivity {
     BaseRequest baseRequest;
     Act_Session act_session;
     ArrayList<CompanyProfileDataModel> companyProfileDataModels = new ArrayList<>();
-    TextView tv_mobile,tv_companyname,tv_address,tv_nostaff,tv_age,tv_email,tv_background,tv_name;
+    TextView tv_mobile,tv_companyname,tv_address,tv_nostaff,tv_age,tv_email,tv_background,tv_name,tv_regnumbr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class CompanyPersonalProfile extends AppCompatActivity {
         tv_email = findViewById(R.id.tv_email);
         tv_background = findViewById(R.id.tv_background);
         tv_companyname = findViewById(R.id.tv_companyname);
+        tv_regnumbr= findViewById(R.id.tv_regnumbr);
 
 
 
@@ -74,8 +75,9 @@ public class CompanyPersonalProfile extends AppCompatActivity {
                         tv_email.setText(companyProfileDataModels.get(0).getEmail());
                         tv_address.setText(companyProfileDataModels.get(0).getAddress());
                         tv_background.setText(companyProfileDataModels.get(0).getAboutcompany());
-                        //tv_regnumber.setText(companyProfileDataModels.get(0).getRegnumber());
+                        tv_regnumbr.setText(companyProfileDataModels.get(0).getRegnumber());
                         tv_nostaff.setText(companyProfileDataModels.get(0).getNoOfStaff());
+                       // tv_age .setText(companyProfileDataModels.get(0).ge);
 
 
                     }

@@ -180,7 +180,16 @@ public interface ApiInterface {
                                              @Part("service_name") RequestBody service_name_,
                                              @Part("description") RequestBody description_,
                                              @Part("set_price") RequestBody set_price_,
-                                             @Part("duration") RequestBody duration_
+                                             @Part("duration") RequestBody duration_,
+                                             @Part("service_gender") RequestBody gender_,
+                                             @Part("service_image") RequestBody imgae_
+
+    );
+
+    @Multipart
+    @POST("salon/get-apis/company_servicedata_api.php")
+    Call<JsonElement> postserviceee( @Part("id") RequestBody userid_
+
 
     );
 
