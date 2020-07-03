@@ -1,11 +1,14 @@
 package com.example.cadappforuser;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,11 +19,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.adapter.CompanyAddServiceAdapater;
+import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.companyadapter.CompanyServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.companyadapter.CompanyServicesFreelancerAdapterHome;
 import com.example.cadappforuser.companymodel.CompanyServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.companymodel.CompanyServicesFreelancerHomeModel;
+import com.example.cadappforuser.model.CompanyAddServiceModel;
+import com.example.cadappforuser.model.CompanyDetailsModel;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -33,17 +46,29 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     ArrayList<CompanyServicesFeatureAndCategoriesHomeModel> companyServicesFeatureAndCategoriesHomeModelArrayList;
 
     ArrayList<CompanyServicesFreelancerHomeModel> companyServicesFreelancerHomeModelArrayList;
+    ArrayList<CompanyDetailsModel> companyDetailsModels= new ArrayList<>();
+    Activity activity;
+    Context context;
+    CompanyDetailsAdapter companyDetailsAdapter;
+    Act_Session act_session;
+    BaseRequest baseRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.comapny_nav_drawable_layout);
 
+        context = this;
+        activity= this;
+        act_session = new Act_Session(getApplicationContext());
+
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
+
+        Apigetdetail();
 
         companyServicesFeatureAndCategoriesHomeModelArrayList =new ArrayList<>();
         companyServicesFreelancerHomeModelArrayList =new ArrayList<>();
@@ -62,22 +87,18 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(companyServicesFeturesAndCategoriesHomeAdapter);
+//
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//
 
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 
-
-        CompanyServicesFreelancerAdapterHome companyServicesFreelancerAdapterHome =new CompanyServicesFreelancerAdapterHome(CompanyHomePageActivity.this, companyServicesFreelancerHomeModelArrayList);
-        LinearLayoutManager layoutManager1=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-        recyclerView1.setLayoutManager(layoutManager1);
-        recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(companyServicesFreelancerAdapterHome);
 
 
 
@@ -109,6 +130,64 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         else {
             super.onBackPressed();
         }
+    }
+
+    private void Apigetdetail() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+
+                    if (!jsonObject.getString("message").equals("Failed")) {
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        companyDetailsModels = baseRequest.getDataList(jsonArray, CompanyDetailsModel.class);
+
+                        for (int i = 0; i < companyDetailsModels.size(); i++) {
+                            if (companyDetailsModels != null) {
+
+
+                                CompanyDetailsModel model = new CompanyDetailsModel();
+                                model.setCompanyname(companyDetailsModels.get(0).getCompanyname());
+
+                               // companyAddServiceModels2.add(model);
+                                CompanyDetailsAdapter companyDetailsAdapter =new CompanyDetailsAdapter(CompanyHomePageActivity.this, companyDetailsModels,activity,act_session);
+                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
+                                recyclerView1.setLayoutManager(layoutManager1);
+                                recyclerView1.setHasFixedSize(true);
+                                recyclerView1.setAdapter(companyDetailsAdapter);
+
+
+
+                            } else {
+                                Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
 
