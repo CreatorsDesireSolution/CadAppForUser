@@ -16,31 +16,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
-import com.example.cadappforuser.Act_CompanyPersonalProfileEdit;
+import com.example.cadappforuser.Act_FreelancerProfile;
 import com.example.cadappforuser.Act_Session;
+import com.example.cadappforuser.FreelancerDetailsForCompay;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.ServiceDescription;
-import com.example.cadappforuser.ServiceModel.AllServiceModel;
-import com.example.cadappforuser.SqliteDatabase.FavDB;
-import com.example.cadappforuser.model.Ad_freelancermodel;
-import com.example.cadappforuser.model.CompanyAddServiceModel;
 import com.example.cadappforuser.model.CompanyDetailsModel;
+import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAdapter.ViewHolder> implements Filterable {
+public class FreelancerDetailAdapter extends RecyclerView.Adapter<FreelancerDetailAdapter.ViewHolder>implements Filterable {
 
     Context context;
-    List<CompanyDetailsModel> companyDetailsModels;
+    List<FreelancerDetailsModel> companyDetailsModels;
     Activity activity;
     int count;
-    Act_Session act_session;
-    List<CompanyDetailsModel> Allcompanydeatil;
 
-    public CompanyDetailsAdapter(Context context, List<CompanyDetailsModel> companyDetailsModels, Activity activity, Act_Session act_session) {
+    Act_Session act_session;
+    List<FreelancerDetailsModel> Allcompanydeatil;
+
+    public FreelancerDetailAdapter(Context context, List<FreelancerDetailsModel> companyDetailsModels, Activity activity, Act_Session act_session) {
         this.context = context;
         this.companyDetailsModels = companyDetailsModels;
         this.activity = activity;
@@ -50,47 +48,53 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
 
     @NonNull
     @Override
-    public CompanyDetailsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.company_details,parent,false);
-        CompanyDetailsAdapter.ViewHolder viewHolder=new CompanyDetailsAdapter.ViewHolder(view);
+    public FreelancerDetailAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.freelancer_details,parent,false);
+        FreelancerDetailAdapter.ViewHolder viewHolder=new FreelancerDetailAdapter.ViewHolder(view);
         return  viewHolder;    }
 
+
+
+
+
     @Override
-    public void onBindViewHolder(@NonNull CompanyDetailsAdapter.ViewHolder holder, int position) {
-        CompanyDetailsModel companyDetailsModel = companyDetailsModels.get(position);
+    public void onBindViewHolder(@NonNull FreelancerDetailAdapter.ViewHolder holder, int position) {
+
+
+        FreelancerDetailsModel companyDetailsModel = companyDetailsModels.get(position);
         // holder.sample.setText(companyAddServiceModel.getDescription());
 
-        holder.tv_companyname.setText(companyDetailsModel.getCompanyname());
+        holder.tv_companyname.setText(companyDetailsModel.getFirstname());
+        holder.tv_lastname.setText(companyDetailsModel.getLastname());
         //holder.price.setText("Rs."+companyDetailsModel.getAboutCompany());
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().into(holder.companyimageview);
 
-        final String companyname = companyDetailsModel.getCompanyname();
+        final String firstname = companyDetailsModel.getFirstname();
+        final String lastname = companyDetailsModel.getLastname();
         final String email = companyDetailsModel.getEmail();
         final String number = companyDetailsModel.getMobilenumber();
         final String address = companyDetailsModel.getAddress();
-        final String aboutcompany = companyDetailsModel.getAboutCompany();
-        final String ageofcompany =companyDetailsModel.getTotalYearEstablishment();
-        final  String no_of_staff = companyDetailsModel.getNoOfStaff();
-        final  String companyid=companyDetailsModel.getId();
+        final String aboutcompany = companyDetailsModel.getAboutYourself();
+        final String ageofcompany =companyDetailsModel.getExperience();
+        final String id_= companyDetailsModel.getId();
         final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().toString();
 
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
-                Intent intent=new Intent(context, Act_CompanyNewProfile.class);
-                intent.putExtra("companyname",companyname);
+                Intent intent=new Intent(context, FreelancerDetailsForCompay.class);
+                intent.putExtra("firstname",firstname);
+                intent.putExtra("lastname",lastname);
                 intent.putExtra("email",email);
                 intent.putExtra("number",number);
                 intent.putExtra("address",address);
                 intent.putExtra("aboutcompnay",aboutcompany);
                 intent.putExtra("ageofcompany",ageofcompany);
-                intent.putExtra("no_of_staff",no_of_staff);
                 intent.putExtra("image",image);
-                intent.putExtra("id",companyid);
+                intent.putExtra("id",id_);
 
                 context.startActivity(intent);
             }
@@ -100,27 +104,25 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
 
 
 
-    @Override
-    public int getItemCount() {
-    return companyDetailsModels.size();
-    }
 
     @Override
-    public Filter getFilter() {
-        return filter;
+    public int getItemCount() {
+        return companyDetailsModels.size();
     }
+
+
     Filter filter=new Filter() {
         //run on background thread
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            List<CompanyDetailsModel> filterList = new ArrayList<>();
+            List<FreelancerDetailsModel> filterList = new ArrayList<>();
             if (charSequence.toString() == null) {
                 filterList.addAll(companyDetailsModels);
             } else {
                 String serachStr = charSequence.toString().toUpperCase();
-                for (CompanyDetailsModel servicesS : Allcompanydeatil) {
-                    if (servicesS.getCompanyname().toUpperCase().contains(serachStr)) {
+                for (FreelancerDetailsModel servicesS : Allcompanydeatil) {
+                    if (servicesS.getFirstname().toUpperCase().contains(serachStr)) {
                         filterList.add(servicesS);
                     }
                 }
@@ -134,7 +136,7 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
             companyDetailsModels.clear();
-            companyDetailsModels.addAll((List<CompanyDetailsModel>)results.values);
+            companyDetailsModels.addAll((List<FreelancerDetailsModel>)results.values);
             notifyDataSetChanged();
 
         }
@@ -142,33 +144,36 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
 
 
 
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tv_companyname;
+        TextView tv_companyname,tv_lastname;
         RatingBar ratingBar;
         ImageView companyimageview;
-       ItemClickListner itemClickListner;
+        ItemClickListner itemClickListner;
 
-
-    public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_companyname = itemView.findViewById(R.id.companyname);
+            tv_companyname = itemView.findViewById(R.id.firstname);
+            tv_lastname = itemView.findViewById(R.id.lastname);
             ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview =itemView.findViewById(R.id.companyimageview);
             itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View v) {
+            this.itemClickListner.onItemClickListner(v,getLayoutPosition());
+
+        }
+
+        public void setItemClickListner(ItemClickListner ic){
+            this.itemClickListner=ic;
+        }
     }
-
-    @Override
-    public void onClick(View v) {
-        this.itemClickListner.onItemClickListner(v,getLayoutPosition());
-
-    }
-
-    public void setItemClickListner(ItemClickListner ic){
-        this.itemClickListner=ic;
-    }
-
-}
 }

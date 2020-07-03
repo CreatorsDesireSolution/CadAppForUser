@@ -39,6 +39,7 @@ public class CompanyShowServices extends AppCompatActivity {
      Act_Session act_session;
      Context context;
      Activity activity;
+     String compnay_id;
 
 
     @Override
@@ -58,6 +59,9 @@ public class CompanyShowServices extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         act_session =new Act_Session(getApplicationContext());
+
+        Intent intent = getIntent();
+        compnay_id = intent.getStringExtra("id");
 
 
         ApiGetList();
@@ -120,7 +124,7 @@ public class CompanyShowServices extends AppCompatActivity {
 
                 }
             });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_servicedata_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_servicedata_api.php?" + "id=" + compnay_id;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
