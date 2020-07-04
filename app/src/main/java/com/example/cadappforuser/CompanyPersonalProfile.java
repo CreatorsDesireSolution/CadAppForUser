@@ -24,7 +24,7 @@ public class CompanyPersonalProfile extends AppCompatActivity {
     Act_Session act_session;
     TextView viewcertificate;
     ArrayList<CompanyProfileDataModel> companyProfileDataModels = new ArrayList<>();
-    TextView tv_mobile,tv_companyname,tv_address,tv_nostaff,tv_age,tv_email,tv_background,tv_name,tv_regnumbr;
+    TextView tv_mobile,tv_companyname,tv_address,tv_nostaff,tv_age,tv_email,tv_background,tv_name,tv_regnumbr,ViewWorkperform;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +42,19 @@ public class CompanyPersonalProfile extends AppCompatActivity {
         tv_background = findViewById(R.id.tv_background);
         tv_companyname = findViewById(R.id.tv_companyname);
         tv_regnumbr= findViewById(R.id.tv_regnumbr);
+        ViewWorkperform= findViewById(R.id.ViewWorkperform);
 
         act_session = new Act_Session(getApplicationContext());
 
         tv_edit = findViewById(R.id.tv_edit);
+
+        ViewWorkperform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CompanyGetWorkPerformed.class);
+                startActivity(intent);
+            }
+        });
 
 
         viewcertificate.setOnClickListener(new View.OnClickListener() {

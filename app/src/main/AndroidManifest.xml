@@ -24,7 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CompanyGetAllCertificate"></activity>
+        <activity android:name=".CompanyGetWorkPerformforShow"></activity>
+        <activity android:name=".CompanyGetWorkPerformed" />
+        <activity android:name=".CompnayCertificateShow" />
+        <activity android:name=".CompanyGetAllCertificate" />
         <activity android:name=".FreelancerServiceList" />
         <activity android:name=".Selectgenderforfreelancerservice" />
         <activity android:name=".FreelancerDetailsForCompay" />
@@ -33,6 +36,8 @@
         <activity android:name=".SelectCompanyServicegender" />
         <activity android:name=".CurrentLocation3" />
         <activity android:name=".CurrentLocation2" />
+        <activity android:name=".Act_SelectCompnayGenderForList" />
+        <activity android:name=".ServiceListComapnyForShow" />
         <activity android:name=".CurrentLocationEditFreelancer" />
         <activity android:name=".CurrentLocation1" />
         <activity android:name=".CompanyUploadWorkPerformed" />
@@ -68,9 +73,9 @@
         <activity
             android:name=".Act_CustomerProfileEdit"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".Act_CompanyNewProfile"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
-
+        <activity
+            android:name=".Act_CompanyNewProfile"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".Act_FreelancerProfile" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />

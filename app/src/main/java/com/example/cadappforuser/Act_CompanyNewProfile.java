@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.io.PrintWriter;
 
 public class Act_CompanyNewProfile extends AppCompatActivity {
     Button btn_serviceslist,btn_next;
@@ -19,6 +22,8 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
     ImageView imageView;
     Uri file;
     String companyId;
+    TextView tv_certificate;
+    RelativeLayout lay_certificate,workperform;
 
 
     @Override
@@ -34,6 +39,9 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         tv_no_of_staff= findViewById(R.id.no_of_staff);
         tv_age = findViewById(R.id.established);
         imageView = findViewById(R.id.iv_profile_image);
+        tv_certificate = findViewById(R.id.tv_certificate);
+        lay_certificate= findViewById(R.id.lay_certificate);
+        workperform= findViewById(R.id.workperform);
 
       //  btn_serviceslist = findViewById(R.id.serviceslist);
         btn_next = findViewById(R.id.btn_next);
@@ -53,6 +61,25 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        lay_certificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CompnayCertificateShow.class);
+                intent.putExtra("id",companyId);
+                startActivity(intent);
+
+            }
+        });
+
+        workperform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CompanyGetWorkPerformforShow.class);
+                intent.putExtra("id",companyId);
                 startActivity(intent);
             }
         });

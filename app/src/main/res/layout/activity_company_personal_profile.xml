@@ -366,6 +366,7 @@
                         android:background="@drawable/background2"
                         android:textColor="@color/black"
                         android:paddingLeft="5dp"
+                        android:id="@+id/ViewWorkperform"
                         android:paddingRight="6dp"
                         android:layout_marginLeft="25dp"
                         android:layout_toRightOf="@+id/workperformed"
