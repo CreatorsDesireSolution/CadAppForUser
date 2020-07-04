@@ -26,6 +26,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.model.CompanyGetCertificate;
+import com.example.cadappforuser.model.CompanyGetbackGround;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.karumi.dexter.Dexter;
@@ -34,12 +36,14 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.single.PermissionListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,6 +65,7 @@ public class CertificationActivity extends AppCompatActivity {
     Act_Session act_session;
     Context context;
     ProgressDialog progressDialog;
+    ArrayList<CompanyGetCertificate> companyGetCertificates = new ArrayList<>();
 
 
     @Override
@@ -77,6 +82,8 @@ public class CertificationActivity extends AppCompatActivity {
         imageViewworkperform = findViewById(R.id.imageView4);
 
         btn_nextcertificate = findViewById(R.id.btn_nextcertificate);
+
+      //  Apigetcertificate();
 
 
         txt_uploadcertification.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +180,59 @@ public class CertificationActivity extends AppCompatActivity {
                 requestQueue.add(request);
             }
         });
+    }
+
+
+    private void Apigetcertificate() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+
+                    if (!jsonObject.getString("message").equals("Failed")) {
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        companyGetCertificates = baseRequest.getDataList(jsonArray, CompanyGetCertificate.class);
+
+                        for (int i = 0; i < companyGetCertificates.size(); i++) {
+                            if (companyGetCertificates != null)
+
+                            {
+                             encodeImage =  "http://aoneservice.net.in/salon/documents/"+companyGetCertificates.get(0).getCertificate();
+
+
+
+                            } else {
+                                Toast.makeText(CertificationActivity.this, "No Data", Toast.LENGTH_SHORT).show();
+
+
+                            }
+                        }
+                    } else {
+                        Toast.makeText(CertificationActivity.this, "No Data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_getcertificate_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
 

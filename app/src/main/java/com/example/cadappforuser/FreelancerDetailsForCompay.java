@@ -20,8 +20,9 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
     TextView background11;
     boolean isOpen = false;
     LinearLayout tvbg;
-    TextView name,email,mobile,fullname,address,experience,background;
+    TextView name,email,mobile,fullname,address,experience,background,tv_certificate;
     String free;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         address=findViewById(R.id.tv_city);
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
+        tv_certificate = findViewById(R.id.tv_certificate);
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -59,7 +61,9 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         email.setText(intent.getStringExtra("email"));
         experience.setText(intent.getStringExtra("ageofcompany"));
         Toast.makeText(this, ""+intent.getStringExtra("aboutcompnay"), Toast.LENGTH_SHORT).show();
-        background.setText(intent.getStringExtra("aboutcompnay"));
+        background11.setText(intent.getStringExtra("aboutcompnay"));
+
+
 
 
         lay1.setOnClickListener(new View.OnClickListener() {
@@ -83,22 +87,22 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         });
 
 
-        background11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isOpen) {
-                    isOpen = false;
-                    tvbg.setVisibility(View.GONE);
-                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
-                } else {
-                    isOpen = true;
-                    tvbg.setVisibility(View.VISIBLE);
-                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
-
-
-                }
-            }
-        });
+//        background11.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isOpen) {
+//                    isOpen = false;
+//                    tvbg.setVisibility(View.GONE);
+//                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
+//                } else {
+//                    isOpen = true;
+//                    tvbg.setVisibility(View.VISIBLE);
+//                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
+//
+//
+//                }
+//            }
+//        });
 
 
 

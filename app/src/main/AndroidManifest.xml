@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FreelancerServiceList"></activity>
+        <activity android:name=".CompanyGetAllCertificate"></activity>
+        <activity android:name=".FreelancerServiceList" />
         <activity android:name=".Selectgenderforfreelancerservice" />
         <activity android:name=".FreelancerDetailsForCompay" />
         <activity android:name=".CompanyServiceVolley" />
