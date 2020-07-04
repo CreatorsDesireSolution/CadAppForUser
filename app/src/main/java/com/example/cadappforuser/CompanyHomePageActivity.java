@@ -21,12 +21,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.adapter.CompanyAddServiceAdapater;
 import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
+import com.example.cadappforuser.adapter.FreelancerDetailAdapter;
 import com.example.cadappforuser.companyadapter.CompanyServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.companyadapter.CompanyServicesFreelancerAdapterHome;
 import com.example.cadappforuser.companymodel.CompanyServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.companymodel.CompanyServicesFreelancerHomeModel;
 import com.example.cadappforuser.model.CompanyAddServiceModel;
 import com.example.cadappforuser.model.CompanyDetailsModel;
+import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.material.navigation.NavigationView;
@@ -47,6 +49,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
     ArrayList<CompanyServicesFreelancerHomeModel> companyServicesFreelancerHomeModelArrayList;
     ArrayList<CompanyDetailsModel> companyDetailsModels= new ArrayList<>();
+    ArrayList<FreelancerDetailsModel> freelancerDetailsModels = new ArrayList<>();
     Activity activity;
     Context context;
     CompanyDetailsAdapter companyDetailsAdapter;
@@ -69,24 +72,25 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         recyclerView1=findViewById(R.id.recycleView1);
 
         Apigetdetail();
+        ApiGetFreelancerDetail();
 
         companyServicesFeatureAndCategoriesHomeModelArrayList =new ArrayList<>();
         companyServicesFreelancerHomeModelArrayList =new ArrayList<>();
-
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-
-        CompanyServicesFeturesAndCategoriesHomeAdapter companyServicesFeturesAndCategoriesHomeAdapter =new CompanyServicesFeturesAndCategoriesHomeAdapter(CompanyHomePageActivity.this, companyServicesFeatureAndCategoriesHomeModelArrayList);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(companyServicesFeturesAndCategoriesHomeAdapter);
+//
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
+//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
+//
+//        CompanyServicesFeturesAndCategoriesHomeAdapter companyServicesFeturesAndCategoriesHomeAdapter =new CompanyServicesFeturesAndCategoriesHomeAdapter(CompanyHomePageActivity.this, companyServicesFeatureAndCategoriesHomeModelArrayList);
+//        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setAdapter(companyServicesFeturesAndCategoriesHomeAdapter);
 //
 //        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
 //        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
@@ -187,6 +191,65 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             }
         });
         String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
+    }
+
+
+    private void ApiGetFreelancerDetail() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+
+                    if (!jsonObject.getString("message").equals("Failed")) {
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        freelancerDetailsModels = baseRequest.getDataList(jsonArray, FreelancerDetailsModel.class);
+
+                        for (int i = 0; i < freelancerDetailsModels.size(); i++) {
+                            if (freelancerDetailsModels != null) {
+
+
+                                CompanyDetailsModel model = new CompanyDetailsModel();
+                                model.setCompanyname(freelancerDetailsModels.get(0).getFirstname());
+
+                                // companyAddServiceModels2.add(model);
+                                FreelancerDetailAdapter companyDetailsAdapter =new FreelancerDetailAdapter(CompanyHomePageActivity.this, freelancerDetailsModels,activity,act_session);
+                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
+                                recyclerView.setLayoutManager(layoutManager1);
+                                recyclerView.setHasFixedSize(true);
+                                recyclerView.setAdapter(companyDetailsAdapter);
+
+
+
+                            } else {
+                                Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "https://aoneservice.net.in/salon/get-apis/freelancer_dashboarddata_api.php?" + "id=" + act_session.userId;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 

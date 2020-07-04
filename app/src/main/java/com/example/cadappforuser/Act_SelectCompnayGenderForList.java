@@ -1,0 +1,13 @@
+package com.example.cadappforuser;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class Act_SelectCompnayGenderForList extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_act__select_compnay_gender_for_list);
+    }
+}

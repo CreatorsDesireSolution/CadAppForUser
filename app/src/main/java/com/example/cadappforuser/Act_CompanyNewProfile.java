@@ -16,8 +16,9 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
     FrameLayout lay1;
     TextView tv_companyname,tv_email,tv_mobile,tv_address,background11,tv_no_of_staff,tv_age;
     String companyname,emailaddress,mobile,location,aboutcompnay,no_of_staff,age;
-   ImageView imageView;
-   Uri file;
+    ImageView imageView;
+    Uri file;
+    String companyId;
 
 
     @Override
@@ -42,6 +43,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Act_SelectGenderForList.class);
+                intent.putExtra("id",companyId);
                 startActivity(intent);
             }
         });
@@ -65,6 +67,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         age = intent2.getStringExtra("ageofcompany");
         file = intent2.getParcelableExtra("image");
         imageView.setImageURI(file);
+        companyId = intent2.getStringExtra("id");
 
 
         tv_companyname.setText(companyname);

@@ -7,22 +7,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class SelectGenderCustomerServiceList extends AppCompatActivity {
+public class Selectgenderforfreelancerservice extends AppCompatActivity {
     Button btnmale,btnfemale;
+    String freelancer_Id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_gender_customer_service_list);
+        setContentView(R.layout.activity_selectgenderforfreelancerservice);
+
 
         btnmale = findViewById(R.id.btnMale);
         btnfemale = findViewById(R.id.btnFemale);
+
+        Intent intent = getIntent();
+        freelancer_Id = intent.getStringExtra("id");
 
         btnmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
+                Intent intent = new Intent(getApplicationContext(),FreelancerServiceList.class);
+                intent.putExtra("id",freelancer_Id);
                 startActivity(intent);
 
             }
