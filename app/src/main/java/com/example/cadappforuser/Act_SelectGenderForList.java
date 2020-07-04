@@ -10,7 +10,7 @@ import android.widget.Button;
 public class Act_SelectGenderForList extends AppCompatActivity {
 
     Button btnmale,btnfemale;
-
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,11 +19,14 @@ public class Act_SelectGenderForList extends AppCompatActivity {
         btnmale = findViewById(R.id.btnMale);
         btnfemale = findViewById(R.id.btnFemale);
 
+        Intent intent=getIntent();
+        id=intent.getStringExtra("id");
         btnmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),Act_womenservicelist.class);
+                Intent intent = new Intent(getApplicationContext(),ServiceListComapnyForShow.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
 
             }

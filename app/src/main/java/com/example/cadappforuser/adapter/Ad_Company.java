@@ -10,12 +10,14 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
 import com.example.cadappforuser.Act_CompanyNewProfileOnlyShow;
+import com.example.cadappforuser.Act_FreelancerProfileOnlyShow;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.model.Ad_Companymodel;
@@ -48,7 +50,7 @@ public class Ad_Company extends RecyclerView.Adapter<Ad_Company.ViewHolder> impl
     @Override
     public void onBindViewHolder(@NonNull Ad_Company.ViewHolder holder, int position) {
 
-        Ad_Companymodel ad_companymodel=ad_companymodels.get(position);
+       final Ad_Companymodel ad_companymodel=ad_companymodels.get(position);
         holder.tv_freelancername.setText(ad_companymodel.getName());
         holder.ratingBar.setRating(ad_companymodel.getRating());
 
@@ -60,7 +62,14 @@ public class Ad_Company extends RecyclerView.Adapter<Ad_Company.ViewHolder> impl
             @Override
             public void onItemClickListner(View v, int position) {
 
-                context.startActivity(new Intent(context, Act_CompanyNewProfileOnlyShow.class));
+                String name=ad_companymodel.getName();
+                Toast.makeText(context, ""+name, Toast.LENGTH_SHORT).show();
+                String id=ad_companymodel.getId();
+                Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(context, Act_CompanyNewProfileOnlyShow.class);
+                intent.putExtra("id",id);
+
+                context.startActivity(intent);
 
             }
         });
