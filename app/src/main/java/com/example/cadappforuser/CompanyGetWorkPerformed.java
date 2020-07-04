@@ -27,7 +27,8 @@ import java.util.ArrayList;
 public class CompanyGetWorkPerformed extends AppCompatActivity {
 
 
-    RecyclerView recyclerView;
+
+    ArrayList<CompanyGetWorkPerformedModel> companyGetWorkPerformedModels = new ArrayList<>();
 
     CompanyGetWorkperformedAdapter companyGetWorkperformedAdapter;
     BaseRequest baseRequest;
@@ -35,7 +36,7 @@ public class CompanyGetWorkPerformed extends AppCompatActivity {
     Context context;
     Activity activity;
     String freelancer_id;
-    ArrayList<CompanyGetWorkPerformedModel> companyGetWorkPerformedModels = new ArrayList<>();
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
