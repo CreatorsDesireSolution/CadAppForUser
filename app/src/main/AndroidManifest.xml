@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CompanyGetWorkPerformforShow"></activity>
+        <activity android:name=".FreelancerGetCertificate"></activity>
+        <activity android:name=".CompanyGetWorkPerformforShow" />
         <activity android:name=".CompanyGetWorkPerformed" />
         <activity android:name=".CompnayCertificateShow" />
         <activity android:name=".CompanyGetAllCertificate" />
@@ -32,9 +33,8 @@
         <activity android:name=".Selectgenderforfreelancerservice" />
         <activity android:name=".FreelancerDetailsForCompay" />
         <activity android:name=".CompanyServiceVolley" />
-
-        <activity android:name=".ServiceListComapnyForShow"></activity>
-        <activity android:name=".Act_SelectCompnayGenderForList"></activity>
+        <activity android:name=".ServiceListComapnyForShow" />
+        <activity android:name=".Act_SelectCompnayGenderForList" />
         <activity android:name=".CompanyShowServices" />
         <activity android:name=".SelectCompanyServicegender" />
         <activity android:name=".CurrentLocation3" />
