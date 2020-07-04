@@ -32,12 +32,13 @@
         <activity android:name=".Selectgenderforfreelancerservice" />
         <activity android:name=".FreelancerDetailsForCompay" />
         <activity android:name=".CompanyServiceVolley" />
+
+        <activity android:name=".ServiceListComapnyForShow"></activity>
+        <activity android:name=".Act_SelectCompnayGenderForList"></activity>
         <activity android:name=".CompanyShowServices" />
         <activity android:name=".SelectCompanyServicegender" />
         <activity android:name=".CurrentLocation3" />
         <activity android:name=".CurrentLocation2" />
-        <activity android:name=".Act_SelectCompnayGenderForList" />
-        <activity android:name=".ServiceListComapnyForShow" />
         <activity android:name=".CurrentLocationEditFreelancer" />
         <activity android:name=".CurrentLocation1" />
         <activity android:name=".CompanyUploadWorkPerformed" />
