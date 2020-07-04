@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".ServiceListComapnyForShow"></activity>
+        <activity android:name=".Act_SelectCompnayGenderForList"></activity>
         <activity android:name=".CompanyServiceVolley"></activity>
         <activity android:name=".CompanyShowServices" />
         <activity android:name=".SelectCompanyServicegender" />
