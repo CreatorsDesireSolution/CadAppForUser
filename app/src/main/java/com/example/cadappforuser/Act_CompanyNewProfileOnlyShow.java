@@ -13,7 +13,7 @@ public class Act_CompanyNewProfileOnlyShow extends AppCompatActivity {
     FrameLayout lay1;
 
 
-
+String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +23,14 @@ public class Act_CompanyNewProfileOnlyShow extends AppCompatActivity {
        
         lay1 = findViewById(R.id.lay1);
 
+        Intent intent=getIntent();
+        id=intent.getStringExtra("id");
+
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Act_SelectGenderForList.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

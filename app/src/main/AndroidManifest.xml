@@ -68,9 +68,9 @@
         <activity
             android:name=".Act_CustomerProfileEdit"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".Act_CompanyNewProfile"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Act_CompanyNewProfile"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
         <activity android:name=".Act_FreelancerProfile" />
         <activity android:name=".ShowStaffList" />
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
