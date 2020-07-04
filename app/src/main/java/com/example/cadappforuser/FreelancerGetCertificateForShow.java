@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.cadappforuser.adapter.CompanyGetWorkperformedAdapter;
-import com.example.cadappforuser.model.CompanyGetWorkPerformedModel;
 import com.example.cadappforuser.model.FreelancerGetCertificateModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
@@ -23,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class FreelancerGetCertificate extends AppCompatActivity {
+public class FreelancerGetCertificateForShow extends AppCompatActivity {
 
     BaseRequest baseRequest;
     Act_Session act_session;
@@ -37,8 +35,7 @@ public class FreelancerGetCertificate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_freelancer_get_certificate);
-
+        setContentView(R.layout.activity_freelancer_get_certificate_for_show);
 
 
         context = this;
@@ -54,11 +51,11 @@ public class FreelancerGetCertificate extends AppCompatActivity {
         act_session =new Act_Session(getApplicationContext());
         Intent intent = getIntent();
         freelancer_id = intent.getStringExtra("id");
-        ApiGetWorkperformed();
+        ApiGetWorkperformed(freelancer_id);
     }
 
 
-    private void ApiGetWorkperformed() {
+    private void ApiGetWorkperformed(String ID) {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -111,7 +108,8 @@ public class FreelancerGetCertificate extends AppCompatActivity {
 
             }
         });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_getcertificate_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_getcertificate_api.php?" + "id=" + ID;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 }
+

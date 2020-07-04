@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -18,12 +19,14 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
     boolean isOpen = false;
     LinearLayout tvbg;
     String id;
+    RelativeLayout lay_certificate;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancernewprofileonltshow);
+        lay_certificate = findViewById(R.id.lay_certificate);
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -41,6 +44,15 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),FreelancerGenderSelectSeeList.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        lay_certificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerGetCertificateForShow.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
     LinearLayout tvbg;
     TextView name,email,mobile,fullname,address,experience,background,tv_certificate;
     String free;
+    RelativeLayout lay_certificate;
 
 
     @Override
@@ -37,6 +39,8 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
         tv_certificate = findViewById(R.id.tv_certificate);
+        lay_certificate = findViewById(R.id.lay_certificate);
+
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -50,7 +54,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
 
 
 
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         String last=intent.getStringExtra("lastname");
          free= intent.getStringExtra("id");
 
@@ -64,7 +68,16 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         background11.setText(intent.getStringExtra("aboutcompnay"));
 
 
+        lay_certificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),FreelancerGetCertificateForShow.class);
+                intent1.putExtra("id",free);
+                startActivity(intent1);
 
+
+            }
+        });
 
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override

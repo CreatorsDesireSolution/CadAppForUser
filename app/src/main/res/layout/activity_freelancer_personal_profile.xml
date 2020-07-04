@@ -346,6 +346,40 @@
 
             </RelativeLayout>
 
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Certificate  :"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/certification"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Certificate"
+                    android:background="@drawable/background2"
+                    android:textColor="@color/black"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="6dp"
+                    android:id="@+id/btn_certificate"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@+id/certification"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

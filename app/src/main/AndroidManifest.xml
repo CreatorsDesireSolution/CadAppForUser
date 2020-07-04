@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FreelancerGetCertificate"></activity>
+        <activity android:name=".FreelancerGetCertificateForShow"></activity>
+        <activity android:name=".CompanyGetCertificateForShow" />
+        <activity android:name=".FreelancerGetCertificate" />
         <activity android:name=".CompanyGetWorkPerformforShow" />
         <activity android:name=".CompanyGetWorkPerformed" />
         <activity android:name=".CompnayCertificateShow" />

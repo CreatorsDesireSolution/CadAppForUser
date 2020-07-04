@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
@@ -37,17 +38,22 @@ import com.android.volley.toolbox.Volley;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
+import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
 import com.example.cadappforuser.adapter.HomeSearchAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
 import com.example.cadappforuser.adapter.ServicesFeturesAndCategoriesHomeAdapter;
 import com.example.cadappforuser.adapter.ServicesFreelancerAdapterHome;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
+import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -66,22 +72,24 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     List<String> list;
     ArrayAdapter<String> adapter;
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
-
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
     ArrayList<AllServiceModel> allServiceModels;
 
     ArrayList<NewModel> newModels;
-    ArrayList<CompanyNewModel> companyNewModels;
-
-
+    ArrayList<CompanyDetailsModel> companyNewModels;
+    Activity activity;
+    Context context;
+    CompanyDetailsAdapter companyDetailsAdapter;
+    Act_Session act_session;
+    BaseRequest baseRequest;
     RecyclerView homerecyclerview;
     RecyclerAdapter recyclerAdapter;
     HomeSearchAdapter homeSearchAdapter;
-    Context context;
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
     AllServicesAdapter allServicesAdapter;
     TextView txtCurrentLocation;
+    String URL = "https://aoneservice.net.in/salon/get-apis/company_data_api.php";
     String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +99,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = this;
+        activity= this;
+        act_session = new Act_Session(getApplicationContext());
 
         txtCurrentLocation=findViewById(R.id.txtLocation);
 
@@ -104,6 +114,9 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
        // homerecyclerview = findViewById(R.id.homerecyclerview);
       //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
+
+        Apigetdetail();
+
 
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
@@ -211,52 +224,52 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         recyclerView1.setLayoutManager(linearLayoutManager4);
 
 
-        StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-
-                    JSONObject jsonObject = new JSONObject(response);
-                    String sucess = jsonObject.getString("success");
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    if (sucess.equals("1")) {
-
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            //String category=object.getString("item_category");
-                            String id = object.getString("id");
-                            String nameC = object.getString("companyname");
-                            //String lastname = object.getString("lastname");
-                            //String email = object.getString("email");
-                            //String mobilenumber = object.getString("mobilenumber");
-                            //String gender = object.getString("gender");
-                           /// String address = object.getString("address");
-                            //String item_image = object.getString("item_image");
-                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
-                            companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,nameC,3));
-
-                            companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-
-                            recyclerView1.setHasFixedSize(true);
-                            recyclerView1.setAdapter(companyNewAdapter);
-
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue1= Volley.newRequestQueue(this);
-        requestQueue1.add(request1);
+//        StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                try {
+//
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    String sucess = jsonObject.getString("success");
+//                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+//                    if (sucess.equals("1")) {
+//
+//                        for (int i = 0; i < jsonArray.length(); i++) {
+//                            JSONObject object = jsonArray.getJSONObject(i);
+//                            //String category=object.getString("item_category");
+//                            String id = object.getString("id");
+//                            String nameC = object.getString("companyname");
+//                            //String lastname = object.getString("lastname");
+//                            //String email = object.getString("email");
+//                            //String mobilenumber = object.getString("mobilenumber");
+//                            //String gender = object.getString("gender");
+//                           /// String address = object.getString("address");
+//                            //String item_image = object.getString("item_image");
+//                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
+//                          //  companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,nameC,3));
+//
+//                            companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
+//
+//                            recyclerView1.setHasFixedSize(true);
+//                            recyclerView1.setAdapter(companyNewAdapter);
+//
+//                        }
+//                    }
+//                }
+//                catch (Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        RequestQueue requestQueue1= Volley.newRequestQueue(this);
+//        requestQueue1.add(request1);
 
          //companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
         //LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
@@ -292,6 +305,65 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         else {
             super.onBackPressed();
         }
+    }
+
+
+    private void Apigetdetail() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+
+                    if (!jsonObject.getString("message").equals("Failed")) {
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        companyNewModels = baseRequest.getDataList(jsonArray, CompanyDetailsModel.class);
+
+                        for (int i = 0; i < companyNewModels.size(); i++) {
+                            if (companyNewModels != null) {
+
+
+                                CompanyDetailsModel model = new CompanyDetailsModel();
+                                model.setCompanyname(companyNewModels.get(0).getCompanyname());
+
+                                // companyAddServiceModels2.add(model);
+                                CompanyDetailsAdapter companyDetailsAdapter =new CompanyDetailsAdapter(HomePageActivity.this, companyNewModels,activity,act_session);
+                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
+                                recyclerView1.setLayoutManager(layoutManager1);
+                                recyclerView1.setHasFixedSize(true);
+                                recyclerView1.setAdapter(companyDetailsAdapter);
+
+
+
+                            } else {
+                                Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    } else {
+                        Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
 
