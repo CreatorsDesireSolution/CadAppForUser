@@ -21,7 +21,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
     boolean isOpen = false;
     LinearLayout tvbg;
     TextView name,email,mobile,fullname,address,experience,background;
-    String id_;
+    String free;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
 
         Intent intent=getIntent();
         String last=intent.getStringExtra("lastname");
-         id_= intent.getStringExtra("id");
+         free= intent.getStringExtra("id");
 
         name.setText(intent.getStringExtra("firstname")+last);
        // fullname.setText(intent.getStringExtra("firstname"));
@@ -66,7 +66,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Selectgenderforfreelancerservice.class);
-                intent.putExtra("id",id_);
+                intent.putExtra("id",free);
                 startActivity(intent);
             }
         });
@@ -76,6 +76,8 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Selectgenderforfreelancerservice.class);
+                intent.putExtra("id",free);
+
                 startActivity(intent);
             }
         });

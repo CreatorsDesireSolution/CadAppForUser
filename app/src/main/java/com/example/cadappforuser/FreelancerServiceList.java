@@ -58,12 +58,12 @@ public class FreelancerServiceList extends AppCompatActivity {
         act_session =new Act_Session(getApplicationContext());
         Intent intent = getIntent();
         freelancer_id = intent.getStringExtra("id");
-        ApiGetList();
+        ApiGetList(freelancer_id);
 
     }
 
 
-    private void ApiGetList() {
+    private void ApiGetList( String ID) {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -118,7 +118,7 @@ public class FreelancerServiceList extends AppCompatActivity {
 
             }
         });
-        String remainingUrl2 = "https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php?" + "id=" + freelancer_id;
+        String remainingUrl2 = "https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php?" + "id=" + ID;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 

@@ -78,7 +78,7 @@ public class FreelancerDetailAdapter extends RecyclerView.Adapter<FreelancerDeta
         final String address = companyDetailsModel.getAddress();
         final String aboutcompany = companyDetailsModel.getAboutYourself();
         final String ageofcompany =companyDetailsModel.getExperience();
-        final String id_= companyDetailsModel.getId();
+        final String id= companyDetailsModel.getId();
         final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().toString();
 
@@ -94,7 +94,7 @@ public class FreelancerDetailAdapter extends RecyclerView.Adapter<FreelancerDeta
                 intent.putExtra("aboutcompnay",aboutcompany);
                 intent.putExtra("ageofcompany",ageofcompany);
                 intent.putExtra("image",image);
-                intent.putExtra("id",id_);
+                intent.putExtra("id",id);
 
                 context.startActivity(intent);
             }

@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
     Bundle bundle = null;
     Uri tempUri;
     Uri selectedImage;
-    Uri file;
+    Uri file,file1;
 
 
 
@@ -244,8 +244,8 @@ public class RegisterActivity extends AppCompatActivity {
         DOB = intent2.getStringExtra("dob");
 
 
-        final String path = getIntent().getStringExtra("image");
-        bitmap1 = BitmapFactory.decodeFile(path);
+//        final String path = getIntent().getStringExtra("image");
+//        bitmap1 = BitmapFactory.decodeFile(path);
 
         etFirstName.setText(firstname);
         etLatName.setText(lastname);
@@ -254,8 +254,8 @@ public class RegisterActivity extends AppCompatActivity {
         text_DOB.setText(DOB);
 
         etAddress.setText(address);
-        file = getIntent().getParcelableExtra("image");
-        imageUserLogo.setImageURI(file);
+        file1 = getIntent().getParcelableExtra("image");
+        imageUserLogo.setImageURI(file1);
 
 
         //  encodeImage =intent2.getStringExtra("image");
