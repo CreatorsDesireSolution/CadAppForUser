@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -33,6 +34,9 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_personal_profile);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Profile");
 
         act_session = new Act_Session(getApplicationContext());
         tv_edit = findViewById(R.id.tv_edit);

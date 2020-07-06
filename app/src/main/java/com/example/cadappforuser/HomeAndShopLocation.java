@@ -97,7 +97,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
         try {
             addresses=geocoder.getFromLocation(currentLocation.getLatitude(),currentLocation.getLongitude(),1);
 
-            String  addresse=addresses.get(0).getAddressLine(0);
+            String addresse=addresses.get(0).getAddressLine(0);
             String area= addresses.get(0).getLocality();
             String city=addresses.get(0).getSubAdminArea();
 
