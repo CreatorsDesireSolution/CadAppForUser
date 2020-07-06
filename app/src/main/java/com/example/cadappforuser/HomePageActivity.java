@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
@@ -424,7 +426,28 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 break;
 
             case  R.id.nav_logout:
-                startActivity(new Intent(HomePageActivity.this,Act_Logout.class));
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HomePageActivity.this);
+                alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");
+                alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        act_session.clearPreferences(getApplicationContext());
+                        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
                 break;
 
             case R.id.nav_add_fev:

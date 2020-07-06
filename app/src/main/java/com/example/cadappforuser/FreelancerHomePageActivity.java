@@ -1,6 +1,9 @@
 package com.example.cadappforuser;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -23,6 +26,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -47,6 +51,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FreelancerHomePageActivity extends AppCompatActivity  implements  NavigationView
         .OnNavigationItemSelectedListener{
@@ -76,12 +82,16 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
     SearchView searchView;
+    Act_Session act_session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancer_nav_drawable_layout);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        act_session = new Act_Session(getApplicationContext());
+
 
         searchView=findViewById(R.id.freelancerSearchView);
         act_session = new Act_Session(getApplicationContext());
@@ -162,7 +172,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                            // newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
                             ad_freelancermodels.add(new Ad_freelancermodel(id,u,name,5));
                             ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
-                           // ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
+                            // ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
 
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(ad_freelancer);
@@ -313,7 +323,28 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesProvide.class));
                 break;
             case R.id.nav_logout:
-                startActivity(new Intent(FreelancerHomePageActivity.this,Act_Logout.class));
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(FreelancerHomePageActivity.this);
+                alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");
+                alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        act_session.clearPreferences(getApplicationContext());
+                        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
              break;
             case  R.id.nav_profile:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfile.class));

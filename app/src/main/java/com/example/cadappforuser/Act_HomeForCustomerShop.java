@@ -200,8 +200,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
             case R.id.nav_add_fev:
                 startActivity(new Intent(Act_HomeForCustomerShop.this,Act_AddToFev.class));
                 break;
-
-
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;

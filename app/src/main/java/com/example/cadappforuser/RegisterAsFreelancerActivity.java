@@ -147,11 +147,6 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
 //        encodeImage= intent2.getParcelableExtra("image");
        // imageUserLogo.setImageBitmap();
 

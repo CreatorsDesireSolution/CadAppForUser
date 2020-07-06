@@ -1,7 +1,9 @@
 package com.example.cadappforuser;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -285,7 +287,28 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 startActivity(new Intent(CompanyHomePageActivity.this,ChoiceStaffOrComapnyOwner.class));
                 break;
             case R.id.nav_logout:
-                startActivity(new Intent(CompanyHomePageActivity.this,Act_Logout.class));
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CompanyHomePageActivity.this);
+                alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");
+                alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        act_session.clearPreferences(getApplicationContext());
+                        Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
                 break;
 
 
