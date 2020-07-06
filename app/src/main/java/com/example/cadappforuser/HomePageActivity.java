@@ -259,7 +259,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 //                }
 //                catch (Exception e)
 //                {
-//                    e.printStackTrace();
+
 //                }
 //            }
 //        }, new Response.ErrorListener() {

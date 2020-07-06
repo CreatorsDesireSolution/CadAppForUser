@@ -23,7 +23,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
     LinearLayout tvbg;
     TextView name,email,mobile,fullname,address,experience,background,tv_certificate;
     String free;
-    RelativeLayout lay_certificate;
+    RelativeLayout lay_certificate,workperform;
 
 
     @Override
@@ -40,6 +40,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         background=findViewById(R.id.backbg);
         tv_certificate = findViewById(R.id.tv_certificate);
         lay_certificate = findViewById(R.id.lay_certificate);
+        workperform= findViewById(R.id.workperform);
 
 
 
@@ -89,11 +90,22 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         });
 
 
+
+        workperform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerWorkPerformShow.class);
+                intent.putExtra("id",free);
+                startActivity(intent);
+            }
+        });
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Selectgenderforfreelancerservice.class);
                 intent.putExtra("id",free);
+
 
                 startActivity(intent);
             }

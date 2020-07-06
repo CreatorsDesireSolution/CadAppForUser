@@ -19,7 +19,7 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
     boolean isOpen = false;
     LinearLayout tvbg;
     String id;
-    RelativeLayout lay_certificate;
+    RelativeLayout lay_certificate,workperform;
 
 
     @Override
@@ -37,6 +37,7 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
         lay1 = findViewById(R.id.lay1);
         tvbg= findViewById(R.id.tvbg);
         background11 = findViewById(R.id.background11);
+        workperform= findViewById(R.id.workperform);
 
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
@@ -53,6 +54,15 @@ public class Act_FreelancerProfileOnlyShow extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),FreelancerGetCertificateForShow.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        workperform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerWorkPerformShow.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

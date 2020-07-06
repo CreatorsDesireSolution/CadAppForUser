@@ -26,7 +26,7 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
     Act_Session act_session;
     ArrayList<FreelancerProfileDetailsModel> profile_list1 = new ArrayList<>();
     TextView tv_name,tv_mobile,tv_adresss,tv_gender,tv_email,tv_dob,tv_surname,background;
-Button btnSeeList,btn_certificate;
+      Button btnSeeList,btn_certificate,workperformed;
 
 
     @Override
@@ -44,9 +44,18 @@ Button btnSeeList,btn_certificate;
         tv_adresss = findViewById(R.id.Location1);
         background= findViewById(R.id.background111);
         btn_certificate= findViewById(R.id.btn_certificate);
+        workperformed= findViewById(R.id.seeworkperformed);
 
         btnSeeList=findViewById(R.id.btnSeeList);
 
+
+        workperformed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerWorkPerformed.class);
+                startActivity(intent);
+            }
+        });
 
         btn_certificate.setOnClickListener(new View.OnClickListener() {
             @Override

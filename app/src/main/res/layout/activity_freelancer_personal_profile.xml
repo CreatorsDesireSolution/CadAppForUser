@@ -341,6 +341,7 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="6dp"
                     android:layout_marginLeft="25dp"
+                    android:id="@+id/seeworkperformed"
                     android:layout_toRightOf="@+id/workperformed"
                     android:textSize="16sp"/>
 
