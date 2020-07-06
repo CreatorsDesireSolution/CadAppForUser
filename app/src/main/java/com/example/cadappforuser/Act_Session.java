@@ -12,7 +12,7 @@ public class Act_Session {
     public String userId = "", name = "", login = "";
     public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",otp="",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
-    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="",staffid;
+    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="",staffid,companyname;
     Context _context;
 
     public static String USER_ID;
@@ -45,6 +45,9 @@ public class Act_Session {
             address =(jsonObject.optString("address"));
             otp =(jsonObject.optString("otp"));
             staffid =(jsonObject.optString("staffid"));
+            companyname =(jsonObject.optString("companyname"));
+
+
 
             //session_id = jsonObject.optString("id");
 
@@ -61,6 +64,7 @@ public class Act_Session {
             usergender(context,gender);
             useraddress(context,address);
             userstaffid(context,staffid);
+            usercompanyname(context,companyname);
 
         }
     }
@@ -81,6 +85,7 @@ public class Act_Session {
         this.gender = sharedPreferences.getString("gender", "");
         this.address = sharedPreferences.getString("address", "");
         this.staffid = sharedPreferences.getString("staffid", "");
+        this.companyname = sharedPreferences.getString("companyname", "");
 
         // this.session_id = sharedPreferences.getString("id", "");
     }
@@ -89,6 +94,12 @@ public class Act_Session {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putString("id", userId);
+        prefsEditor.commit();
+    }
+    public void usercompanyname(Context context, String companyname) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("companyname", companyname);
         prefsEditor.commit();
     }
     public void userfirstname(Context context, String firstname) {

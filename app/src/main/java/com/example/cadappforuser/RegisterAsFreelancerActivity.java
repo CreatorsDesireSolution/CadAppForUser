@@ -73,6 +73,8 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     String deviceId;
     BaseRequest baseRequest;
     Act_Session act_session;
+    TextView tv_headername,tv_headermobile;
+    String name,mobile;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -98,9 +100,16 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.etpassword);
 
 
+
+
         Intent intent = getIntent();
         gender1 = intent.getStringExtra("gender");
         txtGender.setText(intent.getStringExtra("gender"));
+
+        name = act_session.firstname;
+        mobile = act_session.mobilenumber;
+
+       // tv_headername.setText(name);
 
 
         etAddress.setOnClickListener(new View.OnClickListener() {
