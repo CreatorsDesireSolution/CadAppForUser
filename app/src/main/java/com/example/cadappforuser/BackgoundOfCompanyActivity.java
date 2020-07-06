@@ -13,11 +13,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cadappforuser.adapter.FreelancerAddServiceAdapter;
+import com.example.cadappforuser.model.CompanyGetbackGround;
+import com.example.cadappforuser.model.FreelancerServiceListModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -34,6 +40,7 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
     Act_Session act_session;
     Context context;
     String aboutcompany,totalyear;
+    ArrayList<CompanyGetbackGround> companyGetbackGrounds= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +127,8 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
             }
         });
 
+        ApiGetList();
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,6 +156,64 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
         });
 
     }
+
+
+    private void ApiGetList() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+
+                    if (!jsonObject.getString("message").equals("Failed")) {
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        companyGetbackGrounds = baseRequest.getDataList(jsonArray, CompanyGetbackGround.class);
+
+                        for (int i = 0; i < companyGetbackGrounds.size(); i++) {
+                            if (companyGetbackGrounds != null)
+
+                            {
+
+                             et_aboutcmpny.setText(companyGetbackGrounds.get(0).getAboutYourCompany());
+                             et_establishyear.setText(companyGetbackGrounds.get(0).getTotalYearEstablishment());
+                              male= companyGetbackGrounds.get(0).getNoOfMen();
+                              female = companyGetbackGrounds.get(0).getNoOfWomenr();
+                              team = companyGetbackGrounds.get(0).getTeamSize();
+
+                            } else {
+                                Toast.makeText(BackgoundOfCompanyActivity.this, "No Data", Toast.LENGTH_SHORT).show();
+                                et_aboutcmpny.setText("");
+                                et_establishyear.setText("");
+
+                            }
+                        }
+                    } else {
+                        Toast.makeText(BackgoundOfCompanyActivity.this, "No Data", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_backgrounddata_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
+    }
+
     public  void ApiPostcompanybackground(){
         baseRequest = new BaseRequest(context);
         baseRequest.setBaseRequestListner(new RequestReciever() {

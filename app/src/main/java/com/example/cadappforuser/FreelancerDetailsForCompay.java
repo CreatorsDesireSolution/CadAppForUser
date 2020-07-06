@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +21,10 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
     TextView background11;
     boolean isOpen = false;
     LinearLayout tvbg;
-    TextView name,email,mobile,fullname,address,experience,background;
+    TextView name,email,mobile,fullname,address,experience,background,tv_certificate;
     String free;
+    RelativeLayout lay_certificate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         address=findViewById(R.id.tv_city);
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
+        tv_certificate = findViewById(R.id.tv_certificate);
+        lay_certificate = findViewById(R.id.lay_certificate);
+
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -48,7 +54,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
 
 
 
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         String last=intent.getStringExtra("lastname");
          free= intent.getStringExtra("id");
 
@@ -59,8 +65,19 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         email.setText(intent.getStringExtra("email"));
         experience.setText(intent.getStringExtra("ageofcompany"));
         Toast.makeText(this, ""+intent.getStringExtra("aboutcompnay"), Toast.LENGTH_SHORT).show();
-        background.setText(intent.getStringExtra("aboutcompnay"));
+        background11.setText(intent.getStringExtra("aboutcompnay"));
 
+
+        lay_certificate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),FreelancerGetCertificateForShow.class);
+                intent1.putExtra("id",free);
+                startActivity(intent1);
+
+
+            }
+        });
 
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,22 +100,22 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         });
 
 
-        background11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isOpen) {
-                    isOpen = false;
-                    tvbg.setVisibility(View.GONE);
-                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
-                } else {
-                    isOpen = true;
-                    tvbg.setVisibility(View.VISIBLE);
-                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
-
-
-                }
-            }
-        });
+//        background11.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (isOpen) {
+//                    isOpen = false;
+//                    tvbg.setVisibility(View.GONE);
+//                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
+//                } else {
+//                    isOpen = true;
+//                    tvbg.setVisibility(View.VISIBLE);
+//                    background11.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
+//
+//
+//                }
+//            }
+//        });
 
 
 

@@ -21,6 +21,8 @@ import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
+import com.example.cadappforuser.model.CompanyDetailsModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +30,10 @@ import java.util.List;
 public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.CompanyNewVIewHolder> implements Filterable {
 
     Context context;
-    List<CompanyNewModel> companyNewModels;
-    List<CompanyNewModel> companyNewModelsAll;
+    List<CompanyDetailsModel> companyNewModels;
+    List<CompanyDetailsModel> companyNewModelsAll;
 
-    public CompanyNewAdapter(Context context, List<CompanyNewModel> companyNewModels) {
+    public CompanyNewAdapter(Context context, List<CompanyDetailsModel> companyNewModels) {
         this.context = context;
         this.companyNewModels = companyNewModels;
         this.companyNewModelsAll=new ArrayList<>(companyNewModels);
@@ -50,17 +52,39 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
     @Override
     public void onBindViewHolder(@NonNull CompanyNewVIewHolder holder, int position) {
 
-        CompanyNewModel companyNewModel=companyNewModels.get(position);
-        holder.tv_freelancername.setText(companyNewModel.getName());
-        holder.ratingBar.setRating(companyNewModel.getRating());
-        holder.facialImageFreelancer.setImageResource(companyNewModel.getImage());
+        CompanyDetailsModel companyNewModel=companyNewModels.get(position);
+        holder.tv_freelancername.setText(companyNewModel.getCompanyname());
+        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyNewModels.get(0).getProfilePic()).
+                resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
+
+       // holder.ratingBar.setRating(companyNewModel.getT());
+       // holder.facialImageFreelancer.setImageResource(companyNewModel.getProfilePic());
+
+
+        final String companyname = companyNewModel.getCompanyname();
+        final String email = companyNewModel.getEmail();
+        final String number = companyNewModel.getMobilenumber();
+        final String address = companyNewModel.getAddress();
+        final String aboutcompany = companyNewModel.getAboutCompany();
+        final String ageofcompany =companyNewModel.getTotalYearEstablishment();
+        final  String no_of_staff = companyNewModel.getNoOfStaff();
+        final  String companyid=companyNewModel.getId();
 
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
 
-                context.startActivity(new Intent(context, Act_CompanyNewProfile.class));
 
+                Intent intent=new Intent(context, Act_CompanyNewProfile.class);
+                intent.putExtra("companyname",companyname);
+                intent.putExtra("email",email);
+                intent.putExtra("number",number);
+                intent.putExtra("address",address);
+                intent.putExtra("aboutcompnay",aboutcompany);
+                intent.putExtra("ageofcompany",ageofcompany);
+                intent.putExtra("no_of_staff",no_of_staff);
+            //    intent.putExtra("image",image);
+                intent.putExtra("id",companyid);
 
             }
         });
@@ -85,13 +109,13 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
 
-            List<CompanyNewModel> filterList=new ArrayList<>();
+            List<CompanyDetailsModel> filterList=new ArrayList<>();
             if(charSequence.toString()==null){
                 filterList.addAll(companyNewModelsAll);
             }else{
                 String serachStr=charSequence.toString().toUpperCase();
-                for (CompanyNewModel servicesS: companyNewModelsAll){
-                    if(servicesS.getName().toUpperCase().contains(serachStr)){
+                for (CompanyDetailsModel servicesS: companyNewModelsAll){
+                    if(servicesS.getCompanyname().toUpperCase().contains(serachStr)){
                         filterList.add(servicesS);
                     }
                 }
@@ -105,7 +129,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             companyNewModels.clear();
-            companyNewModels.addAll((List<CompanyNewModel>)filterResults.values);
+            companyNewModels.addAll((List<CompanyDetailsModel>)filterResults.values);
             notifyDataSetChanged();
         }
     };

@@ -113,8 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.etpassword);
         imageUserLogo = findViewById(R.id.userImageIcon);
         iv_camera = findViewById(R.id.iv_camera);
-        etAddress = findViewById(R.id.etAddress);
-        text_DOB = findViewById(R.id.txt_DOB);
+         text_DOB = findViewById(R.id.txt_DOB);
         etFirstName = findViewById(R.id.etFirstName);
         etLatName = findViewById(R.id.etLatName);
         etUserEmail = findViewById(R.id.etUserEmail);

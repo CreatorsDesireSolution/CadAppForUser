@@ -28,6 +28,7 @@ import com.example.cadappforuser.adapter.AllServicesAdapter;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
+import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
     AllServicesAdapter allServicesAdapter;
     ArrayList<AllServiceModel> allServiceModels;
     ArrayList<NewModel> newModels;
-    ArrayList<CompanyNewModel> companyNewModels;
+    ArrayList<CompanyDetailsModel> companyNewModels;
 
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
