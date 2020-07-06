@@ -151,8 +151,8 @@ public class FreelancerDetailAdapter extends RecyclerView.Adapter<FreelancerDeta
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tv_companyname,tv_lastname;
-        RatingBar ratingBar;
+        TextView tv_companyname,tv_lastname,userrating;
+        ImageView ratingBar;
         ImageView companyimageview;
         ItemClickListner itemClickListner;
 
@@ -163,6 +163,7 @@ public class FreelancerDetailAdapter extends RecyclerView.Adapter<FreelancerDeta
             tv_lastname = itemView.findViewById(R.id.lastname);
             ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview =itemView.findViewById(R.id.companyimageview);
+            userrating= itemView.findViewById(R.id.userrating);
             itemView.setOnClickListener(this);
         }
 

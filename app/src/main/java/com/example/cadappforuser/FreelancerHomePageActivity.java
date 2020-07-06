@@ -82,7 +82,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
     SearchView searchView;
-    Act_Session act_session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

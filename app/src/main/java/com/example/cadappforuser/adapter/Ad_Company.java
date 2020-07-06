@@ -52,7 +52,7 @@ public class Ad_Company extends RecyclerView.Adapter<Ad_Company.ViewHolder> impl
 
        final Ad_Companymodel ad_companymodel=ad_companymodels.get(position);
         holder.tv_freelancername.setText(ad_companymodel.getName());
-        holder.ratingBar.setRating(ad_companymodel.getRating());
+       // holder.ratingBar.setRating(ad_companymodel.getRating());
 
         //holder.facialImageFreelancer.setImageResource(ad_companymodel.getImage());
 
@@ -123,14 +123,15 @@ public class Ad_Company extends RecyclerView.Adapter<Ad_Company.ViewHolder> impl
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView facialImageFreelancer;
-        TextView tv_freelancername;
-        RatingBar ratingBar;
+        TextView tv_freelancername,userrating;
+        ImageView ratingBar;
         private ItemClickListner itemClickListner;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             facialImageFreelancer = itemView.findViewById(R.id.facialImageFreelancer);
             tv_freelancername = itemView.findViewById(R.id.freelancer);
             ratingBar = itemView.findViewById(R.id.ratingbar);
+            userrating = itemView.findViewById(R.id.userrating);
             itemView.setOnClickListener(this);
         }
 
