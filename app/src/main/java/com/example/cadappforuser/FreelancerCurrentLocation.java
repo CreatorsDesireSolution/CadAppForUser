@@ -90,6 +90,7 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
         LatLng latLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+
         mMap.addMarker(new MarkerOptions().position(latLng));
         CameraUpdate cameraUpdateFactory= CameraUpdateFactory.newLatLngZoom(latLng,17);
         mMap.moveCamera(cameraUpdateFactory);
