@@ -91,6 +91,9 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
         mMap=googleMap;
         LatLng latLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
 
+        double lat=currentLocation.getLatitude();
+        double lng=currentLocation.getLongitude();
+
         mMap.addMarker(new MarkerOptions().position(latLng));
         CameraUpdate cameraUpdateFactory= CameraUpdateFactory.newLatLngZoom(latLng,17);
         mMap.moveCamera(cameraUpdateFactory);
@@ -127,6 +130,7 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
                     intent.putExtra("email",email);
                     intent.putExtra("mobilenumber",mobilenumber);
                     intent.putExtra("image",path);
+
                     startActivity(intent);
                 }
             });
