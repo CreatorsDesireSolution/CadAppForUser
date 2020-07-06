@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     boolean isOpen = false;
     LinearLayout tvbg;
     TextView name,email,mobile,last,address,experience,background;
+    RelativeLayout workperform;
 
 
     @Override
@@ -33,6 +35,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         address=findViewById(R.id.tv_city);
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
+        workperform= findViewById(R.id.workperform);
 
 
         ActionBar actionBar=getSupportActionBar();
@@ -62,6 +65,14 @@ public class Act_FreelancerProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SelectGenderCustomerServiceList.class);
+                startActivity(intent);
+            }
+        });
+
+        workperform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerWorkPerformShow.class);
                 startActivity(intent);
             }
         });

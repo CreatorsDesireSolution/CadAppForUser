@@ -61,6 +61,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         final String address = newModel.getAddress();
         final String experience=newModel.getAddress();
         final String aboutus=newModel.getAbout_yourself();
+        //final String id = newModel.ge
 
 
      holder.setItemClickListner(new ItemClickListner() {
