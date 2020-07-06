@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -55,6 +57,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     CompanyDetailsAdapter companyDetailsAdapter;
     Act_Session act_session;
     BaseRequest baseRequest;
+    String name,mobile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,38 +79,9 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
         companyServicesFeatureAndCategoriesHomeModelArrayList =new ArrayList<>();
         companyServicesFreelancerHomeModelArrayList =new ArrayList<>();
-//
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.haircut,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.hairspa,"450","Haircut","lorem ipsum"));
-//        companyServicesFeatureAndCategoriesHomeModelArrayList.add(new CompanyServicesFeatureAndCategoriesHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//
-//        CompanyServicesFeturesAndCategoriesHomeAdapter companyServicesFeturesAndCategoriesHomeAdapter =new CompanyServicesFeturesAndCategoriesHomeAdapter(CompanyHomePageActivity.this, companyServicesFeatureAndCategoriesHomeModelArrayList);
-//        LinearLayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(companyServicesFeturesAndCategoriesHomeAdapter);
-//
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//        companyServicesFreelancerHomeModelArrayList.add(new CompanyServicesFreelancerHomeModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
-//
-
-
-
 
 
         mDrawerLayout=findViewById(R.id.drawer_layout);
-
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,
                 R.string.navigation_drawer_open,
@@ -117,6 +91,20 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        NavigationView navigationView1 = (NavigationView) findViewById(R.id.navigation_view);
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
+        TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+        name = act_session.companyname;
+        mobile = act_session.mobilenumber;
+
+       // fullname = name + lastname;
+
+        nav_user.setText(name);
+        nav_mobile .setText(mobile);
+
+        Toast.makeText(activity, name, Toast.LENGTH_SHORT).show();
 
         if(Build.VERSION.SDK_INT>=21){
             Window window=this.getWindow();

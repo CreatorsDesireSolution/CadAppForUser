@@ -89,12 +89,18 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     CompanyNewAdapter companyNewAdapter;
     AllServicesAdapter allServicesAdapter;
     TextView txtCurrentLocation;
+    TextView tv_headername,tv_headernumber;
     String URL = "https://aoneservice.net.in/salon/get-apis/company_data_api.php";
     String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
+
+    String lastname,fullname,name,mobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
+//
+//        tv_headername = findViewById(R.id.tv_headername);
+//        tv_headernumber = findViewById(R.id.tv_heheadernumber);
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -110,6 +116,28 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
         recyclerView2= findViewById(R.id.recycleView2);
+
+
+
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
+        TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+        name = act_session.firstname;
+        lastname = act_session.lastname;
+        mobile = act_session.mobilenumber;
+
+        fullname = name + lastname;
+
+        nav_user.setText(fullname);
+        nav_mobile .setText(mobile);
+
+
+      //  tv_headername.setText(name);
+      //  tv_headernumber.setText(act_session.mobilenumber);
+
 
        // homerecyclerview = findViewById(R.id.homerecyclerview);
       //  listView = findViewById(R.id.mylist);
@@ -284,10 +312,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 R.string.navigation_drawer_close
 
         );
-        NavigationView navigationView=findViewById(R.id.navigation_view);
+        NavigationView navigationView1=findViewById(R.id.navigation_view);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView1.setNavigationItemSelectedListener(this);
 
         if(Build.VERSION.SDK_INT>=21){
             Window window=this.getWindow();

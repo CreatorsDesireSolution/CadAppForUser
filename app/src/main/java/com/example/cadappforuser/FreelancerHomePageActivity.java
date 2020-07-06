@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -64,6 +66,9 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
    ArrayList<Ad_freelancermodel> ad_freelancermodels;
    Ad_Freelancer ad_freelancer;
    Ad_Company ad_company;
+   TextView tv_headername,tv_headernumber;
+   String name,mobile,fullname,lastname;
+   Act_Session act_session;
 
    String url="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
 
@@ -79,6 +84,26 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         setSupportActionBar(toolbar);
 
         searchView=findViewById(R.id.freelancerSearchView);
+        act_session = new Act_Session(getApplicationContext());
+
+
+        tv_headername = findViewById(R.id.tv_headername);
+        tv_headernumber = findViewById(R.id.tv_headenumber);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
+        TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+        name = act_session.firstname;
+        lastname = act_session.lastname;
+        mobile = act_session.mobilenumber;
+
+        fullname = name + lastname;
+
+        nav_user.setText(fullname);
+        nav_mobile .setText(mobile);
+
+
 
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
@@ -95,19 +120,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
         ad_freelancermodels = new ArrayList<>();
-       /* ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon2,"Man Freelancer",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Man Freelancer",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.saloon1,"Women",5));
-        ad_freelancermodels.add(new Ad_freelancermodel(R.drawable.womanfacial,"Women Freelancer",5));*/
-
-        /*ad_freelancer=new Ad_Freelancer(FreelancerHomePageActivity.this,ad_freelancermodels);
-        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(linearLayoutManager3);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(ad_freelancer);*/
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
@@ -176,13 +188,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
         ad_companymodels = new ArrayList<>();
 
-        /*ad_companymodels.add(new Ad_Companymodel(R.drawable.mansaloon,"Company1",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company2",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company3",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company4",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company5",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company6",5));
-        ad_companymodels.add(new Ad_Companymodel(R.drawable.salooncompany,"Company7",5));*/
 
 
 
@@ -250,16 +255,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
 
-       /* ad_company=new Ad_Company(FreelancerHomePageActivity.this,ad_companymodels);
-        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView1.setLayoutManager(linearLayoutManager4);
-        recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(ad_company);*/
-
-
-
-
-
         mDrawerLayout=findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
@@ -267,10 +262,10 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
         );
-        NavigationView navigationView=findViewById(R.id.navigation_view);
+        NavigationView navigationView1=findViewById(R.id.navigation_view);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView1.setNavigationItemSelectedListener(this);
 
         if(Build.VERSION.SDK_INT>=21){
             Window window=this.getWindow();
