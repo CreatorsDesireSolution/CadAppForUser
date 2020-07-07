@@ -14,7 +14,7 @@ public class FreeelancerVerificationActivity extends AppCompatActivity {
     Button btnVerify;
     EditText etOtp;
     Act_Session act_session;
-    String OTP;
+    String OTP ="1234";
     String OTPchheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class FreeelancerVerificationActivity extends AppCompatActivity {
         btnVerify=findViewById(R.id.btnVerify);
         etOtp = findViewById(R.id.etOtp);
 
-        OTP= act_session.otp;
+       // OTP= act_session.otp;
 
         etOtp.setText(OTP);
 
