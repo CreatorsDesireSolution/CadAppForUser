@@ -199,7 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#23000000"
-                    android:drawableRight="@drawable/ic_email_black_24dp"
+                    android:drawableRight="@drawable/ic_account_circle_black_24dp"
                     android:ems="10"
                     android:enabled="false"
                     android:hint="First Name"
@@ -225,7 +225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#23000000"
-                    android:drawableRight="@drawable/ic_email_black_24dp"
+                    android:drawableRight="@drawable/ic_account_circle_black_24dp"
                     android:ems="10"
                     android:enabled="false"
                     android:hint="Last Name"
@@ -253,6 +253,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#23000000"
                     android:enabled="false"
+                    android:drawableRight="@drawable/ic_phone_iphone_black_24dp"
                     android:hint="Mobile No"
                     android:inputType="number"
                     android:maxLength="10"
@@ -279,6 +280,7 @@
                     android:backgroundTint="#23000000"
                     android:enabled="false"
                     android:hint="Location"
+                    android:drawableRight="@drawable/ic_location"
                     android:inputType="number"
                     android:maxLength="10"
                     android:textColor="#8a8a8a"
@@ -305,6 +307,7 @@
                     android:backgroundTint="#23000000"
                     android:enabled="false"
                     android:hint="Gender"
+                    android:drawableRight="@drawable/ic_account_circle_black_24dp"
                     android:inputType="number"
                     android:maxLength="10"
                     android:textColor="#8a8a8a"
@@ -353,32 +356,117 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
+
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:background="@drawable/circle_profileupload"
+                    >
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5">
+                    
+                </LinearLayout>
+
+            </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_marginLeft="5dp"
+         android:layout_marginRight="5dp">
+
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="1"
+                android:id="@+id/relative"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp">
 
-                <Button
-                    android:layout_width="0dp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/womenCircleImageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/quantum_orange"
+                    android:src="@drawable/certificate"
+                    android:background="@drawable/circle_profileupload"
+                   android:layout_weight=".5"/>
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
-                    android:text="Certificates"
-                    android:textAllCaps="false" />
+                    android:text="View Certificate"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/quantum_orange"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:textAlignment="gravity"
+                    android:gravity="center"/>
 
-                <Button
-                    android:layout_width="0dp"
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_toRightOf="@+id/relative"
+                android:layout_marginRight="20dp"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/menCircleImageView"
+                    android:layout_width="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/men_image"
+                    android:layout_weight=".5"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
-                    android:text="View performance"
-                    android:textAllCaps="false"/>
+                    android:text="View Certificate"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:textColor="@color/quantum_orange"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:textAlignment="gravity"
+                    android:gravity="center"/>
 
-            </LinearLayout>
+            </RelativeLayout>
+
+     </LinearLayout>
+
+
 
             <Button
                 android:id="@+id/btnSumbit"

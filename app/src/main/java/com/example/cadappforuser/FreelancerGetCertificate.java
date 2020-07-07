@@ -43,8 +43,8 @@ public class FreelancerGetCertificate extends AppCompatActivity {
 
         context = this;
         activity = this;
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Services List");
+//        ActionBar actionBar=getSupportActionBar();
+//        actionBar.setTitle("Services List");
 
         recyclerView=findViewById(R.id.recycle);
 

@@ -30,7 +30,8 @@ public class SeeAllCompany extends AppCompatActivity {
     RecyclerView recycleAll;
   //  SeeAllFreelancerAdapter seeAllFreelancerAdapter;
     BaseRequest baseRequest;
-    Act_Session act_session; Context context;
+    Act_Session act_session;
+    Context context;
     ArrayList<CompanyDetailsModel> companyDetailsModels = new ArrayList<>();
     SeeAllCompanyAdapter seeAllCompanyAdapter;
 
