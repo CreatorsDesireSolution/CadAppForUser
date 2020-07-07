@@ -243,64 +243,6 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        iv_camera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Dexter.withActivity(RegisterAsFreelancerActivity.this)
-//                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-//                        .withListener(new PermissionListener() {
-//                            @Override
-//                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-//
-//                                Intent intent=new Intent(Intent.ACTION_PICK);
-//                                intent.setType("image/*");
-//                                startActivityForResult(Intent.createChooser(intent,"Select Image"),1);
-//                            }
-//
-//                            @Override
-//                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
-//                                permissionToken.continuePermissionRequest();
-//
-//                            }
-//
-//
-//
-//                        }).check();
-//            }
-//        });
-
-
-//
-//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//            deviceId = Settings.Secure.getString(
-//                    context.getContentResolver(),
-//                    Settings.Secure.ANDROID_ID);
-//        } else {
-//            if (marshMallowPermission.checkPermissionForPhoneState()) {
-//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-//                if (ActivityCompat.checkSelfPermission(RegisterAsFreelancerActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//                    return;
-//                }
-//                if (TelephonyMgr.getDeviceId() != null) {
-//                    deviceId = TelephonyMgr.getDeviceId();
-//                } else {
-//                    deviceId = Settings.Secure.getString(
-//                            context.getContentResolver(),
-//                            Settings.Secure.ANDROID_ID);
-//                }
-//            }
-//        }
-
-
-
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
 
         final String tmDevice, tmSerial, androidId;

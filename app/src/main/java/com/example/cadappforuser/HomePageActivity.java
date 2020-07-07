@@ -20,6 +20,7 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -31,6 +32,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -61,7 +63,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity  implements  NavigationView
         .OnNavigationItemSelectedListener{
@@ -95,7 +99,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     TextView txtCurrentLocation;
     TextView tv_headername,tv_headernumber;
     String URL = "https://aoneservice.net.in/salon/get-apis/company_data_api.php";
-    String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
+    String apiurl="https://aoneservice.net.in/salon/get-apis/distance_api.php";
     TextView seeAll,seeAllFree;
     String lastname,fullname,name,mobile;
     @Override
@@ -203,10 +207,20 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         newModels = new ArrayList<>();
 
+        Bundle b = getIntent().getExtras();
+        final double lat= b.getDouble("lat");
+        final double lng=b.getDouble("lng");
+
+        Log.d("lat","lat"+Double.toString(lat));
+        Log.d("lng","lng"+Double.toString(lng));
+
+
+        Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
+
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
 
-        StringRequest request=new StringRequest(Request.Method.POST, apiurl, new Response.Listener<String>() {
+        final StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/distance_api.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -226,6 +240,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                                 String mobilenumber = object.getString("mobilenumber");
                                 String experinace=object.getString("experience");
                                 //String gender = object.getString("gender");
+                                String km=object.getString("km");
+                                Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                                 String address = object.getString("address");
                                 String aboutus=object.getString("about_yourself");
                                 //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
@@ -249,69 +265,22 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
             }
-        });
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("latif",Double.toString(lat));
+                map.put("longif",Double.toString(lng));
+                return map;
+            }
+        };
+            RequestQueue requestQueue = Volley.newRequestQueue(HomePageActivity.this);
+            requestQueue.add(request);
 
         companyNewModels = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
-
-
-//        StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//
-//                try {
-//
-//                    JSONObject jsonObject = new JSONObject(response);
-//                    String sucess = jsonObject.getString("success");
-//                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-//                    if (sucess.equals("1")) {
-//
-//                        for (int i = 0; i < jsonArray.length(); i++) {
-//                            JSONObject object = jsonArray.getJSONObject(i);
-//                            //String category=object.getString("item_category");
-//                            String id = object.getString("id");
-//                            String nameC = object.getString("companyname");
-//                            //String lastname = object.getString("lastname");
-//                            //String email = object.getString("email");
-//                            //String mobilenumber = object.getString("mobilenumber");
-//                            //String gender = object.getString("gender");
-//                           /// String address = object.getString("address");
-//                            //String item_image = object.getString("item_image");
-//                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
-//                          //  companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,nameC,3));
-//
-//                            companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-//
-//                            recyclerView1.setHasFixedSize(true);
-//                            recyclerView1.setAdapter(companyNewAdapter);
-//
-//                        }
-//                    }
-//                }
-//                catch (Exception e)
-//                {
-
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        RequestQueue requestQueue1= Volley.newRequestQueue(this);
-//        requestQueue1.add(request1);
-
-         //companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-        //LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        //recyclerView1.setLayoutManager(linearLayoutManager4);
-        //recyclerView1.setHasFixedSize(true);
-        //recyclerView1.setAdapter(companyNewAdapter);
 
         mDrawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
