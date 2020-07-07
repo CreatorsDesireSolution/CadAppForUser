@@ -23,6 +23,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.adapter.CompanyAddServiceAdapater;
 import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.adapter.FreelancerDetailAdapter;
@@ -60,6 +62,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     Act_Session act_session;
     BaseRequest baseRequest;
     String name,mobile;
+    TextView seeAll,seeAllFree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,8 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
+        seeAll = findViewById(R.id.seeAll);
+        seeAllFree = findViewById(R.id.seeAllFree);
 
         Apigetdetail();
         ApiGetFreelancerDetail();
@@ -107,6 +112,23 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         nav_mobile .setText(mobile);
 
         Toast.makeText(activity, name, Toast.LENGTH_SHORT).show();
+
+
+        seeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), SeeAllFreelancer.class);
+                startActivity(intent1);
+            }
+        });
+
+        seeAllFree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), SeeAllCompany.class);
+                startActivity(intent1);
+            }
+        });
 
         if(Build.VERSION.SDK_INT>=21){
             Window window=this.getWindow();

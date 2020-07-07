@@ -33,6 +33,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.Ad_Company;
@@ -73,7 +74,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
    ArrayList<Ad_freelancermodel> ad_freelancermodels;
    Ad_Freelancer ad_freelancer;
    Ad_Company ad_company;
-   TextView tv_headername,tv_headernumber,seeAllFree;
+   TextView tv_headername,tv_headernumber,seeAllFree,seeAll;
    String name,mobile,fullname,lastname;
    Act_Session act_session;
 
@@ -99,7 +100,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
         tv_headername = findViewById(R.id.tv_headername);
         tv_headernumber = findViewById(R.id.tv_headenumber);
-        seeAllFree= findViewById(R.id.seeAllFree);
+        seeAllFree= findViewById(R.id.seeAll);
+        seeAll = findViewById(R.id.seeAllFree);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
@@ -124,6 +126,13 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             }
         });
 
+        seeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllCompany.class);
+                startActivity(intent);
+            }
+        });
 
 
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));

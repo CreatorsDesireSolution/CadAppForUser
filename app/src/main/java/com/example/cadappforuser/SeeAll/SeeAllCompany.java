@@ -12,7 +12,8 @@ import android.widget.Toast;
 import com.example.cadappforuser.Act_Session;
 import com.example.cadappforuser.CompanyHomePageActivity;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.adapter.FreelancerDetailAdapter;
+import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
+import com.example.cadappforuser.adapter.SeeAllCompanyAdapter;
 import com.example.cadappforuser.adapter.SeeAllFreelancerAdapter;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.FreelancerDetailsModel;
@@ -25,32 +26,29 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SeeAllFreelancer extends AppCompatActivity {
-
+public class SeeAllCompany extends AppCompatActivity {
     RecyclerView recycleAll;
-    SeeAllFreelancerAdapter seeAllFreelancerAdapter;
+  //  SeeAllFreelancerAdapter seeAllFreelancerAdapter;
     BaseRequest baseRequest;
     Act_Session act_session; Context context;
-    ArrayList<FreelancerDetailsModel> freelancerDetailsModels = new ArrayList<>();
+    ArrayList<CompanyDetailsModel> companyDetailsModels = new ArrayList<>();
+    SeeAllCompanyAdapter seeAllCompanyAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_see_all_freelancer);
+        setContentView(R.layout.activity_see_all_company);
+
 
         recycleAll = findViewById(R.id.recycle_all);
-       act_session = new Act_Session(getApplicationContext());
-       context = this;
-
-        // get the reference of RecyclerView
-// set a GridLayoutManager with default vertical orientation and 3 number of columns
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
-        recycleAll.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-        ApiGetFreelancerDetail();
+        act_session = new Act_Session(getApplicationContext());
+        context = this;
+        Apigetdetail();
     }
 
-
-    private void ApiGetFreelancerDetail() {
+    private void Apigetdetail() {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
             @Override
@@ -61,25 +59,24 @@ public class SeeAllFreelancer extends AppCompatActivity {
                     if (!jsonObject.getString("message").equals("Failed")) {
 
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        freelancerDetailsModels = baseRequest.getDataList(jsonArray, FreelancerDetailsModel.class);
+                        companyDetailsModels = baseRequest.getDataList(jsonArray, CompanyDetailsModel.class);
 
-                        for (int i = 0; i < freelancerDetailsModels.size(); i++) {
-                            if (freelancerDetailsModels != null) {
+                        for (int i = 0; i < companyDetailsModels.size(); i++) {
+                            if (companyDetailsModels != null) {
 
 
                                 CompanyDetailsModel model = new CompanyDetailsModel();
-                                model.setCompanyname(freelancerDetailsModels.get(0).getFirstname());
+                                model.setCompanyname(companyDetailsModels.get(0).getCompanyname());
 
                                 // companyAddServiceModels2.add(model);
-                                seeAllFreelancerAdapter =new SeeAllFreelancerAdapter(context,freelancerDetailsModels);
+                                seeAllCompanyAdapter =new SeeAllCompanyAdapter(context, companyDetailsModels);
 //                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
-//                                recyclerView.setLayoutManager(layoutManager1);
-
-
+//                                recyclerView1.setLayoutManager(layoutManager1);
                                 GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
                                 recycleAll.setLayoutManager(gridLayoutManager);
                                 recycleAll.setHasFixedSize(true);
-                                recycleAll.setAdapter(seeAllFreelancerAdapter);
+                                recycleAll.setAdapter(seeAllCompanyAdapter);
+
 
 
 
@@ -108,7 +105,8 @@ public class SeeAllFreelancer extends AppCompatActivity {
 
             }
         });
-        String remainingUrl2 = "https://aoneservice.net.in/salon/get-apis/freelancer_dashboarddata_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "id=" + act_session.userId;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
+
 }
