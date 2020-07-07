@@ -437,9 +437,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
 
 
-
-
-
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
