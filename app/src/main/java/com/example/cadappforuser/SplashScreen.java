@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
 
                 if (act_session.login.equals("yes"))  {
                     if (flagcheck.equals("0")) {
-                        Intent i = new Intent(SplashScreen.this, HomePageActivity.class);
+                        Intent i = new Intent(SplashScreen.this, SelectHomeOrShop.class);
                         startActivity(i);
                         finish();
 

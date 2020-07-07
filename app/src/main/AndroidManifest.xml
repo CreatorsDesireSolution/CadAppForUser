@@ -24,9 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CustomerPersonalProfileActivity"></activity>
-        <activity android:name=".CompanyPersonalProfileActivity" />
-        <activity android:name=".FreelancerPersonalProfileActivity" />
+
+        <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
+        <activity android:name=".SeeAll.SeeAllCompany"></activity>
+        <activity android:name=".FreelancerPersonalProfileActivity" >
+
+        </activity>
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
         <activity android:name=".FreelancerGetCertificateForShow" />
@@ -88,7 +91,7 @@
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".FreelancerCertificationActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

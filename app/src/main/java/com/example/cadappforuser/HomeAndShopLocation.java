@@ -42,6 +42,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
     ImageView btnAddress;
     GoogleMap mMap;
     private static  final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+    double lat,lng;
 
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -80,6 +81,7 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
                     mapFragment.getMapAsync(HomeAndShopLocation.this);
 
 
+
                 }
             }
         });
@@ -89,6 +91,11 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
         LatLng latLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+
+        lat=currentLocation.getLatitude();
+        lng=currentLocation.getLongitude();
+
+
         mMap.addMarker(new MarkerOptions().position(latLng));
         CameraUpdate cameraUpdateFactory= CameraUpdateFactory.newLatLngZoom(latLng,17);
         mMap.moveCamera(cameraUpdateFactory);
@@ -109,6 +116,10 @@ public class HomeAndShopLocation extends AppCompatActivity implements OnMapReady
                 public void onClick(View view) {
                     Intent intent=new Intent(HomeAndShopLocation.this,HomePageActivity.class);
                     intent.putExtra("address",fullAddress);
+                    Bundle b = new Bundle();
+                    b.putDouble("lat", lat);
+                    b.putDouble("lng",lng);
+                    intent.putExtras(b);
                     startActivity(intent);
                 }
             });
