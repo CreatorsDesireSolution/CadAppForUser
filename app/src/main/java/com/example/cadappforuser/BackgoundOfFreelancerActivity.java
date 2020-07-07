@@ -3,13 +3,11 @@ package com.example.cadappforuser;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadappforuser.retrofit.BaseRequest;
@@ -35,8 +33,6 @@ public class BackgoundOfFreelancerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backgound_of_freelancer);
 
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Background");
        context = this;
         et_aboutfreelancer = findViewById(R.id.et_aboutfreelancer);
         et_currentplacefreelancer = findViewById(R.id.et_currentplacefreelancer);
@@ -74,22 +70,6 @@ public class BackgoundOfFreelancerActivity extends AppCompatActivity {
 
             }
         });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
     private void ApiPostbackground() {
         baseRequest = new BaseRequest(context);

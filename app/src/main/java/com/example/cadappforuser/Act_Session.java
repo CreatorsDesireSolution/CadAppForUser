@@ -3,8 +3,12 @@ package com.example.cadappforuser;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.util.Base64;
 
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 
 public class Act_Session {
 
@@ -12,10 +16,12 @@ public class Act_Session {
     public String userId = "", name = "", login = "";
     public  String usr_name ="",mobile_verified="",email="",usr_code = "", usr_mobile = "",otp="",usr_age ="",flag="",usr_gender="",usr_country="",device_id ="",token="";
     String PREF_NAME = "MyPref";
-    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="",staffid,companyname;
+    String firstname="",lastname="",dob="",mobilenumber="",gender="",address="",staffid,companyname,profile_pic="";
     Context _context;
 
     public static String USER_ID;
+    Bitmap bitmap;
+    String encodeImage;
 
 
     public Act_Session(Context context, String signupStage) {
@@ -46,6 +52,7 @@ public class Act_Session {
             otp =(jsonObject.optString("otp"));
             staffid =(jsonObject.optString("staffid"));
             companyname =(jsonObject.optString("companyname"));
+            profile_pic =(jsonObject.optString("profile_pic"));
 
 
 
@@ -65,6 +72,7 @@ public class Act_Session {
             useraddress(context,address);
             userstaffid(context,staffid);
             usercompanyname(context,companyname);
+            userprofile_pic(context,profile_pic);
 
         }
     }
@@ -86,6 +94,7 @@ public class Act_Session {
         this.address = sharedPreferences.getString("address", "");
         this.staffid = sharedPreferences.getString("staffid", "");
         this.companyname = sharedPreferences.getString("companyname", "");
+        this.profile_pic = sharedPreferences.getString("profile_pic", "");
 
         // this.session_id = sharedPreferences.getString("id", "");
     }
@@ -102,12 +111,29 @@ public class Act_Session {
         prefsEditor.putString("companyname", companyname);
         prefsEditor.commit();
     }
+    public String userprofile_pic(Context context, String profile_pic) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+       // prefsEditor.putString("profile_pic", profile_pic);
+        prefsEditor.putString("profile_pic", profile_pic);
+        prefsEditor.commit();
+        return profile_pic;
+    }
     public void userfirstname(Context context, String firstname) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putString("firstname", firstname);
         prefsEditor.commit();
     }
+
+    private String imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] imageBytes=stream.toByteArray();
+        encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return  encodeImage;
+    }
+
 
 
     public void userstaffid(Context context, String staffid) {

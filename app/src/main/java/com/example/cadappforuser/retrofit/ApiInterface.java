@@ -157,6 +157,8 @@ public interface ApiInterface {
                                     @Part("address") RequestBody address,
                                     @Part("deviceid") RequestBody deviceid,
                                     @Part("password") RequestBody password,
+                                    @Part("latitude") RequestBody latitute_,
+                                    @Part("longitude") RequestBody longitute,
                                     @Part("profile_pic") RequestBody profile_pic
     );
 

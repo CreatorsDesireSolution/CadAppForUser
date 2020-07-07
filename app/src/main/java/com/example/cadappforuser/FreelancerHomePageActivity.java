@@ -33,8 +33,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cadappforuser.SeeAll.SeeAllCompany;
-import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.Ad_Company;
 import com.example.cadappforuser.adapter.Ad_Freelancer;
@@ -82,7 +80,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
     SearchView searchView;
-    TextView seeAllFreelancer,seeAllCompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,25 +89,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         setSupportActionBar(toolbar);
 
         act_session = new Act_Session(getApplicationContext());
-
-
-        seeAllFreelancer=findViewById(R.id.seeAll);
-        seeAllCompany=findViewById(R.id.seeAllFree);
-
-        seeAllFreelancer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllFreelancer.class);
-                startActivity(intent);
-            }
-        });
-        seeAllCompany.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllCompany.class);
-                startActivity(intent);
-            }
-        });
 
 
         searchView=findViewById(R.id.freelancerSearchView);
@@ -328,13 +306,14 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 break;
             case R.id.nav_add_certificate:
                startActivity(new Intent(FreelancerHomePageActivity.this, FreelancerCertificationActivity.class));
+
                 break;
             case R.id.nav_term_and_condition:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerTermAndCondition.class));
                 break;
-           // case R.id.nav_services_offered:
-               // startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
-                 //break;
+            case R.id.nav_services_offered:
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
+                 break;
             case R.id.nav_add_services:
                 startActivity(new Intent(FreelancerHomePageActivity.this, AddServiceSelectGender.class));
                 break;
@@ -369,8 +348,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfileActivity.class));
                 break;
             case R.id.nav_set_avalibilty:
-            //    startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
-              //  break;
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
+                break;
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);

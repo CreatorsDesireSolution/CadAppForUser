@@ -3,7 +3,6 @@ package com.example.cadappforuser;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadappforuser.adapter.FreelancerAddServiceAdapter;
@@ -48,9 +46,6 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_backgound_of_company);
-
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Background");
 
         context = this;
         act_session = new Act_Session(getApplicationContext());
@@ -160,22 +155,7 @@ public class BackgoundOfCompanyActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
 
 
     private void ApiGetList() {

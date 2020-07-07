@@ -27,7 +27,9 @@
 
         <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
         <activity android:name=".SeeAll.SeeAllCompany"></activity>
-        <activity android:name=".FreelancerPersonalProfileActivity"></activity>
+        <activity android:name=".FreelancerPersonalProfileActivity" >
+
+        </activity>
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
         <activity android:name=".FreelancerGetCertificateForShow" />

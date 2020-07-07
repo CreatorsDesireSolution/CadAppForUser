@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -73,9 +71,6 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certification);
-
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Certificate");
 
         act_session = new Act_Session(getApplicationContext());
         context = this;
@@ -181,22 +176,6 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
                 requestQueue.add(request);
             }
         });
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
 

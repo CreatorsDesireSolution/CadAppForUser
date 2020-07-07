@@ -89,10 +89,13 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancer_activity_services_provide);
 
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Services Provide area");
+        final ActionBar actionBar=getSupportActionBar();
+       actionBar.setTitle("Services Provided Area");
 
         act_session = new Act_Session(getApplicationContext());
+
+
+
 
         checkKm=findViewById(R.id.checkKm);
         etKm=findViewById(R.id.etKm);
@@ -397,6 +400,27 @@ public class FreelancerServicesProvide extends AppCompatActivity {
             }
         });
 
+        /*checkAtMyPlace.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+             if(b){
+                 etAtMyPlace.setVisibility(View.VISIBLE);
+                 etAtMyPlace.setOnClickListener(new View.OnClickListener() {
+                     @Override
+                     public void onClick(View view) {
+                         Intent intent=new Intent(FreelancerServicesProvide.this,At_Place_Location.class);
+                         startActivity(intent);
+                     }
+                 });
+
+                 etKm.setText(adress);
+             }
+             else{
+                 etAtMyPlace.setVisibility(View.GONE);
+             }
+            }
+        });*/
+
 
         checkKm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -414,7 +438,56 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+  /*  private void ApiPOST() {
+        baseRequest = new BaseRequest(getApplicationContext());
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                // act_session.loginSession(context);
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+                    act_session = new Act_Session(getApplicationContext(), jsonObject1);
 
+                    Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
+                    // startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));
+                    Intent intent=new Intent(FreelancerServicesProvide.this,FreelancerCertificationActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+
+            public void onNetworkFailure(int requestCode, String message) {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        RequestBody user_id = RequestBody.create(MediaType.parse("text/plain"),act_session.userId );
+//        RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
+//        RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
+//        RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
+//        RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender1);
+//        RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+//        RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
+//        RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+//
+//
+//        baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_);
+
+    }*/
 
    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
