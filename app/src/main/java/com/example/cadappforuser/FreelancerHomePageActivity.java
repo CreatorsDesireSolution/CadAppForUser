@@ -80,6 +80,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
 
     SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -344,7 +345,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 alertDialog.show();
              break;
             case  R.id.nav_profile:
-                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfile.class));
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfileActivity.class));
                 break;
             case R.id.nav_set_avalibilty:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
