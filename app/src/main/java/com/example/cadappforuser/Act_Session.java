@@ -115,8 +115,7 @@ public class Act_Session {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
        // prefsEditor.putString("profile_pic", profile_pic);
-        prefsEditor.putString("profile_pic", imageStore(bitmap));
-
+        prefsEditor.putString("profile_pic", profile_pic);
         prefsEditor.commit();
         return profile_pic;
     }
