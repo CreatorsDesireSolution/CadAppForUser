@@ -26,11 +26,7 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".FreelancerPersonalProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
@@ -95,7 +91,11 @@
         <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".FreelancerCertificationActivity" />
         <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".FreelancherAddNewServices" />
         <activity android:name=".ShowCheckBox" />
