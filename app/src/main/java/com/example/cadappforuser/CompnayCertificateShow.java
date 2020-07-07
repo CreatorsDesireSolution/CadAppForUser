@@ -41,6 +41,9 @@ public class CompnayCertificateShow extends AppCompatActivity {
         setContentView(R.layout.activity_compnay_certificate_show);
 
 
+        
+
+
         context = this;
         activity = this;
         ActionBar actionBar=getSupportActionBar();
