@@ -38,13 +38,7 @@ public class FreeelancerVerificationActivity extends AppCompatActivity {
 
 
                 OTPchheck= etOtp.getText().toString();
-
-                if (OTPchheck.equals(OTP)) {
-
                     startActivity(new Intent(FreeelancerVerificationActivity.this, FreelancerServicesProvide.class));
-                }else {
-                    Toast.makeText(FreeelancerVerificationActivity.this, "please enter valid otp", Toast.LENGTH_SHORT).show();
-                }
 
             }
         });

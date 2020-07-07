@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.adapter.AddFevAdapter;
@@ -52,7 +53,24 @@ public class Act_AddToFev extends AppCompatActivity {
         recyclerviewfev.setAdapter(addFevAdapter);
 
 loadData();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
     private void loadData() {
         if (favItemList != null) {

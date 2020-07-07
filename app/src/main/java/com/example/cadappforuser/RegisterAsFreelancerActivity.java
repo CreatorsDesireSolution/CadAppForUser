@@ -75,7 +75,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     Act_Session act_session;
     TextView tv_headername,tv_headermobile;
     String name,mobile;
-
+String latitute,longitute;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -129,6 +129,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                 intent1.putExtra("mobilenumber",mobilenumber);
                 intent1.putExtra("image",file);
                 startActivity(intent1);
+
             }
         });
 
@@ -146,6 +147,12 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
        imageUserLogo.setImageURI(file1);
 
 
+        Bundle b = getIntent().getExtras();
+        double lat= b.getDouble("lat");
+        double lng=b.getDouble("lng");
+
+        latitute = String.valueOf(lat);
+        longitute = String.valueOf(lng);
 
 //        encodeImage= intent2.getParcelableExtra("image");
        // imageUserLogo.setImageBitmap();
@@ -398,6 +405,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
 
             }
         });
+
         RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
         RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
         RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
@@ -406,12 +414,15 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody latitute_ = RequestBody.create(MediaType.parse("text/plain"), latitute);
+        RequestBody longitute_ = RequestBody.create(MediaType.parse("text/plain"), longitute);
         RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
+
         baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_,
-                lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
+                lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_,latitute_,longitute_,profile_pic);
 
     }
 

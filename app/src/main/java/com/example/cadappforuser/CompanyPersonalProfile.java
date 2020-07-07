@@ -1,9 +1,11 @@
 package com.example.cadappforuser;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +32,9 @@ public class CompanyPersonalProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_personal_profile);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Profile");
 
         tv_address = findViewById(R.id.tv_location);
         tv_name = findViewById(R.id.tv_companyname);
@@ -74,7 +79,22 @@ public class CompanyPersonalProfile extends AppCompatActivity {
         });
         Apigetprofile1();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
     private void Apigetprofile1() {
         baseRequest = new BaseRequest();

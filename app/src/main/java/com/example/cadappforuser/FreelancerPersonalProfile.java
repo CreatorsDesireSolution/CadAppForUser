@@ -35,8 +35,6 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_personal_profile);
 
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Profile");
 
         act_session = new Act_Session(getApplicationContext());
         tv_edit = findViewById(R.id.tv_edit);

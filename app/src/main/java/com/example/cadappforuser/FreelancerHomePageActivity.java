@@ -3,15 +3,21 @@ package com.example.cadappforuser;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +39,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.Ad_Company;
 import com.example.cadappforuser.adapter.Ad_Freelancer;
@@ -46,10 +54,13 @@ import com.example.cadappforuser.model.Ad_freelancermodel;
 import com.example.cadappforuser.modelfreelancer.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.modelfreelancer.ServicesFreelancerHomeModel;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -75,11 +86,14 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
    TextView tv_headername,tv_headernumber;
    String name,mobile,fullname,lastname;
    Act_Session act_session;
-
+   ImageView nav_image;
+   Uri file1;
+   Bitmap bitmap;
    String url="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
 
 
     SearchView searchView;
+    TextView seeAllFreelancer,seeAllCompany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +105,25 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         act_session = new Act_Session(getApplicationContext());
 
 
+        seeAllFreelancer=findViewById(R.id.seeAll);
+        seeAllCompany=findViewById(R.id.seeAllFree);
+
+        seeAllFreelancer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllFreelancer.class);
+                startActivity(intent);
+            }
+        });
+        seeAllCompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllCompany.class);
+                startActivity(intent);
+            }
+        });
+
+
         searchView=findViewById(R.id.freelancerSearchView);
         act_session = new Act_Session(getApplicationContext());
 
@@ -98,10 +131,18 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         tv_headername = findViewById(R.id.tv_headername);
         tv_headernumber = findViewById(R.id.tv_headenumber);
 
+        retrivesharedPreferences();
+
+
+//        file1 = act_session.profile_pic;
+//        imageUserLogo.setImageURI(file1);
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
         TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+         nav_image =(ImageView)hView.findViewById(R.id.UserImageProfile);
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
@@ -292,7 +333,22 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             super.onBackPressed();
         }
     }
+    private void retrivesharedPreferences()
+    {
+        SharedPreferences shared = getSharedPreferences("MyPref", MODE_PRIVATE);
+        String photo = shared.getString("profile_pic", "photo");
+        assert photo != null;
+        if(!photo.equals("photo"))
+        {
+            byte[] b = Base64.decode(photo, Base64.DEFAULT);
+            InputStream is = new ByteArrayInputStream(b);
+            bitmap = BitmapFactory.decodeStream(is);
+            //nav_image.setImageBitmap(bitmap);
+            Picasso.get().load("http://aoneservice.net.in/salon/documents/"+photo)
+                    .resize(400, 400).centerCrop().into(nav_image);
+        }
 
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -306,14 +362,13 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 break;
             case R.id.nav_add_certificate:
                startActivity(new Intent(FreelancerHomePageActivity.this, FreelancerCertificationActivity.class));
-
                 break;
             case R.id.nav_term_and_condition:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerTermAndCondition.class));
                 break;
-            case R.id.nav_services_offered:
-                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
-                 break;
+           // case R.id.nav_services_offered:
+               // startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
+                 //break;
             case R.id.nav_add_services:
                 startActivity(new Intent(FreelancerHomePageActivity.this, AddServiceSelectGender.class));
                 break;
@@ -348,8 +403,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfileActivity.class));
                 break;
             case R.id.nav_set_avalibilty:
-                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
-                break;
+            //    startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
+              //  break;
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
