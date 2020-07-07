@@ -25,7 +25,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".FreelancerPersonalProfileActivity">
+        <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
+        <activity android:name=".SeeAll.SeeAllCompany"></activity>
+        <activity android:name=".FreelancerPersonalProfileActivity" >
 
         </activity>
         <activity android:name=".FreelancerWorkPerformShow" />
