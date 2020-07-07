@@ -47,7 +47,6 @@
         <activity android:name=".SelectCompanyServicegender" />
         <activity android:name=".CurrentLocation3" />
         <activity android:name=".CurrentLocation2" />
-        <activity android:name=".CurrentLocationEditFreelancer" />
         <activity android:name=".CurrentLocation1" />
         <activity android:name=".CompanyUploadWorkPerformed" />
         <activity android:name=".StaffWorkPictureImage" />
