@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
     android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ServicesProvide">
@@ -19,7 +19,8 @@
             android:gravity="center_horizontal"
             android:text="SERVICES PROVIDED MAY VARY AS PER THE USERS GEOGRAPHICAL LOCATIONS"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_semibold"
             android:textStyle="bold"></TextView>
         <CheckBox
             android:id="@+id/checkAtMyPlace"
@@ -37,6 +38,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="17dp"
             android:layout_toRightOf="@+id/checkAtMyPlace"
+            android:fontFamily="@font/poppins_light"
             android:hint="At my place"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
@@ -83,6 +85,7 @@
             android:layout_toRightOf="@+id/checkKm"
             android:hint="Availability of my Services( in range of Kilometers )"
             android:textColor="@color/black"
+            android:fontFamily="@font/poppins_light"
             android:textColorHint="@color/black"
             android:textSize="12sp"></TextView>
 
@@ -144,13 +147,14 @@
                     android:layout_weight=".5"
                     android:checked="false"
                     android:text="Always"
+                    android:fontFamily="@font/poppins_light"
                     android:textSize="15dp" />
 
                 <RadioButton
                     android:id="@+id/radiosetavailability"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/poppins_light"
                     android:layout_weight=".5"
                     android:checked="false"
                     android:text="Set Availability"
@@ -210,6 +214,7 @@
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@+id/checkFlexible"
             android:text="Flexible"
+            android:fontFamily="@font/poppins_light"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="normal"></TextView>
@@ -233,6 +238,7 @@
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@+id/checkStrict"
             android:text="Strict"
+            android:fontFamily="@font/poppins_light"
             android:textColor="@color/black"></TextView>
 
         <CheckBox
@@ -255,6 +261,7 @@
             android:layout_marginTop="23dp"
             android:layout_marginRight="15dp"
             android:text="Moderate"
+            android:fontFamily="@font/poppins_light"
             android:textColor="@color/black"
             android:textStyle="normal"></TextView>
 

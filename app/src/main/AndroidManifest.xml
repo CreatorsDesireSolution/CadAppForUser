@@ -24,16 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".FreelancerServicesProvide">
+        <activity android:name=".FreelancerPersonalProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".FreelancerPersonalProfileActivity">
-
         </activity>
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
@@ -179,7 +175,7 @@
         <activity
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
+        <activity android:name=".FreelancerServicesProvide" />
         <activity
             android:name=".SignUpActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

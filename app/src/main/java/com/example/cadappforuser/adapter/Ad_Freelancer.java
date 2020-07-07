@@ -54,7 +54,7 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
 
        final Ad_freelancermodel ad_freelancermodel=ad_freelancermodels.get(position);
         holder.tv_freelancername.setText(ad_freelancermodel.getName());
-        holder.ratingBar.setRating(ad_freelancermodel.getRating());
+      //  holder.ratingBar.setRating(ad_freelancermodel.getRating());
 
         //String name=ad_freelancermodel.getName();
        // holder.facialImageFreelancer.setImageResource(ad_freelancermodel.getImage());
@@ -125,8 +125,8 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             ImageView facialImageFreelancer;
-            TextView tv_freelancername;
-            RatingBar ratingBar;
+            TextView tv_freelancername,userrating;
+            ImageView ratingBar;
             private ItemClickListner itemClickListner;
            public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -134,6 +134,7 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
             facialImageFreelancer = itemView.findViewById(R.id.facialImageFreelancer);
             tv_freelancername = itemView.findViewById(R.id.freelancer);
             ratingBar = itemView.findViewById(R.id.ratingbar);
+               userrating =itemView.findViewById(R.id.userrating);
             itemView.setOnClickListener(this);
         }
 

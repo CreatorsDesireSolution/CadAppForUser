@@ -78,8 +78,11 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
    String url="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
 
-    SearchView searchView;
 
+
+
+    SearchView searchView;
+    Act_Session act_session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

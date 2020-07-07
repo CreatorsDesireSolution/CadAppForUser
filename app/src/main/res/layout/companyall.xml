@@ -20,30 +20,42 @@
             <ImageView
                 android:layout_width="150dp"
                 android:scaleType="center"
-                android:id="@+id/facialImageFreelancer"
+                android:id="@+id/companyimageview"
                 android:layout_height="160dp"
                 android:src="@drawable/womanfacial"></ImageView>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Freelancer"
-        android:id="@+id/freelancer"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/cardV"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        ></TextView>
+        android:orientation="horizontal"
+        android:id="@+id/linear"
+        android:layout_below="@id/cardV">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company"
+            android:id="@+id/firstname"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/cardV"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            ></TextView>
+
+
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/freelancer"
+        android:layout_below="@+id/linear"
         android:orientation="horizontal">
 
 

@@ -144,9 +144,10 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tv_companyname;
-        RatingBar ratingBar;
+        TextView tv_companyname,userrating;
+        ImageView ratingBar;
         ImageView companyimageview;
+
        ItemClickListner itemClickListner;
 
 
@@ -156,6 +157,7 @@ public class CompanyDetailsAdapter extends RecyclerView.Adapter<CompanyDetailsAd
             tv_companyname = itemView.findViewById(R.id.companyname);
             ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview =itemView.findViewById(R.id.companyimageview);
+        userrating=itemView.findViewById(R.id.userrating);
             itemView.setOnClickListener(this);
 
     }

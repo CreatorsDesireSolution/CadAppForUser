@@ -37,6 +37,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
@@ -94,6 +96,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     TextView tv_headername,tv_headernumber;
     String URL = "https://aoneservice.net.in/salon/get-apis/company_data_api.php";
     String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
+    TextView seeAll,seeAllFree;
 
     String lastname,fullname,name,mobile;
     @Override
@@ -111,8 +114,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         act_session = new Act_Session(getApplicationContext());
 
         txtCurrentLocation=findViewById(R.id.txtLocation);
+        seeAll = findViewById(R.id.seeAll);
+        seeAllFree = findViewById(R.id.seeAllFree);
 
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         txtCurrentLocation.setText(intent.getStringExtra("address"));
 
         recyclerView=findViewById(R.id.recycleView);
@@ -136,14 +141,23 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         nav_user.setText(fullname);
         nav_mobile .setText(mobile);
 
-
-      //  tv_headername.setText(name);
-      //  tv_headernumber.setText(act_session.mobilenumber);
-
-
-       // homerecyclerview = findViewById(R.id.homerecyclerview);
-      //  listView = findViewById(R.id.mylist);
         searchView = findViewById(R.id.searchview);
+
+        seeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), SeeAllFreelancer.class);
+                startActivity(intent1);
+            }
+        });
+
+        seeAllFree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), SeeAllCompany.class);
+                startActivity(intent1);
+            }
+        });
 
         Apigetdetail();
 
