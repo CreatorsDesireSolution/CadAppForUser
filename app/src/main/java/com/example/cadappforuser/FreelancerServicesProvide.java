@@ -89,6 +89,9 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancer_activity_services_provide);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Services Provide area");
+
         act_session = new Act_Session(getApplicationContext());
 
         checkKm=findViewById(R.id.checkKm);

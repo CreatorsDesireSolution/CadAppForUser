@@ -97,15 +97,11 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     String URL = "https://aoneservice.net.in/salon/get-apis/company_data_api.php";
     String apiurl="https://aoneservice.net.in/salon/get-apis/freelancer_data_api.php";
     TextView seeAll,seeAllFree;
-
     String lastname,fullname,name,mobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
-//
-//        tv_headername = findViewById(R.id.tv_headername);
-//        tv_headernumber = findViewById(R.id.tv_heheadernumber);
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -122,16 +118,12 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
-        recyclerView2= findViewById(R.id.recycleView2);
+        recyclerView2=findViewById(R.id.recycleView2);
 
-
-
-
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView =  findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
-        TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
-        TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+        TextView nav_user = hView.findViewById(R.id.tv_headername);
+        TextView nav_mobile =hView.findViewById(R.id.tv_headenumber);
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
@@ -416,7 +408,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-
                startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
                 break;
             case R.id.nav_chat:
@@ -426,7 +417,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                  startActivity(new Intent(HomePageActivity.this,Act_CustomerProfileEdit.class));
                 break;
             case R.id.nav_history:
-                startActivity(new Intent(HomePageActivity.this,SearchServices.class));
+                //startActivity(new Intent(HomePageActivity.this,SearchServices.class));
                 break;
             case R.id.nav_choose_home_or_shop:
                 startActivity(new Intent(HomePageActivity.this,SelectHomeOrShop.class));

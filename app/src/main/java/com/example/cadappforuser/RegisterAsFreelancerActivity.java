@@ -129,6 +129,7 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                 intent1.putExtra("mobilenumber",mobilenumber);
                 intent1.putExtra("image",file);
                 startActivity(intent1);
+
             }
         });
 
@@ -146,6 +147,9 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
        imageUserLogo.setImageURI(file1);
 
 
+        Bundle b = getIntent().getExtras();
+        double lat= b.getDouble("lat");
+        double lng=b.getDouble("lng");
 
 //        encodeImage= intent2.getParcelableExtra("image");
        // imageUserLogo.setImageBitmap();

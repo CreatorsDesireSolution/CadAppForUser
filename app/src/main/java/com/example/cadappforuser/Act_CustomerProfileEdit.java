@@ -1,10 +1,12 @@
 package com.example.cadappforuser;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -62,6 +64,8 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
         Apigetprofile1();
 
     }
+
+
     private void Apigetprofile1() {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
