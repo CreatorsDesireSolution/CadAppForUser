@@ -37,6 +37,7 @@ public class FreelancerServiceList extends AppCompatActivity {
     Activity activity;
     String freelancer_id;
 
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
