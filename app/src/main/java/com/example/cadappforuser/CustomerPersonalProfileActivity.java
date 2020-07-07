@@ -1,13 +1,13 @@
 package com.example.cadappforuser;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.cadappforuser.model.FreelancerProfileDetailsModel;
+import com.example.cadappforuser.model.ProfilesDetailModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.karumi.dexter.Dexter;
@@ -32,26 +30,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class FreelancerPersonalProfileActivity extends AppCompatActivity {
+public class CustomerPersonalProfileActivity extends AppCompatActivity {
 
-    EditText userMobile,userFirstName,userLastName,userGender,userLocation,userBackground;
+    EditText userMobile,userFirstName,userLastName,userGender,userLocation,userBackground,user_dob;
     ImageView userImage,userEditor,iv_profile_bck;
     TextView userEmail,userRating,tv_profile_heading;
     Button btnSubmit;
     BaseRequest baseRequest;
     Act_Session act_session;
-    ArrayList<FreelancerProfileDetailsModel> profile_list1 = new ArrayList<>();
+    ArrayList<ProfilesDetailModel> profile_list1 = new ArrayList<>();
     Context context;
-    String firstname,lastname,background,email,mobile,gender,address;
+    String firstname,lastname,background,email,mobile,gender,address,DOB;
     ImageView workperformed,btn_certificate;
     CircleImageView iv_camera;
     ImageView imageUserLogo;
@@ -62,7 +57,9 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_freelancer_personal_profile2);
+        setContentView(R.layout.activity_customer_personal_profile);
+
+
 
         act_session = new Act_Session(getApplicationContext());
         userEmail=findViewById(R.id.userEmail);
@@ -72,12 +69,10 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         userLastName=findViewById(R.id.userLastName);
         userRating=findViewById(R.id.userRating);
         userLocation=findViewById(R.id.userLocation);
-        userBackground=findViewById(R.id.userBackground);
+        user_dob= findViewById(R.id.userDOB);
         userEditor=findViewById(R.id.editProfile);
         iv_profile_bck=findViewById(R.id.iv_profile_bck);
         tv_profile_heading=findViewById(R.id.tv_profile_heading);
-        workperformed = findViewById(R.id.menCircleImageView);
-        btn_certificate = findViewById(R.id.womenCircleImageView);
 
         imageUserLogo = findViewById(R.id.userImageIcon);
         iv_camera = findViewById(R.id.iv_camera);
@@ -85,11 +80,12 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         context=this;
         btnSubmit=findViewById(R.id.btnSumbit);
 
+
         userEditor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 userFirstName.setEnabled(true);
-                userBackground.setEnabled(true);
+//                userBackground.setEnabled(true);
                 userLastName.setEnabled(true);
                 userMobile.setEnabled(true);
                 btnSubmit.setVisibility(View.VISIBLE);
@@ -101,11 +97,10 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         });
 
 
-
         iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dexter.withActivity(FreelancerPersonalProfileActivity.this)
+                Dexter.withActivity(CustomerPersonalProfileActivity.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -135,27 +130,11 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         });
 
 
-        workperformed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),FreelancerWorkPerformed.class);
-                startActivity(intent);
-            }
-        });
-
-        btn_certificate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),FreelancerGetCertificate.class);
-                startActivity(intent);
-            }
-        });
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 userFirstName.setEnabled(false);
-                userBackground.setEnabled(false);
+//                userBackground.setEnabled(false);
                 userLastName.setEnabled(false);
                 userMobile.setEnabled(false);
                 btnSubmit.setVisibility(View.GONE);
@@ -169,9 +148,11 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
                 email = userEmail.getText().toString();
                 address = userLocation.getText().toString();
                 gender = userGender.getText().toString();
+                DOB = user_dob.getText().toString();
                 ApiPost();
             }
         });
+
 
         iv_profile_bck.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,9 +160,7 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
         Apigetprofile1();
-
     }
 
     private void Apigetprofile1() {
@@ -192,23 +171,21 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONArray jsonArray = jsonObject.optJSONArray("data");
-                    profile_list1 = baseRequest.getDataList(jsonArray, FreelancerProfileDetailsModel.class);
+                    profile_list1 = baseRequest.getDataList(jsonArray, ProfilesDetailModel.class);
 
                     if (profile_list1.size() != 0) {
 
-                       // encodeimage1 = profile_list1.get(0).getProfile_pic();
                         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+profile_list1.get(0).getProfile_pic())
                                 .resize(400, 400).centerCrop().into(imageUserLogo);
-                       // imageUserLogo.setImageURI(fileget);
+
                         userFirstName.setText(profile_list1.get(0).getFirstname());
-                        userLastName.setText(profile_list1.get(0).getLastname());
+                        // tv.setText(profile_list1.get(0).getLastname());
                         userEmail.setText(profile_list1.get(0).getEmail());
                         userGender.setText(profile_list1.get(0).getGender());
                         userMobile.setText(profile_list1.get(0).getMobilenumber());
                         userLocation.setText(profile_list1.get(0).getAddress());
-                        userBackground.setText(profile_list1.get(0).getBackground());
-
-                        // tv_surname.setText(profile_list1.get(0).getLastname());
+                        user_dob.setText(profile_list1.get(0).getDob());
+                        userLastName.setText(profile_list1.get(0).getLastname());
 
 
                     }
@@ -227,9 +204,10 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
 
             }
         });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_dataedit_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/customer_dataedit_api.php?" + "id=" + act_session.userId;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
+
 
     private void ApiPost() {
         baseRequest = new BaseRequest(context);
@@ -243,7 +221,7 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
                     act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),FreelancerHomePageActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),CustomerPersonalProfileActivity.class);
                     // intent.putExtra("mobilenumber",mobilenumber);
                     startActivity(intent);
 
@@ -279,58 +257,16 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobile);
         RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+        RequestBody dob = RequestBody.create(MediaType.parse("text/plain"), DOB);
 
 
 
 
 
-        baseRequest.CallUpdateprofileFreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_,
-                email_,mobilenumber_,gender_,address_);
+        baseRequest.CallUpdateprofileCustomer(1,"https://aoneservice.net.in/" , firstname_, lastname_,
+                email_,dob,
+                mobilenumber_,gender_,address_);
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                userFirstName.setEnabled(false);
-                userBackground.setEnabled(false);
-                userLastName.setEnabled(false);
-                userMobile.setEnabled(false);
-            }
-        });
-
-
-
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-
-            file = data.getData();
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(file);
-                bitmap = BitmapFactory.decodeStream(inputStream);
-                imageUserLogo.setImageBitmap(bitmap);
-
-                imageStore(bitmap);
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-
-
-
-
-    private void imageStore(Bitmap bitmap) {
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-        byte[] imageBytes=stream.toByteArray();
-        encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
 }

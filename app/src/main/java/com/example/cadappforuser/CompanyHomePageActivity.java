@@ -278,7 +278,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 startActivity(new Intent(CompanyHomePageActivity.this,BackgoundOfCompanyActivity.class));
                 break;
             case R.id.nav_profile:
-                 startActivity(new Intent(CompanyHomePageActivity.this,CompanyPersonalProfile.class));
+                 startActivity(new Intent(CompanyHomePageActivity.this,CompanyPersonalProfileActivity.class));
                 break;
                      case R.id.nav_set_avalibilty:
                // startActivity(new Intent(HomePageActivity.this,SetAvalibiltyCustomActivity.class));
