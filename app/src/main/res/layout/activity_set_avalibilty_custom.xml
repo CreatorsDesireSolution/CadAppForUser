@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:backgroundTint="#FFF"
+    android:background="@drawable/background"
     android:layout_height="match_parent"
     android:id="@+id/relative"
     tools:context=".FreelancerSetAvalibiltyCustomActivity">
@@ -63,7 +65,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-
         android:hint="Select Day"
         android:layout_below="@+id/txtEndTime"
         android:layout_marginTop="20sp"
@@ -83,6 +84,7 @@
         android:text="Add"
         android:id="@+id/btnAddSet"
         android:textSize="18sp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF"

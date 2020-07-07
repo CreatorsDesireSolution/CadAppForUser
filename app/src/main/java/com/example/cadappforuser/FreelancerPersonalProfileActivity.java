@@ -31,10 +31,10 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         userEditor=findViewById(R.id.editProfile);
 
         btnSubmit=findViewById(R.id.btnSumbit);
+
         userEditor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 userFirstName.setEnabled(true);
                 userBackground.setEnabled(true);
                 userLastName.setEnabled(true);
@@ -42,6 +42,18 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
                 btnSubmit.setVisibility(View.VISIBLE);
             }
         });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userFirstName.setEnabled(false);
+                userBackground.setEnabled(false);
+                userLastName.setEnabled(false);
+                userMobile.setEnabled(false);
+            }
+        });
+
+
 
     }
 }
