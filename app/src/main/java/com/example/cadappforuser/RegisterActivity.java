@@ -162,28 +162,6 @@ public class RegisterActivity extends AppCompatActivity {
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
 
-//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//            deviceId = Settings.Secure.getString(
-//                    context.getContentResolver(),
-//                    Settings.Secure.ANDROID_ID);
-//        } else {
-//            if (marshMallowPermission.checkPermissionForPhoneState()) {
-//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-//                if (ActivityCompat.checkSelfPermission(RegisterActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//                    return;
-//                }
-//                if (TelephonyMgr.getDeviceId() != null) {
-//                    deviceId = TelephonyMgr.getDeviceId();
-//                } else {
-//                    deviceId = Settings.Secure.getString(
-//                            context.getContentResolver(),
-//                            Settings.Secure.ANDROID_ID);
-//                }
-//            }
-//        }
-
-
-
         iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        etAddress=findViewById(R.id.etAddress);
 
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override
