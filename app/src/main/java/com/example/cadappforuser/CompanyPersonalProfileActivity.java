@@ -287,8 +287,6 @@ public class CompanyPersonalProfileActivity extends AppCompatActivity {
 
 
 
-
-
         baseRequest.CallUpdateprofileComapay(1,"https://aoneservice.net.in/" , companyname_, background_,
                 staff,register_no,mobilenumber_,address_,email_);
 
