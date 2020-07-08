@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +8,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -300,6 +306,38 @@ actionBar.setTitle("Profile");
         baseRequest.CallUpdateprofileComapay(1,"https://aoneservice.net.in/" , companyname_, background_,
                 staff,register_no,mobilenumber_,address_,email_);
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+
+            file = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(file);
+                bitmap = BitmapFactory.decodeStream(inputStream);
+                imageUserLogo.setImageBitmap(bitmap);
+
+                imageStore(bitmap);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
+
+
+
+    private void imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] imageBytes=stream.toByteArray();
+        encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
 
