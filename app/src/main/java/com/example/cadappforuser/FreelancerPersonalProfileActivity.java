@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadappforuser.model.FreelancerProfileDetailsModel;
@@ -64,6 +66,9 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_personal_profile2);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Profile");
 
         act_session = new Act_Session(getApplicationContext());
         userEmail=findViewById(R.id.userEmail);
@@ -175,15 +180,22 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
             }
         });
 
-        iv_profile_bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
 
         Apigetprofile1();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void Apigetprofile1() {

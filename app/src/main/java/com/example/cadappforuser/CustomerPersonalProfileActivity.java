@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +62,8 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_personal_profile);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Profile");
 
 
         act_session = new Act_Session(getApplicationContext());
@@ -72,7 +76,7 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
         userLocation=findViewById(R.id.userLocation);
         user_dob= findViewById(R.id.userDOB);
         userEditor=findViewById(R.id.editProfile);
-        iv_profile_bck=findViewById(R.id.iv_profile_bck);
+
         tv_profile_heading=findViewById(R.id.tv_profile_heading);
 
         imageUserLogo = findViewById(R.id.userImageIcon);
@@ -155,13 +159,23 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
         });
 
 
-        iv_profile_bck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
         Apigetprofile1();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void Apigetprofile1() {
