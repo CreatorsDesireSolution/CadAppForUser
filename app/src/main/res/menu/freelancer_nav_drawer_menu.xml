@@ -10,11 +10,6 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Home" />
 
-        <item
-            android:id="@+id/nav_set_avalibilty"
-            android:icon="@drawable/ic_event_black_24dp"
-            android:title="Set Availibilty" />
-
 
         <item
             android:id="@+id/nav_add_services"
@@ -31,10 +26,7 @@
             android:icon="@drawable/ic_chat_black_24dp"
             android:title="Set Background" />
 
-        <item
-            android:id="@+id/nav_history"
-            android:icon="@drawable/ic_history_black_24dp"
-            android:title="History" />
+
 
         <item
             android:id="@+id/nav_add_certificate"
@@ -54,10 +46,7 @@
             android:icon="@drawable/ic_location"
             android:title="Services Provided area" />
 
-        <item
-            android:id="@+id/nav_services_offered"
-            android:icon="@drawable/ic_customers"
-            android:title="Services Offered" />
+
 
         <item
             android:id="@+id/nav_logout"

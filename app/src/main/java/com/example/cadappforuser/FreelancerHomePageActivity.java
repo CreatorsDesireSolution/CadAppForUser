@@ -361,9 +361,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             case R.id.nav_term_and_condition:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerTermAndCondition.class));
                 break;
-           // case R.id.nav_services_offered:
-               // startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesOffered.class));
-                 //break;
             case R.id.nav_add_services:
                 startActivity(new Intent(FreelancerHomePageActivity.this, AddServiceSelectGender.class));
                 break;
@@ -397,9 +394,6 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             case  R.id.nav_profile:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerPersonalProfileActivity.class));
                 break;
-            case R.id.nav_set_avalibilty:
-            //    startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerSetAvalibiltyCustomActivity.class));
-              //  break;
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
