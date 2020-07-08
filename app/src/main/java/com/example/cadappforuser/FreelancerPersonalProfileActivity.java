@@ -80,6 +80,7 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         btn_certificate = findViewById(R.id.womenCircleImageView);
 
         imageUserLogo = findViewById(R.id.userImageIcon);
+
         iv_camera = findViewById(R.id.iv_camera);
 
         context=this;
