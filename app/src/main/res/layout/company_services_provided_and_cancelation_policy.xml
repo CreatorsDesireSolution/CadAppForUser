@@ -32,10 +32,6 @@
                 android:textColor="@color/colorAccent"
                 android:layout_marginLeft="30dp"/>
 
-
-
-
-
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
@@ -205,10 +201,19 @@
                     android:buttonTint="@color/colorAccent"
                     android:text="Pre-approval"
                     android:textSize="15dp" />
-
-
             </RadioGroup>
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15sp"
+            android:layout_marginLeft="20dp"
+            android:textColorHint="#FFF"
+            android:layout_marginRight="20dp"
+            android:hint="Submit"
+            android:layout_marginBottom="15sp"
+            android:background="@drawable/btnback"></Button>
     </LinearLayout>
     </ScrollView>
 

@@ -377,7 +377,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-               startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
+               //startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
                 break;
             case R.id.nav_chat:
                 //startActivity(new Intent(HomePageActivity.this,SearchByNameOrServicesOrNearby.class));
