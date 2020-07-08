@@ -56,7 +56,7 @@ import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
 
 public class CertificationActivity extends AppCompatActivity {
 
-    TextView txt_uploadcertification, txt_uploadPicture;
+    TextView txt_uploadcertification;
     Button btn_nextcertificate;
 
     Bitmap bitmap, bitmap1;
@@ -81,7 +81,7 @@ public class CertificationActivity extends AppCompatActivity {
         context = this;
 
         act_session = new Act_Session(getApplicationContext());
-        txt_uploadPicture = findViewById(R.id.txt_uploadPicture);
+
         txt_uploadcertification = findViewById(R.id.txt_uploadcertification);
         imageViewcertificate = findViewById(R.id.imageView2);
         imageViewworkperform = findViewById(R.id.imageView4);

@@ -80,7 +80,7 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         userLocation=findViewById(R.id.userLocation);
         userBackground=findViewById(R.id.userBackground);
         userEditor=findViewById(R.id.editProfile);
-        iv_profile_bck=findViewById(R.id.iv_profile_bck);
+
         tv_profile_heading=findViewById(R.id.tv_profile_heading);
         workperformed = findViewById(R.id.menCircleImageView);
         btn_certificate = findViewById(R.id.womenCircleImageView);

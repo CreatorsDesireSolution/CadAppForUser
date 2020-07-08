@@ -131,7 +131,6 @@ public class FreelancerServicesProvide extends AppCompatActivity {
         adress=intent.getStringExtra("address");
         etAtMyPlace.setText(adress);
 
-
         calendarView=Calendar.getInstance();
         final int hours=calendarView.get(Calendar.HOUR_OF_DAY);
         final int minute=calendarView.get(Calendar.MINUTE);
@@ -147,7 +146,6 @@ public class FreelancerServicesProvide extends AppCompatActivity {
 
                 } else {
                     chec="1";
-
                     AlertDialog.Builder alert;
                     if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
                         alert=new AlertDialog.Builder(FreelancerServicesProvide.this,android.R.style.Theme_Material_Dialog_Alert);

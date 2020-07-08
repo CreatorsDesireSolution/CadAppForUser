@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".CompanyPersonalProfileActivity"></activity>
 
         <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
         <activity android:name=".SeeAll.SeeAllCompany"></activity>

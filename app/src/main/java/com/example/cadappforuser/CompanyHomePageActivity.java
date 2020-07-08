@@ -271,7 +271,6 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-
                //startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
                 break;
             case R.id.nav_setbackground:
@@ -279,9 +278,6 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 break;
             case R.id.nav_profile:
                  startActivity(new Intent(CompanyHomePageActivity.this,CompanyPersonalProfileActivity.class));
-                break;
-                     case R.id.nav_set_avalibilty:
-               // startActivity(new Intent(HomePageActivity.this,SetAvalibiltyCustomActivity.class));
                 break;
             case R.id.nav_history:
                 //startActivity(new Intent(HomePageActivity.this,SearchServices.class));
@@ -299,9 +295,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             case R.id.nav_company_services_provided_and_cancelataion_policy:
                startActivity(new Intent(CompanyHomePageActivity.this,CompanyServicesProvidedAndCancelationPolicy.class));
                break;
-            case R.id.nav_company_services_offered:
-                startActivity(new Intent(CompanyHomePageActivity.this,CompanyShowServices.class));
-                 break;
+
             case R.id.nav_company_add_services_manually:
                 startActivity(new Intent(CompanyHomePageActivity.this,SelectCompanyServicegender.class));
                 break;
