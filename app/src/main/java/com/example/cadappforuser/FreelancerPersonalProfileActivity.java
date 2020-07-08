@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +54,8 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
     Context context;
     String firstname,lastname,background,email,mobile,gender,address;
     ImageView workperformed,btn_certificate;
-    CircleImageView iv_camera;
-    ImageView imageUserLogo;
+    LinearLayout iv_camera;
+    CircleImageView imageUserLogo;
     Bitmap bitmap;
     Uri file,fileget;
     String encodeImage,encodeimage1;

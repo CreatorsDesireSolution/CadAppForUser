@@ -109,32 +109,47 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
                     android:id="@+id/frame1"
+                    android:gravity="center"
                     android:layout_centerHorizontal="true">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
                         android:layout_centerHorizontal="true"
                         android:id="@+id/userImageIcon"
-                        android:src="@drawable/ic_account_circle_black_24dp"></de.hdodenhof.circleimageview.CircleImageView>
+                        android:src="@drawable/ic_account_circle_black_24dp"/>
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/iv_camera"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        android:background="@drawable/circle_profileupload"
-                        android:src="@drawable/ic_photo_camera_black_24dp"
-                        android:layout_gravity="bottom|right"
 
-                        />
-                </FrameLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <LinearLayout
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="70dp"
+                            android:layout_marginTop="55dp"
+                            android:id="@+id/iv_camera"
+                            android:gravity="center">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:padding="5dp"
+                                android:background="@drawable/circle_profileupload"
+                                android:src="@drawable/ic_photo_camera_black_24dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -205,7 +220,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -402,10 +416,10 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/womenCircleImageView"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_weight=".5"
                         android:background="@drawable/certificate_drwable"
                         android:backgroundTint="@color/quantum_orange"
@@ -414,13 +428,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_centerInParent="true"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center"
-                        android:text="View Certificate"
+                        android:text="View \nCertificate"
                         android:textAlignment="gravity"
                         android:textColor="@color/white" />
 
@@ -438,33 +449,29 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/menCircleImageView"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="15dp"
                         android:background="@drawable/certificate_drwable"
                         android:layout_marginRight="20dp"
                         android:layout_weight=".5"
-                        android:src="@drawable/certificate" />
+                        android:src="@drawable/experience" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_centerInParent="true"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center"
-                        android:text="View WorkPerformed"
+                        android:text="View \nWorkPerformed"
                         android:textAlignment="gravity"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorAccent" />
 
                 </RelativeLayout>
 
             </LinearLayout>
-
 
             <Button
                 android:id="@+id/btnSumbit"
