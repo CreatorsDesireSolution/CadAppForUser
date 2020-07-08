@@ -75,7 +75,8 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
     Act_Session act_session;
     TextView tv_headername,tv_headermobile;
     String name,mobile;
-String latitute,longitute;
+    String latitute,longitute;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -129,7 +130,6 @@ String latitute,longitute;
                 intent1.putExtra("mobilenumber",mobilenumber);
                 intent1.putExtra("image",file);
                 startActivity(intent1);
-
             }
         });
 
@@ -153,6 +153,8 @@ String latitute,longitute;
 
         latitute = String.valueOf(lat);
         longitute = String.valueOf(lng);
+
+
 
 //        encodeImage= intent2.getParcelableExtra("image");
        // imageUserLogo.setImageBitmap();
@@ -347,7 +349,6 @@ String latitute,longitute;
 
             }
         });
-
         RequestBody firstname_ = RequestBody.create(MediaType.parse("text/plain"),firstname );
         RequestBody lastname_ = RequestBody.create(MediaType.parse("text/plain"),lastname );
         RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), email);
@@ -356,15 +357,14 @@ String latitute,longitute;
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
-        RequestBody latitute_ = RequestBody.create(MediaType.parse("text/plain"), latitute);
-        RequestBody longitute_ = RequestBody.create(MediaType.parse("text/plain"), longitute);
         RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
-
+        RequestBody lati = RequestBody.create(MediaType.parse("text/plain"), latitute);
+        RequestBody longi = RequestBody.create(MediaType.parse("text/plain"), longitute);
 
 
 
         baseRequest.callApiRegisterfreelancer(1,"https://aoneservice.net.in/" , firstname_,
-                lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_,latitute_,longitute_,profile_pic);
+                lastname_, email_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic,lati,longi);
 
     }
 

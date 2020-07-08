@@ -131,7 +131,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         tv_headername = findViewById(R.id.tv_headername);
         tv_headernumber = findViewById(R.id.tv_headenumber);
 
-        retrivesharedPreferences();
+     //   retrivesharedPreferences();
 
 
 //        file1 = act_session.profile_pic;
@@ -233,12 +233,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
 
-
-
         ad_companymodels = new ArrayList<>();
-
-
-
 
         StringRequest request1=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_data_api.php", new Response.Listener<String>() {
             @Override
@@ -333,7 +328,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             super.onBackPressed();
         }
     }
-    private void retrivesharedPreferences()
+   /* private void retrivesharedPreferences()
     {
         SharedPreferences shared = getSharedPreferences("MyPref", MODE_PRIVATE);
         String photo = shared.getString("profile_pic", "photo");
@@ -348,7 +343,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                     .resize(400, 400).centerCrop().into(nav_image);
         }
 
-    }
+    }*/
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

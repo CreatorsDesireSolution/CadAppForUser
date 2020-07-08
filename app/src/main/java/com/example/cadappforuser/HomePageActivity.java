@@ -434,12 +434,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 startActivity(new Intent(HomePageActivity.this,Act_ContactUs.class));
                 break;
 
-
-
-
-
-
-
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;

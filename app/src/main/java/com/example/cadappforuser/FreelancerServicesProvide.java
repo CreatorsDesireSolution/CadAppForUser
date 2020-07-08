@@ -163,9 +163,7 @@ public class FreelancerServicesProvide extends AppCompatActivity {
                     txtStartTime=view.findViewById(R.id.txtStartTime);
                     txtSelectDay=view.findViewById(R.id.txtSelectDay);
 
-
                     btnAddSet=view.findViewById(R.id.btnAddSet);
-
 
                     txtStartTime.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -231,7 +229,6 @@ public class FreelancerServicesProvide extends AppCompatActivity {
                             btn_done.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-
                                     String r = "";
                                     if (chk1.isChecked()) {
                                         r = r + "," + chk1.getText();
