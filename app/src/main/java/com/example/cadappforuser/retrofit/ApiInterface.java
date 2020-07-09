@@ -224,7 +224,8 @@ public interface ApiInterface {
                                            @Part("email") RequestBody email_,
                                            @Part("mobilenumber") RequestBody mobilenumber_,
                                            @Part("gender") RequestBody gender_,
-                                           @Part("address") RequestBody address_
+                                           @Part("address") RequestBody address_,
+                                           @Part("profile_pic") RequestBody profile_pic
 
     );
 

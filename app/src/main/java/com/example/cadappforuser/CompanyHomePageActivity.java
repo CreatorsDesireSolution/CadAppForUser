@@ -125,7 +125,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             String base=img_str;
             byte[] imageAsBytes = Base64.decode(base.getBytes(), Base64.DEFAULT);
             encodeimage=android.util.Base64.encodeToString(imageAsBytes, Base64.DEFAULT);
-//            imgview.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
+//           imgview.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
         }
 
 
