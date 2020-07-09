@@ -141,7 +141,8 @@ public interface ApiInterface {
                                                    @Part("regnumber") RequestBody reginumber,
                                                    @Part("mobilenumber") RequestBody mobile_,
                                                    @Part("address") RequestBody address,
-                                                   @Part("email") RequestBody email
+                                                   @Part("email") RequestBody email,
+                                                   @Part("profile_pic") RequestBody profile_pic
 
 
     );

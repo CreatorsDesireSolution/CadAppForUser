@@ -61,7 +61,6 @@
         <activity android:name=".Act_ShowDayForStaff" />
         <activity android:name=".CurrentLocationofcompanyStaff" />
         <activity android:name=".Act_seemoredetails_Company" />
-        <activity android:name=".Act_CompanyPersonalProfileEdit" />
         <activity android:name=".Act_seemoredetails_Freelancer" />
         <activity android:name=".Act_FreelancerPersonalEditProfile" />
         <activity android:name=".Act_ContactUs" />
@@ -70,7 +69,6 @@
         <activity android:name=".SelectGenderCustomerServiceList" />
         <activity android:name=".Act_FreelancerProfileOnlyShow" />
         <activity android:name=".Act_CompanyNewProfileOnlyShow" />
-        <activity android:name=".CompanyPersonalProfile" />
         <activity android:name=".FreelancerPersonalProfile" />
         <activity android:name=".AddServiceSelectGender" />
         <activity android:name=".ServicesListActivityForShow" />

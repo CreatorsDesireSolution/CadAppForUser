@@ -57,6 +57,7 @@ import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,6 +91,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     TextView txtCurrentLocation;
     TextView seeAll,seeAllFree;
     String lastname,fullname,name,mobile;
+    ImageView nav_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +118,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = hView.findViewById(R.id.tv_headername);
         TextView nav_mobile =hView.findViewById(R.id.tv_headenumber);
+        nav_image=hView.findViewById(R.id.profileimage);
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
@@ -124,6 +127,12 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         nav_user.setText(fullname);
         nav_mobile .setText(mobile);
+
+
+        act_session=new Act_Session(context);
+     //   act_session.getuser(act_session.profile_pic );
+//        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+act_session.profile_pic).
+//                resize(400, 400).centerCrop().into(nav_image);
 
         searchView = findViewById(R.id.searchview);
 

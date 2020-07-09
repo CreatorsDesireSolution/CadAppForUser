@@ -9,22 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
-import com.example.cadappforuser.Act_CompanyPersonalProfileEdit;
 import com.example.cadappforuser.Act_Session;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.ServiceDescription;
-import com.example.cadappforuser.ServiceModel.AllServiceModel;
-import com.example.cadappforuser.SqliteDatabase.FavDB;
-import com.example.cadappforuser.model.Ad_freelancermodel;
-import com.example.cadappforuser.model.CompanyAddServiceModel;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.squareup.picasso.Picasso;
 

@@ -323,4 +323,7 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
         encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
+
+
+
 }

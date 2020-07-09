@@ -415,6 +415,9 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     act_session = new Act_Session(context, jsonObject1);
 
+                    String image=jsonObject.optString("profile_pic");
+                    act_session.saveImage(getApplicationContext(),image);
+
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MobileNumberRegisterActivity.class);
                     intent.putExtra("mobilenumber",mobilenumber);
