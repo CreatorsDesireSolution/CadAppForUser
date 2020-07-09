@@ -110,7 +110,7 @@ public class CurrentLocation3 extends AppCompatActivity implements OnMapReadyCal
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(CurrentLocation3.this, Act_CompanyPersonalProfileEdit.class);
+                    Intent intent = new Intent(CurrentLocation3.this, CompanyPersonalProfileActivity.class);
 
                     intent.putExtra("address", fullAddress);
 

@@ -300,11 +300,12 @@ actionBar.setTitle("Profile");
         RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobile);
         RequestBody  address_= RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody  email_= RequestBody.create(MediaType.parse("text/plain"), email);
+        RequestBody  profile_pic= RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
         baseRequest.CallUpdateprofileComapay(1,"https://aoneservice.net.in/" , companyname_, background_,
-                staff,register_no,mobilenumber_,address_,email_);
+                staff,register_no,mobilenumber_,address_,email_,profile_pic);
 
     }
 

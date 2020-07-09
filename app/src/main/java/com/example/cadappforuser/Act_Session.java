@@ -23,6 +23,8 @@ public class Act_Session {
     Bitmap bitmap;
     String encodeImage;
 
+    SharedPreferences sharedPreferences;
+
 
     public Act_Session(Context context, String signupStage) {
         this.signupStage = signupStage;
@@ -98,6 +100,20 @@ public class Act_Session {
 
         // this.session_id = sharedPreferences.getString("id", "");
     }
+
+
+
+    public void saveImage( Context context,String profile_pic) {
+         sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putString("profile_pic", profile_pic);
+        prefsEditor.commit();
+    }
+
+//    public String getuser(String profile_pic)
+//    {
+//        return sharedPreferences.getString(profile_pic,null);
+//    }
 
     public void userId(Context context, String userId) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

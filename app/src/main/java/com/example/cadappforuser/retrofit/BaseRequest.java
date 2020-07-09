@@ -408,7 +408,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void CallUpdateprofileComapay(final int APINumber, String remainingURL, RequestBody compnyanme, RequestBody background,
                                             RequestBody staff_, RequestBody registernumber, RequestBody mobile_,
-                                            RequestBody address_,RequestBody email_) {
+                                            RequestBody address_,RequestBody email_,RequestBody profile_pic) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -417,7 +417,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postupdateprofileCompany(compnyanme,background,staff_,registernumber,mobile_,
-                address_,email_);
+                address_,email_,profile_pic);
         call.enqueue(responseCallback);
     }
 
