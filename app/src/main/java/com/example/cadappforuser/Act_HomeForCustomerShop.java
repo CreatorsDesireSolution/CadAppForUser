@@ -128,7 +128,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
 //        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
 //        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
 
-        companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
+      //  companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
         LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView1.setLayoutManager(linearLayoutManager4);
         recyclerView1.setHasFixedSize(true);
