@@ -139,7 +139,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
     public class CompanyNewVIewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView facialImageFreelancer;
         TextView tv_freelancername;
-        RatingBar ratingBar;
+        ImageView ratingBar;
         private ItemClickListner itemClickListner;
         public CompanyNewVIewHolder(@NonNull View itemView) {
             super(itemView);
