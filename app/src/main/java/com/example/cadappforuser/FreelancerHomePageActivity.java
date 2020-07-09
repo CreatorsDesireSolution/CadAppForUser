@@ -102,6 +102,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar.setTitle("home");
+
         act_session = new Act_Session(getApplicationContext());
 
 
@@ -310,6 +312,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView1.setNavigationItemSelectedListener(this);
+
+
 
         if(Build.VERSION.SDK_INT>=21){
             Window window=this.getWindow();

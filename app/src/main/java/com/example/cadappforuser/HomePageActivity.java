@@ -208,7 +208,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         Log.d("lng","lng"+(lng));
 
 
-        Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
@@ -234,7 +234,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                                 String experinace=object.getString("experience");
                                 //String gender = object.getString("gender");
                                 String km=object.getString("km");
-                                Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                             //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                                 String address = object.getString("address");
                                 String aboutus=object.getString("about_yourself");
                                 //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
@@ -294,7 +294,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String mobilenumber = object.getString("mobilenumber");
                             String experinace=object.getString("total_year_establishment");
                             String km=object.getString("km");
-                            Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_company");
 
@@ -478,12 +478,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             case  R.id.nav_contactus:
                 startActivity(new Intent(HomePageActivity.this,Act_ContactUs.class));
                 break;
-
-
-
-
-
-
 
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
