@@ -66,7 +66,8 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     BaseRequest baseRequest;
     EditText et_staff;
     String companyname, registrationnumber, address, mobilenumber, email, password, aboutcompany, staff;
-
+    String latitute,longitute;
+    double lat,lng;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,6 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(RegisterAsCompanyActivity.this, CompanyCurrentLocation.class);
                 intent1.putExtra("name", companyname);
                 intent1.putExtra("registernumber", registrationnumber);
-
                 intent1.putExtra("mobileaddress", mobilenumber);
                 intent1.putExtra("email", email);
                 intent1.putExtra("image",file);
@@ -118,9 +118,25 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         registrationnumber = intent2.getStringExtra("registernumber");
         mobilenumber = intent2.getStringExtra("mobileaddress");
         email = intent2.getStringExtra("email");
-
         file1 = getIntent().getParcelableExtra("image");
         imageUserLogo.setImageURI(file1);
+
+
+        try{
+            Bundle b = getIntent().getExtras();
+            lat= b.getDouble("lat");
+            lng=b.getDouble("lng");
+            latitute = String.valueOf(lat);
+            longitute = String.valueOf(lng);
+           // Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
+
+        }
+        catch (Exception e){
+           // Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
+
+        Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
+
 
 
         etCompanyName.setText(companyname);
@@ -136,13 +152,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
         final String tmDevice, tmSerial, androidId;
         if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    Activity#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for Activity#requestPermissions for more details.
+
             return;
         }
         tmDevice = "" + tm.getDeviceId();
@@ -151,28 +161,6 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
-
-
-//        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//            deviceId = Settings.Secure.getString(
-//                    context.getContentResolver(),
-//                    Settings.Secure.ANDROID_ID);
-//        } else {
-//            if (marshMallowPermission.checkPermissionForPhoneState()) {
-//                final TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-//                if (ActivityCompat.checkSelfPermission(RegisterAsCompanyActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//                    return;
-//                }
-//                if (TelephonyMgr.getDeviceId() != null) {
-//                    deviceId = TelephonyMgr.getDeviceId();
-//                } else {
-//                    deviceId = Settings.Secure.getString(
-//                            context.getContentResolver(),
-//                            Settings.Secure.ANDROID_ID);
-//                }
-//            }
-//        }
-
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -309,11 +297,13 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         RequestBody deviceId_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody staff_ = RequestBody.create(MediaType.parse("text/plain"), staff);
         RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+        RequestBody latitude1 = RequestBody.create(MediaType.parse("text/plain"), latitute);
+        RequestBody longitude1 = RequestBody.create(MediaType.parse("text/plain"), longitute);
 
 
 
         baseRequest.callAPIRegisterascompany(1,"https://aoneservice.net.in/" , companyname_,
-                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_,profile_pic);
+                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_,profile_pic,latitude1,longitude1);
 
     }
 

@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -323,7 +324,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     public void callAPIRegisterascompany(final int APINumber, String remainingURL, RequestBody companyname_,
                                          RequestBody aboutcompany_, RequestBody address_, RequestBody mobilenumber_,
                                          RequestBody email_, RequestBody password_, RequestBody register_no,
-                                         RequestBody deviceid_, RequestBody staff_,RequestBody profile_) {
+                                         RequestBody deviceid_, RequestBody staff_, RequestBody profile_, RequestBody latitude, RequestBody longitude) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -332,7 +333,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postregistercompany(companyname_,aboutcompany_,address_,mobilenumber_,
-                email_,password_,register_no,deviceid_,staff_,profile_);
+                email_,password_,register_no,deviceid_,staff_,profile_ ,latitude,longitude);
         call.enqueue(responseCallback);
     }
 

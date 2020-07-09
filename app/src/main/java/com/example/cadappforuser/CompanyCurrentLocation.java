@@ -47,7 +47,7 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
     Uri path;
-
+    double lat,lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +91,9 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
         LatLng latLng=new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+        lat=currentLocation.getLatitude();
+        lng=currentLocation.getLongitude();
+
         mMap.addMarker(new MarkerOptions().position(latLng));
         CameraUpdate cameraUpdateFactory= CameraUpdateFactory.newLatLngZoom(latLng,17);
         mMap.moveCamera(cameraUpdateFactory);
@@ -121,12 +124,17 @@ public class CompanyCurrentLocation extends AppCompatActivity implements OnMapRe
                     intent.putExtra("address",fullAddress);
                     intent.putExtra("name",companyname);
                     intent.putExtra("registernumber",registrationnumber);
-                 //   intent.putExtra("address",address);
                     intent.putExtra("mobileaddress",mobilenumber);
                     intent.putExtra("email",email);
                     intent.putExtra("image",path);
 
+                    Bundle b = new Bundle();
+                    b.putDouble("lat", lat);
+                    b.putDouble("lng",lng);
+                    intent.putExtras(b);
+                   // Toast.makeText(CompanyCurrentLocation.this, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
+
                 }
             });
         } catch (IOException e) {

@@ -110,9 +110,6 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         name = act_session.firstname;
         mobile = act_session.mobilenumber;
 
-       // tv_headername.setText(name);
-
-
         etAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,30 +133,19 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
         Intent intent2 = getIntent();
         etAddress.setText(intent2.getStringExtra("address"));
         address = intent2.getStringExtra(address);
-
         firstname=intent2.getStringExtra("firstname");
         lastname=intent2.getStringExtra("lastname");
         email=intent2.getStringExtra("email");
         mobilenumber=intent2.getStringExtra("mobilenumber");
-
-
-       file1 = intent2.getParcelableExtra("image");
-       imageUserLogo.setImageURI(file1);
+        file1 = intent2.getParcelableExtra("image");
+        imageUserLogo.setImageURI(file1);
 
 
         Bundle b = getIntent().getExtras();
         double lat= b.getDouble("lat");
         double lng=b.getDouble("lng");
-
         latitute = String.valueOf(lat);
         longitute = String.valueOf(lng);
-
-
-
-//        encodeImage= intent2.getParcelableExtra("image");
-       // imageUserLogo.setImageBitmap();
-
-       // bitmap= BitmapFactory.decodeStream("");
 
 
         etFirstName.setText(firstname);
