@@ -123,7 +123,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+
                         android:orientation="horizontal"
                         android:weightSum="2">
 
@@ -151,24 +151,6 @@
                                 android:textSize="13dp" />
 
                         </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:text="/"
-                            android:textSize="15dp" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="3dp"
-                            android:layout_weight="1.5"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="33 users"
-                            android:textSize="13dp" />
 
                     </LinearLayout>
 
