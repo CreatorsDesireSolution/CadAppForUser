@@ -48,24 +48,23 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Haircut"
-            android:numStars="5"
-            android:src="@drawable/starorange"
             android:id="@+id/ratingbar"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/freelancer"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:isIndicator="true"
+            android:numStars="5"
             android:rating="5"
+
             android:scaleX="0.6"
             android:scaleY="0.6"
-
-            android:transformPivotX="0dp"
-            android:transformPivotY="0dp"
-            android:isIndicator="true"
-            android:layout_marginTop="2dp"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@+id/freelancer"
+            android:src="@drawable/starorange"
+            android:text="Haircut"
             android:textStyle="normal"
-            ></ImageView>
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"

@@ -126,6 +126,8 @@ public class StaffCertificationActivity extends AppCompatActivity {
                             if(status.equals("true") || message.equals("Success")){
                                 progressDialog.dismiss();
                                 Toast.makeText(StaffCertificationActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(),CompanyHomePageActivity.class);
+                                startActivity(intent);
                             }
                             else
                             {

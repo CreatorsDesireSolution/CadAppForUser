@@ -157,6 +157,8 @@ public class SignInActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     act_session = new Act_Session(context, jsonObject1);
+                    String image=jsonObject1.getString("profile_pic");
+                    act_session.saveImage(getApplicationContext(),image);
                     progressDialog.cancel();
                     if (act_session.flag.equals("0")) {
                         Intent intent = new Intent(SignInActivity.this, SelectHomeOrShop.class);

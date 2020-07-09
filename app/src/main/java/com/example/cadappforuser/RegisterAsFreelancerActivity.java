@@ -304,6 +304,9 @@ public class RegisterAsFreelancerActivity extends AppCompatActivity {
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     act_session = new Act_Session(context, jsonObject1);
 
+                    String image=jsonObject.optString("profile_pic");
+                    act_session.saveImage(getApplicationContext(),image);
+
                     Toast.makeText(getApplicationContext(), "Register Successfully", Toast.LENGTH_SHORT).show();
                    // startActivity(new Intent(RegisterAsFreelancerActivity.this, FreelancerMobileNumberRegisterActivity.class));
                     Intent intent = new Intent(getApplicationContext(),FreelancerMobileNumberRegisterActivity.class);

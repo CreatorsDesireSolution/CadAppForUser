@@ -5,12 +5,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +66,8 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     BaseRequest baseRequest;
     String name,mobile;
     TextView seeAll,seeAllFree;
+    ImageView imgview;
+    String encodeimage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +108,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
         TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
+        imgview  = (ImageView)hView.findViewById(R.id.profileimage) ;
         name = act_session.companyname;
         mobile = act_session.mobilenumber;
 
@@ -112,6 +118,15 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         nav_mobile .setText(mobile);
 
         Toast.makeText(activity, name, Toast.LENGTH_SHORT).show();
+
+        String img_str=act_session.profile_pic;
+        if (!img_str.equals("")){
+            //decode string to image
+            String base=img_str;
+            byte[] imageAsBytes = Base64.decode(base.getBytes(), Base64.DEFAULT);
+            encodeimage=android.util.Base64.encodeToString(imageAsBytes, Base64.DEFAULT);
+//            imgview.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
+        }
 
 
         seeAll.setOnClickListener(new View.OnClickListener() {
