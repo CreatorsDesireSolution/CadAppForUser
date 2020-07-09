@@ -341,7 +341,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void CallApiPOstStaff(final int APINumber, String remainingURL, RequestBody userid_,
                                          RequestBody firstname_, RequestBody lastname_, RequestBody email_,
-                                         RequestBody mobilenumber_, RequestBody gender_,RequestBody address_) {
+                                         RequestBody mobilenumber_, RequestBody gender_,RequestBody address_,RequestBody profile_pic) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -350,7 +350,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postsatff(userid_,firstname_,lastname_,email_,
-                mobilenumber_,gender_,address_);
+                mobilenumber_,gender_,address_,profile_pic);
         call.enqueue(responseCallback);
     }
 

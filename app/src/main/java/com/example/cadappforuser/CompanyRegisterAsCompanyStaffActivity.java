@@ -1,24 +1,41 @@
 package com.example.cadappforuser;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -34,6 +51,12 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
     BaseRequest baseRequest;
     Act_Session act_session;
     Context context;
+    CircleImageView iv_camera;
+    ImageView imageUserLogo;
+    Bitmap bitmap;
+    String encodeImage;
+    Uri file,file1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +76,8 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         etUsePhoneNumber = findViewById(R.id.etUsePhoneNumber);
         etAddress = findViewById(R.id.etAddress);
         etReferralCode = findViewById(R.id.etReferralCode);
+        imageUserLogo = findViewById(R.id.userImageIcon);
+        iv_camera = findViewById(R.id.iv_camera);
 
         final Intent intent=getIntent();
          gender=intent.getStringExtra("gender");
@@ -127,6 +152,40 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
              }
          });
 
+
+        iv_camera.setOnClickListener(
+
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Dexter.withActivity(CompanyRegisterAsCompanyStaffActivity.this)
+                                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                                .withListener(new PermissionListener() {
+                                    @Override
+                                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+
+                                        Intent intent = new Intent(Intent.ACTION_PICK);
+                                        intent.setType("image/*");
+                                        startActivityForResult(Intent.createChooser(intent, "Select Image"), 1);
+                                    }
+
+                                    @Override
+                                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                    }
+
+                                    @Override
+                                    public void onPermissionRationaleShouldBeShown(com.karumi.dexter.listener.PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                        permissionToken.continuePermissionRequest();
+
+                                    }
+
+                                }).check();
+                    }
+                });
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
@@ -140,11 +199,16 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    act_session = new Act_Session(context, jsonObject1);
 
-                    Toast.makeText(getApplicationContext(), "Add Successfully", Toast.LENGTH_SHORT).show();
+                    String staff_id=jsonObject1.getString("staffid");
+                    act_session.userstaffid(getApplicationContext(),staff_id);
+                   // act_session = new Act_Session(context, jsonObject1);
+
+                    Toast.makeText(getApplicationContext(), "Add Successfully"+act_session.staffid, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CompanyRegisterAsCompanyStaffActivity.this,CompanySetAvalibiltyCustomActivityStaff.class));
 
+
+                    
 
                     finish();
 
@@ -178,14 +242,46 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobilenumber);
         RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
         baseRequest.CallApiPOstStaff(1,BASE_URL , userid,
-                firstname_, lastname_, email_,mobilenumber_,gender_,address_);
+                firstname_, lastname_, email_,mobilenumber_,gender_,address_,profile_pic);
 
 
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode==1 && resultCode==RESULT_OK && data!=null){
+
+            file=data.getData();
+            try {
+                InputStream inputStream=getContentResolver().openInputStream(file);
+                bitmap= BitmapFactory.decodeStream(inputStream);
+                imageUserLogo.setImageBitmap(bitmap);
+
+                imageStore(bitmap);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void imageStore(Bitmap bitmap) {
+        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] imageBytes=stream.toByteArray();
+        encodeImage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
+
+
+
+
 
 
     @Override
