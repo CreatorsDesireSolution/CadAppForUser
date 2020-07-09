@@ -136,6 +136,7 @@ public class FreelancerCurrentLocation extends AppCompatActivity implements OnMa
                     b.putDouble("lat", lat);
                     b.putDouble("lng",lng);
                     intent.putExtras(b);
+
                     startActivity(intent);
                 }
             });

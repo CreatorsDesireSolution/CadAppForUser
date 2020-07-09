@@ -332,9 +332,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
                                 CompanyDetailsModel model = new CompanyDetailsModel();
                                 model.setCompanyname(companyNewModels.get(0).getCompanyname());
-
-                                // companyAddServiceModels2.add(model);
-                                CompanyDetailsAdapter companyDetailsAdapter =new CompanyDetailsAdapter(HomePageActivity.this, companyNewModels,activity,act_session);
+                                 CompanyDetailsAdapter companyDetailsAdapter =new CompanyDetailsAdapter(HomePageActivity.this, companyNewModels,activity,act_session);
                                 LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
                                 recyclerView1.setLayoutManager(layoutManager1);
                                 recyclerView1.setHasFixedSize(true);

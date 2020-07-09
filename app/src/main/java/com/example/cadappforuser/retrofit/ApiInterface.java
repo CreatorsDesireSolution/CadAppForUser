@@ -208,7 +208,9 @@ public interface ApiInterface {
                                            @Part("regnumber") RequestBody regnumber_,
                                            @Part("deviceid") RequestBody deviceid_,
                                            @Part("no_of_staff") RequestBody staff_,
-                                           @Part("profile_pic") RequestBody profile_pic
+                                           @Part("profile_pic") RequestBody profile_pic,
+                                           @Part("latitude") RequestBody latitude_,
+                                           @Part("longitude") RequestBody longitude_
     );
 
 
