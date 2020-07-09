@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -41,6 +42,7 @@ import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -119,15 +121,18 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
         Toast.makeText(activity, name, Toast.LENGTH_SHORT).show();
 
-        String img_str=act_session.profile_pic;
-        if (!img_str.equals("")){
-            //decode string to image
-            String base=img_str;
-            byte[] imageAsBytes = Base64.decode(base.getBytes(), Base64.DEFAULT);
-            encodeimage=android.util.Base64.encodeToString(imageAsBytes, Base64.DEFAULT);
-//            imgview.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length) );
+        try{
+            String img_str=act_session.profile_pic;
+            Log.d("prof","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco","nco"+img_str);
+                Log.d("prof","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
+                        resize(100, 100).centerCrop().into(imgview);
+            }
+        }catch (Exception e){
+            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
         }
-
 
         seeAll.setOnClickListener(new View.OnClickListener() {
             @Override
