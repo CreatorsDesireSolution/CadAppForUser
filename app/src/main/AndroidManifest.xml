@@ -24,15 +24,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".CustomerPersonalProfileActivity"></activity>
         <activity android:name=".CompanyPersonalProfileActivity"></activity>
 
         <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
         <activity android:name=".SeeAll.SeeAllCompany"></activity>
-        <activity android:name=".FreelancerPersonalProfileActivity" >
-
-
-        </activity>
-        <activity android:name=".CustomerPersonalProfileActivity"></activity>
+        <activity android:name=".FreelancerPersonalProfileActivity" ></activity>
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
         <activity android:name=".FreelancerGetCertificateForShow" />

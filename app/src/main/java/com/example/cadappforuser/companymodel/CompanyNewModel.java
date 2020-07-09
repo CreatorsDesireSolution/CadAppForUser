@@ -2,13 +2,13 @@ package com.example.cadappforuser.companymodel;
 
 public class CompanyNewModel {
 
-    int image;
+    String image;
     String name;
     float rating;
 
     String email,mobile,lastname,address,experience,about_yourself;
 
-    public CompanyNewModel(int image, String name, float rating, String email, String mobile, String lastname, String address,String experience,String about_yourself) {
+    public CompanyNewModel(String image, String name, float rating, String email, String mobile, String lastname, String address,String experience,String about_yourself) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -20,11 +20,11 @@ public class CompanyNewModel {
         this.about_yourself=about_yourself;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

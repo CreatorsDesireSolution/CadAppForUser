@@ -54,12 +54,6 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
 
        final Ad_freelancermodel ad_freelancermodel=ad_freelancermodels.get(position);
         holder.tv_freelancername.setText(ad_freelancermodel.getName());
-      //  holder.ratingBar.setRating(ad_freelancermodel.getRating());
-
-        //String name=ad_freelancermodel.getName();
-       // holder.facialImageFreelancer.setImageResource(ad_freelancermodel.getImage());
-
-
         Picasso.get().load(ad_freelancermodel.getImage()).resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
 
         holder.setItemClickListner(new ItemClickListner() {
@@ -71,11 +65,7 @@ public class Ad_Freelancer extends RecyclerView.Adapter<Ad_Freelancer.ViewHolder
                 Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(context, Act_FreelancerProfileOnlyShow.class);
                 intent.putExtra("id",id);
-
                 context.startActivity(intent);
-
-
-
             }
         });
 

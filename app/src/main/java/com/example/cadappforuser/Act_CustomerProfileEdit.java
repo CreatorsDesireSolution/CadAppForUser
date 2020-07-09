@@ -38,7 +38,6 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act__customer_profile_edit);
 
-      //  context = this;
 
         iv_edit = findViewById(R.id.iv_edit);
         act_session = new Act_Session(getApplicationContext());

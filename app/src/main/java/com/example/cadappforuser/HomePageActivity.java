@@ -110,6 +110,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         final Intent intent=getIntent();
         txtCurrentLocation.setText(intent.getStringExtra("address"));
 
+        act_session=new Act_Session(context);
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
         recyclerView2=findViewById(R.id.recycleView2);
@@ -118,7 +119,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = hView.findViewById(R.id.tv_headername);
         TextView nav_mobile =hView.findViewById(R.id.tv_headenumber);
-        nav_image=hView.findViewById(R.id.profileimage);
+        nav_image=hView.findViewById(R.id.UserImageProfile);
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
@@ -128,11 +129,18 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         nav_user.setText(fullname);
         nav_mobile .setText(mobile);
 
-
-        act_session=new Act_Session(context);
-     //   act_session.getuser(act_session.profile_pic );
-//        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+act_session.profile_pic).
-//                resize(400, 400).centerCrop().into(nav_image);
+        try{
+            String img_str=act_session.profile_pic;
+            Log.d("prof1","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco1","nco"+img_str);
+                Log.d("prof1","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
+                        resize(100, 100).centerCrop().into(nav_image);
+            }
+        }catch (Exception e){
+            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
 
         searchView = findViewById(R.id.searchview);
 
@@ -237,10 +245,9 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                              //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                                 String address = object.getString("address");
                                 String aboutus=object.getString("about_yourself");
-                                //Toast.makeText(context, ""+aboutus, Toast.LENGTH_SHORT).show();
-                                //String item_image = object.getString("item_image");
-                                //String u = "https://inventivepartner.com/petmart/images/" + item_image;
-                                newModels.add(new NewModel(R.drawable.womanfacial,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                                String item_image = object.getString("profile_pic");
+                                String u = "http://aoneservice.net.in/salon/documents/" + item_image;
+                                newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
                                 newAdapter=new NewAdapter(HomePageActivity.this,newModels);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(newAdapter);
@@ -298,9 +305,9 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String address = object.getString("address");
                             String aboutus=object.getString("about_company");
 
-                            //String item_image = object.getString("item_image");
-                            //String u = "https://inventivepartner.com/petmart/images/" + item_image;
-                            companyNewModels.add(new CompanyNewModel(R.drawable.womanfacial,name,5,email,mobilenumber,regnumber,address,experinace,aboutus));
+                            String item_image = object.getString("profile_pic");
+                            String u = "http://aoneservice.net.in/salon/documents/" + item_image;
+                            companyNewModels.add(new CompanyNewModel(u,name,5,email,mobilenumber,regnumber,address,experinace,aboutus));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);

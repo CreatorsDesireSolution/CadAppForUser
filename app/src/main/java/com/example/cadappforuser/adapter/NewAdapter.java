@@ -20,6 +20,7 @@ import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,9 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         NewModel newModel=newModels.get(position);
         holder.tv_freelancername.setText(newModel.getName());
        // holder.ratingBar.setRating(newModel.getRating());
-        holder.facialImageFreelancer.setImageResource(newModel.getImage());
+       // holder.facialImageFreelancer.setImageResource(newModel.getImage());
+
+        Picasso.get().load(newModel.getImage()).resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
 
         final String name = newModel.getName();
         final String lastname = newModel.getLastname();

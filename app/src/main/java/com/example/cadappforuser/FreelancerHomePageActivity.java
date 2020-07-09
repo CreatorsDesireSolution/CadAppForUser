@@ -144,17 +144,26 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.tv_headername);
         TextView nav_mobile =(TextView)hView.findViewById(R.id.tv_headenumber);
-         nav_image =(ImageView)hView.findViewById(R.id.UserImageProfile);
+         nav_image =hView.findViewById(R.id.UserImageProfile);
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
-
         fullname = name + lastname;
-
         nav_user.setText(fullname);
         nav_mobile .setText(mobile);
 
-
+        try{
+            String img_str=act_session.profile_pic;
+            Log.d("prof","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco","nco"+img_str);
+                Log.d("prof","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
+                        resize(100, 100).centerCrop().into(nav_image);
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
+        }
 
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
