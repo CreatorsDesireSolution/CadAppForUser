@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,12 +16,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -70,6 +73,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
     TextView seeAll,seeAllFree;
     ImageView imgview;
     String encodeimage;
+    SearchView et_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,7 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
         recyclerView1=findViewById(R.id.recycleView1);
         seeAll = findViewById(R.id.seeAll);
         seeAllFree = findViewById(R.id.seeAllFree);
+        et_search= findViewById(R.id.et_search);
 
         Apigetdetail();
         ApiGetFreelancerDetail();
@@ -101,6 +106,18 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
         );
+
+
+        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
+        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+// set the hint text color
+        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+// set the text color
+        autoComplete.setTextColor(getResources().getColor(R.color.black));
+
         NavigationView navigationView=findViewById(R.id.navigation_view);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();

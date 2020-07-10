@@ -101,7 +101,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
     SearchView searchView;
     TextView seeAllFreelancer,seeAllCompany;
     ImageView serchicon;
-    EditText et_search;
+    SearchView et_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,37 +175,35 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
         }
 
-//        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
-//        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
-//        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
-//        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
-//        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
-//// set the hint text color
-//        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
-//// set the text color
-//        autoComplete.setTextColor(getResources().getColor(R.color.black));
+        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
+        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+// set the hint text color
+        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+// set the text color
+        autoComplete.setTextColor(getResources().getColor(R.color.black));
 
 
-        et_search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-//              newAdapter.getFilter().filter(s);
-//              companyNewAdapter.getFilter().filter(s);
-
-            }
-        });
+//        et_search.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+////              newAdapter.getFilter().filter(s);
+////              companyNewAdapter.getFilter().filter(s);
+//
+//            }
+//        });
 
 
 

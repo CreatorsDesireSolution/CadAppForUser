@@ -38,10 +38,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFF">
+                android:background="#fff">
 
-                <EditText
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:hint="Search by a name or shop"
                     android:inputType="text"
@@ -53,11 +53,11 @@
                     android:layout_marginTop="8dp"
                     android:layout_below="@+id/userImageIcon"
                     android:layout_marginLeft="13dp"
-                    android:background="@drawable/serachback"
                     android:textColor="#8B000000"
+                    android:iconifiedByDefault="false"
                     android:layout_marginBottom="5dp"
                     android:imeOptions="actionSearch"
-                    android:textStyle="normal"></EditText>
+                    android:textStyle="normal"></androidx.appcompat.widget.SearchView>
 
                 <ImageView
                     android:layout_width="wrap_content"

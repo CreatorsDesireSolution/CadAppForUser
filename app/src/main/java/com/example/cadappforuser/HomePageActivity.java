@@ -92,6 +92,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     TextView seeAll,seeAllFree;
     String lastname,fullname,name,mobile;
     ImageView nav_image;
+    SearchView et_search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +107,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         txtCurrentLocation=findViewById(R.id.txtLocation);
         seeAll = findViewById(R.id.seeAll);
         seeAllFree = findViewById(R.id.seeAllFree);
+        et_search= findViewById(R.id.et_search);
 
         final Intent intent=getIntent();
         txtCurrentLocation.setText(intent.getStringExtra("address"));
@@ -163,15 +165,15 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         //Apigetdetail();
 
 
-//        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
-//        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
-//        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
-//        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
-//        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
-//// set the hint text color
-//        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
-//// set the text color
-//        autoComplete.setTextColor(getResources().getColor(R.color.black));
+        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
+        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+// set the hint text color
+        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+// set the text color
+        autoComplete.setTextColor(getResources().getColor(R.color.black));
 //
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
