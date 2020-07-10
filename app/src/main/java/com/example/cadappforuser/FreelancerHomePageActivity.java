@@ -158,7 +158,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
-        fullname = name + lastname;
+        fullname = name + "  " + lastname;
         nav_user.setText(fullname);
         nav_mobile .setText(mobile);
 
@@ -194,8 +194,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                newAdapter.getFilter().filter(s);
-              companyNewAdapter.getFilter().filter(s);
+
             }
 
             @Override

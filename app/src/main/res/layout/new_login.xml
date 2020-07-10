@@ -90,6 +90,7 @@
                         android:scrollHorizontally="true"
                         android:singleLine="true"
                         android:text=""
+                        android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_email_black_24dp"
                         android:textSize="15dp"
                         android:textStyle="normal" />
@@ -127,6 +128,7 @@
                         android:layout_weight=".85"
                         android:background="@null"
                         android:hint="password"
+                        android:textColor="@color/black"
                         android:inputType="textPassword"
                         android:paddingLeft="10dp"
                         android:paddingTop="8dp"

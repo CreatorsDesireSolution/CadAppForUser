@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"
-        android:background="#8A636262"
+        android:background="#9A636262"
         android:padding="16dp"
         android:gravity="bottom">
 
