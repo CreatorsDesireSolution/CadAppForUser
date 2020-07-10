@@ -27,7 +27,6 @@
 
         <activity android:name=".CustomerPersonalProfileActivity"></activity>
         <activity android:name=".CompanyPersonalProfileActivity"></activity>
-
         <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
         <activity android:name=".SeeAll.SeeAllCompany"></activity>
         <activity android:name=".FreelancerPersonalProfileActivity" ></activity>
