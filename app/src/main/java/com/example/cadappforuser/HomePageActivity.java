@@ -144,7 +144,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
         }
 
-     //   searchView = findViewById(R.id.searchview);
+        searchView = findViewById(R.id.searchview);
 
         seeAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +165,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         //Apigetdetail();
 
 
-        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
         LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
@@ -175,17 +175,19 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 // set the text color
         autoComplete.setTextColor(getResources().getColor(R.color.black));
 //
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return true;
-//            }
-//        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+           @Override
+            public boolean onQueryTextChange(String newText) {
+                newAdapter.getFilter().filter(newText);
+                companyNewAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
 
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();

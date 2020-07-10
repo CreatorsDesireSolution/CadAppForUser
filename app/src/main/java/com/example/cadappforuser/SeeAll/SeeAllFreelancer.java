@@ -1,5 +1,6 @@
 package com.example.cadappforuser.SeeAll;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.cadappforuser.Act_Session;
@@ -38,6 +40,10 @@ public class SeeAllFreelancer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_all_freelancer);
 
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("See All Freelancer");
+
         recycleAll = findViewById(R.id.recycle_all);
        act_session = new Act_Session(getApplicationContext());
        context = this;
@@ -47,7 +53,23 @@ public class SeeAllFreelancer extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         recycleAll.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
         ApiGetFreelancerDetail();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
 
     private void ApiGetFreelancerDetail() {

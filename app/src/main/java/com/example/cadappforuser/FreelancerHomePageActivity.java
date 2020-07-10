@@ -136,7 +136,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         });
 
 
-       // searchView=findViewById(R.id.freelancerSearchView);
+       searchView=findViewById(R.id.freelancerSearchView);
         act_session = new Act_Session(getApplicationContext());
 
 
@@ -175,8 +175,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
         }
 
-        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
-        LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
+        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
         LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
         SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
@@ -186,24 +186,18 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         autoComplete.setTextColor(getResources().getColor(R.color.black));
 
 
-//        et_search.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-////              newAdapter.getFilter().filter(s);
-////              companyNewAdapter.getFilter().filter(s);
-//
-//            }
-//        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               ad_freelancer.getFilter().filter(newText);
+               ad_company.getFilter().filter(newText);
+               return true;
+            }
+        });
 
 
 

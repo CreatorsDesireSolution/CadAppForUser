@@ -49,7 +49,7 @@
                     android:paddingRight="13sp"
                     android:paddingLeft="13dp"
                     android:textColorHint="#000"
-                    android:id="@+id/et_search"
+                    android:id="@+id/freelancerSearchView"
                     android:layout_marginTop="8dp"
                     android:layout_below="@+id/userImageIcon"
                     android:layout_marginLeft="13dp"

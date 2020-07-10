@@ -61,7 +61,7 @@
                     android:paddingLeft="13dp"
                     android:textColorHint="#000"
                     app:defaultQueryHint="@string/search"
-                    android:id="@+id/et_search"
+                    android:id="@+id/searchview"
 
                     android:layout_marginTop="8dp"
                     android:layout_below="@+id/userImageIcon"

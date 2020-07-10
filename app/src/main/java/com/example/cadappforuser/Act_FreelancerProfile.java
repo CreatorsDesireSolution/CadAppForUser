@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -29,6 +30,9 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freelancernewprofile);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("profile");
+
         name=findViewById(R.id.name);
         email=findViewById(R.id.tv_email);
         mobile=findViewById(R.id.mobile_nummber);
@@ -36,10 +40,6 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
         workperform= findViewById(R.id.workperform);
-
-
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Profile");
 
         //btn_serviceslist = findViewById(R.id.serviceslist);
         btn_next = findViewById(R.id.btn_next);
@@ -103,11 +103,20 @@ public class Act_FreelancerProfile extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 }

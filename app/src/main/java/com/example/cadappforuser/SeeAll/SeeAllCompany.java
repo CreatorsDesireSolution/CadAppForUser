@@ -1,5 +1,6 @@
 package com.example.cadappforuser.SeeAll;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.cadappforuser.Act_Session;
@@ -42,12 +44,31 @@ public class SeeAllCompany extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_all_company);
 
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("See All Company");
 
         recycleAll = findViewById(R.id.recycle_all);
         act_session = new Act_Session(getApplicationContext());
         context = this;
         Apigetdetail();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
     private void Apigetdetail() {
         baseRequest = new BaseRequest();

@@ -21,6 +21,6 @@
         app:headerLayout="@layout/freelancer_header"
         app:itemIconTint="@color/colorAccent"
         app:itemTextColor="#000"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
