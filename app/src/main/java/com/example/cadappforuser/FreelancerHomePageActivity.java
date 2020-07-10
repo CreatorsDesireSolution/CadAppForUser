@@ -10,7 +10,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -184,18 +186,31 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 //        autoComplete.setTextColor(getResources().getColor(R.color.black));
 
 
-        et_search.setOnTouchListener(new View.OnTouchListener() {
+        et_search.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                return false;
             }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//              newAdapter.getFilter().filter(s);
+//              companyNewAdapter.getFilter().filter(s);
+
+            }
         });
 
+
+
+
         recyclerView=findViewById(R.id.recycleView);
-        recyclerView1=findViewById(R.id.recycleView1);
+        recyclerView1
+                =findViewById(R.id.recycleView1);
 
 
         ad_freelancermodels = new ArrayList<>();
