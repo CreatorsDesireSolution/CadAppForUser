@@ -194,7 +194,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                newAdapter.getFilter().filter(s);
+              companyNewAdapter.getFilter().filter(s);
             }
 
             @Override
