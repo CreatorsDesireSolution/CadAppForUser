@@ -10,13 +10,18 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -54,6 +59,7 @@ import com.example.cadappforuser.model.Ad_freelancermodel;
 import com.example.cadappforuser.modelfreelancer.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.modelfreelancer.ServicesFreelancerHomeModel;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -94,6 +100,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
     SearchView searchView;
     TextView seeAllFreelancer,seeAllCompany;
+    ImageView serchicon;
+    EditText et_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +117,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
 
         seeAllFreelancer=findViewById(R.id.seeAll);
         seeAllCompany=findViewById(R.id.seeAllFree);
+        serchicon= findViewById(R.id.serchicon);
+        et_search= findViewById(R.id.et_search);
 
         seeAllFreelancer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +136,7 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         });
 
 
-        searchView=findViewById(R.id.freelancerSearchView);
+       // searchView=findViewById(R.id.freelancerSearchView);
         act_session = new Act_Session(getApplicationContext());
 
 
@@ -165,18 +175,42 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
         }
 
-        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
-        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
-        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
-        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
-        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
-// set the hint text color
-        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
-// set the text color
-        autoComplete.setTextColor(getResources().getColor(R.color.black));
+//        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+//        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
+//        LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
+//        LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
+//        SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
+//// set the hint text color
+//        autoComplete.setHintTextColor(getResources().getColor(R.color.black));
+//// set the text color
+//        autoComplete.setTextColor(getResources().getColor(R.color.black));
+
+
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//              newAdapter.getFilter().filter(s);
+//              companyNewAdapter.getFilter().filter(s);
+
+            }
+        });
+
+
+
 
         recyclerView=findViewById(R.id.recycleView);
-        recyclerView1=findViewById(R.id.recycleView1);
+        recyclerView1
+                =findViewById(R.id.recycleView1);
 
 
         ad_freelancermodels = new ArrayList<>();

@@ -208,7 +208,6 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                     startActivity(new Intent(CompanyRegisterAsCompanyStaffActivity.this,CompanySetAvalibiltyCustomActivityStaff.class));
 
 
-                    
 
                     finish();
 

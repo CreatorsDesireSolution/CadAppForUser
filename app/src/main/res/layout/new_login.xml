@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:background="@color/white">
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -129,10 +137,9 @@
                         android:text=""
                         android:textSize="15dp"
                         android:textStyle="normal"
-                        app:drawable_hide="@drawable/ic_visibile"
-                        app:drawable_show="@drawable/ic_invisibile"
 
-                        app:tint_color="@color/black" />
+
+                         />
 
                 </LinearLayout>
 
@@ -154,7 +161,9 @@
                         android:id="@+id/check_box"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"></CheckBox>
+                        android:layout_marginTop="5dp"
+                        android:buttonTint="@color/quantum_orange"
+                        ></CheckBox>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,6 +173,7 @@
                         android:layout_toRightOf="@+id/check_box"
                         android:text="Keep me signed in"
                         android:textSize="15sp"
+                        android:textColor="@color/black"
                         android:textStyle="normal"></TextView>
 
 
@@ -176,6 +186,7 @@
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="10dp"
                         android:text="Forgot Password ?"
+                        android:textColor="@color/black"
                         android:textStyle="normal"></TextView>
                 </RelativeLayout>
 
@@ -271,3 +282,4 @@
     </RelativeLayout>
 
 </ScrollView>
+</LinearLayout>

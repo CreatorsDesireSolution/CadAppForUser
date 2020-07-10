@@ -68,7 +68,8 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.new_login);
 
 
-
+//     ActionBar actionBar = getSupportActionBar();
+//     actionBar.setTitle("Login");
         activity = this;
         context = this;
         marshMallowPermission = new MarshMallowPermission(activity);
