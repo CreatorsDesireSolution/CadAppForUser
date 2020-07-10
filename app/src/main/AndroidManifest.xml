@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/splashlogo"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -27,6 +27,7 @@
 
         <activity android:name=".CustomerPersonalProfileActivity"></activity>
         <activity android:name=".CompanyPersonalProfileActivity"></activity>
+
         <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
         <activity android:name=".SeeAll.SeeAllCompany"></activity>
         <activity android:name=".FreelancerPersonalProfileActivity" ></activity>
