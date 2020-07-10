@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/splashlogo"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -132,7 +132,8 @@
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".ServicesOffered" />
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".SignInActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".FreelancerAddServicesActivity" />
         <activity android:name=".FreelancerSelectGenderActivity" />
         <activity android:name=".BackgoundOfFreelancerActivity" />
