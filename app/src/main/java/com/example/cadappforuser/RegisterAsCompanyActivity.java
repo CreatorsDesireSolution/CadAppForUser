@@ -306,7 +306,8 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
 
         baseRequest.callAPIRegisterascompany(1,"https://aoneservice.net.in/" , companyname_,
-                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,staff_,profile_pic,latitude1,longitude1);
+                aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,
+                staff_,profile_pic,latitude1,longitude1);
 
     }
 

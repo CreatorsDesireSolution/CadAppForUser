@@ -2,17 +2,24 @@ package com.example.cadappforuser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.PrintWriter;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Act_CompanyNewProfile extends AppCompatActivity {
     Button btn_serviceslist,btn_next;
@@ -24,6 +31,8 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
     String companyId;
     TextView tv_certificate;
     RelativeLayout lay_certificate,workperform;
+    CircleImageView iv_profile_image;
+    Activity activity;
 
 
     @Override
@@ -46,6 +55,12 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
       //  btn_serviceslist = findViewById(R.id.serviceslist);
         btn_next = findViewById(R.id.btn_next);
         lay1 = findViewById(R.id.lay1);
+        iv_profile_image= findViewById(R.id.iv_profile_image);
+
+        activity = this;
+
+
+
 
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +107,22 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         aboutcompnay = intent2.getStringExtra("aboutcompnay");
         no_of_staff = intent2.getStringExtra("no_of_staff");
         age = intent2.getStringExtra("ageofcompany");
-        file = intent2.getParcelableExtra("image");
-        imageView.setImageURI(file);
+//        file = intent2.getParcelableExtra("image");
+//        imageView.setImageURI(file);
         companyId = intent2.getStringExtra("id");
+
+        try{
+            String img_str=intent2.getStringExtra("image");
+            Log.d("prof","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco","nco"+img_str);
+                Log.d("prof","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
+                        resize(100, 100).centerCrop().into(iv_profile_image);
+            }
+        }catch (Exception e){
+            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
 
 
         tv_companyname.setText(companyname);

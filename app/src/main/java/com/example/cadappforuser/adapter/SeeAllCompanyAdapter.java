@@ -1,6 +1,7 @@
 package com.example.cadappforuser.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.Act_CompanyNewProfile;
+import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.FreelancerDetailsModel;
@@ -49,7 +52,35 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
         Picasso.get().load("http://aoneservice.net.in/salon/documents/" + companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().into(holder.companyimageview);
 
+        final String companyname = companyDetailsModel.getCompanyname();
+        final String email = companyDetailsModel.getEmail();
+        final String number = companyDetailsModel.getMobilenumber();
+        final String address = companyDetailsModel.getAddress();
+        final String aboutcompany = companyDetailsModel.getAboutCompany();
+        final String ageofcompany =companyDetailsModel.getTotalYearEstablishment();
+        final  String no_of_staff = companyDetailsModel.getNoOfStaff();
+        final  String companyid=companyDetailsModel.getId();
+        final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
+                resize(400, 400).centerCrop().toString();
 
+
+        holder.setItemClickListner(new ItemClickListner() {
+            @Override
+            public void onItemClickListner(View v, int position) {
+                Intent intent=new Intent(context, Act_CompanyNewProfile.class);
+                intent.putExtra("companyname",companyname);
+                intent.putExtra("email",email);
+                intent.putExtra("number",number);
+                intent.putExtra("address",address);
+                intent.putExtra("aboutcompnay",aboutcompany);
+                intent.putExtra("ageofcompany",ageofcompany);
+                intent.putExtra("no_of_staff",no_of_staff);
+                intent.putExtra("image",image);
+                intent.putExtra("id",companyid);
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,10 +88,12 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
         return companyDetailsModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tv_companyname, tv_lastname, userrating;
         ImageView ratingBar;
         ImageView companyimageview;
+        ItemClickListner itemClickListner;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +103,19 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
             ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview = itemView.findViewById(R.id.companyimageview);
             userrating = itemView.findViewById(R.id.userrating);
+            itemView.setOnClickListener(this);
+
         }
+
+        @Override
+        public void onClick(View v) {
+            this.itemClickListner.onItemClickListner(v,getLayoutPosition());
+
+        }
+
+        public void setItemClickListner(ItemClickListner ic){
+            this.itemClickListner=ic;
+        }
+
     }
 }

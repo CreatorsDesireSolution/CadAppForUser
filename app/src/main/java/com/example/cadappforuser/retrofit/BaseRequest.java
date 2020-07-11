@@ -444,7 +444,8 @@ public class BaseRequest<T> extends BaseRequestParser {
     public void callApiRegisterfreelancer(final int APINumber, String remainingURL, RequestBody firstname_,
                                           RequestBody lastname_, RequestBody email_, RequestBody mobilenumber_,
                                           RequestBody gender_, RequestBody address_, RequestBody deviceid_,
-                                          RequestBody password_,RequestBody profile_,RequestBody latitute,RequestBody longitute) {
+                                          RequestBody password_,RequestBody profile_,RequestBody latitute,
+                                          RequestBody longitute) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
