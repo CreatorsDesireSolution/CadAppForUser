@@ -60,7 +60,6 @@
         <activity android:name=".CurrentLocationofcompanyStaff" />
         <activity android:name=".Act_seemoredetails_Company" />
         <activity android:name=".Act_seemoredetails_Freelancer" />
-        <activity android:name=".Act_FreelancerPersonalEditProfile" />
         <activity android:name=".Act_ContactUs" />
         <activity android:name=".Act_EditCurrentLocation" />
         <activity android:name=".FreelancerGenderSelectSeeList" />
@@ -74,7 +73,6 @@
         <activity android:name=".Act_SelectGenderForList" />
         <activity android:name=".Act_ShopLocation" />
         <activity android:name=".Act_AddToFev" />
-        <activity android:name=".Act_EditCustomerInformation" />
         <activity android:name=".Act_Logout" />
         <activity
             android:name=".Act_AboutUS"

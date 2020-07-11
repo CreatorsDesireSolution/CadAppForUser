@@ -75,13 +75,13 @@ public class FreelancerPersonalProfile extends AppCompatActivity {
             }
         });
 
-        tv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Act_FreelancerPersonalEditProfile.class);
-                startActivity(intent);
-            }
-        });
+//        tv_edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),Act_FreelancerPersonalEditProfile.class);
+//                startActivity(intent);
+//            }
+//        });
 
         Apigetprofile1();
 

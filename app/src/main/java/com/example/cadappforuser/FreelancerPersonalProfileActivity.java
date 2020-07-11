@@ -293,13 +293,14 @@ public class FreelancerPersonalProfileActivity extends AppCompatActivity {
         RequestBody mobilenumber_ = RequestBody.create(MediaType.parse("text/plain"), mobile);
         RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
 
 
         baseRequest.CallUpdateprofileFreelancer(1,"https://aoneservice.net.in/" , firstname_, lastname_,
-                email_,mobilenumber_,gender_,address_);
+                email_,mobilenumber_,gender_,address_,profile_pic);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -279,6 +279,7 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
         RequestBody gender_ = RequestBody.create(MediaType.parse("text/plain"), gender);
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody dob = RequestBody.create(MediaType.parse("text/plain"), DOB);
+        RequestBody profile_ = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
 
@@ -286,7 +287,7 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
 
         baseRequest.CallUpdateprofileCustomer(1,"https://aoneservice.net.in/" , firstname_, lastname_,
                 email_,dob,
-                mobilenumber_,gender_,address_);
+                mobilenumber_,gender_,address_,profile_);
 
     }
 

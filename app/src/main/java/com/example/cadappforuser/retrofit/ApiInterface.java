@@ -115,7 +115,8 @@ public interface ApiInterface {
                                     @Part("dob") RequestBody dob_,
                                     @Part("mobilenumber") RequestBody mobilenumber,
                                     @Part("gender") RequestBody gender,
-                                    @Part("address") RequestBody address
+                                    @Part("address") RequestBody address,
+                                    @Part("profile_pic") RequestBody profile_pic
 
 
     );
@@ -128,7 +129,8 @@ public interface ApiInterface {
                                          @Part("email") RequestBody email,
                                          @Part("mobilenumber") RequestBody mobilenumber,
                                          @Part("gender") RequestBody gender,
-                                         @Part("address") RequestBody address
+                                         @Part("address") RequestBody address,
+                                         @Part("profile_pic") RequestBody profile_pic
 
 
     );
@@ -158,9 +160,10 @@ public interface ApiInterface {
                                     @Part("address") RequestBody address,
                                     @Part("deviceid") RequestBody deviceid,
                                     @Part("password") RequestBody password,
+                                              @Part("profile_pic") RequestBody profile_pic,
+
                                     @Part("latitude") RequestBody latitute_,
-                                    @Part("longitude") RequestBody longitute,
-                                    @Part("profile_pic") RequestBody profile_pic
+                                    @Part("longitude") RequestBody longitute
     );
 
 

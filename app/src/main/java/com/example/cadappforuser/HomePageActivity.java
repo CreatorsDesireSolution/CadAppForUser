@@ -184,6 +184,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
            @Override
             public boolean onQueryTextChange(String newText) {
                 newAdapter.getFilter().filter(newText);
+
+
+
+
                 companyNewAdapter.getFilter().filter(newText);
                 return true;
             }

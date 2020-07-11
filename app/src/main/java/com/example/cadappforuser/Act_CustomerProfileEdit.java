@@ -51,15 +51,15 @@ public class Act_CustomerProfileEdit extends AppCompatActivity {
 
 
 
-        iv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-               // ApiGetRequest();
-                Intent intent = new Intent(getApplicationContext(),Act_EditCustomerInformation.class);
-                startActivity(intent);
-            }
-        });
+//        iv_edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//               // ApiGetRequest();
+//                Intent intent = new Intent(getApplicationContext(),Act_EditCustomerInformation.class);
+//                startActivity(intent);
+//            }
+//        });
         Apigetprofile1();
 
     }

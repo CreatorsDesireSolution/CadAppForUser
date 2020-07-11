@@ -108,19 +108,19 @@ public class CurrentLocation2 extends AppCompatActivity implements OnMapReadyCal
             textView.setText(fullAddress);
 
 
-            btnAddress.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(CurrentLocation2.this, Act_FreelancerPersonalEditProfile.class);
-
-                    intent.putExtra("address", fullAddress);
-
-
-                    // Toast.makeText(CurrentLocation.this, ""+firstname+fullAddress,Toast.LENGTH_SHORT).show();
-
-                    startActivity(intent);
-                }
-            });
+//            btnAddress.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(CurrentLocation2.this, Act_FreelancerPersonalEditProfile.class);
+//
+//                    intent.putExtra("address", fullAddress);
+//
+//
+//                    // Toast.makeText(CurrentLocation.this, ""+firstname+fullAddress,Toast.LENGTH_SHORT).show();
+//
+//                    startActivity(intent);
+//                }
+//            });
 
 
         } catch (IOException e) {

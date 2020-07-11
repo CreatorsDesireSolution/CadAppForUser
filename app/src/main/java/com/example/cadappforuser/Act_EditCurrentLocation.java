@@ -109,15 +109,15 @@ public class Act_EditCurrentLocation extends AppCompatActivity implements OnMapR
 
             Intent intent=getIntent();
             final String gender=intent.getStringExtra("gender");
-            btnAddress.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(Act_EditCurrentLocation.this,Act_EditCustomerInformation.class);
-                    intent.putExtra("address",fullAddress);
-                  //  intent.putExtra("gender",gender);
-                    startActivity(intent);
-                }
-            });
+//            btnAddress.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent=new Intent(Act_EditCurrentLocation.this,Act_EditCustomerInformation.class);
+//                    intent.putExtra("address",fullAddress);
+//                  //  intent.putExtra("gender",gender);
+//                    startActivity(intent);
+//                }
+//            });
         } catch (IOException e) {
             e.printStackTrace();
         }
