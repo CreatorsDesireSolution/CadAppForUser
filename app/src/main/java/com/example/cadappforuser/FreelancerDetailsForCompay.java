@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class FreelancerDetailsForCompay extends AppCompatActivity {
 
@@ -41,6 +45,7 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         tv_certificate = findViewById(R.id.tv_certificate);
         lay_certificate = findViewById(R.id.lay_certificate);
         workperform= findViewById(R.id.workperform);
+        ImageView imageView=findViewById(R.id.iv_profile_image);
 
 
 
@@ -67,6 +72,12 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
         experience.setText(intent.getStringExtra("ageofcompany"));
         Toast.makeText(this, ""+intent.getStringExtra("aboutcompnay"), Toast.LENGTH_SHORT).show();
         background11.setText(intent.getStringExtra("aboutcompnay"));
+
+        String img=intent.getStringExtra("image");
+
+        Log.d("img","img"+img);
+        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img).
+                resize(400, 400).centerCrop().into(imageView);
 
 
         lay_certificate.setOnClickListener(new View.OnClickListener() {

@@ -99,6 +99,8 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             }
         });
 
+
+
         Intent intent2 = getIntent();
         location = intent2.getStringExtra("address");
         emailaddress = intent2.getStringExtra("email");
@@ -111,19 +113,11 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
 //        imageView.setImageURI(file);
         companyId = intent2.getStringExtra("id");
 
-        try{
-            String img_str=intent2.getStringExtra("image");
-            Log.d("prof","prof "+img_str);
-            if (!img_str.equals("")){
-                Log.d("enco","nco"+img_str);
-                Log.d("prof","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
-                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
-                        resize(100, 100).centerCrop().into(iv_profile_image);
-            }
-        }catch (Exception e){
-            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
-        }
+        String img=intent2.getStringExtra("image");
 
+        Log.d("img","img"+img);
+        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img).
+                resize(400, 400).centerCrop().into(iv_profile_image);
 
         tv_companyname.setText(companyname);
         tv_email.setText(emailaddress);

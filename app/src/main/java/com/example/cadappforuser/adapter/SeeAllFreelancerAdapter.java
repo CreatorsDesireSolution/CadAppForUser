@@ -62,8 +62,7 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
         final String aboutcompany = companyDetailsModel.getAboutYourself();
         final String ageofcompany =companyDetailsModel.getExperience();
         final String id= companyDetailsModel.getId();
-        final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
-                resize(400, 400).centerCrop().toString();
+        final String image= companyDetailsModel.getProfilePic();
 
 
         holder.setItemClickListner(new ItemClickListner() {

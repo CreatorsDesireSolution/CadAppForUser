@@ -60,8 +60,8 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
         final String ageofcompany =companyDetailsModel.getTotalYearEstablishment();
         final  String no_of_staff = companyDetailsModel.getNoOfStaff();
         final  String companyid=companyDetailsModel.getId();
-        final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
-                resize(400, 400).centerCrop().toString();
+        final String image= companyDetailsModel.getProfilePic();
+
 
 
         holder.setItemClickListner(new ItemClickListner() {
