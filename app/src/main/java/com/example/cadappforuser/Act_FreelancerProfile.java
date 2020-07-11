@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class Act_FreelancerProfile extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     LinearLayout tvbg;
     TextView name,email,mobile,last,address,experience,background;
     RelativeLayout workperform;
+    ImageView imageView;
 
 
     @Override
@@ -40,6 +45,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         experience=findViewById(R.id.established);
         background=findViewById(R.id.backbg);
         workperform= findViewById(R.id.workperform);
+        imageView=findViewById(R.id.iv_profile_image);
 
         //btn_serviceslist = findViewById(R.id.serviceslist);
         btn_next = findViewById(R.id.btn_next);
@@ -57,8 +63,11 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         Toast.makeText(this, ""+intent.getStringExtra("aboutus"), Toast.LENGTH_SHORT).show();
         background.setText(intent.getStringExtra("aboutus"));
 
+        String img=intent.getStringExtra("image");
 
-
+        Log.d("img","img"+img);
+        Picasso.get().load(img).
+                resize(400, 400).centerCrop().into(imageView);
 
 
         lay1.setOnClickListener(new View.OnClickListener() {

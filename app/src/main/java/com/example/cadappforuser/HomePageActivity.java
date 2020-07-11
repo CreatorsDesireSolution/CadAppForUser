@@ -184,19 +184,14 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
            @Override
             public boolean onQueryTextChange(String newText) {
                 newAdapter.getFilter().filter(newText);
-
-
-
-
                 companyNewAdapter.getFilter().filter(newText);
                 return true;
             }
         });
 
+        allServiceModels = new ArrayList<>();
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();
-        allServiceModels = new ArrayList<>();
-
 
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Massage","lorem ipsum"));

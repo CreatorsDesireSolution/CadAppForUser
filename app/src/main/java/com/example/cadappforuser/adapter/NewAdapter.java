@@ -64,6 +64,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         final String address = newModel.getAddress();
         final String experience=newModel.getAddress();
         final String aboutus=newModel.getAbout_yourself();
+        final  String image=newModel.getImage();
         //final String id = newModel.ge
 
 
@@ -78,6 +79,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
              intent.putExtra("address",address);
              intent.putExtra("experience",experience);
              intent.putExtra("aboutus",aboutus);
+             intent.putExtra("image",image);
 
              context.startActivity(intent);
              //context.startActivity(new Intent(context, Act_FreelancerProfile.class));
