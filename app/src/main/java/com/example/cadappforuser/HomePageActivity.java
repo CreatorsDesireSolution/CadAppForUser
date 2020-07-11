@@ -307,10 +307,12 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                            // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_company");
+                            String no_of_staff=object.getString("no_of_staff");
+                            String id1=object.getString("id");
 
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            companyNewModels.add(new CompanyNewModel(u,name,5,email,mobilenumber,regnumber,address,experinace,aboutus));
+                            companyNewModels.add(new CompanyNewModel(u,name,5,email,mobilenumber,regnumber,address,experinace,aboutus,no_of_staff,id1));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);

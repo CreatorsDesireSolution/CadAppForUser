@@ -6,9 +6,11 @@ public class CompanyNewModel {
     String name;
     float rating;
 
-    String email,mobile,lastname,address,experience,about_yourself;
+    String email,mobile,lastname,address,experience,about_yourself,no_of_staff,id;
 
-    public CompanyNewModel(String image, String name, float rating, String email, String mobile, String lastname, String address,String experience,String about_yourself) {
+    public CompanyNewModel(String image, String name, float rating, String email, String mobile,
+                           String lastname, String address,String experience,
+                           String about_yourself,String no_of_staff,String id) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -18,6 +20,25 @@ public class CompanyNewModel {
         this.address = address;
         this.experience= experience;
         this.about_yourself=about_yourself;
+        this.no_of_staff=no_of_staff;
+        this.id=id;
+
+    }
+
+    public String getNo_of_staff() {
+        return no_of_staff;
+    }
+
+    public void setNo_of_staff(String no_of_staff) {
+        this.no_of_staff = no_of_staff;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getImage() {

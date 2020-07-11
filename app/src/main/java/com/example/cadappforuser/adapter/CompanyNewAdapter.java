@@ -68,8 +68,10 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
         final String address = companyNewModel.getAddress();
         final String aboutcompany = companyNewModel.getAbout_yourself();
         final String ageofcompany =companyNewModel.getExperience();
-      //  final  String no_of_staff = companyNewModel.getNoOfStaff();
-       //final  String companyid=companyNewModel.getId();
+        final  String no_of_staff = companyNewModel.getNo_of_staff();
+        final  String companyid=companyNewModel.getId();
+        final String image= Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyNewModel.getImage()).
+                resize(400, 400).centerCrop().toString();
 
         holder.setItemClickListner(new ItemClickListner() {
             @Override
@@ -83,9 +85,11 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
                 intent.putExtra("address",address);
                 intent.putExtra("aboutcompnay",aboutcompany);
                 intent.putExtra("ageofcompany",ageofcompany);
-               // intent.putExtra("no_of_staff",no_of_staff);
-            //    intent.putExtra("image",image);
-               // intent.putExtra("id",companyid);
+                context.startActivity(intent);
+                intent.putExtra("no_of_staff",no_of_staff);
+                intent.putExtra("image",image);
+                intent.putExtra("id",companyid);
+
 
             }
         });

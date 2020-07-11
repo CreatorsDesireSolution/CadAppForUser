@@ -125,7 +125,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         tv_address.setText(location);
         background11.setText(aboutcompnay);
         tv_no_of_staff.setText(no_of_staff);
-        tv_age.setText("Since" +age+ "years");
+       // tv_age.setText("Since" +" "+age+" "+ "years");
 
 
     }
