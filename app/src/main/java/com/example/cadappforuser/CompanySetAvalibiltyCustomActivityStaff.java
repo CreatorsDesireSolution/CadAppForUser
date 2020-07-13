@@ -150,7 +150,7 @@ String url="http://aoneservice.net.in/salon/company_staffsetavailability_api.php
                                 String message=jsonObject.getString("message");
                                 if(status.equals("true") || message.equals("Success")){
                                     progressDialog.dismiss();
-                                    Toast.makeText(CompanySetAvalibiltyCustomActivityStaff.this, ""+response, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(CompanySetAvalibiltyCustomActivityStaff.this, ""+response+act_session.staffid, Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(CompanySetAvalibiltyCustomActivityStaff.this,CompanyStaffBackground.class));
 
                                 }

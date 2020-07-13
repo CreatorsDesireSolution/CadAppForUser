@@ -52,7 +52,7 @@ public class Act_Session {
             gender =(jsonObject.optString("gender"));
             address =(jsonObject.optString("address"));
             otp =(jsonObject.optString("otp"));
-            staffid =(jsonObject.optString("staffid"));
+          //  staffid =(jsonObject.optString("staffid"));
             companyname =(jsonObject.optString("companyname"));
             profile_pic =(jsonObject.optString("profile_pic"));
 
@@ -94,7 +94,7 @@ public class Act_Session {
         this.dob = sharedPreferences.getString("dob", "");
         this.gender = sharedPreferences.getString("gender", "");
         this.address = sharedPreferences.getString("address", "");
-        this.staffid = sharedPreferences.getString("staffid", "");
+     //   this.staffid = sharedPreferences.getString("staffid", "");
         this.companyname = sharedPreferences.getString("companyname", "");
         this.profile_pic = sharedPreferences.getString("profile_pic", "");
 
