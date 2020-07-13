@@ -164,6 +164,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         else {
             super.onBackPressed();
         }
+
     }
 
     @Override
@@ -177,7 +178,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                 //startActivity(new Intent(HomePageActivity.this,SearchByNameOrServicesOrNearby.class));
                 break;
             case R.id.nav_profile:
-                startActivity(new Intent(Act_HomeForCustomerShop.this,CustomerProfile.class));
+                startActivity(new Intent(Act_HomeForCustomerShop.this,CustomerPersonalProfileActivity.class));
                 break;
             case R.id.nav_history:
                 startActivity(new Intent(Act_HomeForCustomerShop.this,SearchServices.class));
