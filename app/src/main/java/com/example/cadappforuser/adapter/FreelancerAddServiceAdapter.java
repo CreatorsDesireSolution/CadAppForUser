@@ -48,7 +48,7 @@ public class FreelancerAddServiceAdapter extends RecyclerView.Adapter<Freelancer
 
         holder.sample.setText(companyAddServiceModels.get(position).getDescription());
         holder.name.setText(companyAddServiceModel.getServiceName());
-        holder.price.setText("Rs."+companyAddServiceModel.getSetPrice());
+        holder.price.setText("Rs."+companyAddServiceModel.getSetPrice()+"/-");
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyAddServiceModel.getServiceImage()).resize(400, 400).centerCrop().into(holder.imageView);
 

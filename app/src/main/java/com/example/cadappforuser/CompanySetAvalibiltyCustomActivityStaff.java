@@ -181,7 +181,7 @@ String url="http://aoneservice.net.in/salon/company_staffsetavailability_api.php
                             map.put("start_time",start);
                             map.put("end_time",end);
                             map.put("days",day);
-                            map.put("id",act_session.userId);
+                            map.put("id",act_session.staffid);
 
                             return map;
                         }
