@@ -64,8 +64,8 @@
                 android:text="1"
                 android:textStyle="normal"
                 android:id="@+id/serQuantity"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="35dp"
                 android:layout_toRightOf="@id/serImage"
                 android:layout_below="@id/serPrice"
                 android:textSize="15sp"
@@ -76,22 +76,34 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_below="@+id/serPrice"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:id="@+id/btnAdd"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/serQuantity"
                 android:background="@drawable/addback"
                 android:src="@drawable/ic_add_black_24dp"></ImageView>
 
             <ImageView
                 android:layout_width="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/addback"
                 android:src="@drawable/ic_remove_black_24dp"
                 android:layout_below="@+id/serPrice"
                 android:id="@+id/btnMinus"
                 android:layout_toRightOf="@id/serImage"
                 android:layout_height="20dp"></ImageView>
+
+            <ImageView
+                android:id="@+id/icDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete_black_24dp"
+                android:layout_below="@+id/serPrice"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="15sp"
+                android:layout_alignParentEnd="true"
+                ></ImageView>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

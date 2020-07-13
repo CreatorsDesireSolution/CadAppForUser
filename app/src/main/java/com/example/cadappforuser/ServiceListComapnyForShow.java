@@ -58,9 +58,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
         StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/freelancer_companyservice_api.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
                 try {
-
                     JSONObject jsonObject = new JSONObject(response);
                     Toast.makeText(ServiceListComapnyForShow.this, ""+response, Toast.LENGTH_SHORT).show();
                     String sucess = jsonObject.getString("success");
@@ -81,7 +79,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,"1","0"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServiceListComapnyForShow.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);

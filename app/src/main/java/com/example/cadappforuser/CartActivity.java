@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.cadappforuser.SqliteDatabase.Myhelper;
 import com.example.cadappforuser.adapter.CartAdapter;
 import com.example.cadappforuser.model.CartModel;
 
@@ -25,6 +30,7 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<CartModel>cartModelArrayList;
     Button btnCheckOut;
     TextView txt_total_price;
+    int total=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +52,30 @@ public class CartActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.cart_recycleview);
         cartModelArrayList=new ArrayList<>();
+        Myhelper myhelper=new Myhelper(this);
+        SQLiteDatabase database = myhelper.getReadableDatabase();
+        String sql = "select * from CART";
+        Cursor c = database.rawQuery(sql,null);
 
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.hairwash,"Hair wash","250","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.hairwash,"Hair wash","850","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.hairwash,"Hair spa","350","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
-        cartModelArrayList.add(new CartModel(R.drawable.pro,"Hair cut","450","Lorem Ipsum"));
+        if(c.moveToFirst()) {
+            while (c.moveToNext()) {
+                int id = c.getInt(0);
+                String name = c.getString(1);
+                String desc = c.getString(2);
+                String price = c.getString(3);
+                String item_image=c.getString(4);
+                int qty=c.getInt(5);
+                total+=(Integer.parseInt(price)*qty);
+                cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty));
+            }
+        }
 
+       txt_total_price.setText("Rs."+Integer.valueOf(total));
         cartAdapter=new CartAdapter(this,cartModelArrayList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(CartActivity.this));
         recyclerView.setAdapter(cartAdapter);
+        cartAdapter.notifyDataSetChanged();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
@@ -89,6 +105,12 @@ public class CartActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    public void resetGraph(Context context)
+    {
+        finish();
+        startActivity(getIntent());
     }
 
 }

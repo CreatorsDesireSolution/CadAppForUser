@@ -1,5 +1,6 @@
 package com.example.cadappforuser.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,7 @@ import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceDescription;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
+import com.example.cadappforuser.SqliteDatabase.Myhelper;
 import com.example.cadappforuser.model.ServicesListModel;
 import com.squareup.picasso.Picasso;
 
@@ -63,14 +66,47 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-        ServicesListModel servicesListModel=servicesListModelList.get(position);
+        final ServicesListModel servicesListModel=servicesListModelList.get(position);
+        final Myhelper myhelper = new Myhelper(context);
+        final SQLiteDatabase database = myhelper.getWritableDatabase();
+        final SQLiteDatabase db=myhelper.getReadableDatabase();
 
+        final int[] number = {1};
         readCursorData(servicesListModel,holder);
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
+
+        holder.btn_addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.btn_addtocart.getText() == "Added") {
+                    Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                  // String sql1 = "select count(*) from CART where _id=" + servicesListModel.getKey_id();
+                   //Cursor cur = db.rawQuery(sql1, null);
+                    //if (cur != null) {
+                      //  cur.moveToFirst();                       // Always one row returned.
+                        //if (cur.getInt(0) == 0) {               // Zero count means empty table.
+                            ContentValues values = new ContentValues();
+                            values.put("SERVICE_NAME", servicesListModel.getName());
+                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                            values.put("SERVICE_DESC", servicesListModel.getSample());
+                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                            values.put("QTY", number[0]);
+                            database.insert("CART", null, values);
+                            holder.btn_addtocart.setText("Added");
+                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                        }
+                        //else
+                         //   Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
+                    //}
+                //}
+            }
+        });
 
     }
 

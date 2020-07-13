@@ -12,11 +12,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.cadappforuser.SqliteDatabase.AddToCartDB;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.adapter.AddFevAdapter;
 import com.example.cadappforuser.adapter.FevListModel;
-import com.example.cadappforuser.model.AddToCartModel;
 
 import java.util.ArrayList;
 

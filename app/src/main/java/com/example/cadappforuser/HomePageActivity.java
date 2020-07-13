@@ -453,7 +453,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 startActivity(new Intent(HomePageActivity.this,TermAndCondition.class));
                 break;
             case R.id.nav_mycart:
-                startActivity(new Intent(HomePageActivity.this,Act_AddToCart.class));
+                startActivity(new Intent(HomePageActivity.this,CartActivity.class));
                 break;
 
             case  R.id.nav_logout:

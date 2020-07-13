@@ -65,7 +65,6 @@ public class CompanyShowServices extends AppCompatActivity {
 
 
         ApiGetList();
-      //  ApiAddService();
     }
 
 
