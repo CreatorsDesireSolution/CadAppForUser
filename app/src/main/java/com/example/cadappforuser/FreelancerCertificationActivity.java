@@ -124,7 +124,8 @@ public class FreelancerCertificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressDialog=new ProgressDialog(FreelancerCertificationActivity.this,R.style.MyAlertDialogStyle);
+                progressDialog=new ProgressDialog(
+                        FreelancerCertificationActivity.this,R.style.MyAlertDialogStyle);
                 progressDialog.setTitle("Upload");
                 progressDialog.setMessage("Please Wait......");
                 progressDialog.show();
