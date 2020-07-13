@@ -24,13 +24,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".CustomerPersonalProfileActivity"></activity>
-        <activity android:name=".CompanyPersonalProfileActivity"></activity>
-
-        <activity android:name=".SeeAll.SeeAllFreelancer"></activity>
-        <activity android:name=".SeeAll.SeeAllCompany"></activity>
-        <activity android:name=".FreelancerPersonalProfileActivity" ></activity>
+        <activity android:name=".Act_AddToCart"></activity>
+        <activity android:name=".CustomerPersonalProfileActivity" />
+        <activity android:name=".CompanyPersonalProfileActivity" />
+        <activity android:name=".SeeAll.SeeAllFreelancer" />
+        <activity android:name=".SeeAll.SeeAllCompany" />
+        <activity android:name=".FreelancerPersonalProfileActivity" />
         <activity android:name=".FreelancerWorkPerformShow" />
         <activity android:name=".FreelancerWorkPerformed" />
         <activity android:name=".FreelancerGetCertificateForShow" />
@@ -88,7 +87,9 @@
         <activity android:name=".ShowDays.Act_ShowDayComapany" />
         <activity android:name=".Act_ShowDayStaff" />
         <activity android:name=".FreelancerCertificationActivity" />
-        <activity android:name=".SplashScreen" android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -130,7 +131,8 @@
         <activity android:name=".CompanyMobileNumberRegisterActivity" />
         <activity android:name=".ServicesOffered" />
         <activity android:name=".FreelancerSetAvalibiltyCustomActivity" />
-        <activity android:name=".SignInActivity"
+        <activity
+            android:name=".SignInActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".FreelancerAddServicesActivity" />
         <activity android:name=".FreelancerSelectGenderActivity" />

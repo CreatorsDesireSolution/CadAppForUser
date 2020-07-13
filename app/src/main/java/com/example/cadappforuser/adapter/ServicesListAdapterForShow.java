@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ import com.example.cadappforuser.model.ServicesListModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesListAdapterForShow.ViewHolder> {
 
@@ -102,8 +105,10 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView,fevicon;
+        CircleImageView imageView;
+            ImageView fevicon;
         TextView price,name,sample;
+        Button btn_addtocart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -113,15 +118,17 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
             name=itemView.findViewById(R.id.serviceListServiceName);
             sample=itemView.findViewById(R.id.serviceListServiceSample);
             fevicon = itemView.findViewById(R.id.fevicon);
+            btn_addtocart = itemView.findViewById(R.id.btn_addtocart);
 
-           /* fevicon.setOnClickListener(new View.OnClickListener() {
+            fevicon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int postion=getAdapterPosition();
                     ServicesListModel servicesListModel=servicesListModelList.get(postion);
                     if(servicesListModel.getFav_status().equals("0")){
                         servicesListModel.setFav_status("1");
-                        favDB.insertIntoDatabase(servicesListModel.getName(),servicesListModel.getPrice(),servicesListModel.getSample(),servicesListModel.getImage(),servicesListModel.getKey_id(),servicesListModel.getFav_status());
+
+                        favDB.insertIntoDatabase(servicesListModel.getName(),servicesListModel.getPrice(),servicesListModel.getSample(), servicesListModel.getImage(),servicesListModel.getKey_id(),servicesListModel.getFav_status());
                         fevicon.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
                         fevicon.setSelected(true);
 
@@ -133,7 +140,10 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                        fevicon.setSelected(false);
                     }
                 }
-            });*/
+            });
+
+
+//
 
         }
 

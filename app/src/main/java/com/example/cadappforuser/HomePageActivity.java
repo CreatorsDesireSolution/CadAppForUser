@@ -183,8 +183,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
            @Override
             public boolean onQueryTextChange(String newText) {
-                newAdapter.getFilter().filter(newText);
-                companyNewAdapter.getFilter().filter(newText);
+//                newAdapter.getFilter().filter(newText);
+            //    companyNewAdapter.getFilter().filter(newText);
                 return true;
             }
         });
@@ -453,7 +453,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 startActivity(new Intent(HomePageActivity.this,TermAndCondition.class));
                 break;
             case R.id.nav_mycart:
-                startActivity(new Intent(HomePageActivity.this,CartActivity.class));
+                startActivity(new Intent(HomePageActivity.this,Act_AddToCart.class));
                 break;
 
             case  R.id.nav_logout:

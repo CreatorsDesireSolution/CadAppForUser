@@ -12,35 +12,37 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.cadappforuser.SqliteDatabase.AddToCartDB;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.adapter.AddFevAdapter;
 import com.example.cadappforuser.adapter.FevListModel;
-import com.example.cadappforuser.adapter.ServicesListAdapter;
-import com.example.cadappforuser.model.ServicesListModel;
+import com.example.cadappforuser.model.AddToCartModel;
 
 import java.util.ArrayList;
 
-public class Act_AddToFev extends AppCompatActivity {
+public class Act_AddToCart extends AppCompatActivity {
+
+
 
     AddFevAdapter favAdapter;
-    RecyclerView recyclerviewfev;
+    RecyclerView recyclerviewcart;
     ArrayList<FevListModel> favItemList;
     private FavDB favDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act__add_to_fev);
+        setContentView(R.layout.activity_act__add_to_cart);
 
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Fevorite List");
+        actionBar.setTitle("cart List");
 
-        recyclerviewfev = findViewById(R.id.recyclerviewfev);
+        recyclerviewcart = findViewById(R.id.recyclerviewcart);
         favItemList = new ArrayList<>();
-        favDB = new FavDB(Act_AddToFev.this);
+        favDB = new FavDB(Act_AddToCart.this);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerviewfev); // set swipe to recyclerview
+        itemTouchHelper.attachToRecyclerView(recyclerviewcart); // set swipe to recyclerview
 
 
         // fevListModels.add(new FevListModel(R.drawable.hairwash,"450","Lorem Ipsum","Facial"));
@@ -48,14 +50,11 @@ public class Act_AddToFev extends AppCompatActivity {
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         AddFevAdapter addFevAdapter=new AddFevAdapter(this,favItemList);
 
-        recyclerviewfev.setLayoutManager(layoutManager);
-        recyclerviewfev.setHasFixedSize(true);
-        recyclerviewfev.setAdapter(addFevAdapter);
-
-loadData();
+        recyclerviewcart.setLayoutManager(layoutManager);
+        recyclerviewcart.setHasFixedSize(true);
+        recyclerviewcart.setAdapter(addFevAdapter);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override
@@ -95,9 +94,9 @@ loadData();
             db.close();
         }
 
-      favAdapter = new AddFevAdapter(Act_AddToFev.this, favItemList);
+        favAdapter = new AddFevAdapter(Act_AddToCart.this, favItemList);
 
-        recyclerviewfev.setAdapter(favAdapter);
+        recyclerviewcart.setAdapter(favAdapter);
 
     }
 

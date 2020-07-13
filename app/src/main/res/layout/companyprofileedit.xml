@@ -35,7 +35,7 @@
                     <RelativeLayout
                         android:id="@+id/relative"
                         android:layout_width="match_parent"
-                        android:layout_height="250dp"
+                        android:layout_height="200dp"
                         android:orientation="horizontal"
                         >
 
@@ -175,44 +175,6 @@
 
 
 
-                            <LinearLayout
-                                android:id="@+id/lay_loc"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/lay_mob"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="20dp"
-                                >
-
-                                <ImageView
-                                    android:id="@+id/iv_location"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginLeft="-5dp"
-                                    android:padding="3dp"
-                                    android:src="@drawable/ic_location"
-
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/tv_city"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="3dp"
-                                    android:drawablePadding="10dp"
-                                    android:text="Dhamnod Dhar"
-                                    android:textColor="@color/black"
-                                    android:textSize="14dp" />
-
-                                <TextView
-                                    android:id="@+id/tv_state"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="3dp"
-                                    android:textColor="@color/white"
-                                    android:textSize="14dp" />
-                            </LinearLayout>
 
 
 
@@ -230,12 +192,49 @@
                         android:background="@color/quantum_orange"
                         android:layout_below="@+id/relative"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/relative">
 
+
+                    <LinearLayout
+                        android:id="@+id/lay_loc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/view"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+
+                        android:layout_marginRight="20dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_location"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="-5dp"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_location"
+
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:drawablePadding="10dp"
+                            android:text="Dhamnod Dhar"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/black"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:id="@+id/tv_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
                     </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -244,7 +243,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="20dp"
                         android:id="@+id/established"
-                        android:layout_below="@id/view"
+                        android:layout_below="@id/lay_loc"
                         android:layout_centerHorizontal="true"
                         android:textSize="18sp"
                         android:textStyle="bold"

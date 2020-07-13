@@ -46,8 +46,6 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         tv_mobile = findViewById(R.id.mobile_nummber);
         background11 = findViewById(R.id.background11);
         tv_no_of_staff= findViewById(R.id.no_of_staff);
-        tv_age = findViewById(R.id.established);
-        imageView = findViewById(R.id.iv_profile_image);
         tv_certificate = findViewById(R.id.tv_certificate);
         lay_certificate= findViewById(R.id.lay_certificate);
         workperform= findViewById(R.id.workperform);
@@ -125,7 +123,8 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
         tv_address.setText(location);
         background11.setText(aboutcompnay);
         tv_no_of_staff.setText(no_of_staff);
-       // tv_age.setText("Since" +" "+age+" "+ "years");
+
+//        tv_age.setText("Since" +" "+age+" "+ "years");
 
 
     }

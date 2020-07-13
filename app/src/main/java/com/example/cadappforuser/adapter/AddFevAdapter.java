@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.model.ServicesListModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,7 +45,8 @@ public class AddFevAdapter extends RecyclerView.Adapter<AddFevAdapter.AddFevAdap
         holder.sample.setText(fevListModel.getSample());
         holder.name.setText(fevListModel.getName());
         holder.price.setText("Rs."+fevListModel.getPrice());
-        holder.imageView.setImageResource(fevListModel.getImage());
+        Picasso.get().load("http://aoneservice.net.in/salon/documents/"+fevListModel.getImage()).
+                resize(400, 400).centerCrop().into(holder.imageView);
 
 
     }
