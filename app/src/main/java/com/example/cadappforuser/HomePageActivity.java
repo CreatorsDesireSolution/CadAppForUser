@@ -5,11 +5,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -39,6 +41,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.denzcoskun.imageslider.adapters.ViewPagerAdapter;
 import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
@@ -67,6 +70,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomePageActivity extends AppCompatActivity  implements  NavigationView
         .OnNavigationItemSelectedListener{
@@ -78,7 +83,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     ArrayList<ServicesFeatureAndCategoriesHomeModel> servicesFeatureAndCategoriesHomeModelArrayList;
     ArrayList<ServicesFreelancerHomeModel> servicesFreelancerHomeModelArrayList;
     ArrayList<AllServiceModel> allServiceModels;
-
     ArrayList<NewModel> newModels;
     ArrayList<CompanyNewModel> companyNewModels;
     Activity activity;
@@ -93,10 +97,69 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     String lastname,fullname,name,mobile;
     ImageView nav_image;
     SearchView et_search;
+    ViewPager viewPager;
+    LinearLayout sliderDotspanel;
+    Timer timer;
+    int dotscount;
+    double lat,lng;
+    private ImageView[] dots;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
+
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        sliderDotspanel = (LinearLayout)findViewById(R.id.SliderDots);
+
+        ViewPagerCustomerAdapter viewPagerAdapter = new ViewPagerCustomerAdapter(this);
+
+        viewPager.setAdapter(viewPagerAdapter);
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new SliderTimer(), 3000, 4000);
+
+
+        dotscount = viewPagerAdapter.getCount();
+        dots = new ImageView[dotscount];
+
+        for(int i = 0; i < dotscount; i++){
+
+            dots[i] = new ImageView(this);
+            dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.nonactive_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(8, 4, 8, 4);
+
+            sliderDotspanel.addView(dots[i], params);
+
+        }
+
+        dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
+                }
+
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,9 +176,9 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         txtCurrentLocation.setText(intent.getStringExtra("address"));
 
         act_session=new Act_Session(context);
-        recyclerView=findViewById(R.id.recycleView);
-        recyclerView1=findViewById(R.id.recycleView1);
-        recyclerView2=findViewById(R.id.recycleView2);
+        recyclerView=findViewById(R.id.rv_NearFreelancer);
+        recyclerView1=findViewById(R.id.rv_nearCompany);
+        recyclerView2=findViewById(R.id.rv_nearServices);
 
         NavigationView navigationView =  findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
@@ -133,18 +196,18 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         try{
             String img_str=act_session.profile_pic;
-            Log.d("prof1","prof "+img_str);
+            Log.e("prof1","prof "+img_str);
             if (!img_str.equals("")){
                 Log.d("enco1","nco"+img_str);
-                Log.d("prof1","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
-                Picasso.get().load("http://aoneservice.net.in/salon/documents/"+img_str).
-                        resize(100, 100).centerCrop().into(nav_image);
+                Log.e("prof1","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load(Const.URL.image_url+img_str).
+                        into(nav_image);
             }
         }catch (Exception e){
             Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
         }
 
-        searchView = findViewById(R.id.searchview);
+       // searchView = findViewById(R.id.searchview);
 
         seeAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,8 +228,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         //Apigetdetail();
 
 
-        searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
-        LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
+        et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
+        LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
         LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
         SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
@@ -175,13 +238,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 // set the text color
         autoComplete.setTextColor(getResources().getColor(R.color.black));
 //
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        et_search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
             }
 
-           @Override
+            @Override
             public boolean onQueryTextChange(String newText) {
                 newAdapter.getFilter().filter(newText);
                 companyNewAdapter.getFilter().filter(newText);
@@ -189,9 +252,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             }
         });
 
-        allServiceModels = new ArrayList<>();
         servicesFeatureAndCategoriesHomeModelArrayList=new ArrayList<>();
         servicesFreelancerHomeModelArrayList=new ArrayList<>();
+        allServiceModels = new ArrayList<>();
+
 
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Haircut","lorem ipsum"));
         allServiceModels.add(new AllServiceModel(R.drawable.facial,"450","Massage","lorem ipsum"));
@@ -212,11 +276,14 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         newModels = new ArrayList<>();
 
         Bundle b = getIntent().getExtras();
-        final double lat= b.getDouble("lat");
-        final double lng=b.getDouble("lng");
+        if(b!=null){
+            lat= b.getDouble("lat");
+            lng=b.getDouble("lng");
 
-        Log.d("lat","lat"+(lat));
-        Log.d("lng","lng"+(lng));
+            Log.d("lat","lat"+(lat));
+            Log.d("lng","lng"+(lng));
+
+        }
 
 
         //Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
@@ -224,36 +291,36 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
 
-        final StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/distance_api.php", new Response.Listener<String>() {
+        final StringRequest request=new StringRequest(Request.Method.POST, Const.URL.distance_api, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
-
+                    Log.e("homerespone","::"+response);
                     JSONObject jsonObject = new JSONObject(response);
                     String sucess = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                     if (sucess.equals("1")) {
                         for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject object = jsonArray.getJSONObject(i);
-                                String id = object.getString("id");
-                                String name = object.getString("firstname");
-                                String lastname = object.getString("lastname");
-                                String email = object.getString("email");
-                                String mobilenumber = object.getString("mobilenumber");
-                                String experinace=object.getString("experience");
-                                //String gender = object.getString("gender");
-                                String km=object.getString("km");
-                             //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
-                                String address = object.getString("address");
-                                String aboutus=object.getString("about_yourself");
-                                String item_image = object.getString("profile_pic");
-                                String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                                newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
-                                newAdapter=new NewAdapter(HomePageActivity.this,newModels);
-                                recyclerView.setHasFixedSize(true);
-                                recyclerView.setAdapter(newAdapter);
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String id = object.getString("id");
+                            String name = object.getString("firstname");
+                            String lastname = object.getString("lastname");
+                            String email = object.getString("email");
+                            String mobilenumber = object.getString("mobilenumber");
+                            String experinace=object.getString("experience");
+                            //String gender = object.getString("gender");
+                            String km=object.getString("km");
+                            //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            String address = object.getString("address");
+                            String aboutus=object.getString("about_yourself");
+                            String item_image = object.getString("profile_pic");
+                            String u = "http://aoneservice.net.in/salon/documents/" + item_image;
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            newAdapter=new NewAdapter(HomePageActivity.this,newModels);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setAdapter(newAdapter);
 
                         }
                     }
@@ -277,17 +344,17 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 return map;
             }
         };
-            RequestQueue requestQueue = Volley.newRequestQueue(HomePageActivity.this);
-            requestQueue.add(request);
+        RequestQueue requestQueue = Volley.newRequestQueue(HomePageActivity.this);
+        requestQueue.add(request);
 
         companyNewModels = new ArrayList<>();
 
-        final StringRequest request1=new StringRequest(Request.Method.POST, "http://aoneservice.net.in/salon/get-apis/company_distance_api.php", new Response.Listener<String>() {
+        final StringRequest request1=new StringRequest(Request.Method.POST, Const.URL.company_distance_api, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
-
+                    Log.e("seeCompany","::"+response);
                     JSONObject jsonObject = new JSONObject(response);
                     String sucess = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -304,15 +371,14 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String mobilenumber = object.getString("mobilenumber");
                             String experinace=object.getString("total_year_establishment");
                             String km=object.getString("km");
-                           // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            String lastname_=object.getString("last_name");
+                            // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_company");
                             String no_of_staff=object.getString("no_of_staff");
-                            String id1=object.getString("id");
 
                             String item_image = object.getString("profile_pic");
-                            String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            companyNewModels.add(new CompanyNewModel(u,name,5,email,mobilenumber,regnumber,address,experinace,aboutus,no_of_staff,id1));
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);
@@ -374,6 +440,24 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try{
+            String img_str=act_session.profile_pic;
+            Log.e("prof1","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco1","nco"+img_str);
+                Log.e("prof1","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load(Const.URL.image_url+img_str).
+                        into(nav_image);
+            }
+        }catch (Exception e){
+            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
     /*private void Apigetdetail() {
         baseRequest = new BaseRequest();
         baseRequest.setBaseRequestListner(new RequestReciever() {
@@ -429,18 +513,34 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     }*/
 
 
+    private class SliderTimer extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewPager.getCurrentItem() < dotscount - 1) {
+                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-               //startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
+                //startActivity(new Intent(HomePageActivity.this, HomePageActivity.class));
                 break;
             case R.id.nav_chat:
                 //startActivity(new Intent(HomePageActivity.this,SearchByNameOrServicesOrNearby.class));
                 break;
             case R.id.nav_profile:
-                 startActivity(new Intent(HomePageActivity.this,CustomerPersonalProfileActivity.class));
+                startActivity(new Intent(HomePageActivity.this,CustomerPersonalProfileActivity.class));
                 break;
             case R.id.nav_history:
                 //startActivity(new Intent(HomePageActivity.this,SearchServices.class));

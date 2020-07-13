@@ -6,209 +6,291 @@
     android:layout_height="match_parent"
     android:background="#FFF"
     tools:context=".HomePageActivity">
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF"
-        tools:context=".HomePageActivity">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
-            android:elevation="2dp"></androidx.appcompat.widget.Toolbar>
+            android:layout_height="match_parent"
+            android:background="#FFF"
+            tools:context=".HomePageActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Location"
-            android:textColor="#000"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_below="@+id/toolbar"
-            android:id="@+id/txtLocation"></TextView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLocation"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="20dp"
-            app:cardCornerRadius="6dp">
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff">
+                android:id="@+id/lv_linearFirst"
+                android:background="@color/colorAccent"
+                android:paddingBottom="10dp"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.SearchView
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:hint="Search by a name or shop"
-                    android:inputType="text"
-                    android:textSize="15sp"
-                    android:paddingRight="13sp"
-                    android:paddingLeft="13dp"
-                    android:textColorHint="#000"
-                    app:defaultQueryHint="@string/search"
-                    android:id="@+id/searchview"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorAccent"
+                    android:elevation="2dp"/>
 
-                    android:layout_marginTop="8dp"
-                    android:layout_below="@+id/userImageIcon"
-                    android:layout_marginLeft="13dp"
-                    android:textColor="#000"
-                    android:iconifiedByDefault="false"
-                    android:layout_marginBottom="5dp"
-                    android:imeOptions="actionSearch"
-                    android:textStyle="normal"></androidx.appcompat.widget.SearchView>
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="15sp"
-                    android:id="@+id/serchicon"
-                    android:src="@drawable/ic_search_black_24dp"
-                    android:layout_alignParentEnd="true"></ImageView>
+                    android:layout_marginLeft="15dp"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_location_white"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Current Location"
+                        android:textColor="@android:color/white"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:maxLength="150"
+                        android:maxLines="2"
+                        android:fontFamily="@font/poppins_light"
+                        android:id="@+id/txtLocation"/>
+
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" | "
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:textColor="#000"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/serchicon"></TextView>
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    app:cardCornerRadius="6dp">
 
-            </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff">
 
-        </androidx.cardview.widget.CardView>
+                        <androidx.appcompat.widget.SearchView
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:hint="Search by a name or shop"
+                            android:inputType="text"
+                            android:textSize="15sp"
+                            android:paddingRight="13sp"
+                            android:paddingLeft="13dp"
+                            android:textColorHint="#000"
+                            android:id="@+id/et_search"
+                            android:layout_marginTop="8dp"
+                            android:layout_below="@+id/userImageIcon"
+                            android:layout_marginLeft="13dp"
+                            android:textColor="#000"
+                            android:iconifiedByDefault="false"
+                            android:layout_marginBottom="5dp"
+                            android:imeOptions="actionSearch"
+                            android:textStyle="normal"></androidx.appcompat.widget.SearchView>
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/homerecyclerview"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="150dp"-->
-<!--            android:layout_below="@id/card"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="15sp"
+                            android:id="@+id/serchicon"
+                            android:src="@drawable/ic_search_black_24dp"
+                            android:layout_alignParentEnd="true"></ImageView>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" | "
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:textColor="#000"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/serchicon"></TextView>
 
-        <TextView
-            android:id="@+id/feat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Near by Freelancer"
-            android:textColor="@color/quantum_orange"
-            android:textSize="18sp"
-            android:textStyle="normal"></TextView>
+                    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/seeAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="20dp"
-            android:text="See all"
-            android:textColor="#000"
-            android:textSize="13dp"
-            android:textStyle="normal"></TextView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_below="@+id/seeAll"
-            android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
-
-   <View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/quantum_grey"/>
-        <TextView
-            android:id="@+id/frella"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Near by Companies"
-            android:textColor="@color/quantum_orange"
-            android:textSize="18sp"
-            android:textStyle="normal"></TextView>
-
-        <TextView
-            android:id="@+id/seeAllFree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="20dp"
-            android:text="See all"
-            android:textColor="#000"
-            android:textSize="13dp"
-            android:textStyle="normal"></TextView>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView1"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_below="@+id/seeAllFree"
-            android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.cardview.widget.CardView>
 
 
-        <TextView
-            android:id="@+id/Service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Services"
-            android:textColor="@color/quantum_orange"
-            android:textSize="18sp"
-            android:textStyle="normal"></TextView>
-
-        <TextView
-            android:id="@+id/seeallservice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView1"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="13dp"
-            android:layout_marginRight="20dp"
-            android:text="See all"
-            android:textColor="#000"
-            android:textSize="13dp"
-            android:textStyle="normal"></TextView>
+            </LinearLayout>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView2"
-            android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_below="@+id/seeallservice"
-            android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/feat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lv_linearFirst"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Near by Freelancer"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/quantum_orange"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/seeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lv_linearFirst"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="See All"
+                android:textColor="#000"
+                android:textSize="13dp"
+                android:textStyle="normal"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_NearFreelancer"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_below="@+id/seeAll"
+                android:layout_marginTop="22dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rv_NearFreelancer"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@color/quantum_grey"/>
+
+            <TextView
+                android:id="@+id/frella"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_NearFreelancer"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Near by Companies"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/quantum_orange"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/seeAllFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_NearFreelancer"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="20dp"
+                android:text="See All"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="#000"
+                android:textSize="13dp"
+                android:textStyle="normal"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_nearCompany"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_below="@+id/seeAllFree"
+                android:layout_marginTop="22dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rv_nearCompany"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@color/quantum_grey"/>
+
+            <TextView
+                android:id="@+id/Service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_nearCompany"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Services"
+                android:textColor="@color/quantum_orange"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:id="@+id/seeallservice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_nearCompany"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="13dp"
+                android:layout_marginRight="20dp"
+                android:text="See all"
+                android:textColor="#000"
+                android:textSize="13dp"
+                android:textStyle="normal"/>
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_nearServices"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:layout_below="@+id/seeallservice"
+                android:layout_marginTop="22dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rv_nearServices"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:background="@color/quantum_grey"/>
+
+            <TextView
+                android:id="@+id/offers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_nearServices"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Offers"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/quantum_orange"
+                android:textSize="16sp"
+                android:textStyle="normal"/>
 
 
-    </RelativeLayout>
-</ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@+id/offers"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/SliderDots"
+                    android:layout_below="@+id/viewPager"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_width="20dp"
+                    android:padding="2dp"
+                    android:background="#D7C5F8"
+                    android:layout_height="match_parent"/>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>
