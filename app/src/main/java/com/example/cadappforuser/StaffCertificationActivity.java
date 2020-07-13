@@ -153,7 +153,7 @@ public class StaffCertificationActivity extends AppCompatActivity {
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> map=new HashMap<>();
                         map.put("certificate",encodeImage);
-                        map.put("id","31");
+                        map.put("id",act_session.staffid);
                         Log.d("id","id"+act_session.staffid);
 
                         return  map;

@@ -202,16 +202,15 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
                     String staff_id=jsonObject1.getString("staffid");
                     act_session.userstaffid(getApplicationContext(),staff_id);
-                   // act_session = new Act_Session(context, jsonObject1);
+                    Toast.makeText(getApplicationContext(), "Add Successfully"+jsonObject1, Toast.LENGTH_SHORT).show();
+
+                    // act_session = new Act_Session(context, jsonObject1);
 
                     Toast.makeText(getApplicationContext(), "Add Successfully"+act_session.staffid, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(CompanyRegisterAsCompanyStaffActivity.this,CompanySetAvalibiltyCustomActivityStaff.class));
 
 
-
                     finish();
-
-
 
 
                 } catch (JSONException e) {

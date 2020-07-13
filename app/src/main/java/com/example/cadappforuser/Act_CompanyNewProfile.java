@@ -57,6 +57,9 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
 
         activity = this;
 
+        Intent intent = getIntent();
+        companyId = intent.getStringExtra("id");
+
 
 
 
