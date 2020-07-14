@@ -1,129 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardview11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5sp"
-        android:layout_marginLeft="5sp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        app:cardCornerRadius="22dp">
+        app:cardCornerRadius="10dp">
+
         <RelativeLayout
-            android:layout_width="wrap_content"
-
-            android:background="@drawable/editborder"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginLeft="10dp"
-                app:riv_corner_radius="30dip"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/circle_profileupload"
-                android:id="@+id/serviceListServiceImage"
-
-                android:src="@drawable/pro"
-                ></de.hdodenhof.circleimageview.CircleImageView>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hair Styling"
-                android:textColor="@color/black"
-                android:textStyle="normal"
-                android:id="@+id/serviceListServiceName"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="10dp"
-                android:fontFamily="@font/poppins"
-                android:layout_alignParentEnd="true"
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lorem Ipsum"
-                android:textColor="@color/black"
-                android:layout_below="@+id/serviceListServiceName"
-                android:textStyle="normal"
-                android:textSize="18sp"
-                android:id="@+id/serviceListServiceSample"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/poppins"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentEnd="true"
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rs. 450"
-                android:textColor="@color/colorAccent"
-                android:layout_below="@id/serviceListServiceSample"
-                android:textStyle="normal"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins"
-                android:layout_marginTop="5dp"
-                android:id="@+id/serviceListServicePrice"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentEnd="true"
-                ></TextView>
+            android:background="@color/skin1">
 
             <ImageView
+                android:id="@+id/serviceListServiceImage"
+                android:layout_width="120dp"
+                android:layout_height="130dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/editborder"
+                android:scaleType="fitXY"
+
+                android:src="@drawable/pro"></ImageView>
+
+
+            <TextView
+                android:id="@+id/serviceListServiceName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rs. 450"
-                android:textColor="@color/colorAccent"
-                android:layout_below="@id/serviceListServicePrice"
-                android:textStyle="normal"
-                android:textSize="18sp"
-                android:layout_marginTop="5dp"
-                android:id="@+id/fevicon"
-                android:src="@drawable/ic_favorite_border_black_24dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_alignParentEnd="true"
-                ></ImageView>
+                android:layout_toRightOf="@+id/serviceListServiceImage"
+                android:fontFamily="@font/poppins_light"
 
+                android:text="Hair Styling"
+                android:textColor="@color/quantum_orange"
+                android:textSize="16sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:id="@+id/serviceListServiceSample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/serviceListServiceName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/serviceListServiceImage"
+                android:fontFamily="@font/poppins_light"
+                android:text="Lorem Ipsum"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal"></TextView>
+
+            <TextView
+                android:id="@+id/serviceListServicePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/serviceListServiceSample"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/serviceListServiceImage"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Rs. 450"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linear"
                 android:weightSum="1"
                 android:orientation="horizontal"
-                android:layout_below="@+id/fevicon"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_below="@+id/serviceListServiceImage"
+                android:background="@color/quantum_orange">
+
 
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:layout_marginRight="5dp">
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight=".2"
+                    tools:ignore="Suspicious0dp"
+                    >
 
-                    <Button
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:id="@+id/fevicon"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/editborder"
-                        android:text="Add To Cart"
-                        android:id="@+id/btn_addtocart"
-                        android:backgroundTint="@color/quantum_orange"
-                        android:textColor="@color/white"
-                        android:fontFamily="@font/poppins_semibold"/>
+                        android:layout_below="@id/serviceListServiceImage"
+                        android:layout_marginLeft="30dp"
+                        android:backgroundTint="@color/white"
+                        android:background="@drawable/service_background"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_favorite_border_black_24dp"
+                        android:text="Rs. 450"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp"
+                        android:textStyle="normal"></ImageView>
+
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight=".8"
+                    tools:ignore="Suspicious0dp"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@id/serviceListServiceImage"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="+ Add To Cart"
+                        android:layout_marginLeft="70dp"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:id="@+id/btn_addtocart"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/editborder"
+                        android:backgroundTint="@color/green" />
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
 
+
+
+
+
         </RelativeLayout>
+
+
     </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardview11"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".2">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>
