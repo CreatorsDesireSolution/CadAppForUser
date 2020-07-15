@@ -50,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txtName.setText(cartModel.getSerName());
         holder.txtSample.setText(cartModel.getSerSample());
         holder.txtPrice.setText("Rs."+cartModel.getSerPrice());
-
+        holder.qty.setText(""+cartModel.getQty());
         holder.btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,10 +59,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 }
                 if (number[0] > 1) {
                     number[0] = number[0] - 1;
-                    database.execSQL("UPDATE  CART SET QTY = "+number[0]+" WHERE _id="+item_id);
+                    database.execSQL("UPDATE CART SET QTY = "+number[0]+" WHERE _id="+item_id);
                     ((CartActivity)context).resetGraph(context);
                     holder.qty.setText(""+number[0]);
-
                 }
             }
         });
@@ -72,6 +71,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                  number[0] = number[0] + 1;
                  database.execSQL("UPDATE CART SET QTY = "+number[0]+" WHERE _id="+item_id);
                  holder.qty.setText(""+number[0]);
+                Toast.makeText(context, ""+number[0], Toast.LENGTH_SHORT).show();
                 ((CartActivity)context).resetGraph(context);
             }
         });

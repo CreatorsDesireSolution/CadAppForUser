@@ -30,7 +30,7 @@ public class CartActivity extends AppCompatActivity {
     ArrayList<CartModel>cartModelArrayList;
     Button btnCheckOut;
     TextView txt_total_price;
-    int total=0;
+    int total=0,count1=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +39,6 @@ public class CartActivity extends AppCompatActivity {
 
         btnCheckOut=findViewById(R.id.btnCheckOut1);
         txt_total_price= findViewById(R.id.txt_total_price);
-
-        btnCheckOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CartActivity.this,OrderSummary.class));
-            }
-        });
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Cart");
@@ -70,25 +63,44 @@ public class CartActivity extends AppCompatActivity {
             }
         }
 
-       txt_total_price.setText("Rs."+Integer.valueOf(total));
+        txt_total_price.setText("Rs."+Integer.valueOf(total));
         cartAdapter=new CartAdapter(this,cartModelArrayList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(CartActivity.this));
         recyclerView.setAdapter(cartAdapter);
         cartAdapter.notifyDataSetChanged();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Myhelper myhelper1=new Myhelper(this);
+        SQLiteDatabase database1 = myhelper1.getReadableDatabase();
+        String sql1 = "select * from CART";
+        Cursor c1 = database1.rawQuery(sql1,null);
+        while(c1.moveToNext()){
+            count1++;
+        }
+
+
+        btnCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CartActivity.this,OrderActivity.class));
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_for_cart,menu);
         MenuItem menuItem=menu.findItem(R.id.cart1);
+        menuItem.setIcon(Converter.convertLayoutToImage(CartActivity.this,count1-1,R.drawable.ic_shopping_cart_black_24dp));
+
         menuItem.setOnMenuItemClickListener(
                 new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 startActivity(new Intent(getApplicationContext(),CartActivity.class));
+                finish();
                 return true;
             }
         });

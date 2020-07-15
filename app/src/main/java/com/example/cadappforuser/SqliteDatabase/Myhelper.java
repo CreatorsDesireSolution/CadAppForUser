@@ -24,13 +24,13 @@ public class Myhelper extends SQLiteOpenHelper {
 
         }
     }
-    /*public void delete(int position) {
+    public void delete(int position) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        String table = "PRODUCT";
-        String whereClause = "id";
+        String table = "CART";
+        String whereClause = "_id";
         String [] whereArgs = new String[] {String.valueOf(position)};
         db.delete (table, whereClause, whereArgs);
 
-    }*/
+    }
 }
