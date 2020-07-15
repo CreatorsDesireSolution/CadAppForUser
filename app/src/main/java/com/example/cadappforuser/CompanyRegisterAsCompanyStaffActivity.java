@@ -44,10 +44,11 @@ import static com.example.cadappforuser.retrofit.Constants.BASE_URL;
 public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
     Button btnRegister;
-    TextView txtGender,etAddress;
+    TextView txtGender;
+
     String firstname,lastname,email,mobilenumber,gender,address;
 
-    EditText etFirstName,etLastName,etUserEmail,etUsePhoneNumber,etGender,etReferralCode;
+    EditText etFirstName,etLastName,etUserEmail,etUsePhoneNumber,etGender,etReferralCode,etAddress;
     BaseRequest baseRequest;
     Act_Session act_session;
     Context context;
@@ -85,39 +86,39 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
 
 
 
-        etAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firstname = etFirstName.getText().toString();
-                lastname =etLastName.getText().toString();
-                mobilenumber = etUsePhoneNumber.getText().toString();
-                email = etUserEmail.getText().toString();
-
-                Intent intent1 = new Intent(getApplicationContext(),CurrentLocationofcompanyStaff.class);
-                intent1.putExtra("firstname",firstname);
-                intent1.putExtra("lastname",lastname);
-                intent1.putExtra("mobilenumber",mobilenumber);
-                intent1.putExtra("email",email);
-                intent1.putExtra("gender",gender);
-                startActivity(intent1);
-            }
-        });
-
-
-        Intent intent2 = getIntent();
-        address = intent2.getStringExtra("address");
-        firstname=intent2.getStringExtra("firstname");
-        lastname=intent2.getStringExtra("lastname");
-        mobilenumber=intent2.getStringExtra("mobilenumber");
-        email=intent2.getStringExtra("email");
-        gender= intent2.getStringExtra("gender");
-
-
-        etFirstName.setText(firstname);
-        etLastName.setText(lastname);
-        etUsePhoneNumber.setText(mobilenumber);
-        etUserEmail.setText(email);
-        etAddress.setText(address);
+//        etAddress.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                firstname = etFirstName.getText().toString();
+//                lastname =etLastName.getText().toString();
+//                mobilenumber = etUsePhoneNumber.getText().toString();
+//                email = etUserEmail.getText().toString();
+//
+//                Intent intent1 = new Intent(getApplicationContext(),CurrentLocationofcompanyStaff.class);
+//                intent1.putExtra("firstname",firstname);
+//                intent1.putExtra("lastname",lastname);
+//                intent1.putExtra("mobilenumber",mobilenumber);
+//                intent1.putExtra("email",email);
+//                intent1.putExtra("gender",gender);
+//                startActivity(intent1);
+//            }
+//        });
+//
+//
+//        Intent intent2 = getIntent();
+//        address = intent2.getStringExtra("address");
+//        firstname=intent2.getStringExtra("firstname");
+//        lastname=intent2.getStringExtra("lastname");
+//        mobilenumber=intent2.getStringExtra("mobilenumber");
+//        email=intent2.getStringExtra("email");
+//        gender= intent2.getStringExtra("gender");
+//
+//
+//        etFirstName.setText(firstname);
+//        etLastName.setText(lastname);
+//        etUsePhoneNumber.setText(mobilenumber);
+//        etUserEmail.setText(email);
+//        etAddress.setText(address);
       //  etGender.setText(gender);
 
 

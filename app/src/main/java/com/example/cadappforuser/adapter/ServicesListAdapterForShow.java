@@ -141,7 +141,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CircleImageView imageView;
+        ImageView imageView;
             ImageView fevicon;
         TextView price,name,sample;
         Button btn_addtocart;

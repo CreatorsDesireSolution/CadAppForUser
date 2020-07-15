@@ -10,17 +10,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
@@ -30,6 +35,7 @@ import com.example.cadappforuser.adapter.NewAdapter;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,7 +53,11 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
     TextView txtCurrentLocation;
+    Act_Session act_session ;
+    ImageView nav_image;
+    String name,lastname,fullname,mobile;
 
+   Activity activity;
 
 
     @Override
@@ -59,6 +69,8 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
        setSupportActionBar(toolbar);
 
         context = this;
+        activity = this;
+        act_session = new Act_Session(getApplicationContext());
 
         recyclerView=findViewById(R.id.recycleView);
         recyclerView1=findViewById(R.id.recycleView1);
@@ -82,6 +94,36 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         autoComplete.setHintTextColor(getResources().getColor(R.color.black));
 // set the text color
         autoComplete.setTextColor(getResources().getColor(R.color.black));
+
+
+
+
+        NavigationView navigationView1 =  findViewById(R.id.navigation_view);
+        View hView =  navigationView1.getHeaderView(0);
+        TextView nav_user = hView.findViewById(R.id.tv_headername);
+        TextView nav_mobile =hView.findViewById(R.id.tv_headenumber);
+        nav_image=hView.findViewById(R.id.UserImageProfile);
+        name = act_session.firstname;
+        lastname = act_session.lastname;
+        mobile = act_session.mobilenumber;
+
+        fullname = name + lastname;
+
+        nav_user.setText(fullname);
+        nav_mobile .setText(mobile);
+
+        try{
+            String img_str=act_session.profile_pic;
+            Log.e("prof1","prof "+img_str);
+            if (!img_str.equals("")){
+                Log.d("enco1","nco"+img_str);
+                Log.e("prof1","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
+                Picasso.get().load(Const.URL.image_url+img_str).
+                        into(nav_image);
+            }
+        }catch (Exception e){
+            Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
 
 
 

@@ -18,14 +18,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -49,7 +46,6 @@ import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
-import com.example.cadappforuser.SqliteDatabase.Myhelper;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
 import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
@@ -107,7 +103,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     int dotscount;
     double lat,lng;
     private ImageView[] dots;
-    int count1=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,7 +224,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 startActivity(intent1);
             }
         });
+
         //Apigetdetail();
+
+
         et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
@@ -249,7 +247,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             @Override
             public boolean onQueryTextChange(String newText) {
                 newAdapter.getFilter().filter(newText);
-              //  companyNewAdapter.getFilter().filter(newText);
+                companyNewAdapter.getFilter().filter(newText);
                 return true;
             }
         });
@@ -287,15 +285,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         }
 
-
-        //for freelancer
-        Myhelper myhelper1=new Myhelper(this);
-        SQLiteDatabase database1 = myhelper1.getReadableDatabase();
-        String sql1 = "select * from CART";
-        Cursor c1 = database1.rawQuery(sql1,null);
-        while(c1.moveToNext()){
-            count1++;
-        }
 
         //Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
 
@@ -426,6 +415,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 this,mDrawerLayout,toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
+
         );
         NavigationView navigationView1=findViewById(R.id.navigation_view);
         mDrawerLayout.addDrawerListener(toggle);
@@ -438,23 +428,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.colorAccent));
         }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_for_cart,menu);
-        MenuItem menuItem=menu.findItem(R.id.cart1);
-        menuItem.setIcon(Converter.convertLayoutToImage(HomePageActivity.this,count1-1,R.drawable.ic_shopping_cart_black_24dp));
 
-        menuItem.setOnMenuItemClickListener(
-                new MenuItem.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        startActivity(new Intent(getApplicationContext(),CartActivity.class));
-                        finish();
-                        return true;
-                    }
-                });
-        return super.onCreateOptionsMenu(menu);
     }
     @Override
     public void onBackPressed() {
@@ -580,7 +554,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 break;
             case R.id.nav_mycart:
                 startActivity(new Intent(HomePageActivity.this,CartActivity.class));
-               finish();
                 break;
 
             case  R.id.nav_logout:
