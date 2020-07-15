@@ -134,8 +134,6 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
             notifyDataSetChanged();
         }
     };
-
-
     public class CompanyNewVIewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView facialImageFreelancer;
         TextView tv_freelancername,km;

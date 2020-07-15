@@ -26,6 +26,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".Appointment.FreelancerAppointment"></activity>
         <activity android:name=".Appointment.CompanyAppointment" />
+        <activity android:name=".OrderActivity"></activity>
         <activity android:name=".Act_AddToCart" />
         <activity android:name=".CustomerPersonalProfileActivity" />
         <activity android:name=".CompanyPersonalProfileActivity" />
