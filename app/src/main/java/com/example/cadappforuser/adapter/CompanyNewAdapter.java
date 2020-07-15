@@ -8,20 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cadappforuser.Act_CompanyNewProfile;
-import com.example.cadappforuser.Act_CompanyNewProfileOnlyShow;
-import com.example.cadappforuser.Act_FreelancerProfile;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
-import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,6 +49,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
 
         CompanyNewModel companyNewModel=companyNewModels.get(position);
         holder.tv_freelancername.setText(companyNewModel.getName());
+        holder.km.setText(companyNewModel.getKm());
        // holder.facialImageFreelancer.setImageResource(companyNewModel.getImage());
         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyNewModels.get(0).getImage()).
                 resize(400, 400).centerCrop().into(holder.facialImageFreelancer);
@@ -142,7 +138,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
 
     public class CompanyNewVIewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView facialImageFreelancer;
-        TextView tv_freelancername;
+        TextView tv_freelancername,km;
         ImageView ratingBar;
         private ItemClickListner itemClickListner;
         public CompanyNewVIewHolder(@NonNull View itemView) {
@@ -151,6 +147,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
             facialImageFreelancer = itemView.findViewById(R.id.facialImageFreelancer);
             tv_freelancername = itemView.findViewById(R.id.freelancer);
             ratingBar = itemView.findViewById(R.id.ratingbar);
+            km= itemView.findViewById(R.id.kilometer);
             itemView.setOnClickListener(this);
 
         }

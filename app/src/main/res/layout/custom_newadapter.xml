@@ -55,7 +55,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="2dp"
             android:isIndicator="true"
-            android:numStars="5"
             android:rating="5"
 
             android:scaleX="0.6"
@@ -63,8 +62,7 @@
             android:src="@drawable/starorange"
             android:text="Haircut"
             android:textStyle="normal"
-            android:transformPivotX="0dp"
-            android:transformPivotY="0dp"></ImageView>
+          ></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,6 +74,20 @@
             android:textColor="@color/black">
 
         </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5"
+            android:fontFamily="@font/poppins_light"
+            android:id="@+id/kilometer"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black">
+
+        </TextView>
+
 
 
     </LinearLayout>

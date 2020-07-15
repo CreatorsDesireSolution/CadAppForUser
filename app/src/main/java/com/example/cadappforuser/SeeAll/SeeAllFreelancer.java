@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.cadappforuser.Act_Session;
-import com.example.cadappforuser.CompanyHomePageActivity;
+import com.example.cadappforuser.Const;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.adapter.FreelancerDetailAdapter;
 import com.example.cadappforuser.adapter.SeeAllFreelancerAdapter;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.FreelancerDetailsModel;
@@ -45,8 +45,8 @@ public class SeeAllFreelancer extends AppCompatActivity {
         actionBar.setTitle("See All Freelancer");
 
         recycleAll = findViewById(R.id.recycle_all);
-       act_session = new Act_Session(getApplicationContext());
-       context = this;
+        act_session = new Act_Session(getApplicationContext());
+        context = this;
 
         // get the reference of RecyclerView
 // set a GridLayoutManager with default vertical orientation and 3 number of columns
@@ -78,6 +78,7 @@ public class SeeAllFreelancer extends AppCompatActivity {
             @Override
             public void onSuccess(int requestCode, String Json, Object object) {
                 try {
+                    Log.e("seeFrellancer","::"+Json);
                     JSONObject jsonObject = new JSONObject(Json);
 
                     if (!jsonObject.getString("message").equals("Failed")) {
@@ -98,12 +99,11 @@ public class SeeAllFreelancer extends AppCompatActivity {
 //                                recyclerView.setLayoutManager(layoutManager1);
 
 
-                                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+                                LinearLayoutManager gridLayoutManager = new LinearLayoutManager(SeeAllFreelancer.this);
+                                gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
                                 recycleAll.setLayoutManager(gridLayoutManager);
                                 recycleAll.setHasFixedSize(true);
                                 recycleAll.setAdapter(seeAllFreelancerAdapter);
-
-
 
                             } else {
                                 Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show();

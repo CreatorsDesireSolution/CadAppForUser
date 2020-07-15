@@ -2,6 +2,7 @@ package com.example.cadappforuser.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import com.example.cadappforuser.Act_CompanyNewProfile;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.model.CompanyDetailsModel;
-import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,12 +46,14 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
         // holder.sample.setText(companyAddServiceModel.getDescription());
 
         holder.tv_companyname.setText(companyDetailsModel.getCompanyname());
-     //   holder.tv_lastname.setText(companyDetailsModel.getLastname());
+        Log.e("companyname",companyDetailsModel.getCompanyname());
+        holder.location.setText(companyDetailsModel.getAddress());
+        holder.kilometer.setText(companyDetailsModel.getKm());
+        //holder.tv_lastname.setText(companyDetailsModel.getLastname());
         //holder.price.setText("Rs."+companyDetailsModel.getAboutCompany());
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load("http://aoneservice.net.in/salon/documents/" + companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().into(holder.companyimageview);
-
         final String companyname = companyDetailsModel.getCompanyname();
         final String email = companyDetailsModel.getEmail();
         final String number = companyDetailsModel.getMobilenumber();
@@ -89,7 +91,7 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tv_companyname, tv_lastname, userrating;
+        TextView tv_companyname, tv_lastname,location, userrating,kilometer;
         ImageView ratingBar;
         ImageView companyimageview;
         ItemClickListner itemClickListner;
@@ -99,10 +101,12 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
             super(itemView);
 
             tv_companyname = itemView.findViewById(R.id.firstname);
+            location = itemView.findViewById(R.id.location_address);
+            kilometer = itemView.findViewById(R.id.kilometer);
            // tv_lastname = itemView.findViewById(R.id.lastname);
-            ratingBar = itemView.findViewById(R.id.ratingbar);
+           // ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview = itemView.findViewById(R.id.companyimageview);
-            userrating = itemView.findViewById(R.id.userrating);
+          //  userrating = itemView.findViewById(R.id.userrating);
             itemView.setOnClickListener(this);
 
         }

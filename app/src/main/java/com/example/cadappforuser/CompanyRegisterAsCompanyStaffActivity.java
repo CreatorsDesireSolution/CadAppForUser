@@ -147,6 +147,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                  }else  if (email.equals("")){
                      Toast.makeText(context, "please enter email", Toast.LENGTH_SHORT).show();
 
+
                  }else {
                       ApiPostStaff();
                  }
@@ -185,6 +186,9 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                                 }).check();
                     }
                 });
+
+
+
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

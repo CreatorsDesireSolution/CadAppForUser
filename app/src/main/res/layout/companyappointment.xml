@@ -46,11 +46,22 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Company"
+                        android:text="Freelancer"
                         android:textColor="#000"
                         android:textSize="14sp" />
 
 
+                    <TextView
+                        android:id="@+id/lastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/firstname"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Lastname"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -73,46 +84,42 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="1"
+                    android:layout_marginRight="10dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_weight=".5"
+                        android:layout_marginRight="5dp">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/starorange" />
-
-                        <TextView
-                            android:id="@+id/userrating"
+                        <Button
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/cardV"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins_light"
-                            android:text="4.5"
-                            android:textColor="#000"
-                            android:textSize="12sp" />
+                            android:layout_height="match_parent"
+                            android:background="@drawable/editborder"
+                            android:text="Approve"
+                            android:id="@+id/btn_approve"/>
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/kilometer"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardV"
-                        android:layout_gravity="right"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="right"
-                        android:text="10 km"
-                        android:textColor="#000"
-                        android:textSize="12sp" />
+                        android:layout_weight=".5"
+                        android:layout_marginLeft="5dp">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/editborder"
+                            android:text="Remove"
+                            android:id="@+id/btn_remove"/>
+
+
+                    </LinearLayout>
+
+
+
 
                 </LinearLayout>
 

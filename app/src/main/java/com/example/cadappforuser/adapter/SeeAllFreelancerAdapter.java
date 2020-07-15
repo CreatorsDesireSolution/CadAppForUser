@@ -14,11 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cadappforuser.FreelancerDetailsForCompay;
 import com.example.cadappforuser.ItemClickListner;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.squareup.picasso.Picasso;
-
-import org.apache.http.conn.ConnectTimeoutException;
 
 import java.util.List;
 
@@ -46,6 +43,8 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
         // holder.sample.setText(companyAddServiceModel.getDescription());
 
         holder.tv_companyname.setText(companyDetailsModel.getFirstname());
+        holder.location_address.setText(companyDetailsModel.getAddress());
+        holder.kilometer.setText(companyDetailsModel.getAvalkm());
         holder.tv_lastname.setText(companyDetailsModel.getLastname());
         //holder.price.setText("Rs."+companyDetailsModel.getAboutCompany());
         //holder.imageView.setImageResource(servicesListModel.getImage());
@@ -94,7 +93,7 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
 
     public class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener  {
 
-        TextView tv_companyname,tv_lastname,userrating;
+        TextView tv_companyname,kilometer,location_address,tv_lastname;
         ImageView ratingBar;
         ImageView companyimageview;
         ItemClickListner itemClickListner;
@@ -104,9 +103,10 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
 
             tv_companyname = itemView.findViewById(R.id.firstname);
             tv_lastname = itemView.findViewById(R.id.lastname);
-            ratingBar = itemView.findViewById(R.id.ratingbar);
+           // ratingBar = itemView.findViewById(R.id.ratingbar);
             companyimageview =itemView.findViewById(R.id.companyimageview);
-            userrating= itemView.findViewById(R.id.userrating);
+            location_address= itemView.findViewById(R.id.location_address);
+            kilometer= itemView.findViewById(R.id.kilometer);
             itemView.setOnClickListener(this);
 
         }

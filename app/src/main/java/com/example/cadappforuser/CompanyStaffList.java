@@ -7,15 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.cadappforuser.adapter.FreelancerDetailAdapter;
 import com.example.cadappforuser.adapter.StaffDetailAdapter;
-import com.example.cadappforuser.companyadapter.CompanyStaffListAdapter;
-import com.example.cadappforuser.companymodel.CompanyStaffListModel;
-import com.example.cadappforuser.model.CompanyDetailsModel;
-import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.example.cadappforuser.model.StaffDetailsModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;

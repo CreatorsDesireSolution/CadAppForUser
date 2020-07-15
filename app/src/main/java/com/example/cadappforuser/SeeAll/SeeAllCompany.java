@@ -12,13 +12,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.cadappforuser.Act_Session;
-import com.example.cadappforuser.CompanyHomePageActivity;
 import com.example.cadappforuser.R;
-import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.adapter.SeeAllCompanyAdapter;
-import com.example.cadappforuser.adapter.SeeAllFreelancerAdapter;
 import com.example.cadappforuser.model.CompanyDetailsModel;
-import com.example.cadappforuser.model.FreelancerDetailsModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 
@@ -94,7 +90,8 @@ public class SeeAllCompany extends AppCompatActivity {
                                 seeAllCompanyAdapter =new SeeAllCompanyAdapter(context, companyDetailsModels);
 //                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
 //                                recyclerView1.setLayoutManager(layoutManager1);
-                                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+                                LinearLayoutManager gridLayoutManager = new LinearLayoutManager(SeeAllCompany.this);
+                                gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
                                 recycleAll.setLayoutManager(gridLayoutManager);
                                 recycleAll.setHasFixedSize(true);
                                 recycleAll.setAdapter(seeAllCompanyAdapter);

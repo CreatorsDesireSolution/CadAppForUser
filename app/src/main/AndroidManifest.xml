@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Act_AddToCart"></activity>
+        <activity android:name=".Appointment.FreelancerAppointment"></activity>
+        <activity android:name=".Appointment.CompanyAppointment" />
+        <activity android:name=".Act_AddToCart" />
         <activity android:name=".CustomerPersonalProfileActivity" />
         <activity android:name=".CompanyPersonalProfileActivity" />
         <activity android:name=".SeeAll.SeeAllFreelancer" />

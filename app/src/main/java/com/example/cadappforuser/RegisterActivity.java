@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -113,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.etpassword);
         imageUserLogo = findViewById(R.id.userImageIcon);
         iv_camera = findViewById(R.id.iv_camera);
-         text_DOB = findViewById(R.id.txt_DOB);
+        text_DOB = findViewById(R.id.txt_DOB);
         etFirstName = findViewById(R.id.etFirstName);
         etLatName = findViewById(R.id.etLatName);
         etUserEmail = findViewById(R.id.etUserEmail);
@@ -169,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, 1);
             }
-            });
+        });
 
 
 
@@ -245,8 +246,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // startActivity(new Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
-
+                // startActivitynew Intent(RegisterActivity.this,MobileNumberRegisterActivity.class));
 
                 password = etpassword.getText().toString();
                 firstname = etFirstName.getText().toString();
@@ -260,14 +260,14 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (lastname.equals("")) {
                     Toast.makeText(activity, "Please enter lastname", Toast.LENGTH_SHORT).show();
 
+                } else if (!UserAccount.isEmailValid(etUserEmail)) {
+                    Toast.makeText(activity, "Please enter valid email", Toast.LENGTH_SHORT).show();
                 } else if (email.equals("")) {
                     Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show();
-
-
                 } else if (mobilenumber.equals("")) {
                     Toast.makeText(activity, "Please enter mobilenumber", Toast.LENGTH_SHORT).show();
-
-
+                } else if (mobilenumber.length()!=10) {
+                    Toast.makeText(activity, "Please enter 10 digit   mobilenumber", Toast.LENGTH_SHORT).show();
                 } else if (address.equals("")) {
                     Toast.makeText(activity, "Please enter current location", Toast.LENGTH_SHORT).show();
 
@@ -315,14 +315,37 @@ public class RegisterActivity extends AppCompatActivity {
                                 permissionToken.continuePermissionRequest();
 
                             }
-
-
-
                         }).check();
             }
         });
 
     }
+
+    public static class UserAccount {
+        private static final String TODO = "test";
+        //for EditText Refrance
+        public static EditText EditTextPointer;
+        public static String errorMessage;
+
+        public static boolean isEmailValid(EditText tv) {
+            //add your own logic
+            if (TextUtils.isEmpty(tv.getText())) {
+                EditTextPointer = tv;
+                errorMessage = "This field can't be empty.!";
+                return false;
+            } else {
+                if (android.util.Patterns.EMAIL_ADDRESS.matcher(tv.getText()).matches()) {
+                    return true;
+                } else {
+                    EditTextPointer = tv;
+                    errorMessage = "Invalid Email Id";
+                    return false;
+                }
+            }
+        }
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -336,7 +359,7 @@ public class RegisterActivity extends AppCompatActivity {
                     bitmap = BitmapFactory.decodeStream(inputStream);
 
 
-                        imageUserLogo.setImageBitmap(bitmap);
+                    imageUserLogo.setImageBitmap(bitmap);
 
 
                     Bundle extras=data.getExtras();
@@ -348,12 +371,11 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
-
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-        public File saveBitmapToFile(File file){
+
+    public File saveBitmapToFile(File file){
         try {
 
             // BitmapFactory options to downsize the image
@@ -411,6 +433,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onSuccess(int requestCode, String Json, Object object) {
                 act_session.loginSession(context);
                 try {
+                    Log.e("RegisterActivty","::"+Json);
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
                     act_session = new Act_Session(context, jsonObject1);
@@ -423,11 +446,7 @@ public class RegisterActivity extends AppCompatActivity {
                     intent.putExtra("mobilenumber",mobilenumber);
                     startActivity(intent);
 
-
                     finish();
-
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -459,12 +478,12 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
 
-      //  RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+        //  RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 //
 //        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 //        MultipartBody.Part body = MultipartBody.Part.createFormData("profile_pic", file.getName(), requestFile);
 
-       RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
+        RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
