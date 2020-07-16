@@ -5,10 +5,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,6 +32,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
@@ -46,6 +50,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Act_HomeForCustomerShop extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
@@ -65,9 +71,14 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
     ImageView nav_image;
     String name,lastname,fullname,mobile;
 
-   Activity activity;
-double lat,lng;
-
+    ViewPager viewPager;
+    LinearLayout sliderDotspanel;
+    Timer timer;
+    int dotscount;
+    double lat,lng;
+    private ImageView[] dots;
+    Activity activity;
+    TextView seeallfreelancer,seeallcompany;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,27 +93,95 @@ double lat,lng;
 
         recycleViewshopfree=findViewById(R.id.recycleViewshopfree);
         recycleViewshopcompany=findViewById(R.id.recycleViewshopcompany);
+        seeallcompany = findViewById(R.id.seeAllcompany);
+        seeallfreelancer = findViewById(R.id.seeAllfreelancer);
+
 
         searchView = findViewById(R.id.searchview);
         mDrawerLayout=findViewById(R.id.drawer_layout);
         NavigationView navigationView=findViewById(R.id.navigation_view);
-//
-//        txtCurrentLocation=findViewById(R.id.txtLocation);
-//        Intent intent=getIntent();
-//        txtCurrentLocation.setText(intent.getStringExtra("address"));
+
+
+
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        sliderDotspanel = (LinearLayout)findViewById(R.id.SliderDots);
+
+        ViewPagerCustomerAdapter viewPagerAdapter = new ViewPagerCustomerAdapter(this);
+
+        viewPager.setAdapter(viewPagerAdapter);
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new SliderTimer(), 3000, 4000);
+
+
+        dotscount = viewPagerAdapter.getCount();
+        dots = new ImageView[dotscount];
+
+        for(int i = 0; i < dotscount; i++){
+
+            dots[i] = new ImageView(this);
+            dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.nonactive_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(8, 4, 8, 4);
+
+            sliderDotspanel.addView(dots[i], params);
+
+        }
+
+        dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
+                }
+
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+        seeallfreelancer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllFreelancer.class);
+                startActivity(intent);
+            }
+        });
+
+        seeallcompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllCompany.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         searchView.setIconifiedByDefault(false);
-      //  searchView.setQueryHint("Search");
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
         LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
         SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
-// set the hint text color
         autoComplete.setHintTextColor(getResources().getColor(R.color.black));
-// set the text color
         autoComplete.setTextColor(getResources().getColor(R.color.black));
-
 
 
 
@@ -156,43 +235,17 @@ double lat,lng;
             lat= b.getDouble("lat");
             lng=b.getDouble("lng");
 
+
+            Toast.makeText(context, lat+" "+lng, Toast.LENGTH_SHORT).show();
+
             Log.d("lat","lat"+(lat));
             Log.d("lng","lng"+(lng));
 
         }
 
 
-//        newModels = new ArrayList<>();
-//        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-//        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-//        //newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
-//       // newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-//        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-//        //newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
-//        //newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
-//
-//        newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
-//        LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-//        recyclerView.setLayoutManager(linearLayoutManager3);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setAdapter(newAdapter);
 
 
-//        companyNewModels = new ArrayList<>();
-//
-////        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
-////        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
-//
-//      //  companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
-//        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-//        recyclerView1.setLayoutManager(linearLayoutManager4);
-//        recyclerView1.setHasFixedSize(true);
-//        recyclerView1.setAdapter(companyNewAdapter);
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recycleViewshopfree.setLayoutManager(linearLayoutManager3);
@@ -206,6 +259,7 @@ double lat,lng;
                     JSONObject jsonObject = new JSONObject(response);
                     String sucess = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
 
                     if (sucess.equals("1")) {
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -345,6 +399,23 @@ double lat,lng;
             super.onBackPressed();
         }
 
+    }
+
+
+    private class SliderTimer extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewPager.getCurrentItem() < dotscount - 1) {
+                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+        }
     }
 
     @Override

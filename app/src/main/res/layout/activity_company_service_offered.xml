@@ -22,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtServ"
         android:layout_marginTop="15sp"
-        android:id="@+id/recycleoffered"></androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recycle"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

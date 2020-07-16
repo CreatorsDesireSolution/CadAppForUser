@@ -93,6 +93,8 @@ public class Act_ShopLocation extends AppCompatActivity implements OnMapReadyCal
         mMap.addMarker(new MarkerOptions().position(latLng));
         CameraUpdate cameraUpdateFactory= CameraUpdateFactory.newLatLngZoom(latLng,17);
         mMap.moveCamera(cameraUpdateFactory);
+        lat=currentLocation.getLatitude();
+        lng=currentLocation.getLongitude();
 
 
         try {

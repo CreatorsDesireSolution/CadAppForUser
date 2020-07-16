@@ -9,9 +9,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.cadappforuser.adapter.FreelancerAddServiceAdapter;
+import com.example.cadappforuser.adapter.FreelancerServiceofferedfinaladapter;
 import com.example.cadappforuser.model.FreelancerServiceListModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
@@ -28,7 +30,7 @@ public class FreelancerServiceOfferedFinal extends AppCompatActivity {
     ArrayList<FreelancerServiceListModel> freelancerServiceLists;
     ArrayList<FreelancerServiceListModel>freelancerServiceLists2=new ArrayList<>();
 
-    FreelancerAddServiceAdapter addServiceAdapater;
+    FreelancerServiceofferedfinaladapter freelancerServiceofferedfinaladapter;
     BaseRequest baseRequest;
     Act_Session act_session;
     Context context;
@@ -45,11 +47,11 @@ public class FreelancerServiceOfferedFinal extends AppCompatActivity {
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Services List");
 
-        recyclerView=findViewById(R.id.recycle);
+        recyclerView=findViewById(R.id.recycleoffered);
         freelancerServiceLists=new ArrayList<>();
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+//        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
 
         act_session =new Act_Session(getApplicationContext());
 
@@ -73,17 +75,19 @@ public class FreelancerServiceOfferedFinal extends AppCompatActivity {
                             if (freelancerServiceLists != null) {
 
 
-                                FreelancerServiceListModel model = new FreelancerServiceListModel();
-                                model.setDescription(freelancerServiceLists.get(0).getDescription());
-                                model.setDuration(freelancerServiceLists.get(0).getDuration());
-                                model.setServiceImage(freelancerServiceLists.get(0).getServiceImage());
-                                model.setServiceName(freelancerServiceLists.get(0).getServiceName());
-                                freelancerServiceLists2.add(model);
+//                                FreelancerServiceListModel model = new FreelancerServiceListModel();
+//                                model.setDescription(freelancerServiceLists.get(0).getDescription());
+//                                model.setDuration(freelancerServiceLists.get(0).getDuration());
+//                                model.setServiceImage(freelancerServiceLists.get(0).getServiceImage());
+//                                model.setServiceName(freelancerServiceLists.get(0).getServiceName());
+//                                freelancerServiceLists2.add(model);
 
-                                addServiceAdapater = new FreelancerAddServiceAdapter(context,
-                                        freelancerServiceLists,activity,act_session);
+                                freelancerServiceofferedfinaladapter = new FreelancerServiceofferedfinaladapter(context,
+                                        freelancerServiceLists);
                                 recyclerView.setHasFixedSize(true);
-                                recyclerView.setAdapter(addServiceAdapater);
+                                LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
+                                recyclerView.setLayoutManager(layoutManager);
+                                recyclerView.setAdapter(freelancerServiceofferedfinaladapter);
 
 
                             } else {
