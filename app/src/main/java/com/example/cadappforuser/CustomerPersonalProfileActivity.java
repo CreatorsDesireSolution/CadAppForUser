@@ -98,7 +98,7 @@ public class CustomerPersonalProfileActivity extends AppCompatActivity {
                 userFirstName.setEnabled(true);
 //                userBackground.setEnabled(true);
                 userLastName.setEnabled(true);
-                userMobile.setEnabled(true);
+                userMobile.setEnabled(false);
                 btnSubmit.setVisibility(View.VISIBLE);
                 userEditor.setVisibility(View.GONE);
                 tv_profile_heading.setText("Update Profile");

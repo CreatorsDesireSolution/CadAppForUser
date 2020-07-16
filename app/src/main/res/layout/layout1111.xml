@@ -40,7 +40,7 @@
         android:textColor="#000"
         ></TextView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/freelancer"
@@ -58,7 +58,6 @@
             android:isIndicator="true"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="10dp"
-            android:layout_below="@+id/freelancer"
             android:textStyle="normal"
             ></ImageView>
 
@@ -68,6 +67,7 @@
             android:text="4.5"
             android:fontFamily="@font/poppins_light"
             android:id="@+id/userrating"
+            android:layout_toRightOf="@id/ratingbar"
             android:textSize="16sp"
             android:textColor="@color/black">
 
@@ -78,17 +78,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.5"
+            android:layout_toEndOf="@+id/userrating"
             android:fontFamily="@font/poppins_light"
             android:id="@+id/kilometer"
             android:textSize="16sp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="60dp"
             android:textColor="@color/black">
 
         </TextView>
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

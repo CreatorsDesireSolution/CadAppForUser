@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -34,6 +35,7 @@ public class SeeAllFreelancer extends AppCompatActivity {
     BaseRequest baseRequest;
     Act_Session act_session; Context context;
     ArrayList<FreelancerDetailsModel> freelancerDetailsModels = new ArrayList<>();
+    String lat,lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,12 @@ public class SeeAllFreelancer extends AppCompatActivity {
         ApiGetFreelancerDetail();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        lat = intent.getStringExtra("lat");
+        lng = intent.getStringExtra("long");
+        Toast.makeText(context, lat+" "+lng, Toast.LENGTH_SHORT).show();
+
 
     }
     @Override

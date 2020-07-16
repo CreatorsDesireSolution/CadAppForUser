@@ -154,13 +154,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         activity= this;
         act_session = new Act_Session(getApplicationContext());
 
-        txtCurrentLocation=findViewById(R.id.txtLocation);
+        //txtCurrentLocation=findViewById(R.id.txtLocation);
         seeAll = findViewById(R.id.seeAll);
         seeAllFree = findViewById(R.id.seeAllFree);
         et_search= findViewById(R.id.et_search);
 
         final Intent intent=getIntent();
-        txtCurrentLocation.setText(intent.getStringExtra("address"));
+       // txtCurrentLocation.setText(intent.getStringExtra("address"));
 
         act_session=new Act_Session(context);
         recyclerView=findViewById(R.id.rv_NearFreelancer);
@@ -200,6 +200,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(), SeeAllFreelancer.class);
+                intent1.putExtra("lat",Double.toString(lat));
+                intent1.putExtra("long",Double.toString(lng));
                 startActivity(intent1);
             }
         });
@@ -207,7 +209,11 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         seeAllFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), SeeAllCompany.class);
+                Intent intent1 = new Intent(getApplicationContext
+
+                        (), SeeAllCompany.class);
+                intent1.putExtra("lat",Double.toString(lat));
+                intent1.putExtra("long",Double.toString(lng));
                 startActivity(intent1);
             }
         });
