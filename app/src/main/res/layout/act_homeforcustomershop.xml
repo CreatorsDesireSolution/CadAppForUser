@@ -22,22 +22,12 @@
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Location"
-            android:textColor="#000"
-            android:layout_below="@+id/toolbar"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:id="@+id/txtLocation"></TextView>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLocation"
+            android:layout_below="@+id/toolbar"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="18dp"
             android:layout_marginRight="20dp"
@@ -91,13 +81,13 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="20dp"
-            android:text="See all"
+            android:text="See All"
             android:textColor="#000"
             android:textSize="13dp"
             android:textStyle="normal"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView"
+            android:id="@+id/recycleViewshopfree"
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:layout_below="@+id/seeAll"
@@ -111,7 +101,7 @@
             android:id="@+id/frella"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
+            android:layout_below="@id/recycleViewshopfree"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Near by Companies"
@@ -123,17 +113,17 @@
             android:id="@+id/seeAllFree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
+            android:layout_below="@id/recycleViewshopfree"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="20dp"
-            android:text="See all"
+            android:text="See All"
             android:textColor="#000"
             android:textSize="13dp"
             android:textStyle="normal"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView1"
+            android:id="@+id/recycleViewshopcompany"
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:layout_below="@+id/seeAllFree"

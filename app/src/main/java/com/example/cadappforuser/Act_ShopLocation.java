@@ -43,6 +43,8 @@ public class Act_ShopLocation extends AppCompatActivity implements OnMapReadyCal
     private static  final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     Location currentLocation;
     FusedLocationProviderClient fusedLocationProviderClient;
+    double lat,lng;
+
 
 
     @Override
@@ -108,6 +110,10 @@ public class Act_ShopLocation extends AppCompatActivity implements OnMapReadyCal
                 public void onClick(View view) {
                     Intent intent=new Intent(Act_ShopLocation.this,Act_HomeForCustomerShop.class);
                     intent.putExtra("address",fullAddress);
+                    Bundle b = new Bundle();
+                    b.putDouble("lat", lat);
+                    b.putDouble("lng",lng);
+                    intent.putExtras(b);
                     startActivity(intent);
                 }
             });

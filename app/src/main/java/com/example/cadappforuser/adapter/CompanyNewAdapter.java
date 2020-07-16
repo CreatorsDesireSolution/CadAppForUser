@@ -49,7 +49,7 @@ public class CompanyNewAdapter extends RecyclerView.Adapter<CompanyNewAdapter.Co
 
         CompanyNewModel companyNewModel=companyNewModels.get(position);
         holder.tv_freelancername.setText(companyNewModel.getName());
-        holder.km.setText(companyNewModel.getKm());
+        holder.km.setText(companyNewModel.getKm()+"KM");
        // holder.facialImageFreelancer.setImageResource(companyNewModel.getImage());
         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyNewModels.get(0).getImage()).
                 resize(400, 400).centerCrop().into(holder.facialImageFreelancer);

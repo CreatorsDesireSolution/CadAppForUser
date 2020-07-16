@@ -64,6 +64,18 @@ public class FreelancerDetailsModel {
     @Expose
     private String profilePic;
 
+    @SerializedName("km")
+    @Expose
+    private String km;
+
+    public String getKm() {
+        return km;
+    }
+
+    public void setKm(String km) {
+        this.km = km;
+    }
+
     public String getId() {
         return id;
     }

@@ -408,9 +408,9 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             case R.id.nav_accepted_location:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesProvide.class));
                 break;
-            case R.id.nav_serviceoffered:
-                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServiceOfferedFinal.class));
-                break;
+//            case R.id.nav_serviceoffered:
+//                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServiceOfferedFinal.class));
+//                break;
             case R.id.nav_logout:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(FreelancerHomePageActivity.this);
                 alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");

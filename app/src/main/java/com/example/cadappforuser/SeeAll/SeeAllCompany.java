@@ -131,7 +131,7 @@ public class SeeAllCompany extends AppCompatActivity {
 
             }
         });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/company_dashboarddata_api.php?" + "latif="  + lat + "&longif=" + lng;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
