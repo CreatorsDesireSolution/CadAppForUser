@@ -333,6 +333,10 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             case R.id.nav_show_staff_member:
                 startActivity(new Intent(CompanyHomePageActivity.this,ChoiceStaffOrComapnyOwner.class));
                 break;
+            case R.id.nav_serviceofferedcompany:
+                startActivity(new Intent(CompanyHomePageActivity.this,CompanyServiceOffered.class));
+                break;
+
             case R.id.nav_logout:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CompanyHomePageActivity.this);
                 alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");

@@ -26,7 +26,10 @@
             android:icon="@drawable/ic_chat_black_24dp"
             android:title="Set Background" />
 
-
+        <item
+            android:id="@+id/nav_serviceoffered"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="Service Offered" />
 
         <item
             android:id="@+id/nav_add_certificate"

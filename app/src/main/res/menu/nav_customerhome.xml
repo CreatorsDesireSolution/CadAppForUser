@@ -25,7 +25,7 @@
         <item
             android:id="@+id/nav_add_fev"
             android:icon="@drawable/ic_star"
-            android:title=" Fevourite" />
+            android:title=" Favorite" />
 
         <item
             android:id="@+id/nav_choose_home_or_shop"

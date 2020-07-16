@@ -24,9 +24,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Appointment.FreelancerAppointment"></activity>
+        <activity android:name=".CompanyServiceOffered"></activity>
+        <activity android:name=".FreelancerServiceOfferedFinal" />
+        <activity android:name=".Appointment.FreelancerAppointment" />
         <activity android:name=".Appointment.CompanyAppointment" />
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".OrderActivity" />
         <activity android:name=".Act_AddToCart" />
         <activity android:name=".CustomerPersonalProfileActivity" />
         <activity android:name=".CompanyPersonalProfileActivity" />
@@ -57,7 +59,6 @@
         <activity android:name=".StaffWorkPictureImage" />
         <activity android:name=".FreelancerUploadWorkImage" />
         <activity android:name=".CompanyStaffBackground" />
-        <activity android:name=".CompanyServicesOffered" />
         <activity android:name=".Act_ShowDayForStaff" />
         <activity android:name=".CurrentLocationofcompanyStaff" />
         <activity android:name=".Act_seemoredetails_Company" />

@@ -101,7 +101,7 @@ actionBar.setTitle("Profile");
             public void onClick(View view) {
                 userFirstName.setEnabled(true);
                 userBackground.setEnabled(true);
-                userMobile.setEnabled(true);
+                userMobile.setEnabled(false);
                 btnSubmit.setVisibility(View.VISIBLE);
                 userEditor.setVisibility(View.GONE);
                 tv_profile_heading.setText("Update Profile");

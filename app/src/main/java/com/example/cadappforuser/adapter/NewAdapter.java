@@ -51,7 +51,7 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
 
         NewModel newModel=newModels.get(position);
         holder.tv_freelancername.setText(newModel.getName());
-        holder.kilometer.setText(newModel.getKm());
+        holder.kilometer.setText(newModel.getKm()+"KM");
 
        // holder.ratingBar.setRating(newModel.getRating());
        // holder.facialImageFreelancer.setImageResource(newModel.getImage());

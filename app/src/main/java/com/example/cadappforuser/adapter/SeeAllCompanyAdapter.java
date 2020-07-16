@@ -48,7 +48,7 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
         holder.tv_companyname.setText(companyDetailsModel.getCompanyname());
         Log.e("companyname",companyDetailsModel.getCompanyname());
         holder.location.setText(companyDetailsModel.getAddress());
-        holder.kilometer.setText(companyDetailsModel.getKm());
+        holder.kilometer.setText(companyDetailsModel.getKm()+"KM");
         //holder.tv_lastname.setText(companyDetailsModel.getLastname());
         //holder.price.setText("Rs."+companyDetailsModel.getAboutCompany());
         //holder.imageView.setImageResource(servicesListModel.getImage());

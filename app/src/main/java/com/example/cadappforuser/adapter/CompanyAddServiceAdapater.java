@@ -101,7 +101,7 @@ public class CompanyAddServiceAdapater extends RecyclerView.Adapter<CompanyAddSe
             price=itemView.findViewById(R.id.serviceListServicePrice);
             name=itemView.findViewById(R.id.serviceListServiceName);
             sample=itemView.findViewById(R.id.serviceListServiceSample);
-            fevicon = itemView.findViewById(R.id.fevicon);
+           // fevicon = itemView.findViewById(R.id.fevicon);
 
         }
     }

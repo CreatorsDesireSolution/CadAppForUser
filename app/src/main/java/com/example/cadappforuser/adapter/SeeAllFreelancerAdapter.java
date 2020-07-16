@@ -44,7 +44,7 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
 
         holder.tv_companyname.setText(companyDetailsModel.getFirstname());
         holder.location_address.setText(companyDetailsModel.getAddress());
-        holder.kilometer.setText(companyDetailsModel.getAvalkm());
+        holder.kilometer.setText(companyDetailsModel.getKm()+"KM");
         holder.tv_lastname.setText(companyDetailsModel.getLastname());
         //holder.price.setText("Rs."+companyDetailsModel.getAboutCompany());
         //holder.imageView.setImageResource(servicesListModel.getImage());

@@ -22,22 +22,12 @@
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Location"
-            android:textColor="#000"
-            android:layout_below="@+id/toolbar"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:id="@+id/txtLocation"></TextView>
-
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtLocation"
+            android:layout_below="@+id/toolbar"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="18dp"
             android:layout_marginRight="20dp"
@@ -62,6 +52,52 @@
 
         </androidx.cardview.widget.CardView>
 
+
+
+        <TextView
+            android:id="@+id/offers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Offers"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/quantum_orange"
+            android:textSize="16sp"
+            android:textStyle="normal"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/sliderlay"
+            android:layout_marginBottom="15dp"
+            android:layout_below="@+id/offers"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/SliderDots"
+                android:layout_below="@+id/viewPager"
+                android:orientation="vertical"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_width="20dp"
+                android:padding="2dp"
+                android:background="#D7C5F8"
+                android:layout_height="match_parent"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                />
+
+        </LinearLayout>
+
+
         <!--        <androidx.recyclerview.widget.RecyclerView-->
         <!--            android:id="@+id/homerecyclerview"-->
         <!--            android:layout_width="match_parent"-->
@@ -75,7 +111,7 @@
             android:id="@+id/feat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/card"
+            android:layout_below="@id/sliderlay"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Near by Freelancer"
@@ -84,34 +120,38 @@
             android:textStyle="normal"></TextView>
 
         <TextView
-            android:id="@+id/seeAll"
+            android:id="@+id/seeAllfreelancer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/card"
+            android:layout_below="@id/sliderlay"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="20dp"
-            android:text="See all"
+            android:text="See All"
             android:textColor="#000"
+
             android:textSize="13dp"
             android:textStyle="normal"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView"
+            android:id="@+id/recycleViewshopfree"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:layout_below="@+id/seeAll"
+            android:layout_below="@+id/feat"
             android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@+id/recycleViewshopfree"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
             android:background="@color/quantum_grey"/>
         <TextView
             android:id="@+id/frella"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
+            android:layout_below="@id/recycleViewshopfree"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Near by Companies"
@@ -120,23 +160,23 @@
             android:textStyle="normal"></TextView>
 
         <TextView
-            android:id="@+id/seeAllFree"
+            android:id="@+id/seeAllcompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recycleView"
+            android:layout_below="@id/recycleViewshopfree"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="13dp"
             android:layout_marginRight="20dp"
-            android:text="See all"
+            android:text="See All"
             android:textColor="#000"
             android:textSize="13dp"
             android:textStyle="normal"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleView1"
+            android:id="@+id/recycleViewshopcompany"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:layout_below="@+id/seeAllFree"
+            android:layout_below="@+id/seeAllcompany"
             android:layout_marginTop="22dp"></androidx.recyclerview.widget.RecyclerView>
 
 

@@ -49,6 +49,12 @@
 
 
         <item
+            android:id="@+id/nav_serviceofferedcompany"
+            android:icon="@drawable/ic_insurance"
+            android:title="Services Offered" />
+
+
+        <item
             android:id="@+id/nav_company_add_services_manually"
             android:icon="@drawable/ic_plus"
             android:title="Add Service"

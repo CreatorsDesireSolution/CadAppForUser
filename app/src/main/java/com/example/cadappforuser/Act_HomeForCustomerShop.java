@@ -5,10 +5,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,27 +25,44 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
+import com.example.cadappforuser.companymodel.CompanyNewModel;
 import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Act_HomeForCustomerShop extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
-    RecyclerView recyclerView,recyclerView1,recyclerView2;
+    RecyclerView recycleViewshopfree,recycleViewshopcompany,recyclerView2;
     Context context;
     androidx.appcompat.widget.SearchView  searchView;
     AllServicesAdapter allServicesAdapter;
     ArrayList<AllServiceModel> allServiceModels;
     ArrayList<NewModel> newModels;
-    ArrayList<CompanyDetailsModel> companyNewModels;
+    ArrayList<CompanyNewModel> companyNewModels;
 
     NewAdapter newAdapter;
     CompanyNewAdapter companyNewAdapter;
@@ -52,9 +71,14 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
     ImageView nav_image;
     String name,lastname,fullname,mobile;
 
-   Activity activity;
-
-
+    ViewPager viewPager;
+    LinearLayout sliderDotspanel;
+    Timer timer;
+    int dotscount;
+    double lat,lng;
+    private ImageView[] dots;
+    Activity activity;
+    TextView seeallfreelancer,seeallcompany;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,29 +91,97 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         activity = this;
         act_session = new Act_Session(getApplicationContext());
 
-        recyclerView=findViewById(R.id.recycleView);
-        recyclerView1=findViewById(R.id.recycleView1);
+        recycleViewshopfree=findViewById(R.id.recycleViewshopfree);
+        recycleViewshopcompany=findViewById(R.id.recycleViewshopcompany);
+        seeallcompany = findViewById(R.id.seeAllcompany);
+        seeallfreelancer = findViewById(R.id.seeAllfreelancer);
+
 
         searchView = findViewById(R.id.searchview);
         mDrawerLayout=findViewById(R.id.drawer_layout);
         NavigationView navigationView=findViewById(R.id.navigation_view);
 
-        txtCurrentLocation=findViewById(R.id.txtLocation);
-        Intent intent=getIntent();
-        txtCurrentLocation.setText(intent.getStringExtra("address"));
+
+
+        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        sliderDotspanel = (LinearLayout)findViewById(R.id.SliderDots);
+
+        ViewPagerCustomerAdapter viewPagerAdapter = new ViewPagerCustomerAdapter(this);
+
+        viewPager.setAdapter(viewPagerAdapter);
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new SliderTimer(), 3000, 4000);
+
+
+        dotscount = viewPagerAdapter.getCount();
+        dots = new ImageView[dotscount];
+
+        for(int i = 0; i < dotscount; i++){
+
+            dots[i] = new ImageView(this);
+            dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.nonactive_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(8, 4, 8, 4);
+
+            sliderDotspanel.addView(dots[i], params);
+
+        }
+
+        dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                for(int i = 0; i< dotscount; i++){
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
+                }
+
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+        seeallfreelancer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllFreelancer.class);
+                startActivity(intent);
+            }
+        });
+
+        seeallcompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SeeAllCompany.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         searchView.setIconifiedByDefault(false);
-      //  searchView.setQueryHint("Search");
         searchView.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)searchView.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
         LinearLayout ll3 = (LinearLayout)ll2.getChildAt(1);
         SearchView.SearchAutoComplete autoComplete = (SearchView.SearchAutoComplete)ll3.getChildAt(0);
-// set the hint text color
         autoComplete.setHintTextColor(getResources().getColor(R.color.black));
-// set the text color
         autoComplete.setTextColor(getResources().getColor(R.color.black));
-
 
 
 
@@ -138,40 +230,145 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         });
 
 
+        Bundle b = getIntent().getExtras();
+        if(b!=null){
+            lat= b.getDouble("lat");
+            lng=b.getDouble("lng");
 
-        newModels = new ArrayList<>();
-        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        //newModels.add(new NewModel(R.drawable.saloon2,"Man Freelancer",5));
-       // newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        //newModels.add(new NewModel(R.drawable.womanfacial,"Man Freelancer",5));
-        //newModels.add(new NewModel(R.drawable.saloon1,"Women",5));
-        //newModels.add(new NewModel(R.drawable.womanfacial,"Women Freelancer",5));
 
-        newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
+            Toast.makeText(context, lat+" "+lng, Toast.LENGTH_SHORT).show();
+
+            Log.d("lat","lat"+(lat));
+            Log.d("lng","lng"+(lng));
+
+        }
+
+
+
+
+
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(linearLayoutManager3);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(newAdapter);
+        recycleViewshopfree.setLayoutManager(linearLayoutManager3);
 
+        final StringRequest request=new StringRequest(Request.Method.POST, Const.URL.distance_api, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    Log.e("homerespone","::"+response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+
+                    if (sucess.equals("1")) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String id = object.getString("id");
+                            String name = object.getString("firstname");
+                            String lastname = object.getString("lastname");
+                            String email = object.getString("email");
+                            String mobilenumber = object.getString("mobilenumber");
+                            String experinace=object.getString("experience");
+                            //String gender = object.getString("gender");
+                            String km=object.getString("km");
+                            //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            String address = object.getString("address");
+                            String aboutus=object.getString("about_yourself");
+                            String item_image = object.getString("profile_pic");
+                            String u = "http://aoneservice.net.in/salon/documents/" + item_image;
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km));
+                            newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
+                            recycleViewshopfree.setHasFixedSize(true);
+                            recycleViewshopfree.setAdapter(newAdapter);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Act_HomeForCustomerShop.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("latif",Double.toString(lat));
+                map.put("longif",Double.toString(lng));
+                return map;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(Act_HomeForCustomerShop.this);
+        requestQueue.add(request);
 
         companyNewModels = new ArrayList<>();
 
-//        companyNewModels.add(new CompanyNewModel(R.drawable.mansaloon,"Company1",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company2",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company3",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company4",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company5",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company6",5));
-//        companyNewModels.add(new CompanyNewModel(R.drawable.salooncompany,"Company7",5));
+        final StringRequest request1=new StringRequest(Request.Method.POST, Const.URL.company_distance_api, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-      //  companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
-        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        recyclerView1.setLayoutManager(linearLayoutManager4);
-        recyclerView1.setHasFixedSize(true);
-        recyclerView1.setAdapter(companyNewAdapter);
+                try {
+                    Log.e("seeCompany","::"+response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    String sucess = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
 
+                    Log.d("sagar","sagar"+response);
+                    if (sucess.equals("1")) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            //String category=object.getString("item_category");
+                            String id = object.getString("id");
+                            String name = object.getString("company_name");
+                            String regnumber = object.getString("regnumber");
+                            String email = object.getString("email");
+                            String mobilenumber = object.getString("mobilenumber");
+                            String experinace=object.getString("total_year_establishment");
+                            String km=object.getString("km");
+                            String lastname_=object.getString("last_name");
+                            // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            String address = object.getString("address");
+                            String aboutus=object.getString("about_company");
+                            String no_of_staff=object.getString("no_of_staff");
 
+                            String item_image = object.getString("profile_pic");
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
+                            companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
+                            LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(Act_HomeForCustomerShop.this,LinearLayoutManager.HORIZONTAL,false);
+                            recycleViewshopcompany.setLayoutManager(linearLayoutManager4);
+                            recycleViewshopcompany.setHasFixedSize(true);
+                            recycleViewshopcompany.setAdapter(companyNewAdapter);
+
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Act_HomeForCustomerShop.this, ""+error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("latif",Double.toString(lat));
+                map.put("longif",Double.toString(lng));
+                return map;
+            }
+        };
+        RequestQueue requestQueue1 = Volley.newRequestQueue(Act_HomeForCustomerShop.this);
+        requestQueue1.add(request1);
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
                 this,mDrawerLayout,toolbar,
@@ -202,6 +399,23 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
             super.onBackPressed();
         }
 
+    }
+
+
+    private class SliderTimer extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewPager.getCurrentItem() < dotscount - 1) {
+                        viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                    } else {
+                        viewPager.setCurrentItem(0);
+                    }
+                }
+            });
+        }
     }
 
     @Override
