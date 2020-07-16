@@ -32,9 +32,6 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
     RecyclerView recyclerView;
     String id;
     ArrayList<ServicesListModel> servicesListModelArrayList;
-    String url="https://aoneservice.net.in/salon/get-apis/company_servicedata_api.php";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

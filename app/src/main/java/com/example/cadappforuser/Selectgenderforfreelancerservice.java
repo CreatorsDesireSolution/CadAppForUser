@@ -28,7 +28,7 @@ public class Selectgenderforfreelancerservice extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),FreelancerServiceList.class);
+                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 intent.putExtra("id",freelancer_Id);
                 startActivity(intent);
 
@@ -39,7 +39,8 @@ public class Selectgenderforfreelancerservice extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
+                Intent intent = new Intent(getApplicationContext(),FreelancerServiceList.class);
+                intent.putExtra("id",freelancer_Id);
                 startActivity(intent);
 
             }

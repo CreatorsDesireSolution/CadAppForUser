@@ -28,7 +28,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     TextView name,email,mobile,last,address,experience,background;
     RelativeLayout workperform;
     ImageView imageView;
-
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         Toast.makeText(this, ""+intent.getStringExtra("aboutus"), Toast.LENGTH_SHORT).show();
         background.setText(intent.getStringExtra("aboutus"));
 
+         id=intent.getStringExtra("id");
         String img=intent.getStringExtra("image");
 
         Log.d("img","img"+img);
@@ -89,6 +90,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SelectGenderCustomerServiceList.class);
+                 intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

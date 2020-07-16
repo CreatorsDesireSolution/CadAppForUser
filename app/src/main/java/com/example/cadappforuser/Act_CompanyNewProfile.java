@@ -100,8 +100,6 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             }
         });
 
-
-
         Intent intent2 = getIntent();
         location = intent2.getStringExtra("address");
         emailaddress = intent2.getStringExtra("email");

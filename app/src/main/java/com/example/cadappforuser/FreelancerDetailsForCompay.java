@@ -100,8 +100,6 @@ public class FreelancerDetailsForCompay extends AppCompatActivity {
             }
         });
 
-
-
         workperform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -51,8 +51,6 @@ public class SeeAllFreelancerAdapter extends RecyclerView.Adapter<SeeAllFreelanc
         Picasso.get().load("http://aoneservice.net.in/salon/documents/"+companyDetailsModel.getProfilePic()).
                 resize(400, 400).centerCrop().into(holder.companyimageview);
 
-
-
         final String firstname = companyDetailsModel.getFirstname();
         final String lastname = companyDetailsModel.getLastname();
         final String email = companyDetailsModel.getEmail();

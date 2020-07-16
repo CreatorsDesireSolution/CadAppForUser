@@ -1,5 +1,6 @@
 package com.example.cadappforuser.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,8 +10,10 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,37 +64,47 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-
-
         ServicesListModel servicesListModel=servicesListModelList.get(position);
 
-        readCursorData(servicesListModel,holder);
+       // readCursorData(servicesListModel,holder);
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
 
         Picasso.get().load(servicesListModel.getImage()).into(holder.imageView);
-        holder.setItemClickListner(new ItemClickListner() {
+
+
+      /*  holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
                 Intent intent=new Intent(context, ServiceDescription.class);
                 context.startActivity(intent);
             }
+        });*/
+
+        holder.btn_addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.btn_addtocart.getText() == "Added") {
+                    Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    holder.btn_addtocart.setText("Added");
+                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
+
         /*holder.fevicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 holder.fevicon.setImageResource(R.drawable.ic_star_black_24dp);
-
-
-
             }
         });*/
 
     }
 
-    private void readCursorData(ServicesListModel servicesListModel, ViewHolder holder) {
+  /*  private void readCursorData(ServicesListModel servicesListModel, ViewHolder holder) {
         Cursor cursor=favDB.real_all_data(servicesListModel.getKey_id());
         SQLiteDatabase db=favDB.getReadableDatabase();
         try{
@@ -114,7 +127,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
                 db.close();
             }
         }
-    }
+    }*/
 
     @Override
     public int getItemCount() {
@@ -125,6 +138,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
         ImageView imageView,fevicon;
         TextView price,name,sample;
         ItemClickListner itemClickListner;
+        Button btn_addtocart;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -133,6 +147,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
             name=itemView.findViewById(R.id.serviceListServiceName);
             sample=itemView.findViewById(R.id.serviceListServiceSample);
             fevicon = itemView.findViewById(R.id.fevicon);
+            btn_addtocart=itemView.findViewById(R.id.btn_addtocart);
 
            /* fevicon.setOnClickListener(new View.OnClickListener() {
                 @Override

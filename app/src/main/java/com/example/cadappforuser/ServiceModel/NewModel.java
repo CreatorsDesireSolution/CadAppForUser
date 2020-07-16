@@ -6,10 +6,10 @@ public class NewModel {
     String name;
     float rating;
 
-    String email,mobile,lastname,address,experience,about_yourself,km;
+    String email,mobile,lastname,address,experience,about_yourself,km,id;
 
     public NewModel(String image, String name, float rating, String email, String mobile, String lastname,
-                    String address,String experience,String about_yourself,String km) {
+                    String address,String experience,String about_yourself,String km,String id) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -20,6 +20,15 @@ public class NewModel {
         this.experience= experience;
         this.about_yourself=about_yourself;
         this.km = km;
+        this.id=id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getKm() {

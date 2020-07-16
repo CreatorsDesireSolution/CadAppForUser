@@ -9,12 +9,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.cadappforuser.adapter.CompanyAddServiceAdapater;
 import com.example.cadappforuser.adapter.FreelancerAddServiceAdapter;
+import com.example.cadappforuser.adapter.ServicesListAdapter;
+import com.example.cadappforuser.adapter.ServicesListAdapterForShow;
 import com.example.cadappforuser.model.CompanyAddServiceModel;
 import com.example.cadappforuser.model.FreelancerServiceListModel;
+import com.example.cadappforuser.model.ServicesListModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
 
@@ -23,104 +35,118 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FreelancerServiceList extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<FreelancerServiceListModel> freelancerServiceLists;
-    ArrayList<FreelancerServiceListModel>freelancerServiceLists2=new ArrayList<>();
-
-    FreelancerAddServiceAdapter addServiceAdapater;
-    BaseRequest baseRequest;
-    Act_Session act_session;
-    Context context;
-    Activity activity;
-    String freelancer_id;
-
-
+    ArrayList<ServicesListModel> servicesListModelArrayList;
+    String url="https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php";
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_service_list);
 
-
-        context = this;
-        activity = this;
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Services List");
 
         recyclerView=findViewById(R.id.recycle);
-        freelancerServiceLists=new ArrayList<>();
+        servicesListModelArrayList=new ArrayList<>();
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        Intent intent=getIntent();
+        id=intent.getStringExtra("id");
 
-        act_session =new Act_Session(getApplicationContext());
-        Intent intent = getIntent();
-        freelancer_id = intent.getStringExtra("id");
-        ApiGetList(freelancer_id);
-
-    }
-
-
-    private void ApiGetList( String ID) {
-        baseRequest = new BaseRequest();
-        baseRequest.setBaseRequestListner(new RequestReciever() {
+        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onSuccess(int requestCode, String Json, Object object) {
+            public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONObject jsonObject = new JSONObject(response);
+                    Toast.makeText(FreelancerServiceList.this, ""+response, Toast.LENGTH_SHORT).show();
+                    String sucess = jsonObject.getString("status");
+                  //  Log.d("success","success"+u);
+                   // Toast.makeText(FreelancerServiceList.this, ""+sucess, Toast.LENGTH_SHORT).show();
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    Toast.makeText(FreelancerServiceList.this, ""+jsonArray, Toast.LENGTH_SHORT).show();
+                    if(sucess.equals("1")) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            Toast.makeText(FreelancerServiceList.this, ""+response, Toast.LENGTH_SHORT).show();
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            String service_gender=object.getString("service_gender");
+                            Log.d("response","response"+response);
+                            //if(service_gender.equals("male")){
+                            String id = object.getString("Service_id");
+                            String service_name = object.getString("service_name");
+                            String description = object.getString("description");
+                            String set_price = object.getString("set_price");
+                            String duration = object.getString("duration");
+                            String item_image = object.getString("service_image");
+                            String u = "http://aoneservice.net.in/salon/documents/" + item_image;
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
+                            ServicesListAdapter servicesListAdapter=new ServicesListAdapter(FreelancerServiceList.this,servicesListModelArrayList);
+                            LinearLayoutManager layoutManager=new LinearLayoutManager(FreelancerServiceList.this);
+                            recyclerView.setLayoutManager(layoutManager);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setAdapter(servicesListAdapter);
 
-                    if (!jsonObject.getString("message").equals("Failed")) {
+                            //}
 
-                        JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        freelancerServiceLists = baseRequest.getDataList(jsonArray, FreelancerServiceListModel.class);
-
-                        for (int i = 0; i < freelancerServiceLists.size(); i++) {
-                            if (freelancerServiceLists != null) {
-
-
-                                FreelancerServiceListModel model = new FreelancerServiceListModel();
-                                model.setDescription(freelancerServiceLists.get(0).getDescription());
-                                model.setDuration(freelancerServiceLists.get(0).getDuration());
-                                model.setServiceImage(freelancerServiceLists.get(0).getServiceImage());
-                                model.setServiceName(freelancerServiceLists.get(0).getServiceName());
-                                freelancerServiceLists2.add(model);
-
-                                addServiceAdapater = new FreelancerAddServiceAdapter(FreelancerServiceList.this,
-                                        freelancerServiceLists,activity,act_session);
-                                recyclerView.setHasFixedSize(true);
-                                recyclerView.setAdapter(addServiceAdapater);
-
-
-                            } else {
-                                Toast.makeText(FreelancerServiceList.this, "No Data", Toast.LENGTH_SHORT).show();
-                            }
                         }
-                    } else {
-                        Toast.makeText(FreelancerServiceList.this, "No Data", Toast.LENGTH_SHORT).show();
-
                     }
-
-                } catch (JSONException e) {
+                }
+                catch (Exception e)
+                {
                     e.printStackTrace();
                 }
             }
-
+        }, new Response.ErrorListener() {
             @Override
-            public void onFailure(int requestCode, String errorCode, String message) {
-                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FreelancerServiceList.this, ""+error, Toast.LENGTH_SHORT).show();
             }
-
+        }){
             @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params=new HashMap<>();
+                params.put("id",id);
+                Log.d("actid","actid"+id);
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(request);
 
-            public void onNetworkFailure(int requestCode, String message) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_for_cart,menu);
+        MenuItem menuItem=menu.findItem(R.id.cart1);
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                startActivity(new Intent(getApplicationContext(),CartActivity.class));
+                return true;
             }
         });
-        String remainingUrl2 = "https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php?" + "id=" + ID;
-        baseRequest.callAPIGETData(1, remainingUrl2);
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
 }
