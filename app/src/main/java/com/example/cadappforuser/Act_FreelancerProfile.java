@@ -69,7 +69,6 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         Picasso.get().load(img).
                 resize(400, 400).centerCrop().into(imageView);
 
-
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +84,6 @@ public class Act_FreelancerProfile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override

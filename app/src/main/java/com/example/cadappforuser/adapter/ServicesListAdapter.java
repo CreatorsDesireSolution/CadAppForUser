@@ -70,13 +70,7 @@ public class ServicesListAdapter extends RecyclerView.Adapter<ServicesListAdapte
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
 
-        //Picasso.with(context).load(imageUri).into(ivBasicImage);
-        //Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
         Picasso.get().load(servicesListModel.getImage()).into(holder.imageView);
-        //holder.imageView.setImageResource(servicesListModel.getImage());
-
-
-
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {

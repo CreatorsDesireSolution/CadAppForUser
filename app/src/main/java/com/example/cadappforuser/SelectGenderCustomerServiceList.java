@@ -26,20 +26,16 @@ public class SelectGenderCustomerServiceList extends AppCompatActivity {
         btnmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 startActivity(intent);
-
             }
         });
 
         btnfemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 startActivity(intent);
-
             }
         });
 
