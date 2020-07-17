@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -163,6 +164,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
         context = this;
         activity= this;
         act_session = new Act_Session(getApplicationContext());
@@ -604,6 +606,20 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public boolean onPrepareOptionsMenu(Menu menu){
+        menu.findItem(R.id.logo).setEnabled(false);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.menu_for_home, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 }

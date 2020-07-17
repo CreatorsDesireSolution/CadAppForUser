@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/cart1"
-        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:id="@+id/logo"
+        android:icon="@drawable/splashlogo"
         android:title="cart"
         app:showAsAction="always" />
-
-
 
 </menu>
