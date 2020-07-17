@@ -277,7 +277,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km));
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
                             newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
                             recycleViewshopfree.setHasFixedSize(true);
                             recycleViewshopfree.setAdapter(newAdapter);

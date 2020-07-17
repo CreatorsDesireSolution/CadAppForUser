@@ -33,7 +33,7 @@ public class Act_AddToFev extends AppCompatActivity {
         setContentView(R.layout.activity_act__add_to_fev);
 
         ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle("Fevorite List");
+        actionBar.setTitle("Favorite List");
 
         recyclerviewfev = findViewById(R.id.recyclerviewfev);
         favItemList = new ArrayList<>();

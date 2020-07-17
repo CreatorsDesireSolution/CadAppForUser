@@ -323,7 +323,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus));
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
                             newAdapter=new NewAdapter(HomePageActivity.this,newModels);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(newAdapter);
@@ -384,7 +384,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String no_of_staff=object.getString("no_of_staff");
 
                             String item_image = object.getString("profile_pic");
-                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id));
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);
@@ -560,6 +560,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 break;
             case R.id.nav_mycart:
                 startActivity(new Intent(HomePageActivity.this,CartActivity.class));
+                break;
+
+            case R.id.nav_ordersummay:
+                startActivity(new Intent(HomePageActivity.this,OrderSummary.class));
                 break;
 
             case  R.id.nav_logout:

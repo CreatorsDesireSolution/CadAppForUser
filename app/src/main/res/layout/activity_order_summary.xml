@@ -55,52 +55,5 @@
 
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/rel1"
-        android:background="#FFF"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Price"
-            android:id="@+id/total"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            ></TextView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rs. 1250"
-            android:id="@+id/total_price"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/black"
-            android:layout_below="@+id/total"></TextView>
-
-        <Button
-            android:layout_width="170dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/btnback"
-            android:text="Proceed"
-            android:paddingRight="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/btnProceed"
-            android:textColor="#FFF"
-            android:textSize="20dp"
-            android:textStyle="bold"></Button>
-
-    </RelativeLayout>
 
 </RelativeLayout>

@@ -33,15 +33,15 @@ public class OrderSummary extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Order Summary");
-        btnOrderProceed=findViewById(R.id.btnProceed);
-        total_price = findViewById(R.id.total_price);
-
-        btnOrderProceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(OrderSummary.this,PaymentMethodActivity.class));
-            }
-        });
+//        btnOrderProceed=findViewById(R.id.btnProceed);
+//        total_price = findViewById(R.id.total_price);
+//
+//        btnOrderProceed.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(OrderSummary.this,PaymentMethodActivity.class));
+//            }
+//        });
 
         orderSummaryModelArrayList=new ArrayList<>();
         recyclerView=findViewById(R.id.summary_recycleview);

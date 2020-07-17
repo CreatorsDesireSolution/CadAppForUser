@@ -23,6 +23,12 @@
             />
 
         <item
+            android:id="@+id/nav_ordersummay"
+            android:icon="@drawable/ic_shoppingcart"
+            android:title="Order Summary"
+            />
+
+        <item
             android:id="@+id/nav_add_fev"
             android:icon="@drawable/ic_star"
             android:title=" Favorite" />
