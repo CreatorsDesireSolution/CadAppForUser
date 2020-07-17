@@ -52,14 +52,16 @@ public class CartActivity extends AppCompatActivity {
 
         if(c.moveToFirst()) {
             while (c.moveToNext()) {
-                int id = c.getInt(0);
-                String name = c.getString(1);
-                String desc = c.getString(2);
-                String price = c.getString(3);
-                String item_image=c.getString(4);
-                int qty=c.getInt(5);
-                total+=(Integer.parseInt(price)*qty);
-                cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty));
+                    int id = c.getInt(0);
+                    String name = c.getString(1);
+                    String desc = c.getString(2);
+                    String price = c.getString(3);
+                    String item_image=c.getString(4);
+                    int qty=c.getInt(5);
+                     String Pid=c.getString(6);
+                    Log.d("PID","PID"+Pid);
+                    total+=(Integer.parseInt(price)*qty);
+                    cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty,Pid));
             }
         }
 
@@ -77,7 +79,6 @@ public class CartActivity extends AppCompatActivity {
         while(c1.moveToNext()){
             count1++;
         }
-
 
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
