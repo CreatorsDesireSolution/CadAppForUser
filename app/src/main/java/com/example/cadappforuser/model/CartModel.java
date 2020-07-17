@@ -2,16 +2,25 @@ package com.example.cadappforuser.model;
 
 public class CartModel  {
     String serImage;
-    String serName,serPrice,serSample;
+    String serName,serPrice,serSample,PId;
     int serId,qty;
 
-    public CartModel(String serImage, String serName, String serPrice, String serSample,int serId,int qty) {
+    public CartModel(String serImage, String serName, String serPrice, String serSample,int serId,int qty,String PId) {
         this.serImage = serImage;
         this.serName = serName;
         this.serPrice = serPrice;
         this.serSample = serSample;
         this.serId=serId;
         this.qty=qty;
+        this.PId=PId;
+    }
+
+    public String getPId() {
+        return PId;
+    }
+
+    public void setPId(String PId) {
+        this.PId = PId;
     }
 
     public int getQty() {

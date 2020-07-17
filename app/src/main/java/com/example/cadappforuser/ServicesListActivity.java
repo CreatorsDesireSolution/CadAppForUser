@@ -34,7 +34,6 @@ public class ServicesListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<ServicesListModel> servicesListModelArrayList;
    // String url="https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php";
-
     String id;
 
     @Override
@@ -67,6 +66,7 @@ public class ServicesListActivity extends AppCompatActivity {
                             String service_gender=object.getString("service_gender");
                             //if(service_gender.equals("male")){
                             String id = object.getString("Service_id");
+                            String freelancerId=object.getString("freelancer_id");
                             String service_name = object.getString("service_name");
                             String description = object.getString("description");
                             String set_price = object.getString("set_price");
@@ -74,7 +74,7 @@ public class ServicesListActivity extends AppCompatActivity {
 
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId));
 
                            // servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivity.this,servicesListModelArrayList);

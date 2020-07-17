@@ -68,6 +68,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             Log.d("response","response"+response);
                             //if(service_gender.equals("male")){
                             String id = object.getString("id");
+                            String compayId=object.getString("company_id");
                             String service_name = object.getString("service_name");
                             String description = object.getString("description");
                             String set_price = object.getString("set_price");
@@ -76,7 +77,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServiceListComapnyForShow.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);

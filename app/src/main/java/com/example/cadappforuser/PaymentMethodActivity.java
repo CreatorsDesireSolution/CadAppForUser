@@ -19,7 +19,7 @@ public class PaymentMethodActivity extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("PAYMENT METHOD");
-        btnAtm=findViewById(R.id.btnAtm);
+
         btnCash=findViewById(R.id.btnCash);
         btnPaytm=findViewById(R.id.btnPaytm);
         btnPaytm.setOnClickListener(new View.OnClickListener() {
@@ -36,13 +36,7 @@ public class PaymentMethodActivity extends AppCompatActivity {
 
             }
         });
-        btnCash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PaymentMethodActivity.this,PaymentMethodAddCart.class));
 
-            }
-        });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

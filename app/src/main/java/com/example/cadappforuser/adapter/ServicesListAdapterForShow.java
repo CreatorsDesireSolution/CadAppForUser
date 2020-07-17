@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.example.cadappforuser.R;
 import com.example.cadappforuser.ServiceDescription;
 import com.example.cadappforuser.SqliteDatabase.FavDB;
 import com.example.cadappforuser.SqliteDatabase.Myhelper;
+import com.example.cadappforuser.model.CartModel;
 import com.example.cadappforuser.model.ServicesListModel;
 import com.squareup.picasso.Picasso;
 
@@ -35,6 +37,8 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     List<ServicesListModel> servicesListModelList;
     private boolean[] favorites;
     private FavDB favDB;
+    String id;
+    String Pid;
 
     public ServicesListAdapterForShow(Context context, List<ServicesListModel> servicesListModelList) {
         this.context = context;
@@ -76,6 +80,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
         holder.sample.setText(servicesListModel.getSample());
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
+        id=servicesListModel.getProviderId();
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
 
@@ -86,27 +91,98 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                     Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                  // String sql1 = "select count(*) from CART where _id=" + servicesListModel.getKey_id();
-                   //Cursor cur = db.rawQuery(sql1, null);
-                    //if (cur != null) {
-                      //  cur.moveToFirst();                       // Always one row returned.
-                        //if (cur.getInt(0) == 0) {               // Zero count means empty table.
+                    Myhelper myhelper=new Myhelper(context);
+                    SQLiteDatabase database = myhelper.getReadableDatabase();
+                    String sql = "select * from CART";
+                    Cursor c = database.rawQuery(sql,null);
+                    if(c.moveToFirst())
+                    {
+                        String Pid=c.getString(6);
+                        if(Pid.equals(id))
+                        {
                             ContentValues values = new ContentValues();
                             values.put("SERVICE_NAME", servicesListModel.getName());
                             values.put("SERVICE_PRICE", servicesListModel.getPrice());
                             values.put("SERVICE_DESC", servicesListModel.getSample());
                             values.put("SERVICE_IMAGE", servicesListModel.getImage());
                             values.put("QTY", number[0]);
+                            values.put("PROVIDERID",id);
                             database.insert("CART", null, values);
                             holder.btn_addtocart.setText("Added");
                             Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
                         }
-                        //else
-                         //   Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
-                    //}
-                //}
+                        else
+                        {
+// cart empty code then add item
+                            String Pi=c.getString(6);
+                            if(!Pi.equals(id)){
+                                database=myhelper.getWritableDatabase();
+                                database.execSQL("delete from CART");
+
+                            }
+                            ContentValues values = new ContentValues();
+                            values.put("SERVICE_NAME", servicesListModel.getName());
+                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                            values.put("SERVICE_DESC", servicesListModel.getSample());
+                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                            values.put("QTY", number[0]);
+                            values.put("PROVIDERID",id);
+                            database.insert("CART", null, values);
+                            holder.btn_addtocart.setText("Added");
+                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    else
+                    {
+                        ContentValues values = new ContentValues();
+                        values.put("SERVICE_NAME", servicesListModel.getName());
+                        values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                        values.put("SERVICE_DESC", servicesListModel.getSample());
+                        values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                        values.put("QTY", number[0]);
+                        values.put("PROVIDERID",id);
+                        database.insert("CART", null, values);
+                        holder.btn_addtocart.setText("Added");
+                        Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
+
+     /*   holder.btn_addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.btn_addtocart.getText() == "Added") {
+                    Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                    Myhelper myhelper=new Myhelper(context);
+                    SQLiteDatabase database = myhelper.getReadableDatabase();
+                    String sql = "select * from CART";
+                    Cursor c = database.rawQuery(sql,null);
+
+                    if(c.moveToFirst()) {
+                        while (c.moveToNext()) {
+                            Pid=c.getString(6);
+                            Log.d("PID","PID"+Pid);
+                        }
+                    }
+                    Log.d("PID1","PID1"+Pid);
+                            ContentValues values = new ContentValues();
+                            values.put("SERVICE_NAME", servicesListModel.getName());
+                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                            values.put("SERVICE_DESC", servicesListModel.getSample());
+                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                            values.put("QTY", number[0]);
+                            values.put("PROVIDERID",id);
+                            database.insert("CART", null, values);
+                            holder.btn_addtocart.setText("Added");
+                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                        }
+            }
+        });*/
 
     }
 

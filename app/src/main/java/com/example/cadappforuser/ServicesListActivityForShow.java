@@ -79,12 +79,13 @@ public class ServicesListActivityForShow extends AppCompatActivity {
                                 String service_name = object.getString("service_name");
                                 String description = object.getString("description");
                                 String set_price = object.getString("set_price");
+                            String freelancerId=object.getString("freelancer_id");
                                 String duration = object.getString("duration");
 
                                 String item_image = object.getString("service_image");
                                 String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                                servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,"1","0"));
+                                servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,"1","0",freelancerId));
                                 ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivityForShow.this,servicesListModelArrayList);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(servicesListAdapter);

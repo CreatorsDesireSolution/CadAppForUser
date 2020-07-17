@@ -79,12 +79,13 @@ public class FreelancerServiceList extends AppCompatActivity {
                             //if(service_gender.equals("male")){
                             String id = object.getString("Service_id");
                             String service_name = object.getString("service_name");
+                            String freelancerId=object.getString("freelancer_id");
                             String description = object.getString("description");
                             String set_price = object.getString("set_price");
                             String duration = object.getString("duration");
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId));
                             ServicesListAdapter servicesListAdapter=new ServicesListAdapter(FreelancerServiceList.this,servicesListModelArrayList);
                             LinearLayoutManager layoutManager=new LinearLayoutManager(FreelancerServiceList.this);
                             recyclerView.setLayoutManager(layoutManager);
