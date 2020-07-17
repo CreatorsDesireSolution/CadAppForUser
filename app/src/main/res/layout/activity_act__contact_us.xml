@@ -83,7 +83,7 @@
         android:text="creatorsdesires@gmail.com"
         android:textColor="@color/black"
 
-        android:textSize="16sp"
+        android:textSize="14sp"
          />
 
     <View
@@ -105,7 +105,7 @@
         android:drawablePadding="12dp"
         android:text="CONTACT US"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:ignore="MissingConstraints"
          />
 
@@ -128,7 +128,7 @@
         android:drawablePadding="10dp"
         android:text="+910003337777"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:ignore="MissingConstraints"
        />
 
@@ -153,7 +153,7 @@
         android:text="FEEDBACK"
         android:drawablePadding="12dp"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:ignore="MissingConstraints"
          />
 
@@ -177,7 +177,7 @@
         android:drawablePadding="12dp"
         android:text="Indore M.P"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         tools:ignore="MissingConstraints"
          />
     </LinearLayout>
