@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -244,7 +245,9 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         }
 
 
-
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Home");
 
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
@@ -455,5 +458,20 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public boolean onPrepareOptionsMenu(Menu menu){
+        menu.findItem(R.id.logo).setEnabled(false);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        getMenuInflater().inflate(R.menu.menu_for_home, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
