@@ -74,7 +74,7 @@ public class ServicesListActivity extends AppCompatActivity {
 
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"freelancer"));
 
                            // servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivity.this,servicesListModelArrayList);

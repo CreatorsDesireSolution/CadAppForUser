@@ -85,7 +85,7 @@ public class ServicesListActivityForShow extends AppCompatActivity {
                                 String item_image = object.getString("service_image");
                                 String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                                servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,"1","0",freelancerId));
+                                servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,"1","0",freelancerId,"company"));
                                 ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivityForShow.this,servicesListModelArrayList);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(servicesListAdapter);
@@ -117,19 +117,6 @@ public class ServicesListActivityForShow extends AppCompatActivity {
         };
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
-
-
-
-       /* servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Facial","0","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"250","Lorem Ipsum","Hair Styling","1","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"550","Lorem Ipsum","Hair Wash","2","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"650","Lorem Ipsum","Hair Spa","3","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"150","Lorem Ipsum","Hair cut","4","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"850","Lorem Ipsum","Hair Styling","5","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"50","Lorem Ipsum","Hair Wash","6","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.pro,"150","Lorem Ipsum","Hair Cut","7","0"));
-        servicesListModelArrayList.add(new ServicesListModel(R.drawable.hairwash,"450","Lorem Ipsum","Face Massage","8","0"));*/
-
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

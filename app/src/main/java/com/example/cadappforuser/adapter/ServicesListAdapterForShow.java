@@ -37,7 +37,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     List<ServicesListModel> servicesListModelList;
     private boolean[] favorites;
     private FavDB favDB;
-    String id;
+    String id,status;
     String Pid;
 
     public ServicesListAdapterForShow(Context context, List<ServicesListModel> servicesListModelList) {
@@ -81,6 +81,9 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
         holder.name.setText(servicesListModel.getName());
         holder.price.setText("Rs."+servicesListModel.getPrice());
         id=servicesListModel.getProviderId();
+        status=servicesListModel.getStatus();
+
+
         //holder.imageView.setImageResource(servicesListModel.getImage());
         Picasso.get().load(servicesListModel.getImage()).resize(400, 400).centerCrop().into(holder.imageView);
 
@@ -89,62 +92,81 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
             public void onClick(View view) {
                 if (holder.btn_addtocart.getText() == "Added") {
                     Toast.makeText(context, "Item Already Added", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     Myhelper myhelper=new Myhelper(context);
                     SQLiteDatabase database = myhelper.getReadableDatabase();
                     String sql = "select * from CART";
-                    Cursor c = database.rawQuery(sql,null);
-                    if(c.moveToFirst())
-                    {
-                        String Pid=c.getString(6);
-                        if(Pid.equals(id))
-                        {
-                            ContentValues values = new ContentValues();
-                            values.put("SERVICE_NAME", servicesListModel.getName());
-                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
-                            values.put("SERVICE_DESC", servicesListModel.getSample());
-                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
-                            values.put("QTY", number[0]);
-                            values.put("PROVIDERID",id);
-                            database.insert("CART", null, values);
-                            holder.btn_addtocart.setText("Added");
-                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-// cart empty code then add item
-                            String Pi=c.getString(6);
-                            if(!Pi.equals(id)){
-                                database=myhelper.getWritableDatabase();
-                                database.execSQL("delete from CART");
-
+                    String sql1 = "select count(*) from CART where SERVICE_ID="+servicesListModel.getKey_id();
+                    Cursor cur=db.rawQuery(sql1,null);
+                    if (cur != null) {
+                        cur.moveToFirst();
+                        if (cur.getInt(0) == 0) {
+                            Cursor c = database.rawQuery(sql, null);
+                            if (c.moveToFirst()) {
+                                String Pid = c.getString(6);
+                                String sta=c.getString(7);
+                                if (Pid.equals(id) && status.equals(sta)) {
+                                    cur.moveToFirst();
+                                    ContentValues values = new ContentValues();
+                                    values.put("SERVICE_NAME", servicesListModel.getName());
+                                    values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                                    values.put("SERVICE_DESC", servicesListModel.getSample());
+                                    values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                                    values.put("QTY", number[0]);
+                                    values.put("PROVIDERID", id);
+                                    values.put("SERVICE_ID", servicesListModel.getKey_id());
+                                    values.put("STATUS",servicesListModel.getStatus());
+                                    database.insert("CART", null, values);
+                                    holder.btn_addtocart.setText("Added");
+                                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    String Pi = c.getString(6);
+                                    String st=c.getString(7);
+                                    if (!Pi.equals(id) && status.equals(st)) {
+                                        database = myhelper.getWritableDatabase();
+                                        database.execSQL("delete from CART");
+                                    }
+                                    if (cur != null) {
+                                        cur.moveToFirst();
+                                        if (cur.getInt(0) == 0) {
+                                            ContentValues values = new ContentValues();
+                                            values.put("SERVICE_NAME", servicesListModel.getName());
+                                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                                            values.put("SERVICE_DESC", servicesListModel.getSample());
+                                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                                            values.put("QTY", number[0]);
+                                            values.put("PROVIDERID", id);
+                                            values.put("STATUS",servicesListModel.getStatus());
+                                            database.insert("CART", null, values);
+                                            holder.btn_addtocart.setText("Added");
+                                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (cur != null) {
+                                    cur.moveToFirst();
+                                    if (cur.getInt(0) == 0) {
+                                        ContentValues values = new ContentValues();
+                                        values.put("SERVICE_NAME", servicesListModel.getName());
+                                        values.put("SERVICE_PRICE", servicesListModel.getPrice());
+                                        values.put("SERVICE_DESC", servicesListModel.getSample());
+                                        values.put("SERVICE_IMAGE", servicesListModel.getImage());
+                                        values.put("QTY", number[0]);
+                                        values.put("PROVIDERID", id);
+                                        values.put("STATUS",servicesListModel.getStatus());
+                                        database.insert("CART", null, values);
+                                        holder.btn_addtocart.setText("Added");
+                                        Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                             }
-                            ContentValues values = new ContentValues();
-                            values.put("SERVICE_NAME", servicesListModel.getName());
-                            values.put("SERVICE_PRICE", servicesListModel.getPrice());
-                            values.put("SERVICE_DESC", servicesListModel.getSample());
-                            values.put("SERVICE_IMAGE", servicesListModel.getImage());
-                            values.put("QTY", number[0]);
-                            values.put("PROVIDERID",id);
-                            database.insert("CART", null, values);
-                            holder.btn_addtocart.setText("Added");
-                            Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
                         }
-
-                    }
-                    else
-                    {
-                        ContentValues values = new ContentValues();
-                        values.put("SERVICE_NAME", servicesListModel.getName());
-                        values.put("SERVICE_PRICE", servicesListModel.getPrice());
-                        values.put("SERVICE_DESC", servicesListModel.getSample());
-                        values.put("SERVICE_IMAGE", servicesListModel.getImage());
-                        values.put("QTY", number[0]);
-                        values.put("PROVIDERID",id);
-                        database.insert("CART", null, values);
-                        holder.btn_addtocart.setText("Added");
-                        Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                        else {
+                            Toast.makeText(context, "Item Already Added In Your Cart", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

@@ -50,7 +50,7 @@ public class CartActivity extends AppCompatActivity {
         String sql = "select * from CART";
         Cursor c = database.rawQuery(sql,null);
 
-        if(c.moveToFirst()) {
+       // if(c.moveToFirst()) {
             while (c.moveToNext()) {
                     int id = c.getInt(0);
                     String name = c.getString(1);
@@ -63,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
                     total+=(Integer.parseInt(price)*qty);
                     cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty,Pid));
             }
-        }
+      //  }
 
         txt_total_price.setText("Rs."+Integer.valueOf(total));
         cartAdapter=new CartAdapter(this,cartModelArrayList);
@@ -94,7 +94,7 @@ public class CartActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_for_cart,menu);
         MenuItem menuItem=menu.findItem(R.id.cart1);
-        menuItem.setIcon(Converter.convertLayoutToImage(CartActivity.this,count1-1,R.drawable.ic_shopping_cart_black_24dp));
+        menuItem.setIcon(Converter.convertLayoutToImage(CartActivity.this,count1,R.drawable.ic_shopping_cart_black_24dp));
 
         menuItem.setOnMenuItemClickListener(
                 new MenuItem.OnMenuItemClickListener() {

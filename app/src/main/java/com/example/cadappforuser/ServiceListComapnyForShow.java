@@ -77,13 +77,12 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"company"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServiceListComapnyForShow.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);
 
                             //  }
-
                         }
                     }
                 }
