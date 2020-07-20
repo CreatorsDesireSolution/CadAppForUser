@@ -240,7 +240,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-            ImageView fevicon;
+        ImageView fevicon;
         TextView price,name,sample;
         Button btn_addtocart;
 
@@ -271,7 +271,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                         servicesListModel.setFav_status("0");
                         favDB.remove_fav(servicesListModel.getKey_id());
                         fevicon.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
-                       fevicon.setSelected(false);
+                        fevicon.setSelected(false);
                     }
                 }
             });

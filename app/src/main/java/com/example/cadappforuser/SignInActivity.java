@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,11 @@ import android.widget.Toast;
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +65,8 @@ public class SignInActivity extends AppCompatActivity {
     Act_Session act_session;
     BaseRequest baseRequest;
     ProgressDialog progressDialog;
+    String token;
+
 
 
 
@@ -107,6 +115,27 @@ public class SignInActivity extends AppCompatActivity {
                         Settings.Secure.ANDROID_ID);
             }
         }
+
+
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                if (task.isSuccessful()){
+
+                    token = task.getResult().getToken();
+                    Log.d("message","onComplete: Token:"+token);
+
+
+                }else {
+                    Toast.makeText(context, "No Token ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
 
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -195,10 +224,12 @@ public class SignInActivity extends AppCompatActivity {
         });
         RequestBody email_ = RequestBody.create(MediaType.parse("text/plain"), username);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody token_ = RequestBody.create(MediaType.parse("text/plain"), token);
 
-        baseRequest.callAPILogin(1, "https://aoneservice.net.in/", email_, password_);
+        baseRequest.callAPILogin(1, "https://aoneservice.net.in/", email_, password_,token_);
 
     }
+
 
 
 

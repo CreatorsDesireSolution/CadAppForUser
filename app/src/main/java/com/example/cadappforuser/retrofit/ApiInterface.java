@@ -100,7 +100,8 @@ public interface ApiInterface {
                                    @Part("address") RequestBody address,
                                    @Part("deviceid") RequestBody deviceid,
                                    @Part("password") RequestBody password,
-                                    @Part ("profile_image")RequestBody profile_pic
+                                    @Part ("profile_image")RequestBody profile_pic,
+                                    @Part ("token")RequestBody token_
 
     );
 
@@ -163,7 +164,9 @@ public interface ApiInterface {
                                               @Part("profile_pic") RequestBody profile_pic,
 
                                     @Part("latitude") RequestBody latitute_,
-                                    @Part("longitude") RequestBody longitute
+                                    @Part("longitude") RequestBody longitute,
+                                    @Part("token") RequestBody token_
+
     );
 
 
@@ -214,7 +217,8 @@ public interface ApiInterface {
                                            @Part("no_of_staff") RequestBody staff_,
                                            @Part("profile_pic") RequestBody profile_pic,
                                            @Part("latitude") RequestBody latitude_,
-                                           @Part("longitude") RequestBody longitude_
+                                           @Part("longitude") RequestBody longitude_,
+                                           @Part("token") RequestBody token_
     );
 
 
@@ -282,7 +286,9 @@ public interface ApiInterface {
     @POST("salon/login_api.php")
     Call<JsonElement> postLogin(
             @Part("email") RequestBody email_,
-            @Part("password") RequestBody password_);
+            @Part("password") RequestBody password_,
+            @Part("token") RequestBody token_
+            );
 
 
     @Multipart

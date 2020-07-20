@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1020769257535",
+    "firebase_url": "https://cadappforuser.firebaseio.com",
+    "project_id": "cadappforuser",
+    "storage_bucket": "cadappforuser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020769257535:android:9e327610e4e153674f908a",
+        "android_client_info": {
+          "package_name": "com.example.cadappforuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020769257535-t9lh2568713p00hlbfv4d66qs6fgk732.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cadappforuser",
+            "certificate_hash": "6eaf015a880022f2fb1e6d7c2279732fb1f341d1"
+          }
+        },
+        {
+          "client_id": "1020769257535-2r5kmiide0jgc2fa0k6hpvl6piiv85r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbgPGih-bvGpIjqKJejQoK4n5HQfeNnTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020769257535-2r5kmiide0jgc2fa0k6hpvl6piiv85r3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

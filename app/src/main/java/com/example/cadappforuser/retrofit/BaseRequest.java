@@ -324,7 +324,8 @@ public class BaseRequest<T> extends BaseRequestParser {
     public void callAPIRegisterascompany(final int APINumber, String remainingURL, RequestBody companyname_,
                                          RequestBody aboutcompany_, RequestBody address_, RequestBody mobilenumber_,
                                          RequestBody email_, RequestBody password_, RequestBody register_no,
-                                         RequestBody deviceid_, RequestBody staff_, RequestBody profile_, RequestBody latitude, RequestBody longitude) {
+                                         RequestBody deviceid_, RequestBody staff_, RequestBody profile_, RequestBody latitude,
+                                         RequestBody longitude,RequestBody token_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -333,7 +334,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postregistercompany(companyname_,aboutcompany_,address_,mobilenumber_,
-                email_,password_,register_no,deviceid_,staff_,profile_ ,latitude,longitude);
+                email_,password_,register_no,deviceid_,staff_,profile_ ,latitude,longitude,token_);
         call.enqueue(responseCallback);
     }
 
@@ -358,7 +359,7 @@ public class BaseRequest<T> extends BaseRequestParser {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void callAPIRegister(final int APINumber, String remainingURL, RequestBody firstname_, RequestBody lastname_,
                                 RequestBody email_, RequestBody dob, RequestBody mobilenumber_, RequestBody gender_,
-                                RequestBody address_, RequestBody deviceid_, RequestBody password_,RequestBody profile_pic) {
+                                RequestBody address_, RequestBody deviceid_, RequestBody password_,RequestBody profile_pic,RequestBody token_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -367,7 +368,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postRegister(firstname_,lastname_,email_,dob,mobilenumber_,gender_,
-                address_,deviceid_,password_,profile_pic);
+                address_,deviceid_,password_,profile_pic,token_);
         call.enqueue(responseCallback);
     }
 
@@ -445,7 +446,7 @@ public class BaseRequest<T> extends BaseRequestParser {
                                           RequestBody lastname_, RequestBody email_, RequestBody mobilenumber_,
                                           RequestBody gender_, RequestBody address_, RequestBody deviceid_,
                                           RequestBody password_,RequestBody profile_,RequestBody latitute,
-                                          RequestBody longitute) {
+                                          RequestBody longitute,RequestBody token_) {
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
@@ -454,7 +455,7 @@ public class BaseRequest<T> extends BaseRequestParser {
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
         //Call<JsonElement> call = apiInterface_.formData(images,latitude,fcm_token,msg_detail,app_name,email_id_to,ssecrete,device_id,longitude,location_detail);
         Call<JsonElement> call = apiInterface_.postregisterfreelancer(firstname_,lastname_,email_,
-                mobilenumber_,gender_,address_,deviceid_,password_,profile_,latitute,longitute);
+                mobilenumber_,gender_,address_,deviceid_,password_,profile_,latitute,longitute,token_);
         call.enqueue(responseCallback);
     }
 
@@ -581,14 +582,14 @@ public class BaseRequest<T> extends BaseRequestParser {
     }
 
 
-    public void callAPILogin(final int APINumber, String remainingURL, RequestBody email_, RequestBody password_) {//user_type_,device_id_,email_,password_,org_id_
+    public void callAPILogin(final int APINumber, String remainingURL, RequestBody email_, RequestBody password_,RequestBody token_) {//user_type_,device_id_,email_,password_,org_id_
         APINumber_ = APINumber;
         requestType = RequestType.Post;
         showLoader();
         //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
         System.out.println("BaseReq INPUT URL : " + remainingURL);
         ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
-        Call<JsonElement> call = apiInterface_.postLogin( email_, password_);
+        Call<JsonElement> call = apiInterface_.postLogin( email_, password_,token_);
         call.enqueue(responseCallback);
     }
 

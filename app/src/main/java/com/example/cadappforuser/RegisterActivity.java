@@ -1,5 +1,6 @@
 package com.example.cadappforuser;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -36,6 +37,11 @@ import android.widget.Toast;
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -92,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
     Uri tempUri;
     Uri selectedImage;
     Uri file,file1;
+    String token;
 
 
 
@@ -162,6 +169,28 @@ public class RegisterActivity extends AppCompatActivity {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
+
+
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                if (task.isSuccessful()){
+
+                    token = task.getResult().getToken();
+                    Log.d("message","onComplete: Token:"+token);
+
+
+                }else {
+                    Toast.makeText(context, "No Token ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
 
         iv_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -477,6 +506,7 @@ public class RegisterActivity extends AppCompatActivity {
         RequestBody address_ = RequestBody.create(MediaType.parse("text/plain"), address);
         RequestBody deviceid_ = RequestBody.create(MediaType.parse("text/plain"), deviceId);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody token_ = RequestBody.create(MediaType.parse("text/plain"), token);
 
         //  RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
 //
@@ -487,7 +517,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         baseRequest.callAPIRegister(1,"https://aoneservice.net.in/" , firstname_, lastname_, email_,
-                dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic);
+                dob_, mobilenumber_, gender_,address_,deviceid_,password_,profile_pic,token_);
 
     }
 
