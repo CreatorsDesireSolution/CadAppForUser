@@ -50,7 +50,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
 
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
-        // Log.d("actid","actid"+act_session.userId);
+        //Log.d("actid","actid"+act_session.userId);
 
         StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/freelancer_companyservice_api.php", new Response.Listener<String>() {
             @Override

@@ -120,11 +120,11 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                     values.put("STATUS",servicesListModel.getStatus());
                                     database.insert("CART", null, values);
                                     holder.btn_addtocart.setText("Added");
-                                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                                  //  Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
                                 } else {
                                     String Pi = c.getString(6);
                                     String st=c.getString(7);
-                                    if (!Pi.equals(id) && status.equals(st)) {
+                                    if (!(Pi.equals(id) && status.equals(st))) {
                                         database = myhelper.getWritableDatabase();
                                         database.execSQL("delete from CART");
                                     }
@@ -159,7 +159,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                         values.put("STATUS",servicesListModel.getStatus());
                                         database.insert("CART", null, values);
                                         holder.btn_addtocart.setText("Added");
-                                        Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+                                     //   Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
