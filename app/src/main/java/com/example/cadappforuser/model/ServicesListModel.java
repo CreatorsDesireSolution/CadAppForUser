@@ -3,9 +3,9 @@ package com.example.cadappforuser.model;
 public class ServicesListModel {
 
     String image;
-    String price,sample,name,key_id,fav_status,providerId;
+    String price,sample,name,key_id,fav_status,providerId,status;
 
-    public ServicesListModel(String image, String price, String sample, String name,String key_id,String fav_status,String providerId) {
+    public ServicesListModel(String image, String price, String sample, String name,String key_id,String fav_status,String providerId,String status) {
         this.image = image;
         this.price = price;
         this.sample = sample;
@@ -13,6 +13,15 @@ public class ServicesListModel {
         this.key_id=key_id;
         this.fav_status=fav_status;
         this.providerId=providerId;
+        this.status=status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getProviderId() {

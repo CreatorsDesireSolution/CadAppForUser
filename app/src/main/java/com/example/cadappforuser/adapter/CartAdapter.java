@@ -58,7 +58,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     holder.qty.setText(""+number[0]);
                 }
                 if (number[0] > 1) {
-                    number[0] = number[0] - 1;
+                    number[0] = number[0]-1;
                     database.execSQL("UPDATE CART SET QTY = "+number[0]+" WHERE _id="+item_id);
                     ((CartActivity)context).resetGraph(context);
                     holder.qty.setText(""+number[0]);
