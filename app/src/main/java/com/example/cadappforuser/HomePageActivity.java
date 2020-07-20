@@ -15,6 +15,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -60,7 +62,12 @@ import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -104,6 +111,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     int dotscount;
     double lat,lng;
     private ImageView[] dots;
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,6 +142,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             sliderDotspanel.addView(dots[i], params);
 
         }
+
 
         dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
 
@@ -207,6 +216,37 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             }
         }catch (Exception e){
             Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
+        }
+
+
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                if (task.isSuccessful()){
+
+                    token = task.getResult().getToken();
+                    Log.d("message","onComplete: Token:"+token);
+
+
+                }else {
+                    Toast.makeText(context, "No Token ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            NotificationChannel channel = new NotificationChannel("MyNotifications","MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setShowBadge(true);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+
         }
 
        // searchView = findViewById(R.id.searchview);
@@ -434,7 +474,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             Window window=this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(this.getResources().getColor(R.color.colorAccent));
+
         }
 
     }

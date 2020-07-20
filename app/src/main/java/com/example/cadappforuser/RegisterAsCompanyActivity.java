@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -31,6 +33,11 @@ import androidx.core.app.ActivityCompat;
 import com.example.cadappforuser.UtilsClasses.MarshMallowPermission;
 import com.example.cadappforuser.retrofit.BaseRequest;
 import com.example.cadappforuser.retrofit.RequestReciever;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -69,6 +76,7 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
     String companyname, registrationnumber, address, mobilenumber, email, password, aboutcompany, staff;
     String latitute,longitute;
     double lat,lng;
+    String token;
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +170,29 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
 
         UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
         deviceId = deviceUuid.toString();
+
+
+
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                if (task.isSuccessful()){
+
+                    token = task.getResult().getToken();
+                    Log.d("message","onComplete: Token:"+token);
+
+
+                }else {
+                    Toast.makeText(context, "No Token ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -334,12 +365,13 @@ public class RegisterAsCompanyActivity extends AppCompatActivity {
         RequestBody profile_pic = RequestBody.create(MediaType.parse("text/plain"), encodeImage);
         RequestBody latitude1 = RequestBody.create(MediaType.parse("text/plain"), latitute);
         RequestBody longitude1 = RequestBody.create(MediaType.parse("text/plain"), longitute);
+        RequestBody token_ = RequestBody.create(MediaType.parse("text/plain"), token);
 
 
 
         baseRequest.callAPIRegisterascompany(1,"https://aoneservice.net.in/" , companyname_,
                 aboutcompany_, address_, mobilenumber_,email_,password_,registarion_no_,deviceId_,
-                staff_,profile_pic,latitude1,longitude1);
+                staff_,profile_pic,latitude1,longitude1,token_);
 
     }
 

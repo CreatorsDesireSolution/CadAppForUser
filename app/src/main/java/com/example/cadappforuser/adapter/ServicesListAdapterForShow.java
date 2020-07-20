@@ -96,6 +96,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                     String sql = "select * from CART";
                     Cursor c = database.rawQuery(sql,null);
                     if(c.moveToFirst())
+
                     {
                         String Pid=c.getString(6);
                         if(Pid.equals(id))
