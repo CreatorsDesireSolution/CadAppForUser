@@ -55,9 +55,9 @@ public class ServicesListActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    Toast.makeText(ServicesListActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(ServicesListActivity.this, ""+response, Toast.LENGTH_SHORT).show();
                     String sucess = jsonObject.getString("status");
-                    Log.d("response","response"+response+" "+sucess);
+                   // Log.d("response","response"+response+" "+sucess);
                     //  String message=jsonObject.getString("message");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     if (sucess.equals("1")) {
@@ -74,7 +74,7 @@ public class ServicesListActivity extends AppCompatActivity {
 
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"freelancer"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"1"));
 
                            // servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivity.this,servicesListModelArrayList);

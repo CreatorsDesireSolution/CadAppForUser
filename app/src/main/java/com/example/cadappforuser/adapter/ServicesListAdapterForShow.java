@@ -38,7 +38,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
     private boolean[] favorites;
     private FavDB favDB;
     String id,status;
-    String Pid;
+    String Pid,serviceId;
 
     public ServicesListAdapterForShow(Context context, List<ServicesListModel> servicesListModelList) {
         this.context = context;
@@ -138,6 +138,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                             values.put("SERVICE_IMAGE", servicesListModel.getImage());
                                             values.put("QTY", number[0]);
                                             values.put("PROVIDERID", id);
+                                            values.put("SERVICE_ID", servicesListModel.getKey_id());
                                             values.put("STATUS",servicesListModel.getStatus());
                                             database.insert("CART", null, values);
                                             holder.btn_addtocart.setText("Added");
@@ -156,6 +157,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                         values.put("SERVICE_IMAGE", servicesListModel.getImage());
                                         values.put("QTY", number[0]);
                                         values.put("PROVIDERID", id);
+                                        values.put("SERVICE_ID", servicesListModel.getKey_id());
                                         values.put("STATUS",servicesListModel.getStatus());
                                         database.insert("CART", null, values);
                                         holder.btn_addtocart.setText("Added");

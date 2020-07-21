@@ -72,7 +72,6 @@
         <activity android:name=".Act_CompanyNewProfileOnlyShow" />
         <activity android:name=".FreelancerPersonalProfile" />
         <activity android:name=".AddServiceSelectGender" />
-        <activity android:name=".ServicesListActivityForShow" />
         <activity android:name=".Act_womenservicelist" />
         <activity android:name=".Act_SelectGenderForList" />
         <activity android:name=".Act_ShopLocation" />

@@ -2,10 +2,10 @@ package com.example.cadappforuser.model;
 
 public class CartModel  {
     String serImage;
-    String serName,serPrice,serSample,PId;
+    String serName,serPrice,serSample,PId,status;
     int serId,qty;
 
-    public CartModel(String serImage, String serName, String serPrice, String serSample,int serId,int qty,String PId) {
+    public CartModel(String serImage, String serName, String serPrice, String serSample,int serId,int qty,String PId,String status) {
         this.serImage = serImage;
         this.serName = serName;
         this.serPrice = serPrice;
@@ -13,6 +13,15 @@ public class CartModel  {
         this.serId=serId;
         this.qty=qty;
         this.PId=PId;
+        this.status=status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getPId() {
