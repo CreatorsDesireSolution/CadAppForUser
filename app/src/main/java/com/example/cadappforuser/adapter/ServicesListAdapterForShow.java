@@ -124,7 +124,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                 } else {
                                     String Pi = c.getString(6);
                                     String st=c.getString(7);
-                                    if (!(Pi.equals(id) && status.equals(st))) {
+                                    if (!(Pi.equals(id) || status.equals(st))) {
                                         database = myhelper.getWritableDatabase();
                                         database.execSQL("delete from CART");
                                     }
