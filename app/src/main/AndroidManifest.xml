@@ -24,7 +24,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Act_All_Notification"></activity>
+        <activity android:name=".ShowAppointementOfFreelancer"></activity>
+        <activity android:name=".Act_All_Notification" />
         <activity android:name=".CompanyServiceOffered" />
         <activity android:name=".FreelancerServiceOfferedFinal" />
         <activity android:name=".Appointment.FreelancerAppointment" />
@@ -190,16 +191,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".MainActivity" />
 
-
         <service
             android:name=".Act_MyMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
