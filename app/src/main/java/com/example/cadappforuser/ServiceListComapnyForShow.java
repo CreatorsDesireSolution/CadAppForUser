@@ -57,7 +57,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    Toast.makeText(ServiceListComapnyForShow.this, ""+response, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ServiceListComapnyForShow.this, ""+response, Toast.LENGTH_SHORT).show();
                     String sucess = jsonObject.getString("success");
                   //  String message=jsonObject.getString("message");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
@@ -77,7 +77,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"company"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"2"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServiceListComapnyForShow.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);

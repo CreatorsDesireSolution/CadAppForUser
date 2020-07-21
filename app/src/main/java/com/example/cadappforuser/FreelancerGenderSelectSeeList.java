@@ -25,7 +25,7 @@ public class FreelancerGenderSelectSeeList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),ServicesListActivityForShow.class);
+                Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
 

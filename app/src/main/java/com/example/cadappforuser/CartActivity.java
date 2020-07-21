@@ -59,9 +59,10 @@ public class CartActivity extends AppCompatActivity {
                     String item_image=c.getString(4);
                     int qty=c.getInt(5);
                      String Pid=c.getString(6);
+                     String status=c.getString(8);
                     Log.d("PID","PID"+Pid);
                     total+=(Integer.parseInt(price)*qty);
-                    cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty,Pid));
+                    cartModelArrayList.add(new CartModel(item_image,name,price,desc,id,qty,Pid,status));
             }
       //  }
 

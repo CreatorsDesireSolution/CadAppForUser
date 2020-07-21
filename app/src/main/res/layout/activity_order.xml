@@ -63,6 +63,35 @@
                     </TextView>
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:id="@+id/daterel"
+                    android:layout_marginTop="15dp"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="7dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Date"
+                        android:textSize="18dp"
+                        android:id="@+id/date"
+                        android:textColor="#000"
+                        >
+                    </TextView>
+                    <TextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Time"
+                        android:layout_alignParentEnd="true"
+                        android:textSize="18dp"
+                        android:textColor="#000"
+                        >
+                    </TextView>
+                </RelativeLayout>
+
             </LinearLayout>
 
             <Button

@@ -7,13 +7,21 @@ public class Order {
     String sellingPrice;
     int qty;
     int itemId,sellerId;
-    String user_name,user_mobile,user_address,status;
-    public Order(String imageid, String productname, String brandname, String sellingPrice, int qty) {
+    String status,pid;
+    public Order(String imageid, String productname, String brandname, String sellingPrice, int qty,String status,String pid) {
         this.imageid = imageid;
         this.productname = productname;
         this.brandname = brandname;
         this.sellingPrice = sellingPrice;
         this.qty = qty;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getStatus() {
@@ -40,29 +48,6 @@ public class Order {
         this.sellerId = sellerId;
     }
 
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getUser_mobile() {
-        return user_mobile;
-    }
-
-    public void setUser_mobile(String user_mobile) {
-        this.user_mobile = user_mobile;
-    }
-
-    public String getUser_address() {
-        return user_address;
-    }
-
-    public void setUser_address(String user_address) {
-        this.user_address = user_address;
-    }
 
     public String getImageid() {
         return imageid;
