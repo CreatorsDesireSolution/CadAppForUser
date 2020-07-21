@@ -53,7 +53,6 @@ public class FreelancerAppointmentAdapter extends RecyclerView.Adapter<Freelance
 
             tv_name = itemView.findViewById(R.id.tv_name);
             tv_location = itemView.findViewById(R.id.location_address);
-            imageView = itemView.findViewById(R.id.companyimageview);
             btn_approve = itemView.findViewById(R.id.btn_approve);
             btn_remove = itemView.findViewById(R.id.btn_remove);
         }
