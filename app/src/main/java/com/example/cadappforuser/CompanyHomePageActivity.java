@@ -322,7 +322,12 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
             case R.id.nav_term_and_condition:
                 startActivity(new Intent(CompanyHomePageActivity.this,TermAndCondition.class));
                 break;
-
+            case R.id.nav_allorder:
+                startActivity(new Intent(CompanyHomePageActivity.this,CompanyAllBookings.class));
+                break;
+            case R.id.nav_appotiment:
+                startActivity(new Intent(CompanyHomePageActivity.this,CompanyAppotiment.class));
+                break;
             case R.id.nav_company_services_provided_and_cancelataion_policy:
                startActivity(new Intent(CompanyHomePageActivity.this,CompanyServicesProvidedAndCancelationPolicy.class));
                break;

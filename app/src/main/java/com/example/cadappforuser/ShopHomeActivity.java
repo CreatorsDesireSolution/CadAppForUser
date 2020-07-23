@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -20,7 +19,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -30,10 +28,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +40,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.denzcoskun.imageslider.adapters.ViewPagerAdapter;
 import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.AllServiceModel;
@@ -52,16 +47,10 @@ import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.AllServicesAdapter;
 import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
 import com.example.cadappforuser.adapter.CompanyNewAdapter;
-import com.example.cadappforuser.adapter.HomeSearchAdapter;
 import com.example.cadappforuser.adapter.NewAdapter;
-import com.example.cadappforuser.adapter.ServicesFeturesAndCategoriesHomeAdapter;
-import com.example.cadappforuser.adapter.ServicesFreelancerAdapterHome;
 import com.example.cadappforuser.companymodel.CompanyNewModel;
-import com.example.cadappforuser.model.CompanyDetailsModel;
 import com.example.cadappforuser.model.ServicesFeatureAndCategoriesHomeModel;
 import com.example.cadappforuser.model.ServicesFreelancerHomeModel;
-import com.example.cadappforuser.retrofit.BaseRequest;
-import com.example.cadappforuser.retrofit.RequestReciever;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -71,19 +60,16 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HomePageActivity extends AppCompatActivity  implements  NavigationView
+public class ShopHomeActivity extends AppCompatActivity implements  NavigationView
         .OnNavigationItemSelectedListener{
-
     Toolbar toolbar;
     DrawerLayout mDrawerLayout;
     RecyclerView recyclerView,recyclerView1,recyclerView2;
@@ -116,7 +102,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawable_layout);
-
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         sliderDotspanel = (LinearLayout)findViewById(R.id.SliderDots);
 
@@ -184,12 +169,12 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         et_search= findViewById(R.id.et_search);
 
         final Intent intent=getIntent();
-       // txtCurrentLocation.setText(intent.getStringExtra("address"));
+        // txtCurrentLocation.setText(intent.getStringExtra("address"));
 
         act_session=new Act_Session(context);
         recyclerView=findViewById(R.id.rv_NearFreelancer);
         recyclerView1=findViewById(R.id.rv_nearCompany);
-      //  recyclerView2=findViewById(R.id.rv_nearServices);
+
 
         NavigationView navigationView =  findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
@@ -250,7 +235,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }
 
 
-       // searchView = findViewById(R.id.searchview);
+        // searchView = findViewById(R.id.searchview);
 
         seeAll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -301,21 +286,14 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             }
         });
 
-
         newModels = new ArrayList<>();
-
         Bundle b = getIntent().getExtras();
         if(b!=null){
             lat= b.getDouble("lat");
             lng=b.getDouble("lng");
-
             Log.d("lat","lat"+(lat));
             Log.d("lng","lng"+(lng));
-
         }
-
-
-        //Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager3);
@@ -341,13 +319,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String experinace=object.getString("experience");
                             //String gender = object.getString("gender");
                             String km=object.getString("km");
-                         //  Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
                             newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
-                            newAdapter=new NewAdapter(HomePageActivity.this,newModels);
+                            newAdapter=new NewAdapter(ShopHomeActivity.this,newModels);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(newAdapter);
 
@@ -362,7 +340,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShopHomeActivity.this, ""+error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -373,8 +351,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 return map;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(HomePageActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(ShopHomeActivity.this);
         requestQueue.add(request);
+
+
 
         companyNewModels = new ArrayList<>();
 
@@ -408,8 +388,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
                             String item_image = object.getString("profile_pic");
                             companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
-                            companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-                            LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
+                            companyNewAdapter=new CompanyNewAdapter(ShopHomeActivity.this,companyNewModels);
+                            LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(ShopHomeActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);
                             recyclerView1.setHasFixedSize(true);
                             recyclerView1.setAdapter(companyNewAdapter);
@@ -425,7 +405,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HomePageActivity.this, ""+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShopHomeActivity.this, ""+error, Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -436,8 +416,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 return map;
             }
         };
-        RequestQueue requestQueue1 = Volley.newRequestQueue(HomePageActivity.this);
+        RequestQueue requestQueue1 = Volley.newRequestQueue(ShopHomeActivity.this);
         requestQueue1.add(request1);
+
+
 
         mDrawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(
@@ -458,7 +440,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         }
 
+
+
     }
+
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -504,6 +489,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         }
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -515,28 +501,28 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 //startActivity(new Intent(HomePageActivity.this,SearchByNameOrServicesOrNearby.class));
                 break;
             case R.id.nav_profile:
-                startActivity(new Intent(HomePageActivity.this,CustomerPersonalProfileActivity.class));
+                startActivity(new Intent(ShopHomeActivity.this,CustomerPersonalProfileActivity.class));
                 break;
             case R.id.nav_history:
                 //startActivity(new Intent(HomePageActivity.this,SearchServices.class));
                 break;
             case R.id.nav_choose_home_or_shop:
-                startActivity(new Intent(HomePageActivity.this,SelectHomeOrShop.class));
+                startActivity(new Intent(ShopHomeActivity.this,SelectHomeOrShop.class));
                 break;
 
             case R.id.nav_tc:
-                startActivity(new Intent(HomePageActivity.this,TermAndCondition.class));
+                startActivity(new Intent(ShopHomeActivity.this,TermAndCondition.class));
                 break;
             case R.id.nav_mycart:
-                startActivity(new Intent(HomePageActivity.this,CartActivity.class));
+                startActivity(new Intent(ShopHomeActivity.this,CartActivity.class));
                 break;
 
             case R.id.nav_ordersummay:
-                startActivity(new Intent(HomePageActivity.this,OrderSummary.class));
+                startActivity(new Intent(ShopHomeActivity.this,OrderSummary.class));
                 break;
 
             case  R.id.nav_logout:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HomePageActivity.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ShopHomeActivity.this);
                 alertDialogBuilder.setMessage("Are you sure,You wanted to Logout");
                 alertDialogBuilder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -561,13 +547,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 break;
 
             case R.id.nav_add_fev:
-                startActivity(new Intent(HomePageActivity.this,Act_AddToFev.class));
+                startActivity(new Intent(ShopHomeActivity.this,Act_AddToFev.class));
                 break;
             case  R.id.nav_aboutus:
-                startActivity(new Intent(HomePageActivity.this,Act_AboutUS.class));
+                startActivity(new Intent(ShopHomeActivity.this,Act_AboutUS.class));
                 break;
             case  R.id.nav_contactus:
-                startActivity(new Intent(HomePageActivity.this,Act_ContactUs.class));
+                startActivity(new Intent(ShopHomeActivity.this,Act_ContactUs.class));
                 break;
 
         }
@@ -588,5 +574,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         getMenuInflater().inflate(R.menu.menu_for_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 
 }
