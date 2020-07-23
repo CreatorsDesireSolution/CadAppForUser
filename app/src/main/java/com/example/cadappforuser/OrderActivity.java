@@ -56,6 +56,7 @@ public class OrderActivity extends AppCompatActivity {
     Calendar calendarView;
     int day,months,year;
     TextView selectedDate,choseDate,selectedTime,choseTime;
+    String time="",date="";
 
 
     @Override
@@ -92,6 +93,7 @@ public class OrderActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonhts) {
                         month=month+1;
                         selectedDate.setText(dayOfMonhts+"/"+month+"/"+year);
+                        time=dayOfMonhts+"/"+month+"/"+year;
                     }
                 },year,months,day);
                 datePickerDialog.show();
@@ -105,6 +107,7 @@ public class OrderActivity extends AppCompatActivity {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hoursOfDay, int minutes) {
                         selectedTime.setText(hoursOfDay+" : "+minutes);
+                        date=hoursOfDay+" : "+minutes;
                     }
                 },hours,minute,android.text.format.DateFormat.is24HourFormat(OrderActivity.this));
                 timePickerDialog.show();
@@ -144,63 +147,67 @@ public class OrderActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please Wait......");
                 progressDialog.show();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
 
-                        try {
-                            JSONObject jsonObject;
-                            jsonObject = new JSONObject(response);
-                            String sucess = jsonObject.getString("success");
-                             if(sucess.equals("1")){
-                                 progressDialog.dismiss();
-                                 Toast.makeText(OrderActivity.this, "Order Successfull", Toast.LENGTH_SHORT).show();
-                                 SQLiteDatabase database=myhelper.getWritableDatabase();
-                                 database.execSQL("delete from CART");
-                                 database.close();
-                                 Intent intent=new Intent(OrderActivity.this,HomeAndShopLocation.class);
-                                 startActivity(intent);
+                if(time.equals("") || date.equals("")){
+                     Toast.makeText(OrderActivity.this, "Please Select Date Or Time", Toast.LENGTH_SHORT).show();
+                     progressDialog.dismiss();
+                }
+                else {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                            } else {
-                                progressDialog.dismiss();
-                                Toast.makeText(OrderActivity.this, "not insert", Toast.LENGTH_SHORT).show();
+                            try {
+                                JSONObject jsonObject;
+                                jsonObject = new JSONObject(response);
+                                String sucess = jsonObject.getString("success");
+                                if (sucess.equals("1")) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(OrderActivity.this, "Order Successfull", Toast.LENGTH_SHORT).show();
+                                    SQLiteDatabase database = myhelper.getWritableDatabase();
+                                    database.execSQL("delete from CART");
+                                    database.close();
+                                    Intent intent = new Intent(OrderActivity.this, HomeAndShopLocation.class);
+                                    startActivity(intent);
+
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(OrderActivity.this, "not insert", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(OrderActivity.this, "" + error, Toast.LENGTH_SHORT).show();
+                        }
+                    }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> map = new HashMap<>();
+                            map.put("customer_id", Cid);
+                            map.put("service_id", serviceId);
+                            map.put("fid", Pid);
+                            map.put("service_name", name);
+                            map.put("service_price", price);
+                            map.put("service_qty", Integer.toString(qty));
+                            map.put("service_time", time);
+                            map.put("service_date", date);
+                            map.put("flag", status);
 
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(OrderActivity.this, "" + error, Toast.LENGTH_SHORT).show();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> map = new HashMap<>();
-                        map.put("customer_id", Cid);
-                        map.put("service_id", serviceId);
-                        map.put("fid", Pid);
-                        map.put("service_name", name);
-                        map.put("service_price", price);
-                        map.put("service_qty", Integer.toString(qty));
-                        map.put("service_time", selectedTime.getText().toString());
-                        map.put("service_date",selectedDate.getText().toString());
-                        map.put("flag", status);
-
-                        Log.d("customer_id", "customer" + act_session.userId);
-                        Log.d("status", "status" + status);
-                        Log.d("customer_id", "customer" + act_session.userId);
-
-                        return map;
-
-
-                    }
-                };
-                RequestQueue requestQueue = Volley.newRequestQueue(OrderActivity.this);
-                requestQueue.add(stringRequest);
+                            Log.d("customer_id", "customer" + act_session.userId);
+                            Log.d("status", "status" + status);
+                            Log.d("customer_id", "customer" + act_session.userId);
+                            return map;
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(OrderActivity.this);
+                    requestQueue.add(stringRequest);
+                }
             }
         });
 
