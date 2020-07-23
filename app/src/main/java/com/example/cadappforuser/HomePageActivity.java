@@ -249,6 +249,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
         }
 
+
        // searchView = findViewById(R.id.searchview);
 
         seeAll.setOnClickListener(new View.OnClickListener() {

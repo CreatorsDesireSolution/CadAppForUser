@@ -24,7 +24,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ShowAppointementOfFreelancer"></activity>
+        <activity android:name=".FreelancerAllBookings"
+            android:theme="@style/Theme.AppCompat.NoActionBar" ></activity>
+        <activity android:name=".CustomerViewOrder" />
+        <activity android:name=".FreelancerViewOrder" />
+        <activity android:name=".ShowAppointementOfFreelancer" />
         <activity android:name=".Act_All_Notification" />
         <activity android:name=".CompanyServiceOffered" />
         <activity android:name=".FreelancerServiceOfferedFinal" />
@@ -180,6 +184,7 @@
         <activity android:name=".MobileNumberRegisterActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
+
             android:name=".SelectGenderActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".FreelancerServicesProvide" />

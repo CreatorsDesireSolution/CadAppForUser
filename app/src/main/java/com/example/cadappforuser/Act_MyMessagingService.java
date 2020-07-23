@@ -9,6 +9,7 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.cadappforuser.Appointment.FreelancerAppointment;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -21,6 +22,7 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
 
     Map<String, String> data;
     String body, title;
+    Act_Session act_session;
 
 
     @Override
@@ -29,6 +31,7 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
 
         data = remoteMessage.getData();
         JSONObject jsonObject = new JSONObject(data);
+        act_session = new Act_Session(getApplicationContext());
 
 
 
@@ -45,7 +48,14 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
             Log.e("body>>>", body + "");
         }
 
-        showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+
+        if (act_session.flag.equals("0")){
+            showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+        }
+        if (act_session.flag.equals("1")){
+            showNotification1(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+        }
+
         //  ApigettOTALlIKES();
     }
 
@@ -53,15 +63,54 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
 
 
 
-    public void showNotification(String title,String message){
+    public void showNotification(String title,String message) {
 
-        Intent intent = new Intent(this, Act_All_Notification.class);
+
+
+            Intent intent = new Intent(this, OrderSummary.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.putExtra("body",message);
+//        intent.putExtra("title",title);
+
+
+            int requestCode = 0;
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "MyNotifications")
+                    .setSmallIcon(R.drawable.splashlogo)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    //  .setNumber(messageCount)
+                    .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    // Set the intent that will fire when the user taps the notification
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent);
+
+
+            NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+            manager.notify(999, builder.build());
+
+
+
+    }
+
+
+    public void showNotification1(String title,String message) {
+
+
+        Intent intent = new Intent(this, FreelancerAppointment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("body",message);
-        intent.putExtra("title",title);
+//        intent.putExtra("body",message);
+//        intent.putExtra("title",title);
+
+
         int requestCode = 0;
         PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "MyNotifications")
                 .setSmallIcon(R.drawable.splashlogo)
@@ -72,12 +121,15 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 // Set the intent that will fire when the user taps the notification
                 .setAutoCancel(true)
-                .setContentIntent(pendingIntent);;
+                .setContentIntent(pendingIntent);
+
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
-        manager.notify(999,builder.build());
-    }
+        manager.notify(999, builder.build());
 
+
+//
+    }
     @Override
     public void onDeletedMessages() {
         super.onDeletedMessages();

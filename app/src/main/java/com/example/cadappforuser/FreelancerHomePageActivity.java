@@ -44,6 +44,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.cadappforuser.Appointment.FreelancerAppointment;
 import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.ServiceModel.NewModel;
@@ -193,8 +194,8 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-               ad_freelancer.getFilter().filter(newText);
-               ad_company.getFilter().filter(newText);
+               //ad_freelancer.getFilter().filter(newText);
+              // ad_company.getFilter().filter(newText);
                return true;
             }
         });
@@ -407,6 +408,14 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
                 break;
             case R.id.nav_accepted_location:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServicesProvide.class));
+                break;
+
+            case R.id.nav_allorder:
+                startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerAllBookings.class));
+                break;
+
+            case R.id.nav_notification:
+                startActivity(new Intent(FreelancerHomePageActivity.this, FreelancerAppointment.class));
                 break;
             case R.id.nav_serviceoffered:
                 startActivity(new Intent(FreelancerHomePageActivity.this,FreelancerServiceOfferedFinal.class));

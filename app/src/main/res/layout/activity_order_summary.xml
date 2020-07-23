@@ -50,7 +50,7 @@
         android:layout_marginBottom="60dp"
         android:layout_below="@id/txtAddress"
         android:layout_marginTop="10dp"
-        android:id="@+id/summary_recycleview"></androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recyclefree"></androidx.recyclerview.widget.RecyclerView>
 
 
 

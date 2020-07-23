@@ -1,32 +1,21 @@
 package com.example.cadappforuser;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.util.Pair;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cadappforuser.SqliteDatabase.DatabaseHelper;
-import com.example.cadappforuser.SqliteDatabase.MyTable;
-import com.example.cadappforuser.SqliteDatabase.dbOperation;
 import com.example.cadappforuser.model.CheckBoxModel;
-import com.example.cadappforuser.model.OrderSummaryModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 

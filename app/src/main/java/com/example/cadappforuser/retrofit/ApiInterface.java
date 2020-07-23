@@ -292,6 +292,15 @@ public interface ApiInterface {
 
 
     @Multipart
+    @POST("salon/freelancer_accept-decline_api.php")
+    Call<JsonElement> postAccepteDecline(
+            @Part("customer_id") RequestBody customer_id,
+            @Part("oid") RequestBody oid,
+            @Part("ffname") RequestBody ffname,
+            @Part("status") RequestBody status
+    );
+
+    @Multipart
     @POST("salon/company_upload_api.php")
     Call<JsonElement> postcertificatecompany(
             @Part("id") RequestBody userid_,

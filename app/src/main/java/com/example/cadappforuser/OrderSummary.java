@@ -5,26 +5,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.cadappforuser.adapter.OrderSummaryAdapter;
+import com.example.cadappforuser.model.FreelancerOrderModel;
 import com.example.cadappforuser.model.OrderSummaryModel;
+import com.example.cadappforuser.retrofit.BaseRequest;
+import com.example.cadappforuser.retrofit.RequestReciever;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class OrderSummary extends AppCompatActivity {
 
-    Button btnOrderProceed;
-    RecyclerView recyclerView;
-    OrderSummaryAdapter  orderSummaryAdapter;
-    ArrayList<OrderSummaryModel> orderSummaryModelArrayList;
-    TextView total_price;
+    RecyclerView recyclefree;
+    BaseRequest baseRequest;
+    Act_Session act_session;
+    Context context;
+    Activity activity;
+    OrderSummaryAdapter orderSummaryAdapter;
+    ArrayList<OrderSummaryModel> orderSummaryModels = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,34 +42,65 @@ public class OrderSummary extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Order Summary");
-//        btnOrderProceed=findViewById(R.id.btnProceed);
-//        total_price = findViewById(R.id.total_price);
 //
-//        btnOrderProceed.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(OrderSummary.this,PaymentMethodActivity.class));
-//            }
-//        });
 
-        orderSummaryModelArrayList=new ArrayList<>();
-        recyclerView=findViewById(R.id.summary_recycleview);
+        recyclefree = findViewById(R.id.recyclefree);
+        act_session = new Act_Session(getApplicationContext());
+        context = this;
+        activity = this;
 
-        orderSummaryModelArrayList.add(new OrderSummaryModel("450","Hair cut","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("150","Hair wash","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("550","Hair spa","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("250","Facial","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("450","Massage","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("450","Hair cut","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("450","Hair cut","Lorem Ipsum"));
-        orderSummaryModelArrayList.add(new OrderSummaryModel("450","Hair cut","Lorem Ipsum"));
+        Apigetorder();
+    }
 
-        orderSummaryAdapter=new OrderSummaryAdapter(this,orderSummaryModelArrayList);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(orderSummaryAdapter);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+    private void Apigetorder() {
+        baseRequest = new BaseRequest();
+        baseRequest.setBaseRequestListner(new RequestReciever() {
+            @Override
+            public void onSuccess(int requestCode, String Json, Object object) {
+                try {
+                    JSONObject jsonObject = new JSONObject(Json);
+                    JSONArray jsonArray = jsonObject.optJSONArray("data");
+
+                    orderSummaryModels = baseRequest.getDataList(jsonArray, OrderSummaryModel.class);
+
+                    if (orderSummaryModels.size() != 0) {
+
+
+                        orderSummaryAdapter =new OrderSummaryAdapter(context,orderSummaryModels);
+//                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
+//                                recyclerView1.setLayoutManager(layoutManager1);
+                        LinearLayoutManager layoutManager= new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                        recyclefree.setLayoutManager(layoutManager);
+
+                        recyclefree.setHasFixedSize(true);
+                        recyclefree.setAdapter(orderSummaryAdapter);
+
+
+                        // imageUserLogo.setImageURI(fileget);
+
+                        // tv_surname.setText(profile_list1.get(0).getLastname());
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int requestCode, String errorCode, String message) {
+
+            }
+
+            @Override
+            public void onNetworkFailure(int requestCode, String message) {
+
+            }
+        });
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/customer_upcomingbooking_api.php?" + "id=" + act_session.userId;
+        baseRequest.callAPIGETData(1, remainingUrl2);
     }
 
     @Override

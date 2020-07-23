@@ -593,6 +593,19 @@ public class BaseRequest<T> extends BaseRequestParser {
         call.enqueue(responseCallback);
     }
 
+    public void callAPIAcceptDecline(final int APINumber, String remainingURL, RequestBody customer_id,
+                                     RequestBody order_id,RequestBody ffname_,RequestBody status) {//user_type_,device_id_,email_,password_,org_id_
+        APINumber_ = APINumber;
+        requestType = RequestType.Post;
+        showLoader();
+        //String baseURL = ApiClient.getClient().baseUrl().toString() + remainingURL;
+        System.out.println("BaseReq INPUT URL : " + remainingURL);
+        ApiInterface apiInterface_ = ApiClient.getCustomClient(remainingURL).create(ApiInterface.class);
+        Call<JsonElement> call = apiInterface_.postAccepteDecline( customer_id, order_id,ffname_,status);
+        call.enqueue(responseCallback);
+    }
+
+
     public void callApiPostCompanyBackground(final int APINumber, String remainingURL, RequestBody userid, RequestBody aboutcompany_, RequestBody totalyear_, RequestBody team_size_, RequestBody male_, RequestBody female_) {//user_type_,device_id_,email_,password_,org_id_
         APINumber_ = APINumber;
         requestType = RequestType.Post;

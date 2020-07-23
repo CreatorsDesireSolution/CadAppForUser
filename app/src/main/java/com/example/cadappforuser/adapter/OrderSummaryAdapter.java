@@ -1,15 +1,19 @@
 package com.example.cadappforuser.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.CustomerViewOrder;
+import com.example.cadappforuser.FreelancerViewOrder;
 import com.example.cadappforuser.R;
 import com.example.cadappforuser.model.OrderSummaryModel;
 
@@ -36,10 +40,20 @@ public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapte
     @Override
     public void onBindViewHolder(@NonNull OrderSViewHolder holder, int position) {
 
-        OrderSummaryModel orderSummaryModel=orderSummaryModelList.get(position);
-        holder.txtSample.setText(orderSummaryModel.getOrdSample());
-        holder.txtPrice.setText("Rs."+orderSummaryModel.getOrdPrice());
-        holder.txtName.setText(orderSummaryModel.getOrdName());
+        final OrderSummaryModel freelancerOrderModel = orderSummaryModelList.get(position);
+
+        holder.tv_name.setText(freelancerOrderModel.getServiceName());
+        holder.tv_sprice.setText(freelancerOrderModel.getPrice()+"Rs.");
+
+        holder.btn_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CustomerViewOrder.class);
+                intent.putExtra("order_id",freelancerOrderModel.getOrderId());
+                intent.putExtra("flag",freelancerOrderModel.getFlag());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,13 +63,15 @@ public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapte
 
     public class OrderSViewHolder extends RecyclerView.ViewHolder{
 
-        TextView txtPrice,txtName,txtSample;
-        public OrderSViewHolder(@NonNull View itemView)
+        TextView tv_name,tv_sprice,tv_location,tv_lastname;
+        ImageView imageView;
+        Button btn_approve,btn_remove,btn_details;        public OrderSViewHolder(@NonNull View itemView)
         {
             super(itemView);
-           txtName=itemView.findViewById(R.id.ordName);
-           txtPrice=itemView.findViewById(R.id.ordPrice);
-           txtSample=itemView.findViewById(R.id.ordample);
+            tv_name = itemView.findViewById(R.id.firstname);
+            tv_sprice = itemView.findViewById(R.id.sprice);
+            btn_details = itemView.findViewById(R.id.btn_details);
+
         }
     }
 }

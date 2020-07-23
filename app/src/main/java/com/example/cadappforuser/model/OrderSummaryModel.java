@@ -1,35 +1,66 @@
+
 package com.example.cadappforuser.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class OrderSummaryModel {
-    String ordPrice,ordName,ordSample;
 
-    public OrderSummaryModel(String ordPrice, String ordName, String ordSample) {
-        this.ordPrice = ordPrice;
-        this.ordName = ordName;
-        this.ordSample = ordSample;
+    @SerializedName("order_id")
+    @Expose
+    private String orderId;
+    @SerializedName("customer_id")
+    @Expose
+    private String customerId;
+    @SerializedName("service_name")
+    @Expose
+    private String serviceName;
+    @SerializedName("price")
+    @Expose
+    private String price;
+
+    @SerializedName("flag")
+    @Expose
+    private String flag;
+
+    public String getFlag() {
+        return flag;
     }
 
-    public String getOrdPrice() {
-        return ordPrice;
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 
-    public void setOrdPrice(String ordPrice) {
-        this.ordPrice = ordPrice;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public String getOrdName() {
-        return ordName;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public void setOrdName(String ordName) {
-        this.ordName = ordName;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public String getOrdSample() {
-        return ordSample;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public void setOrdSample(String ordSample) {
-        this.ordSample = ordSample;
+    public String getServiceName() {
+        return serviceName;
     }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
 }
