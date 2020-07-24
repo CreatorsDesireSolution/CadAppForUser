@@ -143,7 +143,7 @@ public class PreviousBookingDetail extends AppCompatActivity {
             public void onSuccess(int requestCode, String Json, Object object) {
                 //          act_session.loginSession(context);
 
-                
+
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
