@@ -88,12 +88,12 @@ public class OrderActivity extends AppCompatActivity {
         selectedDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(OrderActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonhts) {
                         month=month+1;
                         selectedDate.setText(dayOfMonhts+"/"+month+"/"+year);
-                        time=dayOfMonhts+"/"+month+"/"+year;
+                        time=year+"-"+month+"-"+dayOfMonhts;
                     }
                 },year,months,day);
                 datePickerDialog.show();
@@ -146,7 +146,6 @@ public class OrderActivity extends AppCompatActivity {
                 progressDialog.setTitle("Upload");
                 progressDialog.setMessage("Please Wait......");
                 progressDialog.show();
-
 
                 if(time.equals("") || date.equals("")){
                      Toast.makeText(OrderActivity.this, "Please Select Date Or Time", Toast.LENGTH_SHORT).show();

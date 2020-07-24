@@ -110,7 +110,7 @@ public class Act_ShopLocation extends AppCompatActivity implements OnMapReadyCal
             btnAddress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent=new Intent(Act_ShopLocation.this,Act_HomeForCustomerShop.class);
+                    Intent intent=new Intent(Act_ShopLocation.this,ShopHomeActivity.class);
                     intent.putExtra("address",fullAddress);
                     Bundle b = new Bundle();
                     b.putDouble("lat", lat);

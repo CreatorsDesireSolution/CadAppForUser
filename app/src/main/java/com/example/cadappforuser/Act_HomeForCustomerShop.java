@@ -102,8 +102,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         mDrawerLayout=findViewById(R.id.drawer_layout);
         NavigationView navigationView=findViewById(R.id.navigation_view);
 
-
-
         viewPager = (ViewPager)findViewById(R.id.viewPager);
         sliderDotspanel = (LinearLayout)findViewById(R.id.SliderDots);
 
@@ -156,7 +154,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
             }
         });
 
-
         seeallfreelancer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,8 +181,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         autoComplete.setHintTextColor(getResources().getColor(R.color.black));
         autoComplete.setTextColor(getResources().getColor(R.color.black));
 
-
-
         NavigationView navigationView1 =  findViewById(R.id.navigation_view);
         View hView =  navigationView1.getHeaderView(0);
         TextView nav_user = hView.findViewById(R.id.tv_headername);
@@ -212,8 +207,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         }catch (Exception e){
             Toast.makeText(activity, ""+e, Toast.LENGTH_SHORT).show();
         }
-
-
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -244,11 +237,9 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
 
         }
 
-
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Home");
-
 
         LinearLayoutManager linearLayoutManager3=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         recycleViewshopfree.setLayoutManager(linearLayoutManager3);
@@ -262,7 +253,6 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                     JSONObject jsonObject = new JSONObject(response);
                     String sucess = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
 
                     if (sucess.equals("1")) {
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -275,17 +265,16 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                             String experinace=object.getString("experience");
                             //String gender = object.getString("gender");
                             String km=object.getString("km");
-                            //   Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
-                            newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
-                            recycleViewshopfree.setHasFixedSize(true);
-                            recycleViewshopfree.setAdapter(newAdapter);
-
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,"4","cftyfty",km,id));
                         }
+                        newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
+                        recycleViewshopfree.setHasFixedSize(true);
+                        recycleViewshopfree.setAdapter(newAdapter);
                     }
                 }
                 catch (Exception e)
@@ -335,7 +324,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                             String experinace=object.getString("total_year_establishment");
                             String km=object.getString("km");
                             String lastname_=object.getString("last_name");
-                            // Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(activity, ""+km, Toast.LENGTH_SHORT).show();
                             String address = object.getString("address");
                             String aboutus=object.getString("about_company");
                             String no_of_staff=object.getString("no_of_staff");
