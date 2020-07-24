@@ -54,9 +54,7 @@ public class PreviousBookingDetail extends AppCompatActivity {
         service_name = findViewById(R.id.FirstserviceName);
         service_price = findViewById(R.id.AmountFirstService);
         totalamount = findViewById(R.id.totalamount);
-        btn_approve = findViewById(R.id.btn_approve);
         address = findViewById(R.id.location_address);
-        btn_remove = findViewById(R.id.btn_remove);
         mobile_number = findViewById(R.id.mobile_number);
         bookingtime= findViewById(R.id.bookingtime);
         bookingdate = findViewById(R.id.bookingdate);
@@ -70,23 +68,10 @@ public class PreviousBookingDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         order_id = intent.getStringExtra("order_id");
-      //  customer_id= intent.getStringExtra("customer_id");
+        customer_id= intent.getStringExtra("customer_id");
 
         ApiViewOrder(order_id);
 
-        btn_remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Apiresponse(Decline);
-            }
-        });
-
-        btn_approve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Apiresponse(Accept);
-            }
-        });
 
     }
 
@@ -158,6 +143,7 @@ public class PreviousBookingDetail extends AppCompatActivity {
             public void onSuccess(int requestCode, String Json, Object object) {
                 //          act_session.loginSession(context);
 
+                
                 try {
                     JSONObject jsonObject = new JSONObject(Json);
                     JSONObject jsonObject1 = jsonObject.optJSONObject("data");
