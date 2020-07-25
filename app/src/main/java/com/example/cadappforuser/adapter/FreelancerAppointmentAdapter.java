@@ -60,7 +60,6 @@ public class FreelancerAppointmentAdapter extends RecyclerView.Adapter<Freelance
         });
 //       // Log.e("companyname",freelancerOrderModel.getCompanyname());
 
-
     }
 
     @Override

@@ -23,17 +23,13 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
     Map<String, String> data;
     String body, title;
     Act_Session act_session;
-
-
-    @Override
+  @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
         data = remoteMessage.getData();
         JSONObject jsonObject = new JSONObject(data);
         act_session = new Act_Session(getApplicationContext());
-
-
 
         try {
             Log.e("data", jsonObject.toString());
@@ -60,20 +56,13 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
     }
 
 
-
-
-
     public void showNotification(String title,String message) {
-
-
 
             Intent intent = new Intent(this, OrderSummary.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        intent.putExtra("body",message);
 //        intent.putExtra("title",title);
-
-
-            int requestCode = 0;
+         int requestCode = 0;
             PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -89,11 +78,8 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
                     .setAutoCancel(true)
                     .setContentIntent(pendingIntent);
 
-
             NotificationManagerCompat manager = NotificationManagerCompat.from(this);
             manager.notify(999, builder.build());
-
-
 
     }
 
@@ -127,8 +113,6 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
         NotificationManagerCompat manager = NotificationManagerCompat.from(this);
         manager.notify(999, builder.build());
 
-
-//
     }
     @Override
     public void onDeletedMessages() {

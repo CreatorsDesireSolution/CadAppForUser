@@ -53,8 +53,6 @@ public class FreelancerViewOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_freelancer_view_order);
 
-//        recycle_order = findViewById(R.id.recycle_order);
-
         tv_firstname = findViewById(R.id.firstname);
         lastname = findViewById(R.id.lastname);
         service_name = findViewById(R.id.FirstserviceName);

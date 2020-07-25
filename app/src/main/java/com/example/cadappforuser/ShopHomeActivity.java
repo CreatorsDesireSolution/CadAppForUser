@@ -251,7 +251,6 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext
-
                         (), SeeAllCompany.class);
                 intent1.putExtra("lat",Double.toString(lat));
                 intent1.putExtra("long",Double.toString(lng));
@@ -280,8 +279,12 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                newAdapter.getFilter().filter(newText);
-                companyNewAdapter.getFilter().filter(newText);
+                try {
+                    newAdapter.getFilter().filter(newText);
+                    companyNewAdapter.getFilter().filter(newText);
+                }catch (Exception e){
+                    Toast.makeText(activity, "Sorry", Toast.LENGTH_SHORT).show();
+                }
                 return true;
             }
         });

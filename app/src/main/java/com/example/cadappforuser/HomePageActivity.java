@@ -274,9 +274,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             }
         });
 
-        //Apigetdetail();
-
-
         et_search.setQueryHint(Html.fromHtml("<font color = #000000>" + getResources().getString(R.string.search) + "</font>"));
         LinearLayout ll = (LinearLayout)et_search.getChildAt(0);
         LinearLayout ll2 = (LinearLayout)ll.getChildAt(2);
@@ -296,11 +293,14 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             @Override
             public boolean onQueryTextChange(String newText) {
                 newAdapter.getFilter().filter(newText);
-                companyNewAdapter.getFilter().filter(newText);
+               try {
+                   companyNewAdapter.getFilter().filter(newText);
+               }catch (Exception e){
+                   Toast.makeText(activity, "Sorry", Toast.LENGTH_SHORT).show();
+               }
                 return true;
             }
         });
-
 
         newModels = new ArrayList<>();
 
@@ -313,7 +313,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
             Log.d("lng","lng"+(lng));
 
         }
-
 
         //Toast.makeText(activity, ""+lat+" "+lng, Toast.LENGTH_SHORT).show();
 
@@ -377,6 +376,8 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         requestQueue.add(request);
 
         companyNewModels = new ArrayList<>();
+        LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
+        recyclerView1.setLayoutManager(linearLayoutManager4);
 
         final StringRequest request1=new StringRequest(Request.Method.POST, Const.URL.company_distance_api, new Response.Listener<String>() {
             @Override
@@ -409,8 +410,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String item_image = object.getString("profile_pic");
                             companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
-                            LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(HomePageActivity.this,LinearLayoutManager.HORIZONTAL,false);
-                            recyclerView1.setLayoutManager(linearLayoutManager4);
                             recyclerView1.setHasFixedSize(true);
                             recyclerView1.setAdapter(companyNewAdapter);
 
