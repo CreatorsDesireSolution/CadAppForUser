@@ -33,5 +33,17 @@ public class Act_SelectCompnayGenderForList extends AppCompatActivity {
 
             }
         });
+
+        btnfemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),ServiceListComapnyForShow.class);
+                intent.putExtra("id",id);
+
+                startActivity(intent);
+
+            }
+        });
     }
 }

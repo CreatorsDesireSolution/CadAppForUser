@@ -45,7 +45,7 @@ public class FreelancerViewOrder extends AppCompatActivity {
     TextView tv_firstname,lastname,address,service_name,service_price,totalamount,mobile_number,bookingtime,bookingdate;
     Button btn_approve,btn_remove;
     String  Accept = "Accept";
-    String Decline = "Remove";
+    String Decline = "Decline";
 
 
     @Override

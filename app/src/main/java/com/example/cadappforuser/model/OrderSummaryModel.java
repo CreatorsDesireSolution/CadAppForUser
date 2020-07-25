@@ -22,6 +22,17 @@ public class OrderSummaryModel {
     @SerializedName("flag")
     @Expose
     private String flag;
+    @SerializedName("statement")
+    @Expose
+    private String statement;
+
+    public String getStatement() {
+        return statement;
+    }
+
+    public void setStatement(String statement) {
+        this.statement = statement;
+    }
 
     public String getFlag() {
         return flag;

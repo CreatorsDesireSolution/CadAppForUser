@@ -25,7 +25,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".PreviousBookingDetail"></activity><activity android:name=".CompanyAppotiment"></activity>
-        <activity android:name=".CompanyAllBookings" />
+        <activity android:name=".CompanyAllBookings"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".ShopHomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>

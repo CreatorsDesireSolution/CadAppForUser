@@ -28,6 +28,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cadappforuser.Appointment.CompanyAppointment;
 import com.example.cadappforuser.SeeAll.SeeAllCompany;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
 import com.example.cadappforuser.adapter.CompanyDetailsAdapter;
@@ -134,7 +135,9 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
 
         try{
             String img_str=act_session.profile_pic;
-            Log.d("prof","prof "+img_str);
+            Toast.makeText(activity, img_str, Toast.LENGTH_SHORT).show();
+
+
             if (!img_str.equals("")){
                 Log.d("enco","nco"+img_str);
                 Log.d("prof","prof "+"http://aoneservice.net.in/salon/documents/"+img_str);
@@ -340,6 +343,9 @@ public class CompanyHomePageActivity extends AppCompatActivity  implements  Navi
                 break;
             case R.id.nav_serviceofferedcompany:
                 startActivity(new Intent(CompanyHomePageActivity.this,CompanyServiceOffered.class));
+                break;
+            case R.id.nav_notification:
+                startActivity(new Intent(CompanyHomePageActivity.this, CompanyAppointment.class));
                 break;
 
             case R.id.nav_logout:

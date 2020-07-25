@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.denzcoskun.imageslider.adapters.ViewPagerAdapter;
 import com.example.cadappforuser.Fragment.OneFragment;
@@ -35,12 +37,22 @@ public class FreelancerAllBookings extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("All Bookings");
+
 
         viewPager =  findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout =  findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),FreelancerHomePageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

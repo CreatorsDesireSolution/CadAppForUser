@@ -1,12 +1,14 @@
 package com.example.cadappforuser;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +59,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
     Bitmap bitmap;
     String encodeImage;
     Uri file,file1;
-
+Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         actionBar.setTitle("Register");
 
         context = this;
+        activity = this;
 
         act_session = new Act_Session(context);
         txtGender=findViewById(R.id.etGender);
@@ -138,14 +141,23 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
                  }else  if (lastname.equals("")){
                      Toast.makeText(context, "please enter lastname", Toast.LENGTH_SHORT).show();
 
+
+                 } else if (!CompanyRegisterAsCompanyStaffActivity.UserAccount.isEmailValid(etUserEmail)) {
+                     Toast.makeText(activity, "Please enter valid email", Toast.LENGTH_SHORT).show();
+                 } else if (email.equals("")) {
+                     Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show();
+                 } else if (mobilenumber.equals("")) {
+                     Toast.makeText(activity, "Please enter mobilenumber", Toast.LENGTH_SHORT).show();
+                 } else if (mobilenumber.length()!=10) {
+                     Toast.makeText(activity, "Please enter 10 digit   mobilenumber", Toast.LENGTH_SHORT).show();
+
                  }else if (mobilenumber.equals("")){
                      Toast.makeText(context, "please enter mobilenumber", Toast.LENGTH_SHORT).show();
 
                  }else if (address.equals("")){
                      Toast.makeText(context, "please enter address", Toast.LENGTH_SHORT).show();
 
-                 }else  if (email.equals("")){
-                     Toast.makeText(context, "please enter email", Toast.LENGTH_SHORT).show();
+
 
 
                  }else {
@@ -194,6 +206,31 @@ public class CompanyRegisterAsCompanyStaffActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+    public static class UserAccount {
+        private static final String TODO = "test";
+        //for EditText Refrance
+        public static EditText EditTextPointer;
+        public static String errorMessage;
+
+        public static boolean isEmailValid(EditText tv) {
+            //add your own logic
+            if (TextUtils.isEmpty(tv.getText())) {
+                EditTextPointer = tv;
+                errorMessage = "This field can't be empty.!";
+                return false;
+            } else {
+                if (android.util.Patterns.EMAIL_ADDRESS.matcher(tv.getText()).matches()) {
+                    return true;
+                } else {
+                    EditTextPointer = tv;
+                    errorMessage = "Invalid Email Id";
+                    return false;
+                }
+            }
+        }
+    }
+
 
     private void ApiPostStaff() {
         baseRequest = new BaseRequest(context);

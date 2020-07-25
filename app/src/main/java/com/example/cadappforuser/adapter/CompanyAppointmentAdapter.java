@@ -36,11 +36,13 @@ public class CompanyAppointmentAdapter extends RecyclerView.Adapter<CompanyAppoi
     @Override
     public void onBindViewHolder(@NonNull CompanyAppointmentAdapter.ViewHolder holder, int position) {
 
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return freelancerDetailsModelList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
