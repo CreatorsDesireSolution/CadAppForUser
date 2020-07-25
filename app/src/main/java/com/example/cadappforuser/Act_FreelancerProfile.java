@@ -74,6 +74,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SelectGenderCustomerServiceList.class);
+                intent.putExtra("id",id);
                 startActivity(intent);
             }
         });

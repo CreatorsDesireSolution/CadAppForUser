@@ -29,18 +29,6 @@
         android:layout_below="@+id/summary"></View>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shewrapara, Mirpur, Dhaka -1216 House no:938 Road no.9"
-        android:id="@+id/txtAddress"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        android:layout_below="@id/vi"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginLeft="20dp"></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -48,7 +36,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="60dp"
-        android:layout_below="@id/txtAddress"
+        android:layout_below="@id/vi"
         android:layout_marginTop="10dp"
         android:id="@+id/recyclefree"></androidx.recyclerview.widget.RecyclerView>
 

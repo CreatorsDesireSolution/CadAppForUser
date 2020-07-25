@@ -101,7 +101,7 @@ public class TwoFragment extends Fragment {
 
             }
         });
-        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_cancelledbooking_api.php?" + "id=" + act_session.userId;
+        String remainingUrl2 = "http://aoneservice.net.in/salon/get-apis/freelancer_cancelledbooking_api.php?" + "id=" + act_session.userId + "&&flag=" + act_session.flag;
         baseRequest.callAPIGETData(1, remainingUrl2);
     }
 

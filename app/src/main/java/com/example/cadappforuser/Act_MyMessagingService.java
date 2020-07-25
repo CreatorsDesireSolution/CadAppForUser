@@ -9,6 +9,7 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.cadappforuser.Appointment.CompanyAppointment;
 import com.example.cadappforuser.Appointment.FreelancerAppointment;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -56,6 +57,10 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
             showNotification1(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
         }
 
+        if (act_session.flag.equals("2")){
+            showNotification2(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+        }
+
         //  ApigettOTALlIKES();
     }
 
@@ -68,6 +73,7 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
 
 
             Intent intent = new Intent(this, OrderSummary.class);
+            intent.putExtra("body",body);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        intent.putExtra("body",message);
 //        intent.putExtra("title",title);
@@ -102,6 +108,39 @@ public class Act_MyMessagingService extends FirebaseMessagingService {
 
 
         Intent intent = new Intent(this, FreelancerAppointment.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.putExtra("body",message);
+//        intent.putExtra("title",title);
+
+
+        int requestCode = 0;
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri sound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "MyNotifications")
+                .setSmallIcon(R.drawable.splashlogo)
+                .setContentTitle(title)
+                .setContentText(message)
+                //  .setNumber(messageCount)
+                .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                // Set the intent that will fire when the user taps the notification
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
+
+
+        NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+        manager.notify(999, builder.build());
+
+
+//
+    }
+
+    public void showNotification2(String title,String message) {
+
+
+        Intent intent = new Intent(this, CompanyAppointment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        intent.putExtra("body",message);
 //        intent.putExtra("title",title);

@@ -44,6 +44,7 @@ public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapte
 
         holder.tv_name.setText(freelancerOrderModel.getServiceName());
         holder.tv_sprice.setText(freelancerOrderModel.getPrice()+"Rs.");
+        holder.tv_statment.setText(freelancerOrderModel.getStatement());
 
         holder.btn_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +64,7 @@ public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapte
 
     public class OrderSViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tv_name,tv_sprice,tv_location,tv_lastname;
+        TextView tv_name,tv_sprice,tv_statment,tv_location,tv_lastname;
         ImageView imageView;
         Button btn_approve,btn_remove,btn_details;        public OrderSViewHolder(@NonNull View itemView)
         {
@@ -71,6 +72,7 @@ public class OrderSummaryAdapter extends RecyclerView.Adapter<OrderSummaryAdapte
             tv_name = itemView.findViewById(R.id.firstname);
             tv_sprice = itemView.findViewById(R.id.sprice);
             btn_details = itemView.findViewById(R.id.btn_details);
+            tv_statment=itemView.findViewById(R.id.statement);
 
         }
     }
