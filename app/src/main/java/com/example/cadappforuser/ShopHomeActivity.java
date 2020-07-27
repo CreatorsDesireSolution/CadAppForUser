@@ -97,7 +97,7 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
     int dotscount;
     double lat,lng;
     private ImageView[] dots;
-    String token;
+    String token,userimage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,6 +184,9 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
+
+        userimage=act_session.profile_pic;
+
 
         fullname = name + lastname;
 
@@ -281,6 +284,10 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
             public boolean onQueryTextChange(String newText) {
                 try {
                     newAdapter.getFilter().filter(newText);
+                }catch (Exception e){
+                    Toast.makeText(activity, "Sorry", Toast.LENGTH_SHORT).show();
+                }
+                try {
                     companyNewAdapter.getFilter().filter(newText);
                 }catch (Exception e){
                     Toast.makeText(activity, "Sorry", Toast.LENGTH_SHORT).show();
@@ -327,7 +334,7 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id,userimage));
                             newAdapter=new NewAdapter(ShopHomeActivity.this,newModels);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(newAdapter);
@@ -390,7 +397,7 @@ public class ShopHomeActivity extends AppCompatActivity implements  NavigationVi
                             String no_of_staff=object.getString("no_of_staff");
 
                             String item_image = object.getString("profile_pic");
-                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km,userimage));
                             companyNewAdapter=new CompanyNewAdapter(ShopHomeActivity.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(ShopHomeActivity.this,LinearLayoutManager.HORIZONTAL,false);
                             recyclerView1.setLayoutManager(linearLayoutManager4);

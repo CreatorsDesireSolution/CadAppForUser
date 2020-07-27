@@ -70,7 +70,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
     TextView txtCurrentLocation;
     Act_Session act_session ;
     ImageView nav_image;
-    String name,lastname,fullname,mobile;
+    String name,lastname,fullname,mobile,userimage;
 
     ViewPager viewPager;
     LinearLayout sliderDotspanel;
@@ -189,6 +189,8 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
         name = act_session.firstname;
         lastname = act_session.lastname;
         mobile = act_session.mobilenumber;
+        userimage=act_session.profile_pic;
+
 
         fullname = name + lastname;
 
@@ -270,7 +272,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,"4","cftyfty",km,id));
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,"4","cftyfty",km,id,userimage));
                         }
                         newAdapter=new NewAdapter(Act_HomeForCustomerShop.this,newModels);
                         recycleViewshopfree.setHasFixedSize(true);
@@ -330,7 +332,7 @@ public class Act_HomeForCustomerShop extends AppCompatActivity implements Naviga
                             String no_of_staff=object.getString("no_of_staff");
 
                             String item_image = object.getString("profile_pic");
-                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km,userimage));
                             companyNewAdapter=new CompanyNewAdapter(Act_HomeForCustomerShop.this,companyNewModels);
                             LinearLayoutManager linearLayoutManager4=new LinearLayoutManager(Act_HomeForCustomerShop.this,LinearLayoutManager.HORIZONTAL,false);
                             recycleViewshopcompany.setLayoutManager(linearLayoutManager4);

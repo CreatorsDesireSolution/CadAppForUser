@@ -196,12 +196,18 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
             }
             @Override
             public boolean onQueryTextChange(String newText) {
+                ad_freelancer.getFilter().filter(newText);
                try {
-                   ad_freelancer.getFilter().filter(newText);
                    ad_company.getFilter().filter(newText);
                }catch (Exception e){
                    Toast.makeText(FreelancerHomePageActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
                }
+
+                try {
+                    ad_freelancer.getFilter().filter(newText);
+                }catch (Exception e){
+                    Toast.makeText(FreelancerHomePageActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                }
                return true;
             }
         });

@@ -12,6 +12,7 @@ import android.widget.Button;
 public class SelectGenderCustomerServiceList extends AppCompatActivity {
     Button btnmale,btnfemale;
     String id;
+    String img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +25,15 @@ public class SelectGenderCustomerServiceList extends AppCompatActivity {
         btnfemale = findViewById(R.id.btnFemale);
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
+        img=intent.getStringExtra("user");
+
 
         btnmale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
-               intent.putExtra("id",id);
+                intent.putExtra("id",id);
+                intent.putExtra("user",img);
                 startActivity(intent);
             }
         });
@@ -39,6 +43,7 @@ public class SelectGenderCustomerServiceList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
                 intent.putExtra("id",id);
+                intent.putExtra("user",img);
                 startActivity(intent);
             }
         });

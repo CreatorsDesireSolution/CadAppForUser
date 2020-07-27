@@ -28,7 +28,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
     String companyname,emailaddress,mobile,location,aboutcompnay,no_of_staff,age;
     ImageView imageView;
     Uri file;
-    String companyId;
+    String companyId,userImage;
     TextView tv_certificate;
     RelativeLayout lay_certificate,workperform;
     CircleImageView iv_profile_image;
@@ -59,6 +59,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
 
         Intent intent = getIntent();
         companyId = intent.getStringExtra("id");
+        userImage=intent.getStringExtra("user");
 
 
 
@@ -68,6 +69,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Act_SelectCompnayGenderForList.class);
                 intent.putExtra("id",companyId);
+                intent.putExtra("user",userImage);
                 startActivity(intent);
             }
         });
@@ -77,6 +79,7 @@ public class Act_CompanyNewProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),ServicesListActivity.class);
+                intent.putExtra("user",userImage);
                 startActivity(intent);
             }
         });

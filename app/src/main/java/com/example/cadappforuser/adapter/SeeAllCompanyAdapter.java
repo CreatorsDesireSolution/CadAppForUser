@@ -66,6 +66,7 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
 
 
 
+
         holder.setItemClickListner(new ItemClickListner() {
             @Override
             public void onItemClickListner(View v, int position) {
@@ -77,8 +78,9 @@ public class SeeAllCompanyAdapter extends RecyclerView.Adapter<SeeAllCompanyAdap
                 intent.putExtra("aboutcompnay",aboutcompany);
                 intent.putExtra("ageofcompany",ageofcompany);
                 intent.putExtra("no_of_staff",no_of_staff);
-                intent.putExtra("image",image);
+                intent.putExtra("user",image);
                 intent.putExtra("id",companyid);
+
 
                 context.startActivity(intent);
             }

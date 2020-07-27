@@ -29,6 +29,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
     RelativeLayout workperform;
     ImageView imageView;
     String id;
+    String img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
         background.setText(intent.getStringExtra("aboutus"));
 
          id=intent.getStringExtra("id");
-        String img=intent.getStringExtra("image");
+         img=intent.getStringExtra("user");
 
         Log.d("img","img"+img);
         Picasso.get().load(img).
@@ -75,6 +76,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SelectGenderCustomerServiceList.class);
                 intent.putExtra("id",id);
+                intent.putExtra("user",img);
                 startActivity(intent);
             }
         });
@@ -92,6 +94,7 @@ public class Act_FreelancerProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),SelectGenderCustomerServiceList.class);
                  intent.putExtra("id",id);
+                intent.putExtra("user",img);
                 startActivity(intent);
             }
         });

@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class Act_SelectCompnayGenderForList extends AppCompatActivity {
     Button btnmale,btnfemale;
-    String id;
+    String id,userImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class Act_SelectCompnayGenderForList extends AppCompatActivity {
 
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
+        userImage=intent.getStringExtra("user");
 
 
         btnmale.setOnClickListener(new View.OnClickListener() {
@@ -28,7 +29,7 @@ public class Act_SelectCompnayGenderForList extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(),ServiceListComapnyForShow.class);
                 intent.putExtra("id",id);
-
+                intent.putExtra("user",userImage);
                 startActivity(intent);
 
             }

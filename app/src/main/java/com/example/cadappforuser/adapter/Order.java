@@ -1,19 +1,28 @@
 package com.example.cadappforuser.adapter;
 
 public class Order {
-    String imageid;
+    String imageid,userImage;
     String productname;
     String brandname;
     String sellingPrice;
     int qty;
     int itemId,sellerId;
     String status,pid;
-    public Order(String imageid, String productname, String brandname, String sellingPrice, int qty,String status,String pid) {
+    public Order(String imageid, String productname, String brandname, String sellingPrice, int qty,String status,String pid,String userImage) {
         this.imageid = imageid;
         this.productname = productname;
         this.brandname = brandname;
         this.sellingPrice = sellingPrice;
         this.qty = qty;
+        this.userImage=userImage;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     public String getPid() {

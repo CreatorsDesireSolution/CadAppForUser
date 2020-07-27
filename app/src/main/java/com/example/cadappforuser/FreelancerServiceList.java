@@ -81,7 +81,7 @@ public class FreelancerServiceList extends AppCompatActivity {
                             String duration = object.getString("duration");
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"status"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"status",""));
                             ServicesListAdapter servicesListAdapter=new ServicesListAdapter(FreelancerServiceList.this,servicesListModelArrayList);
                             LinearLayoutManager layoutManager=new LinearLayoutManager(FreelancerServiceList.this);
                             recyclerView.setLayoutManager(layoutManager);

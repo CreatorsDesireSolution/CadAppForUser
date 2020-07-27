@@ -2,14 +2,14 @@ package com.example.cadappforuser.ServiceModel;
 
 public class NewModel {
 
-    String image;
+    String image,userImage;
     String name;
     float rating;
 
     String email,mobile,lastname,address,experience,about_yourself,km,id;
 
     public NewModel(String image, String name, float rating, String email, String mobile, String lastname,
-                    String address,String experience,String about_yourself,String km,String id) {
+                    String address,String experience,String about_yourself,String km,String id,String userImage) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -21,6 +21,15 @@ public class NewModel {
         this.about_yourself=about_yourself;
         this.km = km;
         this.id=id;
+        this.userImage=userImage;
+    }
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     public String getId() {

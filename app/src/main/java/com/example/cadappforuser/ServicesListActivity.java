@@ -34,7 +34,7 @@ public class ServicesListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<ServicesListModel> servicesListModelArrayList;
    // String url="https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php";
-    String id;
+    String id,img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,8 @@ public class ServicesListActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
+        img=intent.getStringExtra("user");
+
 
         StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php", new Response.Listener<String>() {
             @Override
@@ -74,7 +76,7 @@ public class ServicesListActivity extends AppCompatActivity {
 
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"1"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"1",img));
 
                            // servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0"));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServicesListActivity.this,servicesListModelArrayList);

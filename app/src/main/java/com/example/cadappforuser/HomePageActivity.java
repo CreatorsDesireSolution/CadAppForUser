@@ -111,7 +111,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
     int dotscount;
     double lat,lng;
     private ImageView[] dots;
-    String token;
+    String token,userImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,6 +177,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         context = this;
         activity= this;
         act_session = new Act_Session(getApplicationContext());
+        userImage=act_session.profile_pic;
 
         //txtCurrentLocation=findViewById(R.id.txtLocation);
         seeAll = findViewById(R.id.seeAll);
@@ -189,7 +190,6 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         act_session=new Act_Session(context);
         recyclerView=findViewById(R.id.rv_NearFreelancer);
         recyclerView1=findViewById(R.id.rv_nearCompany);
-      //  recyclerView2=findViewById(R.id.rv_nearServices);
 
         NavigationView navigationView =  findViewById(R.id.navigation_view);
         View hView =  navigationView.getHeaderView(0);
@@ -258,6 +258,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                 Intent intent1 = new Intent(getApplicationContext(), SeeAllFreelancer.class);
                 intent1.putExtra("lat",Double.toString(lat));
                 intent1.putExtra("long",Double.toString(lng));
+                intent1.putExtra("user",userImage);
                 startActivity(intent1);
             }
         });
@@ -265,11 +266,10 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
         seeAllFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext
-
-                        (), SeeAllCompany.class);
+                Intent intent1 = new Intent(getApplicationContext(), SeeAllCompany.class);
                 intent1.putExtra("lat",Double.toString(lat));
                 intent1.putExtra("long",Double.toString(lng));
+                intent1.putExtra("user",userImage);
                 startActivity(intent1);
             }
         });
@@ -292,7 +292,13 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                newAdapter.getFilter().filter(newText);
+
+                try {
+                    newAdapter.getFilter().filter(newText);
+                }catch (Exception e){
+                    Toast.makeText(activity, "Sorry", Toast.LENGTH_SHORT).show();
+                }
+
                try {
                    companyNewAdapter.getFilter().filter(newText);
                }catch (Exception e){
@@ -345,7 +351,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String aboutus=object.getString("about_yourself");
                             String item_image = object.getString("profile_pic");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id));
+                            newModels.add(new NewModel(u,name,5,email,mobilenumber,lastname,address,experinace,aboutus,km,id,userImage));
                             newAdapter=new NewAdapter(HomePageActivity.this,newModels);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(newAdapter);
@@ -408,7 +414,7 @@ public class HomePageActivity extends AppCompatActivity  implements  NavigationV
                             String no_of_staff=object.getString("no_of_staff");
 
                             String item_image = object.getString("profile_pic");
-                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km));
+                            companyNewModels.add(new CompanyNewModel(item_image,name,5,email,mobilenumber,lastname_,address,experinace,aboutus,no_of_staff,id,km,userImage));
                             companyNewAdapter=new CompanyNewAdapter(HomePageActivity.this,companyNewModels);
                             recyclerView1.setHasFixedSize(true);
                             recyclerView1.setAdapter(companyNewAdapter);

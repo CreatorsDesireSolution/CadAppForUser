@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class ServiceListComapnyForShow extends AppCompatActivity {
     RecyclerView recyclerView;
-    String id;
+    String id,userImage;
     ArrayList<ServicesListModel> servicesListModelArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,8 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
 
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
+        userImage=intent.getStringExtra("user");
+
         //Log.d("actid","actid"+act_session.userId);
 
         StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/freelancer_companyservice_api.php", new Response.Listener<String>() {
@@ -77,7 +79,7 @@ public class ServiceListComapnyForShow extends AppCompatActivity {
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
 
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"2"));
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"2",userImage));
                             ServicesListAdapterForShow servicesListAdapter=new ServicesListAdapterForShow(ServiceListComapnyForShow.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);

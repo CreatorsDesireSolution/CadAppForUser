@@ -68,21 +68,23 @@ public class NewAdapter extends RecyclerView.Adapter<NewAdapter.NewViewHolder> i
         final String aboutus=newModel.getAbout_yourself();
         final  String image=newModel.getImage();
         final String id = newModel.getId();
+        final String userImage=newModel.getUserImage();
 
 
      holder.setItemClickListner(new ItemClickListner() {
          @Override
          public void onItemClickListner(View v, int position) {
-             Intent intent=new Intent(context,Act_FreelancerProfile.class);
+               Intent intent=new Intent(context,Act_FreelancerProfile.class);
                intent.putExtra("name",name);
-              intent.putExtra("last",lastname);
-              intent.putExtra("email",email);
-              intent.putExtra("mobile",mobilenumber);
-             intent.putExtra("address",address);
-             intent.putExtra("experience",experience);
-             intent.putExtra("aboutus",aboutus);
-             intent.putExtra("image",image);
-             intent.putExtra("id",id);
+               intent.putExtra("last",lastname);
+               intent.putExtra("email",email);
+               intent.putExtra("mobile",mobilenumber);
+               intent.putExtra("address",address);
+               intent.putExtra("experience",experience);
+               intent.putExtra("aboutus",aboutus);
+               intent.putExtra("image",image);
+               intent.putExtra("id",id);
+               intent.putExtra("user",userImage);
 
              context.startActivity(intent);
              //context.startActivity(new Intent(context, Act_FreelancerProfile.class));

@@ -35,7 +35,7 @@ public class SeeAllFreelancer extends AppCompatActivity {
     BaseRequest baseRequest;
     Act_Session act_session; Context context;
     ArrayList<FreelancerDetailsModel> freelancerDetailsModels = new ArrayList<>();
-    String lat,lng;
+    String lat,lng,userimage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,9 @@ public class SeeAllFreelancer extends AppCompatActivity {
         recycleAll = findViewById(R.id.recycle_all);
         act_session = new Act_Session(getApplicationContext());
         context = this;
+
+        act_session=new Act_Session(getApplicationContext());
+        userimage=act_session.profile_pic;
 
         // get the reference of RecyclerView
 // set a GridLayoutManager with default vertical orientation and 3 number of columns

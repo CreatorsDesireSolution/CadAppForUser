@@ -46,7 +46,7 @@ public class OrderActivity extends AppCompatActivity {
     int totalPrice = 0;
     TextView totals;
     Button placeOrder;
-    String name, desc, price, item_image, status, Pid, Cid;
+    String name, desc, price, item_image, status, Pid, Cid,userImage;
     int qty;
     Act_Session act_session;
     ProgressDialog progressDialog;
@@ -132,10 +132,11 @@ public class OrderActivity extends AppCompatActivity {
             Pid = c.getString(6);
             qty = c.getInt(5);
            serviceId=c.getString(7);
+           userImage=c.getString(9);
             if (!price.equals(""))
                 totalPrice += (Integer.parseInt(price) * qty);
 
-            Order item = new Order(item_image, name, "", "\u20B9" + price, qty, status, Pid);
+            Order item = new Order(item_image, name, "", "\u20B9" + price, qty, status, Pid,userImage);
             orders.add(item);
         }
 
@@ -184,7 +185,7 @@ public class OrderActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(OrderActivity.this, "" + error, Toast.LENGTH_SHORT).show();
                         }
-                    }) {
+                    }){
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> map = new HashMap<>();
@@ -197,7 +198,7 @@ public class OrderActivity extends AppCompatActivity {
                             map.put("service_time", time);
                             map.put("service_date", date);
                             map.put("flag", status);
-
+                            map.put("user_image",userImage);
                             Log.d("customer_id", "customer" + act_session.userId);
                             Log.d("status", "status" + status);
                             Log.d("customer_id", "customer" + act_session.userId);

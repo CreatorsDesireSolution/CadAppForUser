@@ -33,8 +33,7 @@ public class SeeAllCompany extends AppCompatActivity {
     Context context;
     ArrayList<CompanyDetailsModel> companyDetailsModels = new ArrayList<>();
     SeeAllCompanyAdapter seeAllCompanyAdapter;
-   String lat,lng;
-
+   String lat,lng,userimage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,9 @@ public class SeeAllCompany extends AppCompatActivity {
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("See All Company");
+
+        act_session=new Act_Session(getApplicationContext());
+        userimage=act_session.profile_pic;
 
         recycleAll = findViewById(R.id.recycle_all);
         act_session = new Act_Session(getApplicationContext());
@@ -89,14 +91,9 @@ public class SeeAllCompany extends AppCompatActivity {
                         for (int i = 0; i < companyDetailsModels.size(); i++) {
                             if (companyDetailsModels != null) {
 
-
                                 CompanyDetailsModel model = new CompanyDetailsModel();
                                 model.setCompanyname(companyDetailsModels.get(0).getCompanyname());
-
-                                // companyAddServiceModels2.add(model);
                                 seeAllCompanyAdapter =new SeeAllCompanyAdapter(context, companyDetailsModels);
-//                                LinearLayoutManager layoutManager1=new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true);
-//                                recyclerView1.setLayoutManager(layoutManager1);
                                 LinearLayoutManager gridLayoutManager = new LinearLayoutManager(SeeAllCompany.this);
                                 gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
                                 recycleAll.setLayoutManager(gridLayoutManager);

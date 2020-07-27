@@ -2,7 +2,7 @@ package com.example.cadappforuser.companymodel;
 
 public class CompanyNewModel {
 
-    String image;
+    String image,userImage;
     String name;
     float rating;
 
@@ -10,7 +10,7 @@ public class CompanyNewModel {
 
     public CompanyNewModel(String image, String name, float rating, String email, String mobile,
                            String lastname, String address,String experience,
-                           String about_yourself,String no_of_staff,String id,String km) {
+                           String about_yourself,String no_of_staff,String id,String km,String userImage) {
         this.image = image;
         this.name = name;
         this.rating = rating;
@@ -23,7 +23,15 @@ public class CompanyNewModel {
         this.no_of_staff=no_of_staff;
         this.id=id;
         this.km = km;
+        this.userImage=userImage;
+    }
 
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
     }
 
     public String getKm() {

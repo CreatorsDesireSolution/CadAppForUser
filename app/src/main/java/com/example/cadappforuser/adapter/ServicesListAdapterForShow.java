@@ -118,6 +118,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                     values.put("PROVIDERID", id);
                                     values.put("SERVICE_ID", servicesListModel.getKey_id());
                                     values.put("STATUS",servicesListModel.getStatus());
+                                    values.put("USERIMAGE",servicesListModel.getUserimage());
                                     database.insert("CART", null, values);
                                     holder.btn_addtocart.setText("Added");
                                   //  Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
@@ -140,6 +141,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                             values.put("PROVIDERID", id);
                                             values.put("SERVICE_ID", servicesListModel.getKey_id());
                                             values.put("STATUS",servicesListModel.getStatus());
+                                            values.put("USERIMAGE",servicesListModel.getUserimage());
                                             database.insert("CART", null, values);
                                             holder.btn_addtocart.setText("Added");
                                             Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
@@ -159,6 +161,7 @@ public class ServicesListAdapterForShow extends RecyclerView.Adapter<ServicesLis
                                         values.put("PROVIDERID", id);
                                         values.put("SERVICE_ID", servicesListModel.getKey_id());
                                         values.put("STATUS",servicesListModel.getStatus());
+                                        values.put("USERIMAGE",servicesListModel.getUserimage());
                                         database.insert("CART", null, values);
                                         holder.btn_addtocart.setText("Added");
                                      //   Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
