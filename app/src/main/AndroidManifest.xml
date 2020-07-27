@@ -24,6 +24,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SeeAll.SeeAllCompanyFreelancer"></activity>
+        <activity android:name=".SeeAll.SeeAllFreelancerFreelancer"></activity>
+        <activity android:name=".Act_CompanyNewProfileFreelancer"></activity>
+        <activity android:name=".Act_SelectCompnayGenderForListFreelancer"></activity>
+        <activity android:name=".ServiceListComapnyForShowFreelancer"></activity>
         <activity android:name=".PreviousBookingDetail"></activity><activity android:name=".CompanyAppotiment"></activity>
         <activity android:name=".CompanyAllBookings"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>

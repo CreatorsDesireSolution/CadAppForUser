@@ -55,7 +55,7 @@ String id;
         lay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Act_SelectCompnayGenderForList.class);
+                Intent intent = new Intent(getApplicationContext(),Act_SelectCompnayGenderForListFreelancer.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

@@ -1,12 +1,5 @@
 package com.example.cadappforuser;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,41 +7,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.cadappforuser.adapter.CompanyAddServiceAdapater;
-import com.example.cadappforuser.adapter.FreelancerAddServiceAdapter;
-import com.example.cadappforuser.adapter.ServicesListAdapter;
 import com.example.cadappforuser.adapter.ServicesListAdapterForShow;
-import com.example.cadappforuser.model.CompanyAddServiceModel;
-import com.example.cadappforuser.model.FreelancerServiceListModel;
+import com.example.cadappforuser.adapter.ServicesListCompanyAdapter;
 import com.example.cadappforuser.model.ServicesListModel;
-import com.example.cadappforuser.retrofit.BaseRequest;
-import com.example.cadappforuser.retrofit.RequestReciever;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FreelancerServiceList extends AppCompatActivity {
-
+public class ServiceListComapnyForShowFreelancer extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<ServicesListModel> servicesListModelArrayList;
-    //String url="https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php";
     String id;
-
+    ArrayList<ServicesListModel> servicesListModelArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_freelancer_service_list);
+        setContentView(R.layout.activity_service_list_comapny_for_show);
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Services List");
@@ -56,40 +44,44 @@ public class FreelancerServiceList extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycle);
         servicesListModelArrayList=new ArrayList<>();
 
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        final Act_Session act_session=new Act_Session(this);
+
         Intent intent=getIntent();
         id=intent.getStringExtra("id");
+        //Log.d("actid","actid"+act_session.userId);
 
-        StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/company_freelancerservices_api.php", new Response.Listener<String>() {
+        StringRequest request=new StringRequest(Request.Method.POST, "https://aoneservice.net.in/salon/get-apis/freelancer_companyservice_api.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    String sucess = jsonObject.getString("status");
-                    JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    if(sucess.equals("1")) {
+                    String sucess = jsonObject.getString("success");
+                   JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    if (sucess.equals("1")) {
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            Toast.makeText(FreelancerServiceList.this, ""+response, Toast.LENGTH_SHORT).show();
                             JSONObject object = jsonArray.getJSONObject(i);
                             String service_gender=object.getString("service_gender");
                             Log.d("response","response"+response);
                             //if(service_gender.equals("male")){
-                            String id = object.getString("Service_id");
+                            String id = object.getString("id");
+                            String compayId=object.getString("company_id");
                             String service_name = object.getString("service_name");
-                            String freelancerId=object.getString("freelancer_id");
                             String description = object.getString("description");
                             String set_price = object.getString("set_price");
                             String duration = object.getString("duration");
+
                             String item_image = object.getString("service_image");
                             String u = "http://aoneservice.net.in/salon/documents/" + item_image;
-                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",freelancerId,"status"));
-                            ServicesListAdapter servicesListAdapter=new ServicesListAdapter(FreelancerServiceList.this,servicesListModelArrayList);
-                            LinearLayoutManager layoutManager=new LinearLayoutManager(FreelancerServiceList.this);
-                            recyclerView.setLayoutManager(layoutManager);
+
+                            servicesListModelArrayList.add(new ServicesListModel(u,set_price,description,service_name,id,"0",compayId,"2"));
+                            ServicesListCompanyAdapter servicesListAdapter=new ServicesListCompanyAdapter(ServiceListComapnyForShowFreelancer.this,servicesListModelArrayList);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setAdapter(servicesListAdapter);
 
-                            //}
-
+                            //  }
                         }
                     }
                 }
@@ -101,7 +93,7 @@ public class FreelancerServiceList extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(FreelancerServiceList.this, ""+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ServiceListComapnyForShowFreelancer.this, ""+error, Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -109,6 +101,7 @@ public class FreelancerServiceList extends AppCompatActivity {
                 Map<String, String> params=new HashMap<>();
                 params.put("id",id);
                 Log.d("actid","actid"+id);
+
                 return params;
             }
         };
@@ -116,7 +109,6 @@ public class FreelancerServiceList extends AppCompatActivity {
         requestQueue.add(request);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override
@@ -144,6 +136,5 @@ public class FreelancerServiceList extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
-
 
 }

@@ -46,7 +46,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cadappforuser.Appointment.FreelancerAppointment;
 import com.example.cadappforuser.SeeAll.SeeAllCompany;
+import com.example.cadappforuser.SeeAll.SeeAllCompanyFreelancer;
 import com.example.cadappforuser.SeeAll.SeeAllFreelancer;
+import com.example.cadappforuser.SeeAll.SeeAllFreelancerFreelancer;
 import com.example.cadappforuser.ServiceModel.NewModel;
 import com.example.cadappforuser.adapter.Ad_Company;
 import com.example.cadappforuser.adapter.Ad_Freelancer;
@@ -124,14 +126,14 @@ public class FreelancerHomePageActivity extends AppCompatActivity  implements  N
         seeAllFreelancer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllFreelancer.class);
+                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllFreelancerFreelancer.class);
                 startActivity(intent);
             }
         });
         seeAllCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllCompany.class);
+                Intent intent=new Intent(FreelancerHomePageActivity.this, SeeAllCompanyFreelancer.class);
                 startActivity(intent);
             }
         });
